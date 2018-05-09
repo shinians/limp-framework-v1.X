@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.mapper.oracle.DrawRepairMapper" >
+  <resultMap id="BaseResultMap" type="com.chinasofti.domain.DrawRepair" >
+    <result column="CDR_ID" property="id" jdbcType="VARCHAR" />
+    <result column="CDR_UID" property="uid" jdbcType="VARCHAR" />
+    <result column="CDR_REPTYPE" property="reptype" jdbcType="VARCHAR" />
+    <result column="CDR_REPTIME" property="reptime" jdbcType="VARCHAR" />
+    <result column="CDR_QUSITEM" property="qusitem" jdbcType="VARCHAR" />
+    <result column="CDR_CHECKITEM" property="checkitem" jdbcType="VARCHAR" />
+    <result column="CDR_CHECKPERSION" property="checkpersion" jdbcType="VARCHAR" />
+    <result column="CDR_SUBPERSION" property="subpersion" jdbcType="VARCHAR" />
+    <result column="CDR_DRAWNO" property="drawno" jdbcType="VARCHAR" />
+    <result column="CDR_DOWNLOAD" property="download" jdbcType="VARCHAR" />
+    <result column="CDR_APPROTIME" property="approtime" jdbcType="VARCHAR" />
+    <result column="CDR_APPROMSG" property="appromsg" jdbcType="VARCHAR" />
+    <result column="CDR_PROCUID" property="procuid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CDR_ID, CDR_UID, CDR_REPTYPE, CDR_REPTIME, CDR_QUSITEM, CDR_CHECKITEM, CDR_CHECKPERSION, 
+    CDR_SUBPERSION, CDR_DRAWNO, CDR_DOWNLOAD, CDR_APPROTIME, CDR_APPROMSG, CDR_PROCUID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chinasofti.domain.DrawRepairExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CIS_DRAW_REPAIR
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+  <delete id="deleteByExample" parameterType="com.chinasofti.domain.DrawRepairExample" >
+    delete from CIS_DRAW_REPAIR
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chinasofti.domain.DrawRepair" >
+    insert into CIS_DRAW_REPAIR (CDR_ID, CDR_UID, CDR_REPTYPE, 
+      CDR_REPTIME, CDR_QUSITEM, CDR_CHECKITEM, 
+      CDR_CHECKPERSION, CDR_SUBPERSION, CDR_DRAWNO, 
+      CDR_DOWNLOAD, CDR_APPROTIME, CDR_APPROMSG, 
+      CDR_PROCUID)
+    values (#{id,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}, #{reptype,jdbcType=VARCHAR}, 
+      #{reptime,jdbcType=VARCHAR}, #{qusitem,jdbcType=VARCHAR}, #{checkitem,jdbcType=VARCHAR}, 
+      #{checkpersion,jdbcType=VARCHAR}, #{subpersion,jdbcType=VARCHAR}, #{drawno,jdbcType=VARCHAR}, 
+      #{download,jdbcType=VARCHAR}, #{approtime,jdbcType=VARCHAR}, #{appromsg,jdbcType=VARCHAR}, 
+      #{procuid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chinasofti.domain.DrawRepair" >
+    insert into CIS_DRAW_REPAIR
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        CDR_ID,
+      </if>
+      <if test="uid != null" >
+        CDR_UID,
+      </if>
+      <if test="reptype != null" >
+        CDR_REPTYPE,
+      </if>
+      <if test="reptime != null" >
+        CDR_REPTIME,
+      </if>
+      <if test="qusitem != null" >
+        CDR_QUSITEM,
+      </if>
+      <if test="checkitem != null" >
+        CDR_CHECKITEM,
+      </if>
+      <if test="checkpersion != null" >
+        CDR_CHECKPERSION,
+      </if>
+      <if test="subpersion != null" >
+        CDR_SUBPERSION,
+      </if>
+      <if test="drawno != null" >
+        CDR_DRAWNO,
+      </if>
+      <if test="download != null" >
+        CDR_DOWNLOAD,
+      </if>
+      <if test="approtime != null" >
+        CDR_APPROTIME,
+      </if>
+      <if test="appromsg != null" >
+        CDR_APPROMSG,
+      </if>
+      <if test="procuid != null" >
+        CDR_PROCUID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="reptype != null" >
+        #{reptype,jdbcType=VARCHAR},
+      </if>
+      <if test="reptime != null" >
+        #{reptime,jdbcType=VARCHAR},
+      </if>
+      <if test="qusitem != null" >
+        #{qusitem,jdbcType=VARCHAR},
+      </if>
+      <if test="checkitem != null" >
+        #{checkitem,jdbcType=VARCHAR},
+      </if>
+      <if test="checkpersion != null" >
+        #{checkpersion,jdbcType=VARCHAR},
+      </if>
+      <if test="subpersion != null" >
+        #{subpersion,jdbcType=VARCHAR},
+      </if>
+      <if test="drawno != null" >
+        #{drawno,jdbcType=VARCHAR},
+      </if>
+      <if test="download != null" >
+        #{download,jdbcType=VARCHAR},
+      </if>
+      <if test="approtime != null" >
+        #{approtime,jdbcType=VARCHAR},
+      </if>
+      <if test="appromsg != null" >
+        #{appromsg,jdbcType=VARCHAR},
+      </if>
+      <if test="procuid != null" >
+        #{procuid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chinasofti.domain.DrawRepairExample" resultType="java.lang.Integer" >
+    select count(*) from CIS_DRAW_REPAIR
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update CIS_DRAW_REPAIR
+    <set >
+      <if test="record.id != null" >
+        CDR_ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uid != null" >
+        CDR_UID = #{record.uid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reptype != null" >
+        CDR_REPTYPE = #{record.reptype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reptime != null" >
+        CDR_REPTIME = #{record.reptime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qusitem != null" >
+        CDR_QUSITEM = #{record.qusitem,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkitem != null" >
+        CDR_CHECKITEM = #{record.checkitem,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkpersion != null" >
+        CDR_CHECKPERSION = #{record.checkpersion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subpersion != null" >
+        CDR_SUBPERSION = #{record.subpersion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drawno != null" >
+        CDR_DRAWNO = #{record.drawno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.download != null" >
+        CDR_DOWNLOAD = #{record.download,jdbcType=VARCHAR},
+      </if>
+      <if test="record.approtime != null" >
+        CDR_APPROTIME = #{record.approtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appromsg != null" >
+        CDR_APPROMSG = #{record.appromsg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.procuid != null" >
+        CDR_PROCUID = #{record.procuid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update CIS_DRAW_REPAIR
+    set CDR_ID = #{record.id,jdbcType=VARCHAR},
+      CDR_UID = #{record.uid,jdbcType=VARCHAR},
+      CDR_REPTYPE = #{record.reptype,jdbcType=VARCHAR},
+      CDR_REPTIME = #{record.reptime,jdbcType=VARCHAR},
+      CDR_QUSITEM = #{record.qusitem,jdbcType=VARCHAR},
+      CDR_CHECKITEM = #{record.checkitem,jdbcType=VARCHAR},
+      CDR_CHECKPERSION = #{record.checkpersion,jdbcType=VARCHAR},
+      CDR_SUBPERSION = #{record.subpersion,jdbcType=VARCHAR},
+      CDR_DRAWNO = #{record.drawno,jdbcType=VARCHAR},
+      CDR_DOWNLOAD = #{record.download,jdbcType=VARCHAR},
+      CDR_APPROTIME = #{record.approtime,jdbcType=VARCHAR},
+      CDR_APPROMSG = #{record.appromsg,jdbcType=VARCHAR},
+      CDR_PROCUID = #{record.procuid,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from ( 
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+      <![CDATA[ ) row_  where rownum<= #{page.end}) where rownum_ > #{page.start} ]]>
+    </if>
+  </sql>
+</mapper>

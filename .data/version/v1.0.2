@@ -1,0 +1,10 @@
+
+-----------------------升级日期：2017.07.XX---------------------
+升级日期：2017.07.XX
+版本号:1.0.2
+升级内容：功能升级
+1、自动化生成代码分页方法修改（替换com.limp.framework.mybatis.plugin包下的OraclePaginationPlugin.java）
+2、【重要】 自动生成的代码中，如数据库字段是TIMESTAMP类型，则生成 实体类字段类型为Object，需要将之改为Date类型
+3、拦截器修正SecurityInterceptor.java  [1、增加jvm日志信息 2、采用多线程日志记录  3、新增CISInterceptor.java拦截器]
+   说明：springmvc.xml配置了2个拦截，业务和架构拦截器已区分开，开发者如有其它拦截可在新增CISInterceptor类中实现（如集成cas）
+4、sys_pageoperatelog表结构 用户id，菜单id变为可为空，新增用户访问参数

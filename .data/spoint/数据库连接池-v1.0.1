@@ -1,0 +1,23 @@
+-----------------数据连接池整理------------------
+1、使用org.springframework.jdbc.datasource.DriverManagerDataSource
+2、DBCP 使用org.apache.commons.dbcp.BasicDataSource（DBCP在实践中存在BUG，在某些种情会产生很多空连接不能释放，Hibernate3.0已经放弃了对其的支持）
+3、C3P0（C3P0比较耗费资源，效率方面可能要低一点）
+5、Proxool（Proxool的负面评价较少，现在比较推荐它，而且它还提供即时监控连接池状态的功能，便于发现连接泄漏的情况。）
+6、druid是类似dbcp,c3p0的一个数据库连接池框架，性能比这两者好，同时自带监控页面，可以实时监控应用的连接池情况以及其中性能差的sql
+7、使用org.springframework.jndi.JndiObjectFactoryBean（需要在web server中配置数据源，不方便于部署）
+
+
+
+
+1、使用org.springframework.jdbc.datasource.DriverManagerDataSource
+说明：DriverManagerDataSource建立连接是只要有连接就新建一个connection,根本没有连接池的作用。
+部分相关代码：
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+ <property name="url" value="${limp.oracle.jdbc.url}"/>
+ <property name="driverClassName" value="${limp.oracle.jdbc.driver}"/>
+ <property name="username" value="${limp.oracle.jdbc.username}"/>
+ <property name="password" value="${limp.oracle.jdbc.password}"/>
+</bean>
+
+2、使用org.apache.commons.dbcp.BasicDataSource
+依赖2个jar包：commons-dbcp.jar、 commons-pool.ja

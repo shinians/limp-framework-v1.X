@@ -1,0 +1,2 @@
+1、数据库的连接信息查询
+select * from v$session order by osuser

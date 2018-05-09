@@ -1,0 +1,226 @@
+/**********验船师能力分布页面css  by  duanyunhong**********************/
+/*外层容器*/
+body{
+    font-family: "Microsoft Yahei";
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.detailTal{
+    width: 810px;
+    display: none;
+    position: absolute;
+    right: 5px;
+    top: 2%;
+    background-color:rgba(9, 21, 48, 0.52);
+    color: #fff;
+    padding: 5px;
+    z-index: 99;
+    border-radius: 5px;
+}
+/*页面table*/
+.surCount{
+    width: 100%;
+    margin: 3px;
+}
+.surCount thead tr th{text-align: center;border: 1px solid #99CCFF;}
+.surCount tbody tr td{text-align: center;border: 1px solid #99CCFF;}
+/*对应页面信息标题*/
+.title03{
+    text-align: center;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 3px;
+    margin-bottom:0px;
+    padding: 3px;
+    background-color: #fff;
+    color: #000;
+    border-radius: 5px;
+}
+/*点击隐藏信息img*/
+.hideNews{
+    float: left;
+    cursor: pointer;
+}
+/*点击出现信息img*/
+.showNews{
+    position: absolute;
+    top: 15px;
+    right: 0px;
+    cursor: pointer;
+}
+.entryTotal,.professTotal,.abilityTotal,.trainTotal,.shijianTotal{font-size: 18px;color: red;}
+/******************by  梁鹏************************************/
+/*图例部分*/
+.legend{
+    padding:10px 20px;
+    position: absolute;
+    height:130px;
+    width:300px;
+    background-color: #fff;
+    /*left:30px;*/
+    bottom:10px;
+    border-radius: 5px;
+    text-align: left;
+    /*opacity: 0.7;*/
+    z-index: 9;
+}
+.legend p{
+    line-height: 40px;
+}
+/*弹框部分*/
+.layerTable{
+    width:100%;
+}
+.layui-layer-content{
+    padding:10px;
+}
+.personTable tr td:nth-child(1){
+    font-size:16px;
+    font-family: "microsoft yahei", Verdana, Arial, Helvetica, AppleGothic, sans-serif;
+}
+.personTable tr td {
+    line-height: 60px;
+}
+/*searchTable样式*/
+.searchTable{
+    width:100%;
+    padding:10px;
+}
+.searchTable tr td{
+    line-height: 70px;
+}
+.searchTable tr td button{
+    margin-left:30px;
+}
+
+/*select框选择*/
+.layui-form-select dl dd.layui-this{
+    background-color:#1E9FFF;
+}
+/*title*/
+/*.layui-tab-card>.layui-tab-title .layui-this{*/
+    /*background-color:rgb(21, 69, 129);*/
+/*}*/
+.layui-tab{
+    margin:0px 0px;
+}
+.layui-tab-card{
+    border:none;
+}
+.layui-tab-card>.layui-tab-title{
+    border-bottom: none;
+    background:linear-gradient(#325DDD,#183BA3);
+    color:#fff;
+    padding-left:25px;
+}
+div.smMap{
+    border:none !important;
+}
+.filterOk{
+    background-color: #237fa3;
+}
+
+#tools{
+    position: absolute;
+    top:10px;
+    left:10px;
+}
+
+.layui-nav .layui-this:after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed:after{
+    background-color:#14d3d6;
+}
+/*工具栏相关*/
+.layui-nav{
+    padding:0px;
+    width:432px;
+    position: absolute;
+    z-index: 9;
+    border-radius:5px;
+}
+.navItem{
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+.layui-nav-child dd.layui-this{
+    background-color: #14d3d6;
+}
+
+/*.fa{*/
+    /*margin-right:5px;*/
+/*}*/
+.mapImage{
+    width:86px;
+    height:60px;
+    margin-right:15px;
+}
+/*1.30新样式修改*/
+.layui-tab-card>.layui-tab-title .layui-this{
+    background-color: #fff;
+    color:#01237D;
+}
+
+.mainTitle{
+    background-color:#0F2071;
+}
+
+/*.layui-nav .layui-nav-item a{*/
+    /*color:#fff;*/
+/*}*/
+
+/*.mainTitle .layui-nav-more{*/
+    /*border-color:#fff transparent transparent;*/
+/*}*/
+.layui-nav .layui-nav-child a{
+    color:#fff;
+}
+#tools .layui-nav-child{
+    background-color:#162D91;
+    border:none;
+}
+
+/******************by  蒙娜丽莎  ************************************/
+#tools .search{
+    margin-left:15px;
+}
+#tools .search:after{
+    background-color:transparent;
+}
+
+#tools #searchContent{
+    border:0;
+    padding:7px;
+    padding-left: 33px;
+    border-radius: 5px;
+
+}
+.searchImage{
+    position: absolute;
+    top: 17px;
+    left: 5px;
+}
+#searchResult{
+    padding:10px;
+    width:380px;
+    height:1px;
+    position: absolute;
+    background-color:#fff;
+    border-radius: 5px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    overflow: auto;
+    display: none;
+}
+.searchText:hover{
+    background-color:#ddd;
+    cursor: pointer;
+}
+.searchText{
+    line-height: 35px;
+}
+.layui-nav-item .fa-map{
+    margin-right: 5px;
+}
+#tools .layui-nav-child{
+    cursor: pointer;
+}

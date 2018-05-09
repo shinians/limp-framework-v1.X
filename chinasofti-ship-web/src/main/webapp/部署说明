@@ -1,0 +1,7 @@
+部署说明：
+配置文件：web.xml 需要替换（用户服务器配置）[此次部署需需要替换]
+配置文件：resources/redis.properties  需要替换（用户服务器配置）
+配置文件：resources/datasource/cis.properties  需要替换（用户服务器配置）
+
+配置文件：resources/mybatis/spring-mybatis.xml  需要替换（用户服务器配置）[此次部署需需要替换]
+：index.jsp 替换

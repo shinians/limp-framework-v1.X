@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.mapper.oracle.ShipClaimMapper" >
+  <resultMap id="BaseResultMap" type="com.chinasofti.domain.ShipClaim" >
+    <id column="CSC_ID" property="id" jdbcType="VARCHAR" />
+    <result column="CSC_SHIP_CODE" property="shipCode" jdbcType="VARCHAR" />
+    <result column="CSC_SHIP_NAME" property="shipName" jdbcType="VARCHAR" />
+    <result column="CSC_CLAIM_FLAG" property="claimFlag" jdbcType="VARCHAR" />
+    <result column="CSC_ACCDNTSPOT" property="accdntspot" jdbcType="VARCHAR" />
+    <result column="CSC_ACCDNTTM" property="accdnttm" jdbcType="VARCHAR" />
+    <result column="CSC_SRVYSPOT" property="srvyspot" jdbcType="VARCHAR" />
+    <result column="CSC_SRVYTM" property="srvytm" jdbcType="VARCHAR" />
+    <result column="CSC_ACCORGCNM" property="accorgcnm" jdbcType="VARCHAR" />
+    <result column="CSC_ACCRSNCNM" property="accrsncnm" jdbcType="VARCHAR" />
+    <result column="CSC_LOSTDEGREECDE" property="lostdegreecde" jdbcType="VARCHAR" />
+    <result column="CSC_DAMAGEDTL" property="damagedtl" jdbcType="VARCHAR" />
+    <result column="CSC_HELPFLAG" property="helpflag" jdbcType="VARCHAR" />
+    <result column="CSC_RESCUESTATECDE" property="rescuestatecde" jdbcType="VARCHAR" />
+    <result column="CSC_RESCUEMODECDE" property="rescuemodecde" jdbcType="VARCHAR" />
+    <result column="CSC_REPADDRESS" property="repaddress" jdbcType="VARCHAR" />
+    <result column="CSC_THDSHIPNAME" property="thdshipname" jdbcType="VARCHAR" />
+    <result column="CSC_THDUNIT" property="thdunit" jdbcType="VARCHAR" />
+    <result column="CSC_THDSHIPSTATUSCDE" property="thdshipstatuscde" jdbcType="VARCHAR" />
+    <result column="CSC_THDDAMAGEDTL" property="thddamagedtl" jdbcType="VARCHAR" />
+    <result column="CSC_FILETYPE" property="filetype" jdbcType="VARCHAR" />
+    <result column="CSC_FILEPATH" property="filepath" jdbcType="VARCHAR" />
+    <result column="CSC_ACCDNTDTL" property="accdntdtl" jdbcType="VARCHAR" />
+    <result column="CSC_SRVYOPN" property="srvyopn" jdbcType="VARCHAR" />
+    <result column="CSC_CCLMNO" property="cclmno" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CSC_ID, CSC_SHIP_CODE, CSC_SHIP_NAME, CSC_CLAIM_FLAG, CSC_ACCDNTSPOT, CSC_ACCDNTTM, 
+    CSC_SRVYSPOT, CSC_SRVYTM, CSC_ACCORGCNM, CSC_ACCRSNCNM, CSC_LOSTDEGREECDE, CSC_DAMAGEDTL, 
+    CSC_HELPFLAG, CSC_RESCUESTATECDE, CSC_RESCUEMODECDE, CSC_REPADDRESS, CSC_THDSHIPNAME, 
+    CSC_THDUNIT, CSC_THDSHIPSTATUSCDE, CSC_THDDAMAGEDTL, CSC_FILETYPE, CSC_FILEPATH, 
+    CSC_ACCDNTDTL, CSC_SRVYOPN, CSC_CCLMNO
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chinasofti.domain.ShipClaimExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CIS_SHIP_CLAIM
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from CIS_SHIP_CLAIM
+    where CSC_ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from CIS_SHIP_CLAIM
+    where CSC_ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chinasofti.domain.ShipClaimExample" >
+    delete from CIS_SHIP_CLAIM
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chinasofti.domain.ShipClaim" >
+    insert into CIS_SHIP_CLAIM (CSC_ID, CSC_SHIP_CODE, CSC_SHIP_NAME, 
+      CSC_CLAIM_FLAG, CSC_ACCDNTSPOT, CSC_ACCDNTTM, 
+      CSC_SRVYSPOT, CSC_SRVYTM, CSC_ACCORGCNM, 
+      CSC_ACCRSNCNM, CSC_LOSTDEGREECDE, CSC_DAMAGEDTL, 
+      CSC_HELPFLAG, CSC_RESCUESTATECDE, CSC_RESCUEMODECDE, 
+      CSC_REPADDRESS, CSC_THDSHIPNAME, CSC_THDUNIT, 
+      CSC_THDSHIPSTATUSCDE, CSC_THDDAMAGEDTL, CSC_FILETYPE, 
+      CSC_FILEPATH, CSC_ACCDNTDTL, CSC_SRVYOPN, 
+      CSC_CCLMNO)
+    values (#{id,jdbcType=VARCHAR}, #{shipCode,jdbcType=VARCHAR}, #{shipName,jdbcType=VARCHAR}, 
+      #{claimFlag,jdbcType=VARCHAR}, #{accdntspot,jdbcType=VARCHAR}, #{accdnttm,jdbcType=VARCHAR}, 
+      #{srvyspot,jdbcType=VARCHAR}, #{srvytm,jdbcType=VARCHAR}, #{accorgcnm,jdbcType=VARCHAR}, 
+      #{accrsncnm,jdbcType=VARCHAR}, #{lostdegreecde,jdbcType=VARCHAR}, #{damagedtl,jdbcType=VARCHAR}, 
+      #{helpflag,jdbcType=VARCHAR}, #{rescuestatecde,jdbcType=VARCHAR}, #{rescuemodecde,jdbcType=VARCHAR}, 
+      #{repaddress,jdbcType=VARCHAR}, #{thdshipname,jdbcType=VARCHAR}, #{thdunit,jdbcType=VARCHAR}, 
+      #{thdshipstatuscde,jdbcType=VARCHAR}, #{thddamagedtl,jdbcType=VARCHAR}, #{filetype,jdbcType=VARCHAR}, 
+      #{filepath,jdbcType=VARCHAR}, #{accdntdtl,jdbcType=VARCHAR}, #{srvyopn,jdbcType=VARCHAR}, 
+      #{cclmno,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chinasofti.domain.ShipClaim" >
+    insert into CIS_SHIP_CLAIM
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        CSC_ID,
+      </if>
+      <if test="shipCode != null" >
+        CSC_SHIP_CODE,
+      </if>
+      <if test="shipName != null" >
+        CSC_SHIP_NAME,
+      </if>
+      <if test="claimFlag != null" >
+        CSC_CLAIM_FLAG,
+      </if>
+      <if test="accdntspot != null" >
+        CSC_ACCDNTSPOT,
+      </if>
+      <if test="accdnttm != null" >
+        CSC_ACCDNTTM,
+      </if>
+      <if test="srvyspot != null" >
+        CSC_SRVYSPOT,
+      </if>
+      <if test="srvytm != null" >
+        CSC_SRVYTM,
+      </if>
+      <if test="accorgcnm != null" >
+        CSC_ACCORGCNM,
+      </if>
+      <if test="accrsncnm != null" >
+        CSC_ACCRSNCNM,
+      </if>
+      <if test="lostdegreecde != null" >
+        CSC_LOSTDEGREECDE,
+      </if>
+      <if test="damagedtl != null" >
+        CSC_DAMAGEDTL,
+      </if>
+      <if test="helpflag != null" >
+        CSC_HELPFLAG,
+      </if>
+      <if test="rescuestatecde != null" >
+        CSC_RESCUESTATECDE,
+      </if>
+      <if test="rescuemodecde != null" >
+        CSC_RESCUEMODECDE,
+      </if>
+      <if test="repaddress != null" >
+        CSC_REPADDRESS,
+      </if>
+      <if test="thdshipname != null" >
+        CSC_THDSHIPNAME,
+      </if>
+      <if test="thdunit != null" >
+        CSC_THDUNIT,
+      </if>
+      <if test="thdshipstatuscde != null" >
+        CSC_THDSHIPSTATUSCDE,
+      </if>
+      <if test="thddamagedtl != null" >
+        CSC_THDDAMAGEDTL,
+      </if>
+      <if test="filetype != null" >
+        CSC_FILETYPE,
+      </if>
+      <if test="filepath != null" >
+        CSC_FILEPATH,
+      </if>
+      <if test="accdntdtl != null" >
+        CSC_ACCDNTDTL,
+      </if>
+      <if test="srvyopn != null" >
+        CSC_SRVYOPN,
+      </if>
+      <if test="cclmno != null" >
+        CSC_CCLMNO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="shipCode != null" >
+        #{shipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="shipName != null" >
+        #{shipName,jdbcType=VARCHAR},
+      </if>
+      <if test="claimFlag != null" >
+        #{claimFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="accdntspot != null" >
+        #{accdntspot,jdbcType=VARCHAR},
+      </if>
+      <if test="accdnttm != null" >
+        #{accdnttm,jdbcType=VARCHAR},
+      </if>
+      <if test="srvyspot != null" >
+        #{srvyspot,jdbcType=VARCHAR},
+      </if>
+      <if test="srvytm != null" >
+        #{srvytm,jdbcType=VARCHAR},
+      </if>
+      <if test="accorgcnm != null" >
+        #{accorgcnm,jdbcType=VARCHAR},
+      </if>
+      <if test="accrsncnm != null" >
+        #{accrsncnm,jdbcType=VARCHAR},
+      </if>
+      <if test="lostdegreecde != null" >
+        #{lostdegreecde,jdbcType=VARCHAR},
+      </if>
+      <if test="damagedtl != null" >
+        #{damagedtl,jdbcType=VARCHAR},
+      </if>
+      <if test="helpflag != null" >
+        #{helpflag,jdbcType=VARCHAR},
+      </if>
+      <if test="rescuestatecde != null" >
+        #{rescuestatecde,jdbcType=VARCHAR},
+      </if>
+      <if test="rescuemodecde != null" >
+        #{rescuemodecde,jdbcType=VARCHAR},
+      </if>
+      <if test="repaddress != null" >
+        #{repaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="thdshipname != null" >
+        #{thdshipname,jdbcType=VARCHAR},
+      </if>
+      <if test="thdunit != null" >
+        #{thdunit,jdbcType=VARCHAR},
+      </if>
+      <if test="thdshipstatuscde != null" >
+        #{thdshipstatuscde,jdbcType=VARCHAR},
+      </if>
+      <if test="thddamagedtl != null" >
+        #{thddamagedtl,jdbcType=VARCHAR},
+      </if>
+      <if test="filetype != null" >
+        #{filetype,jdbcType=VARCHAR},
+      </if>
+      <if test="filepath != null" >
+        #{filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="accdntdtl != null" >
+        #{accdntdtl,jdbcType=VARCHAR},
+      </if>
+      <if test="srvyopn != null" >
+        #{srvyopn,jdbcType=VARCHAR},
+      </if>
+      <if test="cclmno != null" >
+        #{cclmno,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chinasofti.domain.ShipClaimExample" resultType="java.lang.Integer" >
+    select count(*) from CIS_SHIP_CLAIM
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update CIS_SHIP_CLAIM
+    <set >
+      <if test="record.id != null" >
+        CSC_ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipCode != null" >
+        CSC_SHIP_CODE = #{record.shipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipName != null" >
+        CSC_SHIP_NAME = #{record.shipName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.claimFlag != null" >
+        CSC_CLAIM_FLAG = #{record.claimFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accdntspot != null" >
+        CSC_ACCDNTSPOT = #{record.accdntspot,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accdnttm != null" >
+        CSC_ACCDNTTM = #{record.accdnttm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.srvyspot != null" >
+        CSC_SRVYSPOT = #{record.srvyspot,jdbcType=VARCHAR},
+      </if>
+      <if test="record.srvytm != null" >
+        CSC_SRVYTM = #{record.srvytm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accorgcnm != null" >
+        CSC_ACCORGCNM = #{record.accorgcnm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accrsncnm != null" >
+        CSC_ACCRSNCNM = #{record.accrsncnm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lostdegreecde != null" >
+        CSC_LOSTDEGREECDE = #{record.lostdegreecde,jdbcType=VARCHAR},
+      </if>
+      <if test="record.damagedtl != null" >
+        CSC_DAMAGEDTL = #{record.damagedtl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.helpflag != null" >
+        CSC_HELPFLAG = #{record.helpflag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rescuestatecde != null" >
+        CSC_RESCUESTATECDE = #{record.rescuestatecde,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rescuemodecde != null" >
+        CSC_RESCUEMODECDE = #{record.rescuemodecde,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repaddress != null" >
+        CSC_REPADDRESS = #{record.repaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.thdshipname != null" >
+        CSC_THDSHIPNAME = #{record.thdshipname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.thdunit != null" >
+        CSC_THDUNIT = #{record.thdunit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.thdshipstatuscde != null" >
+        CSC_THDSHIPSTATUSCDE = #{record.thdshipstatuscde,jdbcType=VARCHAR},
+      </if>
+      <if test="record.thddamagedtl != null" >
+        CSC_THDDAMAGEDTL = #{record.thddamagedtl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filetype != null" >
+        CSC_FILETYPE = #{record.filetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filepath != null" >
+        CSC_FILEPATH = #{record.filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accdntdtl != null" >
+        CSC_ACCDNTDTL = #{record.accdntdtl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.srvyopn != null" >
+        CSC_SRVYOPN = #{record.srvyopn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cclmno != null" >
+        CSC_CCLMNO = #{record.cclmno,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update CIS_SHIP_CLAIM
+    set CSC_ID = #{record.id,jdbcType=VARCHAR},
+      CSC_SHIP_CODE = #{record.shipCode,jdbcType=VARCHAR},
+      CSC_SHIP_NAME = #{record.shipName,jdbcType=VARCHAR},
+      CSC_CLAIM_FLAG = #{record.claimFlag,jdbcType=VARCHAR},
+      CSC_ACCDNTSPOT = #{record.accdntspot,jdbcType=VARCHAR},
+      CSC_ACCDNTTM = #{record.accdnttm,jdbcType=VARCHAR},
+      CSC_SRVYSPOT = #{record.srvyspot,jdbcType=VARCHAR},
+      CSC_SRVYTM = #{record.srvytm,jdbcType=VARCHAR},
+      CSC_ACCORGCNM = #{record.accorgcnm,jdbcType=VARCHAR},
+      CSC_ACCRSNCNM = #{record.accrsncnm,jdbcType=VARCHAR},
+      CSC_LOSTDEGREECDE = #{record.lostdegreecde,jdbcType=VARCHAR},
+      CSC_DAMAGEDTL = #{record.damagedtl,jdbcType=VARCHAR},
+      CSC_HELPFLAG = #{record.helpflag,jdbcType=VARCHAR},
+      CSC_RESCUESTATECDE = #{record.rescuestatecde,jdbcType=VARCHAR},
+      CSC_RESCUEMODECDE = #{record.rescuemodecde,jdbcType=VARCHAR},
+      CSC_REPADDRESS = #{record.repaddress,jdbcType=VARCHAR},
+      CSC_THDSHIPNAME = #{record.thdshipname,jdbcType=VARCHAR},
+      CSC_THDUNIT = #{record.thdunit,jdbcType=VARCHAR},
+      CSC_THDSHIPSTATUSCDE = #{record.thdshipstatuscde,jdbcType=VARCHAR},
+      CSC_THDDAMAGEDTL = #{record.thddamagedtl,jdbcType=VARCHAR},
+      CSC_FILETYPE = #{record.filetype,jdbcType=VARCHAR},
+      CSC_FILEPATH = #{record.filepath,jdbcType=VARCHAR},
+      CSC_ACCDNTDTL = #{record.accdntdtl,jdbcType=VARCHAR},
+      CSC_SRVYOPN = #{record.srvyopn,jdbcType=VARCHAR},
+      CSC_CCLMNO = #{record.cclmno,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinasofti.domain.ShipClaim" >
+    update CIS_SHIP_CLAIM
+    <set >
+      <if test="shipCode != null" >
+        CSC_SHIP_CODE = #{shipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="shipName != null" >
+        CSC_SHIP_NAME = #{shipName,jdbcType=VARCHAR},
+      </if>
+      <if test="claimFlag != null" >
+        CSC_CLAIM_FLAG = #{claimFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="accdntspot != null" >
+        CSC_ACCDNTSPOT = #{accdntspot,jdbcType=VARCHAR},
+      </if>
+      <if test="accdnttm != null" >
+        CSC_ACCDNTTM = #{accdnttm,jdbcType=VARCHAR},
+      </if>
+      <if test="srvyspot != null" >
+        CSC_SRVYSPOT = #{srvyspot,jdbcType=VARCHAR},
+      </if>
+      <if test="srvytm != null" >
+        CSC_SRVYTM = #{srvytm,jdbcType=VARCHAR},
+      </if>
+      <if test="accorgcnm != null" >
+        CSC_ACCORGCNM = #{accorgcnm,jdbcType=VARCHAR},
+      </if>
+      <if test="accrsncnm != null" >
+        CSC_ACCRSNCNM = #{accrsncnm,jdbcType=VARCHAR},
+      </if>
+      <if test="lostdegreecde != null" >
+        CSC_LOSTDEGREECDE = #{lostdegreecde,jdbcType=VARCHAR},
+      </if>
+      <if test="damagedtl != null" >
+        CSC_DAMAGEDTL = #{damagedtl,jdbcType=VARCHAR},
+      </if>
+      <if test="helpflag != null" >
+        CSC_HELPFLAG = #{helpflag,jdbcType=VARCHAR},
+      </if>
+      <if test="rescuestatecde != null" >
+        CSC_RESCUESTATECDE = #{rescuestatecde,jdbcType=VARCHAR},
+      </if>
+      <if test="rescuemodecde != null" >
+        CSC_RESCUEMODECDE = #{rescuemodecde,jdbcType=VARCHAR},
+      </if>
+      <if test="repaddress != null" >
+        CSC_REPADDRESS = #{repaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="thdshipname != null" >
+        CSC_THDSHIPNAME = #{thdshipname,jdbcType=VARCHAR},
+      </if>
+      <if test="thdunit != null" >
+        CSC_THDUNIT = #{thdunit,jdbcType=VARCHAR},
+      </if>
+      <if test="thdshipstatuscde != null" >
+        CSC_THDSHIPSTATUSCDE = #{thdshipstatuscde,jdbcType=VARCHAR},
+      </if>
+      <if test="thddamagedtl != null" >
+        CSC_THDDAMAGEDTL = #{thddamagedtl,jdbcType=VARCHAR},
+      </if>
+      <if test="filetype != null" >
+        CSC_FILETYPE = #{filetype,jdbcType=VARCHAR},
+      </if>
+      <if test="filepath != null" >
+        CSC_FILEPATH = #{filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="accdntdtl != null" >
+        CSC_ACCDNTDTL = #{accdntdtl,jdbcType=VARCHAR},
+      </if>
+      <if test="srvyopn != null" >
+        CSC_SRVYOPN = #{srvyopn,jdbcType=VARCHAR},
+      </if>
+      <if test="cclmno != null" >
+        CSC_CCLMNO = #{cclmno,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CSC_ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chinasofti.domain.ShipClaim" >
+    update CIS_SHIP_CLAIM
+    set CSC_SHIP_CODE = #{shipCode,jdbcType=VARCHAR},
+      CSC_SHIP_NAME = #{shipName,jdbcType=VARCHAR},
+      CSC_CLAIM_FLAG = #{claimFlag,jdbcType=VARCHAR},
+      CSC_ACCDNTSPOT = #{accdntspot,jdbcType=VARCHAR},
+      CSC_ACCDNTTM = #{accdnttm,jdbcType=VARCHAR},
+      CSC_SRVYSPOT = #{srvyspot,jdbcType=VARCHAR},
+      CSC_SRVYTM = #{srvytm,jdbcType=VARCHAR},
+      CSC_ACCORGCNM = #{accorgcnm,jdbcType=VARCHAR},
+      CSC_ACCRSNCNM = #{accrsncnm,jdbcType=VARCHAR},
+      CSC_LOSTDEGREECDE = #{lostdegreecde,jdbcType=VARCHAR},
+      CSC_DAMAGEDTL = #{damagedtl,jdbcType=VARCHAR},
+      CSC_HELPFLAG = #{helpflag,jdbcType=VARCHAR},
+      CSC_RESCUESTATECDE = #{rescuestatecde,jdbcType=VARCHAR},
+      CSC_RESCUEMODECDE = #{rescuemodecde,jdbcType=VARCHAR},
+      CSC_REPADDRESS = #{repaddress,jdbcType=VARCHAR},
+      CSC_THDSHIPNAME = #{thdshipname,jdbcType=VARCHAR},
+      CSC_THDUNIT = #{thdunit,jdbcType=VARCHAR},
+      CSC_THDSHIPSTATUSCDE = #{thdshipstatuscde,jdbcType=VARCHAR},
+      CSC_THDDAMAGEDTL = #{thddamagedtl,jdbcType=VARCHAR},
+      CSC_FILETYPE = #{filetype,jdbcType=VARCHAR},
+      CSC_FILEPATH = #{filepath,jdbcType=VARCHAR},
+      CSC_ACCDNTDTL = #{accdntdtl,jdbcType=VARCHAR},
+      CSC_SRVYOPN = #{srvyopn,jdbcType=VARCHAR},
+      CSC_CCLMNO = #{cclmno,jdbcType=VARCHAR}
+    where CSC_ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from ( 
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+      <![CDATA[ ) row_ ) where rownum_ > #{page.start} and rownum_ <= #{page.end} ]]>
+    </if>
+  </sql>
+
+  <insert id="batchInsert" parameterType="com.chinasofti.domain.ShipClaim" >
+    insert into CIS_SHIP_CLAIM (CSC_ID, CSC_SHIP_CODE, CSC_SHIP_NAME,
+    CSC_CLAIM_FLAG, CSC_ACCDNTSPOT, CSC_ACCDNTTM,
+    CSC_SRVYSPOT, CSC_SRVYTM, CSC_ACCORGCNM,
+    CSC_ACCRSNCNM, CSC_LOSTDEGREECDE, CSC_DAMAGEDTL,
+    CSC_HELPFLAG, CSC_RESCUESTATECDE, CSC_RESCUEMODECDE,
+    CSC_REPADDRESS, CSC_THDSHIPNAME, CSC_THDUNIT,
+    CSC_THDSHIPSTATUSCDE, CSC_THDDAMAGEDTL, CSC_FILETYPE,
+    CSC_FILEPATH, CSC_ACCDNTDTL, CSC_SRVYOPN,
+    CSC_CCLMNO)
+    select t.* from (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+      select
+      #{item.id,jdbcType=VARCHAR}, #{item.shipCode,jdbcType=VARCHAR},
+      #{item.shipName,jdbcType=VARCHAR}, #{item.claimFlag,jdbcType=VARCHAR},
+      #{item.accdntspot,jdbcType=VARCHAR},
+      #{item.accdnttm,jdbcType=VARCHAR}, #{item.srvyspot,jdbcType=VARCHAR},
+      #{item.srvytm,jdbcType=VARCHAR},
+      #{item.accorgcnm,jdbcType=VARCHAR}, #{item.accrsncnm,jdbcType=VARCHAR},
+      #{item.lostdegreecde,jdbcType=VARCHAR},
+      #{item.damagedtl,jdbcType=VARCHAR}, #{item.helpflag,jdbcType=VARCHAR},
+      #{item.rescuestatecde,jdbcType=VARCHAR}, #{item.rescuemodecde,jdbcType=VARCHAR},
+      #{item.repaddress,jdbcType=VARCHAR}, #{item.thdshipname,jdbcType=VARCHAR},
+      #{item.thdunit,jdbcType=VARCHAR}, #{item.thdshipstatuscde,jdbcType=VARCHAR},
+      #{item.thddamagedtl,jdbcType=VARCHAR}, #{item.filetype,jdbcType=VARCHAR},
+      #{item.filepath,jdbcType=VARCHAR}, #{item.accdntdtl,jdbcType=VARCHAR},
+      #{item.srvyopn,jdbcType=VARCHAR}, #{item.cclmno,jdbcType=VARCHAR}
+      from dual
+    </foreach>
+    ) t
+  </insert>
+</mapper>

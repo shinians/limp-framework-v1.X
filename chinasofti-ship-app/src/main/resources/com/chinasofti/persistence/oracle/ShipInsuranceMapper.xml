@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.mapper.oracle.ShipInsuranceMapper" >
+  <resultMap id="BaseResultMap" type="com.chinasofti.domain.ShipInsurance" >
+    <id column="CIS_ID" property="id" jdbcType="VARCHAR" />
+    <result column="CIS_SHIP_CODE" property="shipCode" jdbcType="VARCHAR" />
+    <result column="CIS_SHIP_NAME" property="shipName" jdbcType="VARCHAR" />
+    <result column="CIS_POLIY_FLAG" property="poliyFlag" jdbcType="VARCHAR" />
+    <result column="CIS_ASS_TYPE" property="assType" jdbcType="VARCHAR" />
+    <result column="CIS_INSRNTCDE" property="insrntcde" jdbcType="VARCHAR" />
+    <result column="CIS_ASS_CNM" property="assCnm" jdbcType="VARCHAR" />
+    <result column="CIS_INSRNT_TEL" property="insrntTel" jdbcType="VARCHAR" />
+    <result column="CIS_ASS_ADDR" property="assAddr" jdbcType="VARCHAR" />
+    <result column="CIS_PORT_OF_REGISTRY" property="portOfRegistry" jdbcType="VARCHAR" />
+    <result column="CIS_SHIP_LONG" property="shipLong" jdbcType="VARCHAR" />
+    <result column="CIS_BUILD_TM" property="buildTm" jdbcType="VARCHAR" />
+    <result column="CIS_SHIPMATERIAL_CDE" property="shipmaterialCde" jdbcType="VARCHAR" />
+    <result column="CIS_POWER" property="power" jdbcType="VARCHAR" />
+    <result column="CIS_SHIPTYP_CDE" property="shiptypCde" jdbcType="VARCHAR" />
+    <result column="CIS_SAILAREA_CDE" property="sailareaCde" jdbcType="VARCHAR" />
+    <result column="CIS_SHIP_TONNAGE" property="shipTonnage" jdbcType="VARCHAR" />
+    <result column="CIS_INSRNC_BGN_TM" property="insrncBgnTm" jdbcType="VARCHAR" />
+    <result column="CIS_INSRNC_END_TM" property="insrncEndTm" jdbcType="VARCHAR" />
+    <result column="CIS_INPUT_TM" property="inputTm" jdbcType="VARCHAR" />
+    <result column="CIS_RDR_CNM" property="rdrCnm" jdbcType="VARCHAR" />
+    <result column="CIS_AMT" property="amt" jdbcType="VARCHAR" />
+    <result column="CIS_PLY_RATE" property="plyRate" jdbcType="VARCHAR" />
+    <result column="CIS_RATE" property="rate" jdbcType="VARCHAR" />
+    <result column="CIS_PRM" property="prm" jdbcType="VARCHAR" />
+    <result column="CIS_SUM_AMT" property="sumAmt" jdbcType="VARCHAR" />
+    <result column="CIS_SUM_PRM" property="sumPrm" jdbcType="VARCHAR" />
+    <result column="CIS_NCLM_SUM" property="nclmSum" jdbcType="VARCHAR" />
+    <result column="CIS_PAYABLE_PRM" property="payablePrm" jdbcType="VARCHAR" />
+    <result column="CIS_REALITY_PRM" property="realityPrm" jdbcType="VARCHAR" />
+    <result column="CIS_POLICYNUM" property="policynum" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CIS_ID, CIS_SHIP_CODE, CIS_SHIP_NAME, CIS_POLIY_FLAG, CIS_ASS_TYPE, CIS_INSRNTCDE, 
+    CIS_ASS_CNM, CIS_INSRNT_TEL, CIS_ASS_ADDR, CIS_PORT_OF_REGISTRY, CIS_SHIP_LONG, CIS_BUILD_TM, 
+    CIS_SHIPMATERIAL_CDE, CIS_POWER, CIS_SHIPTYP_CDE, CIS_SAILAREA_CDE, CIS_SHIP_TONNAGE, 
+    CIS_INSRNC_BGN_TM, CIS_INSRNC_END_TM, CIS_INPUT_TM, CIS_RDR_CNM, CIS_AMT, CIS_PLY_RATE, 
+    CIS_RATE, CIS_PRM, CIS_SUM_AMT, CIS_SUM_PRM, CIS_NCLM_SUM, CIS_PAYABLE_PRM, CIS_REALITY_PRM, 
+    CIS_POLICYNUM
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chinasofti.domain.ShipInsuranceExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CIS_SHIP_INSURANCE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from CIS_SHIP_INSURANCE
+    where CIS_ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from CIS_SHIP_INSURANCE
+    where CIS_ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chinasofti.domain.ShipInsuranceExample" >
+    delete from CIS_SHIP_INSURANCE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chinasofti.domain.ShipInsurance" >
+    insert into CIS_SHIP_INSURANCE (CIS_ID, CIS_SHIP_CODE, CIS_SHIP_NAME, 
+      CIS_POLIY_FLAG, CIS_ASS_TYPE, CIS_INSRNTCDE, 
+      CIS_ASS_CNM, CIS_INSRNT_TEL, CIS_ASS_ADDR, 
+      CIS_PORT_OF_REGISTRY, CIS_SHIP_LONG, CIS_BUILD_TM, 
+      CIS_SHIPMATERIAL_CDE, CIS_POWER, CIS_SHIPTYP_CDE, 
+      CIS_SAILAREA_CDE, CIS_SHIP_TONNAGE, CIS_INSRNC_BGN_TM, 
+      CIS_INSRNC_END_TM, CIS_INPUT_TM, CIS_RDR_CNM, 
+      CIS_AMT, CIS_PLY_RATE, CIS_RATE, 
+      CIS_PRM, CIS_SUM_AMT, CIS_SUM_PRM, 
+      CIS_NCLM_SUM, CIS_PAYABLE_PRM, CIS_REALITY_PRM, 
+      CIS_POLICYNUM)
+    values (#{id,jdbcType=VARCHAR}, #{shipCode,jdbcType=VARCHAR}, #{shipName,jdbcType=VARCHAR}, 
+      #{poliyFlag,jdbcType=VARCHAR}, #{assType,jdbcType=VARCHAR}, #{insrntcde,jdbcType=VARCHAR}, 
+      #{assCnm,jdbcType=VARCHAR}, #{insrntTel,jdbcType=VARCHAR}, #{assAddr,jdbcType=VARCHAR}, 
+      #{portOfRegistry,jdbcType=VARCHAR}, #{shipLong,jdbcType=VARCHAR}, #{buildTm,jdbcType=VARCHAR}, 
+      #{shipmaterialCde,jdbcType=VARCHAR}, #{power,jdbcType=VARCHAR}, #{shiptypCde,jdbcType=VARCHAR}, 
+      #{sailareaCde,jdbcType=VARCHAR}, #{shipTonnage,jdbcType=VARCHAR}, #{insrncBgnTm,jdbcType=VARCHAR}, 
+      #{insrncEndTm,jdbcType=VARCHAR}, #{inputTm,jdbcType=VARCHAR}, #{rdrCnm,jdbcType=VARCHAR}, 
+      #{amt,jdbcType=VARCHAR}, #{plyRate,jdbcType=VARCHAR}, #{rate,jdbcType=VARCHAR}, 
+      #{prm,jdbcType=VARCHAR}, #{sumAmt,jdbcType=VARCHAR}, #{sumPrm,jdbcType=VARCHAR}, 
+      #{nclmSum,jdbcType=VARCHAR}, #{payablePrm,jdbcType=VARCHAR}, #{realityPrm,jdbcType=VARCHAR}, 
+      #{policynum,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chinasofti.domain.ShipInsurance" >
+    insert into CIS_SHIP_INSURANCE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        CIS_ID,
+      </if>
+      <if test="shipCode != null" >
+        CIS_SHIP_CODE,
+      </if>
+      <if test="shipName != null" >
+        CIS_SHIP_NAME,
+      </if>
+      <if test="poliyFlag != null" >
+        CIS_POLIY_FLAG,
+      </if>
+      <if test="assType != null" >
+        CIS_ASS_TYPE,
+      </if>
+      <if test="insrntcde != null" >
+        CIS_INSRNTCDE,
+      </if>
+      <if test="assCnm != null" >
+        CIS_ASS_CNM,
+      </if>
+      <if test="insrntTel != null" >
+        CIS_INSRNT_TEL,
+      </if>
+      <if test="assAddr != null" >
+        CIS_ASS_ADDR,
+      </if>
+      <if test="portOfRegistry != null" >
+        CIS_PORT_OF_REGISTRY,
+      </if>
+      <if test="shipLong != null" >
+        CIS_SHIP_LONG,
+      </if>
+      <if test="buildTm != null" >
+        CIS_BUILD_TM,
+      </if>
+      <if test="shipmaterialCde != null" >
+        CIS_SHIPMATERIAL_CDE,
+      </if>
+      <if test="power != null" >
+        CIS_POWER,
+      </if>
+      <if test="shiptypCde != null" >
+        CIS_SHIPTYP_CDE,
+      </if>
+      <if test="sailareaCde != null" >
+        CIS_SAILAREA_CDE,
+      </if>
+      <if test="shipTonnage != null" >
+        CIS_SHIP_TONNAGE,
+      </if>
+      <if test="insrncBgnTm != null" >
+        CIS_INSRNC_BGN_TM,
+      </if>
+      <if test="insrncEndTm != null" >
+        CIS_INSRNC_END_TM,
+      </if>
+      <if test="inputTm != null" >
+        CIS_INPUT_TM,
+      </if>
+      <if test="rdrCnm != null" >
+        CIS_RDR_CNM,
+      </if>
+      <if test="amt != null" >
+        CIS_AMT,
+      </if>
+      <if test="plyRate != null" >
+        CIS_PLY_RATE,
+      </if>
+      <if test="rate != null" >
+        CIS_RATE,
+      </if>
+      <if test="prm != null" >
+        CIS_PRM,
+      </if>
+      <if test="sumAmt != null" >
+        CIS_SUM_AMT,
+      </if>
+      <if test="sumPrm != null" >
+        CIS_SUM_PRM,
+      </if>
+      <if test="nclmSum != null" >
+        CIS_NCLM_SUM,
+      </if>
+      <if test="payablePrm != null" >
+        CIS_PAYABLE_PRM,
+      </if>
+      <if test="realityPrm != null" >
+        CIS_REALITY_PRM,
+      </if>
+      <if test="policynum != null" >
+        CIS_POLICYNUM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="shipCode != null" >
+        #{shipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="shipName != null" >
+        #{shipName,jdbcType=VARCHAR},
+      </if>
+      <if test="poliyFlag != null" >
+        #{poliyFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="assType != null" >
+        #{assType,jdbcType=VARCHAR},
+      </if>
+      <if test="insrntcde != null" >
+        #{insrntcde,jdbcType=VARCHAR},
+      </if>
+      <if test="assCnm != null" >
+        #{assCnm,jdbcType=VARCHAR},
+      </if>
+      <if test="insrntTel != null" >
+        #{insrntTel,jdbcType=VARCHAR},
+      </if>
+      <if test="assAddr != null" >
+        #{assAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="portOfRegistry != null" >
+        #{portOfRegistry,jdbcType=VARCHAR},
+      </if>
+      <if test="shipLong != null" >
+        #{shipLong,jdbcType=VARCHAR},
+      </if>
+      <if test="buildTm != null" >
+        #{buildTm,jdbcType=VARCHAR},
+      </if>
+      <if test="shipmaterialCde != null" >
+        #{shipmaterialCde,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null" >
+        #{power,jdbcType=VARCHAR},
+      </if>
+      <if test="shiptypCde != null" >
+        #{shiptypCde,jdbcType=VARCHAR},
+      </if>
+      <if test="sailareaCde != null" >
+        #{sailareaCde,jdbcType=VARCHAR},
+      </if>
+      <if test="shipTonnage != null" >
+        #{shipTonnage,jdbcType=VARCHAR},
+      </if>
+      <if test="insrncBgnTm != null" >
+        #{insrncBgnTm,jdbcType=VARCHAR},
+      </if>
+      <if test="insrncEndTm != null" >
+        #{insrncEndTm,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTm != null" >
+        #{inputTm,jdbcType=VARCHAR},
+      </if>
+      <if test="rdrCnm != null" >
+        #{rdrCnm,jdbcType=VARCHAR},
+      </if>
+      <if test="amt != null" >
+        #{amt,jdbcType=VARCHAR},
+      </if>
+      <if test="plyRate != null" >
+        #{plyRate,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null" >
+        #{rate,jdbcType=VARCHAR},
+      </if>
+      <if test="prm != null" >
+        #{prm,jdbcType=VARCHAR},
+      </if>
+      <if test="sumAmt != null" >
+        #{sumAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="sumPrm != null" >
+        #{sumPrm,jdbcType=VARCHAR},
+      </if>
+      <if test="nclmSum != null" >
+        #{nclmSum,jdbcType=VARCHAR},
+      </if>
+      <if test="payablePrm != null" >
+        #{payablePrm,jdbcType=VARCHAR},
+      </if>
+      <if test="realityPrm != null" >
+        #{realityPrm,jdbcType=VARCHAR},
+      </if>
+      <if test="policynum != null" >
+        #{policynum,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chinasofti.domain.ShipInsuranceExample" resultType="java.lang.Integer" >
+    select count(*) from CIS_SHIP_INSURANCE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update CIS_SHIP_INSURANCE
+    <set >
+      <if test="record.id != null" >
+        CIS_ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipCode != null" >
+        CIS_SHIP_CODE = #{record.shipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipName != null" >
+        CIS_SHIP_NAME = #{record.shipName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.poliyFlag != null" >
+        CIS_POLIY_FLAG = #{record.poliyFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.assType != null" >
+        CIS_ASS_TYPE = #{record.assType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.insrntcde != null" >
+        CIS_INSRNTCDE = #{record.insrntcde,jdbcType=VARCHAR},
+      </if>
+      <if test="record.assCnm != null" >
+        CIS_ASS_CNM = #{record.assCnm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.insrntTel != null" >
+        CIS_INSRNT_TEL = #{record.insrntTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.assAddr != null" >
+        CIS_ASS_ADDR = #{record.assAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.portOfRegistry != null" >
+        CIS_PORT_OF_REGISTRY = #{record.portOfRegistry,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipLong != null" >
+        CIS_SHIP_LONG = #{record.shipLong,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buildTm != null" >
+        CIS_BUILD_TM = #{record.buildTm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipmaterialCde != null" >
+        CIS_SHIPMATERIAL_CDE = #{record.shipmaterialCde,jdbcType=VARCHAR},
+      </if>
+      <if test="record.power != null" >
+        CIS_POWER = #{record.power,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shiptypCde != null" >
+        CIS_SHIPTYP_CDE = #{record.shiptypCde,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sailareaCde != null" >
+        CIS_SAILAREA_CDE = #{record.sailareaCde,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipTonnage != null" >
+        CIS_SHIP_TONNAGE = #{record.shipTonnage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.insrncBgnTm != null" >
+        CIS_INSRNC_BGN_TM = #{record.insrncBgnTm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.insrncEndTm != null" >
+        CIS_INSRNC_END_TM = #{record.insrncEndTm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.inputTm != null" >
+        CIS_INPUT_TM = #{record.inputTm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rdrCnm != null" >
+        CIS_RDR_CNM = #{record.rdrCnm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amt != null" >
+        CIS_AMT = #{record.amt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.plyRate != null" >
+        CIS_PLY_RATE = #{record.plyRate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rate != null" >
+        CIS_RATE = #{record.rate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prm != null" >
+        CIS_PRM = #{record.prm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sumAmt != null" >
+        CIS_SUM_AMT = #{record.sumAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sumPrm != null" >
+        CIS_SUM_PRM = #{record.sumPrm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nclmSum != null" >
+        CIS_NCLM_SUM = #{record.nclmSum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payablePrm != null" >
+        CIS_PAYABLE_PRM = #{record.payablePrm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.realityPrm != null" >
+        CIS_REALITY_PRM = #{record.realityPrm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.policynum != null" >
+        CIS_POLICYNUM = #{record.policynum,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update CIS_SHIP_INSURANCE
+    set CIS_ID = #{record.id,jdbcType=VARCHAR},
+      CIS_SHIP_CODE = #{record.shipCode,jdbcType=VARCHAR},
+      CIS_SHIP_NAME = #{record.shipName,jdbcType=VARCHAR},
+      CIS_POLIY_FLAG = #{record.poliyFlag,jdbcType=VARCHAR},
+      CIS_ASS_TYPE = #{record.assType,jdbcType=VARCHAR},
+      CIS_INSRNTCDE = #{record.insrntcde,jdbcType=VARCHAR},
+      CIS_ASS_CNM = #{record.assCnm,jdbcType=VARCHAR},
+      CIS_INSRNT_TEL = #{record.insrntTel,jdbcType=VARCHAR},
+      CIS_ASS_ADDR = #{record.assAddr,jdbcType=VARCHAR},
+      CIS_PORT_OF_REGISTRY = #{record.portOfRegistry,jdbcType=VARCHAR},
+      CIS_SHIP_LONG = #{record.shipLong,jdbcType=VARCHAR},
+      CIS_BUILD_TM = #{record.buildTm,jdbcType=VARCHAR},
+      CIS_SHIPMATERIAL_CDE = #{record.shipmaterialCde,jdbcType=VARCHAR},
+      CIS_POWER = #{record.power,jdbcType=VARCHAR},
+      CIS_SHIPTYP_CDE = #{record.shiptypCde,jdbcType=VARCHAR},
+      CIS_SAILAREA_CDE = #{record.sailareaCde,jdbcType=VARCHAR},
+      CIS_SHIP_TONNAGE = #{record.shipTonnage,jdbcType=VARCHAR},
+      CIS_INSRNC_BGN_TM = #{record.insrncBgnTm,jdbcType=VARCHAR},
+      CIS_INSRNC_END_TM = #{record.insrncEndTm,jdbcType=VARCHAR},
+      CIS_INPUT_TM = #{record.inputTm,jdbcType=VARCHAR},
+      CIS_RDR_CNM = #{record.rdrCnm,jdbcType=VARCHAR},
+      CIS_AMT = #{record.amt,jdbcType=VARCHAR},
+      CIS_PLY_RATE = #{record.plyRate,jdbcType=VARCHAR},
+      CIS_RATE = #{record.rate,jdbcType=VARCHAR},
+      CIS_PRM = #{record.prm,jdbcType=VARCHAR},
+      CIS_SUM_AMT = #{record.sumAmt,jdbcType=VARCHAR},
+      CIS_SUM_PRM = #{record.sumPrm,jdbcType=VARCHAR},
+      CIS_NCLM_SUM = #{record.nclmSum,jdbcType=VARCHAR},
+      CIS_PAYABLE_PRM = #{record.payablePrm,jdbcType=VARCHAR},
+      CIS_REALITY_PRM = #{record.realityPrm,jdbcType=VARCHAR},
+      CIS_POLICYNUM = #{record.policynum,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinasofti.domain.ShipInsurance" >
+    update CIS_SHIP_INSURANCE
+    <set >
+      <if test="shipCode != null" >
+        CIS_SHIP_CODE = #{shipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="shipName != null" >
+        CIS_SHIP_NAME = #{shipName,jdbcType=VARCHAR},
+      </if>
+      <if test="poliyFlag != null" >
+        CIS_POLIY_FLAG = #{poliyFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="assType != null" >
+        CIS_ASS_TYPE = #{assType,jdbcType=VARCHAR},
+      </if>
+      <if test="insrntcde != null" >
+        CIS_INSRNTCDE = #{insrntcde,jdbcType=VARCHAR},
+      </if>
+      <if test="assCnm != null" >
+        CIS_ASS_CNM = #{assCnm,jdbcType=VARCHAR},
+      </if>
+      <if test="insrntTel != null" >
+        CIS_INSRNT_TEL = #{insrntTel,jdbcType=VARCHAR},
+      </if>
+      <if test="assAddr != null" >
+        CIS_ASS_ADDR = #{assAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="portOfRegistry != null" >
+        CIS_PORT_OF_REGISTRY = #{portOfRegistry,jdbcType=VARCHAR},
+      </if>
+      <if test="shipLong != null" >
+        CIS_SHIP_LONG = #{shipLong,jdbcType=VARCHAR},
+      </if>
+      <if test="buildTm != null" >
+        CIS_BUILD_TM = #{buildTm,jdbcType=VARCHAR},
+      </if>
+      <if test="shipmaterialCde != null" >
+        CIS_SHIPMATERIAL_CDE = #{shipmaterialCde,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null" >
+        CIS_POWER = #{power,jdbcType=VARCHAR},
+      </if>
+      <if test="shiptypCde != null" >
+        CIS_SHIPTYP_CDE = #{shiptypCde,jdbcType=VARCHAR},
+      </if>
+      <if test="sailareaCde != null" >
+        CIS_SAILAREA_CDE = #{sailareaCde,jdbcType=VARCHAR},
+      </if>
+      <if test="shipTonnage != null" >
+        CIS_SHIP_TONNAGE = #{shipTonnage,jdbcType=VARCHAR},
+      </if>
+      <if test="insrncBgnTm != null" >
+        CIS_INSRNC_BGN_TM = #{insrncBgnTm,jdbcType=VARCHAR},
+      </if>
+      <if test="insrncEndTm != null" >
+        CIS_INSRNC_END_TM = #{insrncEndTm,jdbcType=VARCHAR},
+      </if>
+      <if test="inputTm != null" >
+        CIS_INPUT_TM = #{inputTm,jdbcType=VARCHAR},
+      </if>
+      <if test="rdrCnm != null" >
+        CIS_RDR_CNM = #{rdrCnm,jdbcType=VARCHAR},
+      </if>
+      <if test="amt != null" >
+        CIS_AMT = #{amt,jdbcType=VARCHAR},
+      </if>
+      <if test="plyRate != null" >
+        CIS_PLY_RATE = #{plyRate,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null" >
+        CIS_RATE = #{rate,jdbcType=VARCHAR},
+      </if>
+      <if test="prm != null" >
+        CIS_PRM = #{prm,jdbcType=VARCHAR},
+      </if>
+      <if test="sumAmt != null" >
+        CIS_SUM_AMT = #{sumAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="sumPrm != null" >
+        CIS_SUM_PRM = #{sumPrm,jdbcType=VARCHAR},
+      </if>
+      <if test="nclmSum != null" >
+        CIS_NCLM_SUM = #{nclmSum,jdbcType=VARCHAR},
+      </if>
+      <if test="payablePrm != null" >
+        CIS_PAYABLE_PRM = #{payablePrm,jdbcType=VARCHAR},
+      </if>
+      <if test="realityPrm != null" >
+        CIS_REALITY_PRM = #{realityPrm,jdbcType=VARCHAR},
+      </if>
+      <if test="policynum != null" >
+        CIS_POLICYNUM = #{policynum,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CIS_ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chinasofti.domain.ShipInsurance" >
+    update CIS_SHIP_INSURANCE
+    set CIS_SHIP_CODE = #{shipCode,jdbcType=VARCHAR},
+      CIS_SHIP_NAME = #{shipName,jdbcType=VARCHAR},
+      CIS_POLIY_FLAG = #{poliyFlag,jdbcType=VARCHAR},
+      CIS_ASS_TYPE = #{assType,jdbcType=VARCHAR},
+      CIS_INSRNTCDE = #{insrntcde,jdbcType=VARCHAR},
+      CIS_ASS_CNM = #{assCnm,jdbcType=VARCHAR},
+      CIS_INSRNT_TEL = #{insrntTel,jdbcType=VARCHAR},
+      CIS_ASS_ADDR = #{assAddr,jdbcType=VARCHAR},
+      CIS_PORT_OF_REGISTRY = #{portOfRegistry,jdbcType=VARCHAR},
+      CIS_SHIP_LONG = #{shipLong,jdbcType=VARCHAR},
+      CIS_BUILD_TM = #{buildTm,jdbcType=VARCHAR},
+      CIS_SHIPMATERIAL_CDE = #{shipmaterialCde,jdbcType=VARCHAR},
+      CIS_POWER = #{power,jdbcType=VARCHAR},
+      CIS_SHIPTYP_CDE = #{shiptypCde,jdbcType=VARCHAR},
+      CIS_SAILAREA_CDE = #{sailareaCde,jdbcType=VARCHAR},
+      CIS_SHIP_TONNAGE = #{shipTonnage,jdbcType=VARCHAR},
+      CIS_INSRNC_BGN_TM = #{insrncBgnTm,jdbcType=VARCHAR},
+      CIS_INSRNC_END_TM = #{insrncEndTm,jdbcType=VARCHAR},
+      CIS_INPUT_TM = #{inputTm,jdbcType=VARCHAR},
+      CIS_RDR_CNM = #{rdrCnm,jdbcType=VARCHAR},
+      CIS_AMT = #{amt,jdbcType=VARCHAR},
+      CIS_PLY_RATE = #{plyRate,jdbcType=VARCHAR},
+      CIS_RATE = #{rate,jdbcType=VARCHAR},
+      CIS_PRM = #{prm,jdbcType=VARCHAR},
+      CIS_SUM_AMT = #{sumAmt,jdbcType=VARCHAR},
+      CIS_SUM_PRM = #{sumPrm,jdbcType=VARCHAR},
+      CIS_NCLM_SUM = #{nclmSum,jdbcType=VARCHAR},
+      CIS_PAYABLE_PRM = #{payablePrm,jdbcType=VARCHAR},
+      CIS_REALITY_PRM = #{realityPrm,jdbcType=VARCHAR},
+      CIS_POLICYNUM = #{policynum,jdbcType=VARCHAR}
+    where CIS_ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from ( 
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+      <![CDATA[ ) row_ ) where rownum_ > #{page.start} and rownum_ <= #{page.end} ]]>
+    </if>
+  </sql>
+
+  <insert id="batchInsert" parameterType="com.chinasofti.domain.ShipInsurance" >
+    insert into CIS_SHIP_INSURANCE (CIS_ID, CIS_SHIP_CODE, CIS_SHIP_NAME,
+    CIS_POLIY_FLAG, CIS_ASS_TYPE, CIS_INSRNTCDE,
+    CIS_ASS_CNM, CIS_INSRNT_TEL, CIS_ASS_ADDR,
+    CIS_PORT_OF_REGISTRY, CIS_SHIP_LONG, CIS_BUILD_TM,
+    CIS_SHIPMATERIAL_CDE, CIS_POWER, CIS_SHIPTYP_CDE,
+    CIS_SAILAREA_CDE, CIS_SHIP_TONNAGE, CIS_INSRNC_BGN_TM,
+    CIS_INSRNC_END_TM, CIS_INPUT_TM, CIS_RDR_CNM,
+    CIS_AMT, CIS_PLY_RATE, CIS_RATE,
+    CIS_PRM, CIS_SUM_AMT, CIS_SUM_PRM,
+    CIS_NCLM_SUM, CIS_PAYABLE_PRM, CIS_REALITY_PRM,
+    CIS_POLICYNUM)
+    select t.* from (
+    <foreach collection="list" item="item" index="index" separator="UNION ALL">
+      select
+      #{item.id,jdbcType=VARCHAR}, #{item.shipCode,jdbcType=VARCHAR},
+      #{item.shipName,jdbcType=VARCHAR},
+      #{item.poliyFlag,jdbcType=VARCHAR}, #{item.assType,jdbcType=VARCHAR}, #{item.insrntcde,jdbcType=VARCHAR},
+      #{item.assCnm,jdbcType=VARCHAR}, #{item.insrntTel,jdbcType=VARCHAR}, #{item.assAddr,jdbcType=VARCHAR},
+      #{item.portOfRegistry,jdbcType=VARCHAR}, #{item.shipLong,jdbcType=VARCHAR}, #{item.buildTm,jdbcType=VARCHAR},
+      #{item.shipmaterialCde,jdbcType=VARCHAR}, #{item.power,jdbcType=VARCHAR}, #{item.shiptypCde,jdbcType=VARCHAR},
+      #{item.sailareaCde,jdbcType=VARCHAR}, #{item.shipTonnage,jdbcType=VARCHAR}, #{item.insrncBgnTm,jdbcType=VARCHAR},
+      #{item.insrncEndTm,jdbcType=VARCHAR}, #{item.inputTm,jdbcType=VARCHAR}, #{item.rdrCnm,jdbcType=VARCHAR},
+      #{item.amt,jdbcType=VARCHAR}, #{item.plyRate,jdbcType=VARCHAR}, #{item.rate,jdbcType=VARCHAR},
+      #{item.prm,jdbcType=VARCHAR}, #{item.sumAmt,jdbcType=VARCHAR}, #{item.sumPrm,jdbcType=VARCHAR},
+      #{item.nclmSum,jdbcType=VARCHAR}, #{item.payablePrm,jdbcType=VARCHAR}, #{item.realityPrm,jdbcType=VARCHAR},
+      #{item.policynum,jdbcType=VARCHAR}
+      from dual
+    </foreach>
+    ) t
+  </insert>
+</mapper>

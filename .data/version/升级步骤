@@ -1,0 +1,40 @@
+
+
+****************************框架-升级介绍**************************************************************************************-------------------------------------------------------------------------------------
+* 后台框架涉及的目录包括如下部分：（尽量和业务做到低耦合）                                                                    *
+* 1) limp-framework.jar模块升级，此部分为后台逻辑代码部分，升级后用户只需升级此jar包版本即可                                    *
+*    日后升级方法：采用maven和svn管理，svn只需更新此部分代码即可（预计7月底可采用） ;也可以发送给用户jar包，用户直接升级maven库版本。     *
+*2）chinasofti-ship-web 升级：包含systemsite目录（后台样式）和system目录的jsp页面（\webapp\WEB-INF\content\system）        *
+*3）resources配置文件目录升级：配置文件更改会升级此目录                                                                                 *
+*                                                                                                                 *
+*升级终极目标：只需更改部分配置即可完成版本升级，三个模块的升级融合为一步骤，【一键升级】                                          *
+******************************************************************************************************************
+  mvn install:install-file -Dfile=F:\my\limp-framework-1.0.1-RELEASE.jar -DgroupId=com.chinasofti  -DartifactId=limp-framework -Dversion=1.0.1-RELEASE -Dpackaging=jar
+ 一：Jar包安装说明【框架目前依赖的2个jar，需要本地安装，安装信息如下】
+ <!--安装1：数据库jar包引入： ojdbc6.jar - for Java 1.6-->
+         <dependency>
+             <groupId>com.oracle</groupId>
+             <artifactId>ojdbc</artifactId>
+             <version>6.0</version>
+         </dependency>
+   <!--安装2：框架framework jar包引入-->
+         <dependency>
+             <groupId>com.chinasofti</groupId>
+             <artifactId>limp-framework</artifactId>
+             <version>1.0.1-RELEASE</version>
+         </dependency>
+
+
+ mvn install:install-file -Dfile=F:\my\limp-framework-test05.jar  -DgroupId=com.chinasofti  -DartifactId=limp-framework -Dversion=test05 -Dpackaging=jar -DgeneratePom=true  -DcreateChecksum=true
+
+ mvn install:install-file -Dfile=F:\my\limp-framework-test05.jar -DpomFile=F:\my\limp-framework-test05.pom  -DgroupId=com.chinasofti  -DartifactId=limp-framework -Dversion=test06 -Dpackaging=jar -DgeneratePom=true  -DcreateChecksum=true
+ mvn install:install-file -Dfile=F:\my\limp-framework-1.1.0-RELEASE.pom  -DgroupId=com.chinasofti  -DartifactId=limp-framework -Dversion=test04 -Dpackaging=pom
+
+
+ mvn install:install-file -Dfile=F:\my\pinyin-2.5.0.jar  -DgroupId=pinyin  -DartifactId=pinyin -Dversion=2.5.0 -Dpackaging=jar -DgeneratePom=true  -DcreateChecksum=true
+
+安装map包：
+mvn install:install-file -Dfile=E:\objectsjava\bin\com.supermap.data.jar -DgroupId=com.supermap -DartifactId=supermap-data -Dversion=1.0 -Dpackaging=jar
+安装UE jar包
+mvn install:install-file -Dfile=F:\my\my-v1.1.2\ueditor-lib-1.0-limp.jar -DgroupId=com.baidu -DartifactId=ueditor -Dversion=1.0-limp -Dpackaging=jar
+

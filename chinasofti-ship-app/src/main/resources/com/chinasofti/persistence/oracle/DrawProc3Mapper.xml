@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.mapper.oracle.DrawProc3Mapper" >
+  <resultMap id="BaseResultMap" type="com.chinasofti.domain.DrawProc3" >
+    <result column="CDP_ID" property="id" jdbcType="VARCHAR" />
+    <result column="CDP_UID" property="uid" jdbcType="VARCHAR" />
+    <result column="CDP_PROCUID" property="procuid" jdbcType="VARCHAR" />
+    <result column="CDP_DRAWNO" property="drawno" jdbcType="VARCHAR" />
+    <result column="CDP_COMPANY" property="company" jdbcType="VARCHAR" />
+    <result column="CDP_PEOPLE" property="people" jdbcType="VARCHAR" />
+    <result column="CDP_ACCEPTCOUNT" property="acceptcount" jdbcType="VARCHAR" />
+    <result column="CDP_FIRSTTIME" property="firsttime" jdbcType="VARCHAR" />
+    <result column="CDP_FIRSTSUGG" property="firstsugg" jdbcType="VARCHAR" />
+    <result column="CDP_REPEATTIME" property="repeattime" jdbcType="VARCHAR" />
+    <result column="CDP_REPEATSUGG" property="repeatsugg" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CDP_ID, CDP_UID, CDP_PROCUID, CDP_DRAWNO, CDP_COMPANY, CDP_PEOPLE, CDP_ACCEPTCOUNT, 
+    CDP_FIRSTTIME, CDP_FIRSTSUGG, CDP_REPEATTIME, CDP_REPEATSUGG
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chinasofti.domain.DrawProc3Example" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CIS_DRAW_PROC3
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+  <delete id="deleteByExample" parameterType="com.chinasofti.domain.DrawProc3Example" >
+    delete from CIS_DRAW_PROC3
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chinasofti.domain.DrawProc3" >
+    insert into CIS_DRAW_PROC3 (CDP_ID, CDP_UID, CDP_PROCUID, 
+      CDP_DRAWNO, CDP_COMPANY, CDP_PEOPLE, 
+      CDP_ACCEPTCOUNT, CDP_FIRSTTIME, CDP_FIRSTSUGG, 
+      CDP_REPEATTIME, CDP_REPEATSUGG
+      )
+    values (#{id,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}, #{procuid,jdbcType=VARCHAR}, 
+      #{drawno,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, #{people,jdbcType=VARCHAR}, 
+      #{acceptcount,jdbcType=VARCHAR}, #{firsttime,jdbcType=VARCHAR}, #{firstsugg,jdbcType=VARCHAR}, 
+      #{repeattime,jdbcType=VARCHAR}, #{repeatsugg,jdbcType=VARCHAR}, #{doc1,jdbcType=VARCHAR}, 
+      #{doc2,jdbcType=VARCHAR}, #{doc3,jdbcType=VARCHAR}, #{doc4,jdbcType=VARCHAR}, #{doc5,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chinasofti.domain.DrawProc3" >
+    insert into CIS_DRAW_PROC3
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        CDP_ID,
+      </if>
+      <if test="uid != null" >
+        CDP_UID,
+      </if>
+      <if test="procuid != null" >
+        CDP_PROCUID,
+      </if>
+      <if test="drawno != null" >
+        CDP_DRAWNO,
+      </if>
+      <if test="company != null" >
+        CDP_COMPANY,
+      </if>
+      <if test="people != null" >
+        CDP_PEOPLE,
+      </if>
+      <if test="acceptcount != null" >
+        CDP_ACCEPTCOUNT,
+      </if>
+      <if test="firsttime != null" >
+        CDP_FIRSTTIME,
+      </if>
+      <if test="firstsugg != null" >
+        CDP_FIRSTSUGG,
+      </if>
+      <if test="repeattime != null" >
+        CDP_REPEATTIME,
+      </if>
+      <if test="repeatsugg != null" >
+        CDP_REPEATSUGG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="procuid != null" >
+        #{procuid,jdbcType=VARCHAR},
+      </if>
+      <if test="drawno != null" >
+        #{drawno,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="people != null" >
+        #{people,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptcount != null" >
+        #{acceptcount,jdbcType=VARCHAR},
+      </if>
+      <if test="firsttime != null" >
+        #{firsttime,jdbcType=VARCHAR},
+      </if>
+      <if test="firstsugg != null" >
+        #{firstsugg,jdbcType=VARCHAR},
+      </if>
+      <if test="repeattime != null" >
+        #{repeattime,jdbcType=VARCHAR},
+      </if>
+      <if test="repeatsugg != null" >
+        #{repeatsugg,jdbcType=VARCHAR},
+      </if>
+      <if test="doc1 != null" >
+        #{doc1,jdbcType=VARCHAR},
+      </if>
+      <if test="doc2 != null" >
+        #{doc2,jdbcType=VARCHAR},
+      </if>
+      <if test="doc3 != null" >
+        #{doc3,jdbcType=VARCHAR},
+      </if>
+      <if test="doc4 != null" >
+        #{doc4,jdbcType=VARCHAR},
+      </if>
+      <if test="doc5 != null" >
+        #{doc5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chinasofti.domain.DrawProc3Example" resultType="java.lang.Integer" >
+    select count(*) from CIS_DRAW_PROC3
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update CIS_DRAW_PROC3
+    <set >
+      <if test="record.id != null" >
+        CDP_ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uid != null" >
+        CDP_UID = #{record.uid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.procuid != null" >
+        CDP_PROCUID = #{record.procuid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drawno != null" >
+        CDP_DRAWNO = #{record.drawno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.company != null" >
+        CDP_COMPANY = #{record.company,jdbcType=VARCHAR},
+      </if>
+      <if test="record.people != null" >
+        CDP_PEOPLE = #{record.people,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acceptcount != null" >
+        CDP_ACCEPTCOUNT = #{record.acceptcount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firsttime != null" >
+        CDP_FIRSTTIME = #{record.firsttime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firstsugg != null" >
+        CDP_FIRSTSUGG = #{record.firstsugg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repeattime != null" >
+        CDP_REPEATTIME = #{record.repeattime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repeatsugg != null" >
+        CDP_REPEATSUGG = #{record.repeatsugg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update CIS_DRAW_PROC3
+    set CDP_ID = #{record.id,jdbcType=VARCHAR},
+      CDP_UID = #{record.uid,jdbcType=VARCHAR},
+      CDP_PROCUID = #{record.procuid,jdbcType=VARCHAR},
+      CDP_DRAWNO = #{record.drawno,jdbcType=VARCHAR},
+      CDP_COMPANY = #{record.company,jdbcType=VARCHAR},
+      CDP_PEOPLE = #{record.people,jdbcType=VARCHAR},
+      CDP_ACCEPTCOUNT = #{record.acceptcount,jdbcType=VARCHAR},
+      CDP_FIRSTTIME = #{record.firsttime,jdbcType=VARCHAR},
+      CDP_FIRSTSUGG = #{record.firstsugg,jdbcType=VARCHAR},
+      CDP_REPEATTIME = #{record.repeattime,jdbcType=VARCHAR},
+      CDP_REPEATSUGG = #{record.repeatsugg,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from ( 
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+      <![CDATA[ ) row_  where rownum<= #{page.end}) where rownum_ > #{page.start} ]]>
+    </if>
+  </sql>
+</mapper>

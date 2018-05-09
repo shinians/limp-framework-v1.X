@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 公共使用模块 -->
+<mapper namespace="com.limp.framework.boss.mapper.oracle.CommonMapper">
+
+    <resultMap id="commonResultMap" type="map"></resultMap>
+    <!-- 执行查询列表 -->
+    <select id="callList" parameterType="map" statementType="CALLABLE">
+		<![CDATA[
+            {call ${PROC_NAME} (
+                #{RESULT_LIST,mode=OUT,jdbcType=CURSOR,resultMap=commonResultMap}
+            )}
+        ]]>
+	</select>
+
+</mapper>

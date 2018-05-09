@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.mapper.oracle.OrganInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.chinasofti.domain.OrganInfo" >
+    <result column="CO_ID" property="id" jdbcType="VARCHAR" />
+    <result column="CO_UID" property="uid" jdbcType="VARCHAR" />
+    <result column="CO_CERTID" property="certid" jdbcType="VARCHAR" />
+    <result column="CO_ORGNAME" property="orgname" jdbcType="VARCHAR" />
+    <result column="CO_ORGCODE" property="orgcode" jdbcType="VARCHAR" />
+    <result column="CO_ORGADDR" property="orgaddr" jdbcType="VARCHAR" />
+    <result column="CO_FUNTYPE" property="funtype" jdbcType="VARCHAR" />
+    <result column="CO_PARTTYPE" property="parttype" jdbcType="VARCHAR" />
+    <result column="CO_BUSTYPE" property="bustype" jdbcType="VARCHAR" />
+    <result column="CO_FUNSCOPE" property="funscope" jdbcType="VARCHAR" />
+    <result column="CO_GEOTYPE" property="geotype" jdbcType="VARCHAR" />
+    <result column="CO_PROVCODE" property="provcode" jdbcType="VARCHAR" />
+    <result column="CO_PROVNAME" property="provname" jdbcType="VARCHAR" />
+    <result column="CO_TYPELV" property="typelv" jdbcType="VARCHAR" />
+    <result column="CO_ORGNAMEUP" property="orgnameup" jdbcType="VARCHAR" />
+    <result column="CO_ORGCODEUP" property="orgcodeup" jdbcType="VARCHAR" />
+    <result column="CO_ORGAREANAME" property="orgareaname" jdbcType="VARCHAR" />
+    <result column="CO_ORGPOSTCODE" property="orgpostcode" jdbcType="VARCHAR" />
+    <result column="CO_AREACODE" property="areacode" jdbcType="VARCHAR" />
+    <result column="CO_CONTACTPHONE" property="contactphone" jdbcType="VARCHAR" />
+    <result column="CO_CONTACTFAX" property="contactfax" jdbcType="VARCHAR" />
+    <result column="CO_CONTACTTEL" property="contacttel" jdbcType="VARCHAR" />
+    <result column="CO_CONTACTEMAIL" property="contactemail" jdbcType="VARCHAR" />
+    <result column="CO_BODERTYPE" property="bodertype" jdbcType="VARCHAR" />
+    <result column="CO_HEADHAS" property="headhas" jdbcType="VARCHAR" />
+    <result column="CO_FINASOURCE" property="finasource" jdbcType="VARCHAR" />
+    <result column="CO_RESPPERSON" property="respperson" jdbcType="VARCHAR" />
+    <result column="CO_LEGALPERSON" property="legalperson" jdbcType="VARCHAR" />
+    <result column="CO_SUBJECTION" property="subjection" jdbcType="VARCHAR" />
+    <result column="CO_NATURETYPE" property="naturetype" jdbcType="VARCHAR" />
+    <result column="CO_APPRNUM" property="apprnum" jdbcType="VARCHAR" />
+    <result column="CO_PERTOTALNUM" property="pertotalnum" jdbcType="VARCHAR" />
+    <result column="CO_PERSURLV1" property="persurlv1" jdbcType="DECIMAL" />
+    <result column="CO_PERSURLV2" property="persurlv2" jdbcType="DECIMAL" />
+    <result column="CO_PERSURLV3" property="persurlv3" jdbcType="DECIMAL" />
+    <result column="CO_PERSUROCEAN" property="persurocean" jdbcType="DECIMAL" />
+    <result column="CO_PERSURDRAW" property="persurdraw" jdbcType="DECIMAL" />
+    <result column="CO_PERSURPRODUCT" property="persurproduct" jdbcType="DECIMAL" />
+    <result column="CO_JUNIORDOWN" property="juniordown" jdbcType="DECIMAL" />
+    <result column="CO_JUNIORUP" property="juniorup" jdbcType="DECIMAL" />
+    <result column="CO_BACHELORUP" property="bachelorup" jdbcType="DECIMAL" />
+    <result column="CO_GRADUATEUP" property="graduateup" jdbcType="DECIMAL" />
+    <result column="CO_OFFICEAREA" property="officearea" jdbcType="VARCHAR" />
+    <result column="CO_DEVICE" property="device" jdbcType="DECIMAL" />
+    <result column="CO_CARNUM" property="carnum" jdbcType="DECIMAL" />
+    <result column="CO_COMPUNUM" property="compunum" jdbcType="DECIMAL" />
+    <result column="CO_SHIPNUM7" property="shipnum7" jdbcType="DECIMAL" />
+    <result column="CO_SHIPNUM7TO12" property="shipnum7to12" jdbcType="DECIMAL" />
+    <result column="CO_SHIPNUM12TO24" property="shipnum12to24" jdbcType="DECIMAL" />
+    <result column="CO_SHIPNUM24" property="shipnum24" jdbcType="DECIMAL" />
+    <result column="CO_OCESHIPNUM5" property="oceshipnum5" jdbcType="DECIMAL" />
+    <result column="CO_OCESHIPNUM5TO12" property="oceshipnum5to12" jdbcType="DECIMAL" />
+    <result column="CO_OCESHIPNUM12TO24" property="oceshipnum12to24" jdbcType="DECIMAL" />
+    <result column="CO_OCESHIPNUM24TO45" property="oceshipnum24to45" jdbcType="DECIMAL" />
+    <result column="CO_OCESHIPNUM45" property="oceshipnum45" jdbcType="DECIMAL" />
+    <result column="CO_ORGSCOPE" property="orgscope" jdbcType="VARCHAR" />
+    <result column="CO_CHECKSCOPE" property="checkscope" jdbcType="VARCHAR" />
+    <result column="CO_OCEANBOATNUM" property="oceanboatnum" jdbcType="DECIMAL" />
+    <result column="CO_ENTREPARENUM" property="entreparenum" jdbcType="DECIMAL" />
+    <result column="CO_ENTPRODUCTNUM" property="entproductnum" jdbcType="DECIMAL" />
+    <result column="CO_ENTDESINUM" property="entdesinum" jdbcType="DECIMAL" />
+    <result column="CO_ALLBOATNUM" property="allboatnum" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CO_ID, CO_UID, CO_CERTID, CO_ORGNAME, CO_ORGCODE, CO_ORGADDR, CO_FUNTYPE, CO_PARTTYPE, 
+    CO_BUSTYPE, CO_FUNSCOPE, CO_GEOTYPE, CO_PROVCODE, CO_PROVNAME, CO_TYPELV, CO_ORGNAMEUP, 
+    CO_ORGCODEUP, CO_ORGAREANAME, CO_ORGPOSTCODE, CO_AREACODE, CO_CONTACTPHONE, CO_CONTACTFAX, 
+    CO_CONTACTTEL, CO_CONTACTEMAIL, CO_BODERTYPE, CO_HEADHAS, CO_FINASOURCE, CO_RESPPERSON, 
+    CO_LEGALPERSON, CO_SUBJECTION, CO_NATURETYPE, CO_APPRNUM, CO_PERTOTALNUM, CO_PERSURLV1, 
+    CO_PERSURLV2, CO_PERSURLV3, CO_PERSUROCEAN, CO_PERSURDRAW, CO_PERSURPRODUCT, CO_JUNIORDOWN, 
+    CO_JUNIORUP, CO_BACHELORUP, CO_GRADUATEUP, CO_OFFICEAREA, CO_DEVICE, CO_CARNUM, CO_COMPUNUM, 
+    CO_SHIPNUM7, CO_SHIPNUM7TO12, CO_SHIPNUM12TO24, CO_SHIPNUM24, CO_OCESHIPNUM5, CO_OCESHIPNUM5TO12, 
+    CO_OCESHIPNUM12TO24, CO_OCESHIPNUM24TO45, CO_OCESHIPNUM45, CO_ORGSCOPE, CO_CHECKSCOPE, 
+    CO_OCEANBOATNUM, CO_ENTREPARENUM, CO_ENTPRODUCTNUM, CO_ENTDESINUM, CO_ALLBOATNUM
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chinasofti.domain.OrganInfoExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CIS_ORGANINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+  <delete id="deleteByExample" parameterType="com.chinasofti.domain.OrganInfoExample" >
+    delete from CIS_ORGANINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chinasofti.domain.OrganInfo" >
+    insert into CIS_ORGANINFO (CO_ID, CO_UID, CO_CERTID, 
+      CO_ORGNAME, CO_ORGCODE, CO_ORGADDR, 
+      CO_FUNTYPE, CO_PARTTYPE, CO_BUSTYPE, 
+      CO_FUNSCOPE, CO_GEOTYPE, CO_PROVCODE, 
+      CO_PROVNAME, CO_TYPELV, CO_ORGNAMEUP, 
+      CO_ORGCODEUP, CO_ORGAREANAME, CO_ORGPOSTCODE, 
+      CO_AREACODE, CO_CONTACTPHONE, CO_CONTACTFAX, 
+      CO_CONTACTTEL, CO_CONTACTEMAIL, CO_BODERTYPE, 
+      CO_HEADHAS, CO_FINASOURCE, CO_RESPPERSON, 
+      CO_LEGALPERSON, CO_SUBJECTION, CO_NATURETYPE, 
+      CO_APPRNUM, CO_PERTOTALNUM, CO_PERSURLV1, 
+      CO_PERSURLV2, CO_PERSURLV3, CO_PERSUROCEAN, 
+      CO_PERSURDRAW, CO_PERSURPRODUCT, CO_JUNIORDOWN, 
+      CO_JUNIORUP, CO_BACHELORUP, CO_GRADUATEUP, 
+      CO_OFFICEAREA, CO_DEVICE, CO_CARNUM, 
+      CO_COMPUNUM, CO_SHIPNUM7, CO_SHIPNUM7TO12, 
+      CO_SHIPNUM12TO24, CO_SHIPNUM24, CO_OCESHIPNUM5, 
+      CO_OCESHIPNUM5TO12, CO_OCESHIPNUM12TO24, CO_OCESHIPNUM24TO45, 
+      CO_OCESHIPNUM45, CO_ORGSCOPE, CO_CHECKSCOPE, 
+      CO_OCEANBOATNUM, CO_ENTREPARENUM, CO_ENTPRODUCTNUM, 
+      CO_ENTDESINUM, CO_ALLBOATNUM)
+    values (#{id,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}, #{certid,jdbcType=VARCHAR}, 
+      #{orgname,jdbcType=VARCHAR}, #{orgcode,jdbcType=VARCHAR}, #{orgaddr,jdbcType=VARCHAR}, 
+      #{funtype,jdbcType=VARCHAR}, #{parttype,jdbcType=VARCHAR}, #{bustype,jdbcType=VARCHAR}, 
+      #{funscope,jdbcType=VARCHAR}, #{geotype,jdbcType=VARCHAR}, #{provcode,jdbcType=VARCHAR}, 
+      #{provname,jdbcType=VARCHAR}, #{typelv,jdbcType=VARCHAR}, #{orgnameup,jdbcType=VARCHAR}, 
+      #{orgcodeup,jdbcType=VARCHAR}, #{orgareaname,jdbcType=VARCHAR}, #{orgpostcode,jdbcType=VARCHAR}, 
+      #{areacode,jdbcType=VARCHAR}, #{contactphone,jdbcType=VARCHAR}, #{contactfax,jdbcType=VARCHAR}, 
+      #{contacttel,jdbcType=VARCHAR}, #{contactemail,jdbcType=VARCHAR}, #{bodertype,jdbcType=VARCHAR}, 
+      #{headhas,jdbcType=VARCHAR}, #{finasource,jdbcType=VARCHAR}, #{respperson,jdbcType=VARCHAR}, 
+      #{legalperson,jdbcType=VARCHAR}, #{subjection,jdbcType=VARCHAR}, #{naturetype,jdbcType=VARCHAR}, 
+      #{apprnum,jdbcType=VARCHAR}, #{pertotalnum,jdbcType=VARCHAR}, #{persurlv1,jdbcType=DECIMAL}, 
+      #{persurlv2,jdbcType=DECIMAL}, #{persurlv3,jdbcType=DECIMAL}, #{persurocean,jdbcType=DECIMAL}, 
+      #{persurdraw,jdbcType=DECIMAL}, #{persurproduct,jdbcType=DECIMAL}, #{juniordown,jdbcType=DECIMAL}, 
+      #{juniorup,jdbcType=DECIMAL}, #{bachelorup,jdbcType=DECIMAL}, #{graduateup,jdbcType=DECIMAL}, 
+      #{officearea,jdbcType=VARCHAR}, #{device,jdbcType=DECIMAL}, #{carnum,jdbcType=DECIMAL}, 
+      #{compunum,jdbcType=DECIMAL}, #{shipnum7,jdbcType=DECIMAL}, #{shipnum7to12,jdbcType=DECIMAL}, 
+      #{shipnum12to24,jdbcType=DECIMAL}, #{shipnum24,jdbcType=DECIMAL}, #{oceshipnum5,jdbcType=DECIMAL}, 
+      #{oceshipnum5to12,jdbcType=DECIMAL}, #{oceshipnum12to24,jdbcType=DECIMAL}, #{oceshipnum24to45,jdbcType=DECIMAL}, 
+      #{oceshipnum45,jdbcType=DECIMAL}, #{orgscope,jdbcType=VARCHAR}, #{checkscope,jdbcType=VARCHAR}, 
+      #{oceanboatnum,jdbcType=DECIMAL}, #{entreparenum,jdbcType=DECIMAL}, #{entproductnum,jdbcType=DECIMAL}, 
+      #{entdesinum,jdbcType=DECIMAL}, #{allboatnum,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chinasofti.domain.OrganInfo" >
+    insert into CIS_ORGANINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        CO_ID,
+      </if>
+      <if test="uid != null" >
+        CO_UID,
+      </if>
+      <if test="certid != null" >
+        CO_CERTID,
+      </if>
+      <if test="orgname != null" >
+        CO_ORGNAME,
+      </if>
+      <if test="orgcode != null" >
+        CO_ORGCODE,
+      </if>
+      <if test="orgaddr != null" >
+        CO_ORGADDR,
+      </if>
+      <if test="funtype != null" >
+        CO_FUNTYPE,
+      </if>
+      <if test="parttype != null" >
+        CO_PARTTYPE,
+      </if>
+      <if test="bustype != null" >
+        CO_BUSTYPE,
+      </if>
+      <if test="funscope != null" >
+        CO_FUNSCOPE,
+      </if>
+      <if test="geotype != null" >
+        CO_GEOTYPE,
+      </if>
+      <if test="provcode != null" >
+        CO_PROVCODE,
+      </if>
+      <if test="provname != null" >
+        CO_PROVNAME,
+      </if>
+      <if test="typelv != null" >
+        CO_TYPELV,
+      </if>
+      <if test="orgnameup != null" >
+        CO_ORGNAMEUP,
+      </if>
+      <if test="orgcodeup != null" >
+        CO_ORGCODEUP,
+      </if>
+      <if test="orgareaname != null" >
+        CO_ORGAREANAME,
+      </if>
+      <if test="orgpostcode != null" >
+        CO_ORGPOSTCODE,
+      </if>
+      <if test="areacode != null" >
+        CO_AREACODE,
+      </if>
+      <if test="contactphone != null" >
+        CO_CONTACTPHONE,
+      </if>
+      <if test="contactfax != null" >
+        CO_CONTACTFAX,
+      </if>
+      <if test="contacttel != null" >
+        CO_CONTACTTEL,
+      </if>
+      <if test="contactemail != null" >
+        CO_CONTACTEMAIL,
+      </if>
+      <if test="bodertype != null" >
+        CO_BODERTYPE,
+      </if>
+      <if test="headhas != null" >
+        CO_HEADHAS,
+      </if>
+      <if test="finasource != null" >
+        CO_FINASOURCE,
+      </if>
+      <if test="respperson != null" >
+        CO_RESPPERSON,
+      </if>
+      <if test="legalperson != null" >
+        CO_LEGALPERSON,
+      </if>
+      <if test="subjection != null" >
+        CO_SUBJECTION,
+      </if>
+      <if test="naturetype != null" >
+        CO_NATURETYPE,
+      </if>
+      <if test="apprnum != null" >
+        CO_APPRNUM,
+      </if>
+      <if test="pertotalnum != null" >
+        CO_PERTOTALNUM,
+      </if>
+      <if test="persurlv1 != null" >
+        CO_PERSURLV1,
+      </if>
+      <if test="persurlv2 != null" >
+        CO_PERSURLV2,
+      </if>
+      <if test="persurlv3 != null" >
+        CO_PERSURLV3,
+      </if>
+      <if test="persurocean != null" >
+        CO_PERSUROCEAN,
+      </if>
+      <if test="persurdraw != null" >
+        CO_PERSURDRAW,
+      </if>
+      <if test="persurproduct != null" >
+        CO_PERSURPRODUCT,
+      </if>
+      <if test="juniordown != null" >
+        CO_JUNIORDOWN,
+      </if>
+      <if test="juniorup != null" >
+        CO_JUNIORUP,
+      </if>
+      <if test="bachelorup != null" >
+        CO_BACHELORUP,
+      </if>
+      <if test="graduateup != null" >
+        CO_GRADUATEUP,
+      </if>
+      <if test="officearea != null" >
+        CO_OFFICEAREA,
+      </if>
+      <if test="device != null" >
+        CO_DEVICE,
+      </if>
+      <if test="carnum != null" >
+        CO_CARNUM,
+      </if>
+      <if test="compunum != null" >
+        CO_COMPUNUM,
+      </if>
+      <if test="shipnum7 != null" >
+        CO_SHIPNUM7,
+      </if>
+      <if test="shipnum7to12 != null" >
+        CO_SHIPNUM7TO12,
+      </if>
+      <if test="shipnum12to24 != null" >
+        CO_SHIPNUM12TO24,
+      </if>
+      <if test="shipnum24 != null" >
+        CO_SHIPNUM24,
+      </if>
+      <if test="oceshipnum5 != null" >
+        CO_OCESHIPNUM5,
+      </if>
+      <if test="oceshipnum5to12 != null" >
+        CO_OCESHIPNUM5TO12,
+      </if>
+      <if test="oceshipnum12to24 != null" >
+        CO_OCESHIPNUM12TO24,
+      </if>
+      <if test="oceshipnum24to45 != null" >
+        CO_OCESHIPNUM24TO45,
+      </if>
+      <if test="oceshipnum45 != null" >
+        CO_OCESHIPNUM45,
+      </if>
+      <if test="orgscope != null" >
+        CO_ORGSCOPE,
+      </if>
+      <if test="checkscope != null" >
+        CO_CHECKSCOPE,
+      </if>
+      <if test="oceanboatnum != null" >
+        CO_OCEANBOATNUM,
+      </if>
+      <if test="entreparenum != null" >
+        CO_ENTREPARENUM,
+      </if>
+      <if test="entproductnum != null" >
+        CO_ENTPRODUCTNUM,
+      </if>
+      <if test="entdesinum != null" >
+        CO_ENTDESINUM,
+      </if>
+      <if test="allboatnum != null" >
+        CO_ALLBOATNUM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="certid != null" >
+        #{certid,jdbcType=VARCHAR},
+      </if>
+      <if test="orgname != null" >
+        #{orgname,jdbcType=VARCHAR},
+      </if>
+      <if test="orgcode != null" >
+        #{orgcode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgaddr != null" >
+        #{orgaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="funtype != null" >
+        #{funtype,jdbcType=VARCHAR},
+      </if>
+      <if test="parttype != null" >
+        #{parttype,jdbcType=VARCHAR},
+      </if>
+      <if test="bustype != null" >
+        #{bustype,jdbcType=VARCHAR},
+      </if>
+      <if test="funscope != null" >
+        #{funscope,jdbcType=VARCHAR},
+      </if>
+      <if test="geotype != null" >
+        #{geotype,jdbcType=VARCHAR},
+      </if>
+      <if test="provcode != null" >
+        #{provcode,jdbcType=VARCHAR},
+      </if>
+      <if test="provname != null" >
+        #{provname,jdbcType=VARCHAR},
+      </if>
+      <if test="typelv != null" >
+        #{typelv,jdbcType=VARCHAR},
+      </if>
+      <if test="orgnameup != null" >
+        #{orgnameup,jdbcType=VARCHAR},
+      </if>
+      <if test="orgcodeup != null" >
+        #{orgcodeup,jdbcType=VARCHAR},
+      </if>
+      <if test="orgareaname != null" >
+        #{orgareaname,jdbcType=VARCHAR},
+      </if>
+      <if test="orgpostcode != null" >
+        #{orgpostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="areacode != null" >
+        #{areacode,jdbcType=VARCHAR},
+      </if>
+      <if test="contactphone != null" >
+        #{contactphone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactfax != null" >
+        #{contactfax,jdbcType=VARCHAR},
+      </if>
+      <if test="contacttel != null" >
+        #{contacttel,jdbcType=VARCHAR},
+      </if>
+      <if test="contactemail != null" >
+        #{contactemail,jdbcType=VARCHAR},
+      </if>
+      <if test="bodertype != null" >
+        #{bodertype,jdbcType=VARCHAR},
+      </if>
+      <if test="headhas != null" >
+        #{headhas,jdbcType=VARCHAR},
+      </if>
+      <if test="finasource != null" >
+        #{finasource,jdbcType=VARCHAR},
+      </if>
+      <if test="respperson != null" >
+        #{respperson,jdbcType=VARCHAR},
+      </if>
+      <if test="legalperson != null" >
+        #{legalperson,jdbcType=VARCHAR},
+      </if>
+      <if test="subjection != null" >
+        #{subjection,jdbcType=VARCHAR},
+      </if>
+      <if test="naturetype != null" >
+        #{naturetype,jdbcType=VARCHAR},
+      </if>
+      <if test="apprnum != null" >
+        #{apprnum,jdbcType=VARCHAR},
+      </if>
+      <if test="pertotalnum != null" >
+        #{pertotalnum,jdbcType=VARCHAR},
+      </if>
+      <if test="persurlv1 != null" >
+        #{persurlv1,jdbcType=DECIMAL},
+      </if>
+      <if test="persurlv2 != null" >
+        #{persurlv2,jdbcType=DECIMAL},
+      </if>
+      <if test="persurlv3 != null" >
+        #{persurlv3,jdbcType=DECIMAL},
+      </if>
+      <if test="persurocean != null" >
+        #{persurocean,jdbcType=DECIMAL},
+      </if>
+      <if test="persurdraw != null" >
+        #{persurdraw,jdbcType=DECIMAL},
+      </if>
+      <if test="persurproduct != null" >
+        #{persurproduct,jdbcType=DECIMAL},
+      </if>
+      <if test="juniordown != null" >
+        #{juniordown,jdbcType=DECIMAL},
+      </if>
+      <if test="juniorup != null" >
+        #{juniorup,jdbcType=DECIMAL},
+      </if>
+      <if test="bachelorup != null" >
+        #{bachelorup,jdbcType=DECIMAL},
+      </if>
+      <if test="graduateup != null" >
+        #{graduateup,jdbcType=DECIMAL},
+      </if>
+      <if test="officearea != null" >
+        #{officearea,jdbcType=VARCHAR},
+      </if>
+      <if test="device != null" >
+        #{device,jdbcType=DECIMAL},
+      </if>
+      <if test="carnum != null" >
+        #{carnum,jdbcType=DECIMAL},
+      </if>
+      <if test="compunum != null" >
+        #{compunum,jdbcType=DECIMAL},
+      </if>
+      <if test="shipnum7 != null" >
+        #{shipnum7,jdbcType=DECIMAL},
+      </if>
+      <if test="shipnum7to12 != null" >
+        #{shipnum7to12,jdbcType=DECIMAL},
+      </if>
+      <if test="shipnum12to24 != null" >
+        #{shipnum12to24,jdbcType=DECIMAL},
+      </if>
+      <if test="shipnum24 != null" >
+        #{shipnum24,jdbcType=DECIMAL},
+      </if>
+      <if test="oceshipnum5 != null" >
+        #{oceshipnum5,jdbcType=DECIMAL},
+      </if>
+      <if test="oceshipnum5to12 != null" >
+        #{oceshipnum5to12,jdbcType=DECIMAL},
+      </if>
+      <if test="oceshipnum12to24 != null" >
+        #{oceshipnum12to24,jdbcType=DECIMAL},
+      </if>
+      <if test="oceshipnum24to45 != null" >
+        #{oceshipnum24to45,jdbcType=DECIMAL},
+      </if>
+      <if test="oceshipnum45 != null" >
+        #{oceshipnum45,jdbcType=DECIMAL},
+      </if>
+      <if test="orgscope != null" >
+        #{orgscope,jdbcType=VARCHAR},
+      </if>
+      <if test="checkscope != null" >
+        #{checkscope,jdbcType=VARCHAR},
+      </if>
+      <if test="oceanboatnum != null" >
+        #{oceanboatnum,jdbcType=DECIMAL},
+      </if>
+      <if test="entreparenum != null" >
+        #{entreparenum,jdbcType=DECIMAL},
+      </if>
+      <if test="entproductnum != null" >
+        #{entproductnum,jdbcType=DECIMAL},
+      </if>
+      <if test="entdesinum != null" >
+        #{entdesinum,jdbcType=DECIMAL},
+      </if>
+      <if test="allboatnum != null" >
+        #{allboatnum,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+    <!-- line==1为一线人员-->
+    <select id="getYCSMatchRate"  resultType="java.util.HashMap" parameterType="java.lang.String">
+        SELECT t.year,
+      <if test="line == '1'">
+        SUM(t.ycslinenum)/SUM(t.ycsminnum)*100 AS rate
+      </if>
+      <if test="line != '1'">
+        SUM(t.ycsnum)/SUM(t.ycsminnum)*100 AS rate
+      </if>
+       FROM them_ycs_qkrs t WHERE 1=1
+      <if test="orgCode != null">
+        AND t.orgcode like #{orgCode}
+      </if>
+         AND t.YEAR BETWEEN #{startY} AND #{endY} GROUP BY t.YEAR ORDER BY t.YEAR DESC
+    </select>
+    <!--   /*#{group,jdbcType=VARCHAR}*/-->
+  <select id="getGroupNum"  resultType="java.util.HashMap">
+      SELECT NAME AS "${@com.limp.framework.core.constant.Constant@CODE_TRANS_PRE}NAME" ,NUM FROM (
+      SELECT
+      <if test="group ==null">
+        CO_BUSTYPE  AS NAME,
+      </if>
+      <if test="group =='CO_BUSTYPE'">
+        CO_BUSTYPE  AS NAME,
+      </if>
+      <if test="group =='CO_FINASOURCE'">
+        CO_FINASOURCE  AS NAME,
+      </if>
+      <if test="group =='CO_FUNTYPE'">
+        CO_FUNTYPE  AS NAME,
+      </if>
+      <if test="group =='CO_PARTTYPE'">
+        CO_PARTTYPE  AS NAME,
+      </if>
+      COUNT(1) NUM FROM CIS_ORGANINFO t1  left join
+      (select * from cis_orgcertificate <if test="date !=null"> where substr(CO_ENDTIME,0,4)>#{date} </if>) t2 on t1.co_uid=t2.co_orgcode
+      START  WITH t1.CO_ORGCODE=#{orgCode,jdbcType=VARCHAR} CONNECT BY NOCYCLE PRIOR t1.CO_ORGCODE = t1.CO_ORGCODEUP
+      <if test="group ==null">
+        GROUP BY  CO_BUSTYPE
+      </if>
+      <if test="group =='CO_BUSTYPE'">
+        GROUP BY  CO_BUSTYPE
+      </if>
+      <if test="group =='CO_FINASOURCE'">
+        GROUP BY  CO_FINASOURCE
+      </if>
+      <if test="group =='CO_FUNTYPE'">
+        GROUP BY CO_FUNTYPE
+      </if>
+      <if test="group =='CO_PARTTYPE'">
+        GROUP BY CO_PARTTYPE
+      </if>
+      )
+    WHERE NAME IS NOT NULL
+    <!---TODO:字典表没有对应的编码,无法转码,暂时排除,待以后更新字典表后放开-->
+    AND NAME !='104_0' AND NAME!='104_'
+
+    </select>
+  <select id="countByExample" parameterType="com.chinasofti.domain.OrganInfoExample" resultType="java.lang.Integer" >
+    select count(*) from CIS_ORGANINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update CIS_ORGANINFO
+    <set >
+      <if test="record.id != null" >
+        CO_ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uid != null" >
+        CO_UID = #{record.uid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certid != null" >
+        CO_CERTID = #{record.certid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgname != null" >
+        CO_ORGNAME = #{record.orgname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgcode != null" >
+        CO_ORGCODE = #{record.orgcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgaddr != null" >
+        CO_ORGADDR = #{record.orgaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.funtype != null" >
+        CO_FUNTYPE = #{record.funtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parttype != null" >
+        CO_PARTTYPE = #{record.parttype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bustype != null" >
+        CO_BUSTYPE = #{record.bustype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.funscope != null" >
+        CO_FUNSCOPE = #{record.funscope,jdbcType=VARCHAR},
+      </if>
+      <if test="record.geotype != null" >
+        CO_GEOTYPE = #{record.geotype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.provcode != null" >
+        CO_PROVCODE = #{record.provcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.provname != null" >
+        CO_PROVNAME = #{record.provname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.typelv != null" >
+        CO_TYPELV = #{record.typelv,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgnameup != null" >
+        CO_ORGNAMEUP = #{record.orgnameup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgcodeup != null" >
+        CO_ORGCODEUP = #{record.orgcodeup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgareaname != null" >
+        CO_ORGAREANAME = #{record.orgareaname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgpostcode != null" >
+        CO_ORGPOSTCODE = #{record.orgpostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areacode != null" >
+        CO_AREACODE = #{record.areacode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactphone != null" >
+        CO_CONTACTPHONE = #{record.contactphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactfax != null" >
+        CO_CONTACTFAX = #{record.contactfax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contacttel != null" >
+        CO_CONTACTTEL = #{record.contacttel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactemail != null" >
+        CO_CONTACTEMAIL = #{record.contactemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bodertype != null" >
+        CO_BODERTYPE = #{record.bodertype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.headhas != null" >
+        CO_HEADHAS = #{record.headhas,jdbcType=VARCHAR},
+      </if>
+      <if test="record.finasource != null" >
+        CO_FINASOURCE = #{record.finasource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.respperson != null" >
+        CO_RESPPERSON = #{record.respperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.legalperson != null" >
+        CO_LEGALPERSON = #{record.legalperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subjection != null" >
+        CO_SUBJECTION = #{record.subjection,jdbcType=VARCHAR},
+      </if>
+      <if test="record.naturetype != null" >
+        CO_NATURETYPE = #{record.naturetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.apprnum != null" >
+        CO_APPRNUM = #{record.apprnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pertotalnum != null" >
+        CO_PERTOTALNUM = #{record.pertotalnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.persurlv1 != null" >
+        CO_PERSURLV1 = #{record.persurlv1,jdbcType=DECIMAL},
+      </if>
+      <if test="record.persurlv2 != null" >
+        CO_PERSURLV2 = #{record.persurlv2,jdbcType=DECIMAL},
+      </if>
+      <if test="record.persurlv3 != null" >
+        CO_PERSURLV3 = #{record.persurlv3,jdbcType=DECIMAL},
+      </if>
+      <if test="record.persurocean != null" >
+        CO_PERSUROCEAN = #{record.persurocean,jdbcType=DECIMAL},
+      </if>
+      <if test="record.persurdraw != null" >
+        CO_PERSURDRAW = #{record.persurdraw,jdbcType=DECIMAL},
+      </if>
+      <if test="record.persurproduct != null" >
+        CO_PERSURPRODUCT = #{record.persurproduct,jdbcType=DECIMAL},
+      </if>
+      <if test="record.juniordown != null" >
+        CO_JUNIORDOWN = #{record.juniordown,jdbcType=DECIMAL},
+      </if>
+      <if test="record.juniorup != null" >
+        CO_JUNIORUP = #{record.juniorup,jdbcType=DECIMAL},
+      </if>
+      <if test="record.bachelorup != null" >
+        CO_BACHELORUP = #{record.bachelorup,jdbcType=DECIMAL},
+      </if>
+      <if test="record.graduateup != null" >
+        CO_GRADUATEUP = #{record.graduateup,jdbcType=DECIMAL},
+      </if>
+      <if test="record.officearea != null" >
+        CO_OFFICEAREA = #{record.officearea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.device != null" >
+        CO_DEVICE = #{record.device,jdbcType=DECIMAL},
+      </if>
+      <if test="record.carnum != null" >
+        CO_CARNUM = #{record.carnum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.compunum != null" >
+        CO_COMPUNUM = #{record.compunum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.shipnum7 != null" >
+        CO_SHIPNUM7 = #{record.shipnum7,jdbcType=DECIMAL},
+      </if>
+      <if test="record.shipnum7to12 != null" >
+        CO_SHIPNUM7TO12 = #{record.shipnum7to12,jdbcType=DECIMAL},
+      </if>
+      <if test="record.shipnum12to24 != null" >
+        CO_SHIPNUM12TO24 = #{record.shipnum12to24,jdbcType=DECIMAL},
+      </if>
+      <if test="record.shipnum24 != null" >
+        CO_SHIPNUM24 = #{record.shipnum24,jdbcType=DECIMAL},
+      </if>
+      <if test="record.oceshipnum5 != null" >
+        CO_OCESHIPNUM5 = #{record.oceshipnum5,jdbcType=DECIMAL},
+      </if>
+      <if test="record.oceshipnum5to12 != null" >
+        CO_OCESHIPNUM5TO12 = #{record.oceshipnum5to12,jdbcType=DECIMAL},
+      </if>
+      <if test="record.oceshipnum12to24 != null" >
+        CO_OCESHIPNUM12TO24 = #{record.oceshipnum12to24,jdbcType=DECIMAL},
+      </if>
+      <if test="record.oceshipnum24to45 != null" >
+        CO_OCESHIPNUM24TO45 = #{record.oceshipnum24to45,jdbcType=DECIMAL},
+      </if>
+      <if test="record.oceshipnum45 != null" >
+        CO_OCESHIPNUM45 = #{record.oceshipnum45,jdbcType=DECIMAL},
+      </if>
+      <if test="record.orgscope != null" >
+        CO_ORGSCOPE = #{record.orgscope,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkscope != null" >
+        CO_CHECKSCOPE = #{record.checkscope,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oceanboatnum != null" >
+        CO_OCEANBOATNUM = #{record.oceanboatnum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.entreparenum != null" >
+        CO_ENTREPARENUM = #{record.entreparenum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.entproductnum != null" >
+        CO_ENTPRODUCTNUM = #{record.entproductnum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.entdesinum != null" >
+        CO_ENTDESINUM = #{record.entdesinum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.allboatnum != null" >
+        CO_ALLBOATNUM = #{record.allboatnum,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update CIS_ORGANINFO
+    set CO_ID = #{record.id,jdbcType=VARCHAR},
+      CO_UID = #{record.uid,jdbcType=VARCHAR},
+      CO_CERTID = #{record.certid,jdbcType=VARCHAR},
+      CO_ORGNAME = #{record.orgname,jdbcType=VARCHAR},
+      CO_ORGCODE = #{record.orgcode,jdbcType=VARCHAR},
+      CO_ORGADDR = #{record.orgaddr,jdbcType=VARCHAR},
+      CO_FUNTYPE = #{record.funtype,jdbcType=VARCHAR},
+      CO_PARTTYPE = #{record.parttype,jdbcType=VARCHAR},
+      CO_BUSTYPE = #{record.bustype,jdbcType=VARCHAR},
+      CO_FUNSCOPE = #{record.funscope,jdbcType=VARCHAR},
+      CO_GEOTYPE = #{record.geotype,jdbcType=VARCHAR},
+      CO_PROVCODE = #{record.provcode,jdbcType=VARCHAR},
+      CO_PROVNAME = #{record.provname,jdbcType=VARCHAR},
+      CO_TYPELV = #{record.typelv,jdbcType=VARCHAR},
+      CO_ORGNAMEUP = #{record.orgnameup,jdbcType=VARCHAR},
+      CO_ORGCODEUP = #{record.orgcodeup,jdbcType=VARCHAR},
+      CO_ORGAREANAME = #{record.orgareaname,jdbcType=VARCHAR},
+      CO_ORGPOSTCODE = #{record.orgpostcode,jdbcType=VARCHAR},
+      CO_AREACODE = #{record.areacode,jdbcType=VARCHAR},
+      CO_CONTACTPHONE = #{record.contactphone,jdbcType=VARCHAR},
+      CO_CONTACTFAX = #{record.contactfax,jdbcType=VARCHAR},
+      CO_CONTACTTEL = #{record.contacttel,jdbcType=VARCHAR},
+      CO_CONTACTEMAIL = #{record.contactemail,jdbcType=VARCHAR},
+      CO_BODERTYPE = #{record.bodertype,jdbcType=VARCHAR},
+      CO_HEADHAS = #{record.headhas,jdbcType=VARCHAR},
+      CO_FINASOURCE = #{record.finasource,jdbcType=VARCHAR},
+      CO_RESPPERSON = #{record.respperson,jdbcType=VARCHAR},
+      CO_LEGALPERSON = #{record.legalperson,jdbcType=VARCHAR},
+      CO_SUBJECTION = #{record.subjection,jdbcType=VARCHAR},
+      CO_NATURETYPE = #{record.naturetype,jdbcType=VARCHAR},
+      CO_APPRNUM = #{record.apprnum,jdbcType=VARCHAR},
+      CO_PERTOTALNUM = #{record.pertotalnum,jdbcType=VARCHAR},
+      CO_PERSURLV1 = #{record.persurlv1,jdbcType=DECIMAL},
+      CO_PERSURLV2 = #{record.persurlv2,jdbcType=DECIMAL},
+      CO_PERSURLV3 = #{record.persurlv3,jdbcType=DECIMAL},
+      CO_PERSUROCEAN = #{record.persurocean,jdbcType=DECIMAL},
+      CO_PERSURDRAW = #{record.persurdraw,jdbcType=DECIMAL},
+      CO_PERSURPRODUCT = #{record.persurproduct,jdbcType=DECIMAL},
+      CO_JUNIORDOWN = #{record.juniordown,jdbcType=DECIMAL},
+      CO_JUNIORUP = #{record.juniorup,jdbcType=DECIMAL},
+      CO_BACHELORUP = #{record.bachelorup,jdbcType=DECIMAL},
+      CO_GRADUATEUP = #{record.graduateup,jdbcType=DECIMAL},
+      CO_OFFICEAREA = #{record.officearea,jdbcType=VARCHAR},
+      CO_DEVICE = #{record.device,jdbcType=DECIMAL},
+      CO_CARNUM = #{record.carnum,jdbcType=DECIMAL},
+      CO_COMPUNUM = #{record.compunum,jdbcType=DECIMAL},
+      CO_SHIPNUM7 = #{record.shipnum7,jdbcType=DECIMAL},
+      CO_SHIPNUM7TO12 = #{record.shipnum7to12,jdbcType=DECIMAL},
+      CO_SHIPNUM12TO24 = #{record.shipnum12to24,jdbcType=DECIMAL},
+      CO_SHIPNUM24 = #{record.shipnum24,jdbcType=DECIMAL},
+      CO_OCESHIPNUM5 = #{record.oceshipnum5,jdbcType=DECIMAL},
+      CO_OCESHIPNUM5TO12 = #{record.oceshipnum5to12,jdbcType=DECIMAL},
+      CO_OCESHIPNUM12TO24 = #{record.oceshipnum12to24,jdbcType=DECIMAL},
+      CO_OCESHIPNUM24TO45 = #{record.oceshipnum24to45,jdbcType=DECIMAL},
+      CO_OCESHIPNUM45 = #{record.oceshipnum45,jdbcType=DECIMAL},
+      CO_ORGSCOPE = #{record.orgscope,jdbcType=VARCHAR},
+      CO_CHECKSCOPE = #{record.checkscope,jdbcType=VARCHAR},
+      CO_OCEANBOATNUM = #{record.oceanboatnum,jdbcType=DECIMAL},
+      CO_ENTREPARENUM = #{record.entreparenum,jdbcType=DECIMAL},
+      CO_ENTPRODUCTNUM = #{record.entproductnum,jdbcType=DECIMAL},
+      CO_ENTDESINUM = #{record.entdesinum,jdbcType=DECIMAL},
+      CO_ALLBOATNUM = #{record.allboatnum,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from ( 
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+        <![CDATA[ ) row_  where rownum<= #{page.end}) where rownum_ > #{page.start} ]]>
+    </if>
+  </sql>
+
+  <select id="getCountByLev" parameterType="java.lang.String" resultType="java.util.HashMap">
+    select count(*) as "value",co_typelv as "${@com.limp.framework.core.constant.Constant@CODE_TRANS_PRE}name" from cis_organinfo t
+    <!--inner join
+    (select co_orgcode,SUBSTR(CO_FIRSTTIME,0,4) CO_FIRSTTIME,SUBSTR(max(CO_ENDTIME),0,4) co_endtime from CIS_ORGCERTIFICATE group by co_orgcode,CO_FIRSTTIME) t1
+    on t.co_orgcode = t1.CO_ORGCODE-->
+    <where>
+      <!--co_typelv IS NOT NULL AND #{year} BETWEEN CO_FIRSTTIME AND CO_ENDTIME-->
+      co_typelv IS NOT NULL
+      <if test="like != null">
+        and t.co_uid like #{like}
+      </if>
+
+    </where>
+    group by co_typelv
+    ORDER BY  co_typelv ASC
+  </select>
+  <select id="eChartsData10" resultType="Map">
+    select t3.co_orgname as "proname",
+    t2.co_orgname as "cityname",
+    t1.co_orgname as "orgname",
+    (select count(1) from cis_shipinfo where CS_ORGID = t1.co_orgcode) "shipNums",
+    nvl((select CSC_SCORE from cis_capacity t3 inner JOIN (select CSC_REFID, max(csc_batch) csc_batch from CIS_CAPACITY group by CSC_REFID) T4 on T3. CSC_REFID = T4.CSC_REFID and T3.csc_batch = T4.csc_batch where t3.csc_refid = t1.co_orgcode and csc_belongmodel = '2001' and CSC_TYPE = '1' and rownum=1),0)
+    as "score",
+    decode((select count(1) num  from cis_ship_check where CSC_ORGCODE = t1.co_orgcode and CSC_CHECKTIME like #{year}),0,0,
+    (select count(1) num
+    from cis_ship_check
+    where CSC_ORGCODE = t1.co_orgcode
+    and CSC_CHECKPASS = '1'
+    and CSC_CHECKTIME like #{year}) * 100 /
+    (select count(1) num
+    from cis_ship_check
+    where CSC_ORGCODE = t1.co_orgcode
+    and CSC_CHECKTIME like #{year})) as "checkRate"
+    from cis_organinfo t1
+    left join cis_organinfo t2
+    on t1.co_orgcodeup = t2.co_orgcode
+    left join cis_organinfo t3
+    on t2.co_orgcodeup = t3.co_orgcode
+    where t1.co_typelv = '6'
+    <if test="likeStr!=null">
+      and t1.co_orgcode like #{likeStr}
+    </if>
+  </select>
+  <select id="orgEchartsData11" resultType="Map">
+    select co_orgname "orgname",co_respperson "respperson",CO_CONTACTPHONE "tel",CO_ENDTIME "nextChcTime",
+    case when to_date(co_endtime,'yyyy-mm-dd')>sysdate then '待审核' else '已完成' end "chcState"
+    from cis_organinfo t1
+    inner join CIS_ORGCERTIFICATE t2 on t1.co_orgcode = t2.co_orgcode
+    where to_char(sysdate,'yyyy')=substr(co_endtime,0,4)
+    <if test="likeStr!=null">
+      AND t2.co_orgcode like #{likeStr}
+    </if>
+  </select>
+
+  <select id="getOrgAvgScore" resultType="Float">
+    select round(avg(t.csc_score),2) from cis_capacity  t
+    inner join
+    (select co_orgcode,SUBSTR(CO_FIRSTTIME,0,4) CO_FIRSTTIME,SUBSTR(max(CO_ENDTIME),0,4) co_endtime
+    from CIS_ORGCERTIFICATE group by co_orgcode,CO_FIRSTTIME) t1 on t.csc_refid = t1.CO_ORGCODE
+    where
+    <!--#{year} BETWEEN CO_FIRSTTIME AND CO_ENDTIME-->
+    #{year}>=SUBSTR(t1.CO_FIRSTTIME,0,4)
+    and t.csc_belongmodel='2001' and t.csc_type='1'
+    <if test="likeStr!=null">
+      and t1.co_orgcode like #{likeStr}
+    </if>
+  </select>
+  <select id="getOrgNums" resultType="Integer">
+    select count(1) from cis_organinfo  t
+    inner join
+    (select co_orgcode,SUBSTR(CO_FIRSTTIME,0,4) CO_FIRSTTIME,SUBSTR(max(CO_ENDTIME),0,4) co_endtime
+    from CIS_ORGCERTIFICATE group by co_orgcode,CO_FIRSTTIME) t1 on t.CO_ORGCODE = t1.CO_ORGCODE
+    <where>
+      <!--#{year} BETWEEN CO_FIRSTTIME AND CO_ENDTIME-->
+      #{year}>=SUBSTR(t1.CO_FIRSTTIME,0,4)
+      <if test="likeStr!=null">
+        and t1.co_orgcode like #{likeStr}
+      </if>
+    </where>
+  </select>
+</mapper>

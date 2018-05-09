@@ -1,0 +1,246 @@
+/*四项指标*/
+/*.box02 div {*/
+    /*margin: auto;*/
+/*}*/
+/*时间轴*/
+/*.time .title{*/
+    /*font-size: 24px;*/
+    /*color:#fff;*/
+/*}*/
+/*客户评价*/
+/*.kehuCon{*/
+    /*float:left;*/
+    /*padding:5px;*/
+    /*width: 100%;*/
+/*}*/
+/*#kehuTab{*/
+    /*width: 100%;*/
+    /*border-bottom: 1px solid #2465B9;*/
+    /*margin-left: 0;*/
+/*}*/
+/*#kehuTab li{*/
+    /*border: 0;*/
+    /*width:22%;*/
+    /*text-align:center;*/
+/*}*/
+/*.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{*/
+    /*color: #fff;*/
+    /*cursor: default;*/
+    /*border: 1px solid #2465B9;*/
+    /*border-bottom-color: transparent;*/
+    /*background: transparent;*/
+/*}*/
+/*.nav li:hover{*/
+    /*background:transparent;*/
+/*}*/
+/*#kehuTab li :hover{*/
+    /*border: 1px solid #2465B9;*/
+    /*border-bottom: transparent;*/
+    /*background: transparent !important;*/
+/*}*/
+
+/*#kehuTab .active {*/
+    /*color: #fff;*/
+    /*cursor: default;*/
+    /*background: transparent;*/
+    /*border: 0;*/
+    /*border-bottom: 1px solid #0F2353;*/
+/*}*/
+/*#kehuTab>li>a{*/
+    /*border-radius: 0;*/
+    /*color: #57B5E3;*/
+    /*font-size: 14px;*/
+/*}*/
+/*#kehuContent{*/
+    /*border:0;*/
+    /*padding: 5px;*/
+    /*position: relative;*/
+    /*max-height: 205px;*/
+    /*overflow: hidden;*/
+    /*overflow-y: scroll;*/
+/*}*/
+/*滚动条*/
+/*::-webkit-scrollbar{*/
+    /*width: 6px;*/
+    /*height: 4px;*/
+    /*background:#0F0D39;*/
+/*}*/
+/*::-webkit-scrollbar-track{*/
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);*/
+    /*border-radius: 10px;*/
+    /*background-color: #0F0D39;*/
+/*}*/
+/*定义滑块，内阴影及圆角*/
+/*::-webkit-scrollbar-thumb{*/
+    /*height: 5px;*/
+    /*border-radius: 10px;*/
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);*/
+    /*background-color: #FFFF23;*/
+/*}*/
+/*.constatus{*/
+    /*width: 18px;*/
+    /*height: 18px;*/
+    /*float:left;*/
+    /*background:url(../images/msg.png) center center no-repeat;*/
+    /*background-color: #3CC051;*/
+    /*margin-right:5px;*/
+/*}*/
+/*.constatus2{*/
+    /*background-color: #F74D4D;*/
+/*}*/
+/*.scrolltit,.scrollfrom{*/
+    /*float:left;*/
+/*}*/
+/*.scrolllis{*/
+    /*color: #fff;*/
+    /*background: rgba(94, 127, 224, 0.36);*/
+    /*overflow: hidden;*/
+    /*margin:3px 0px;*/
+/*}*/
+/*.scrolltit{*/
+    /*width: 46%;*/
+    /*white-space: nowrap;*/
+    /*overflow: hidden;*/
+    /*text-overflow: ellipsis;*/
+/*}*/
+/*.scrollfrom{*/
+    /*background: #57b5e3;*/
+    /*color: #fff;*/
+    /*margin:0px 10px;*/
+    /*white-space: nowrap;*/
+    /*overflow: hidden;*/
+    /*text-overflow: ellipsis;*/
+    /*width: 20%;*/
+/*}*/
+/*.scrolllis .date{*/
+    /*line-height:19px;*/
+/*}*/
+/*时间控件样式*/
+/*.date1{*/
+    /*float: right;*/
+    /*margin-right: 10px;*/
+    /*width:100px;*/
+/*}*/
+
+/*.shijianduan span{*/
+    /*float: left;*/
+    /*font-size: 16px;*/
+    /*line-height: 30px;*/
+    /*margin: auto;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+
+/*}*/
+/*.kaishi ,.jieshu{*/
+    /*float:left;*/
+/*}*/
+/*#datetimepicker1,#datetimepicker2{*/
+    /*width: 110px;*/
+/*}*/
+/*#datetimepicker1 .form-control, #datetimepicker2 .form-control{*/
+    /*width: 70px;*/
+    /*padding:3px;*/
+    /*font-size:10px;*/
+    /*background-color: rgba(0, 0, 0, 0.11);*/
+    /*color: #fff;*/
+    /*border: 0;*/
+/*}*/
+/*#datetimepicker1 .input-group-addon, #datetimepicker2 .input-group-addon{*/
+    /*width: 35px;*/
+    /*height: 34px;*/
+    /*padding: 3px;*/
+    /*margin: auto;*/
+    /*background: rgba(0,0,0,0.11) url(../images/icon-white.png) -289px -108px no-repeat;*/
+    /*border: 0px;*/
+/*}*/
+/*.datetimepicker-days,.datetimepicker-months{*/
+    /*cursor: pointer;*/
+/*}*/
+/*时间插件样式*/
+/*.dropdown-menu{*/
+    /*background-color:rgba(26, 29, 71, 0.58);*/
+    /*color:#fff;*/
+/*}*/
+/*查看详情弹出窗*/
+/*.xiangqing{*/
+    /*width: 250px;*/
+    /*height: 150px;*/
+    /*color: #fff;*/
+    /*padding: 22px;*/
+/*}*/
+/*覆盖bootstrap样式*/
+/*.nav>li>a:focus, .nav>li>a:hover{*/
+    /*background-color:transparent;*/
+/*}*/
+/*layer弹层样式*/
+/*.layui-layer-title*/
+/*.lis1 .layui-layer-setwin .layui-layer-ico{*/
+    /*background: url(../images/close.png);*/
+/*}*/
+/*.lis1 .layui-layer-content{*/
+    /*background: #122C5B;*/
+    /*color: #57BBED;*/
+    /*padding: 20px;*/
+/*}*/
+/*.lis1 .layui-layer-setwin .layui-layer-close2{*/
+    /*right: 3px;*/
+    /*top: 0px;*/
+    /*width: 20px;*/
+    /*height: 21px;*/
+/*}*/
+/*分页样式*/
+/*.pager li>a, .pager li>span{*/
+    /*display: inline-block;*/
+    /*padding: 5px;*/
+    /*background-color: #122C5B;*/
+    /*border: 1px solid #5BBDED;*/
+    /*border-radius: 5px;*/
+    /*color: #5AA6DB;*/
+/*}*/
+/*.pager li>a:focus, .pager li>a:hover{*/
+    /*text-decoration: none;*/
+    /*background-color: #5BBDED;*/
+    /*color: #fff;*/
+/*}*/
+/*客户评价样式*/
+/*.nav-tabs>li>a {*/
+    /*margin-right:0px !important;*/
+/*}*/
+/*#chouchaTab .active{*/
+    /*border: 1px solid #2364B8;*/
+    /*border-right: 1px solid #112B5A;*/
+/*}*/
+/*.banList li{*/
+    /*height:230px;*/
+    /*opacity:0;*/
+    /*position:absolute;*/
+    /*transform:scale(0);*/
+    /*transition:transform 0.5s ease 0s, opacity 1.5s ease 0s;*/
+    /*z-index:1;*/
+/*}*/
+/*.banList li.active{opacity:1;transform:scale(1);z-index:2;}*/
+
+/*2017.0810 by meng*/
+.personTable{
+    width:100%;
+    margin:0px;
+}
+.wrapper-t{
+    background-position: -4px 251px;
+}
+
+.datetimepicker-days,.datetimepicker-months{
+cursor: pointer;
+}
+.dropdown-menu{
+    background-color:rgba(26, 29, 71, 0.7);
+    color:#fff;
+}
+.fenshu{
+    top:-3px;
+    left:80px;
+}
+.sayall,.sayno,.sayyes{
+    width:20%;
+    text-align:center;
+}

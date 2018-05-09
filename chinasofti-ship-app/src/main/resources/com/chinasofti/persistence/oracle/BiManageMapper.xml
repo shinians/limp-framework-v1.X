@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.mapper.oracle.BiManageMapper" >
+  <resultMap id="BaseResultMap" type="com.chinasofti.domain.BiManage" >
+    <result column="CBM_ID" property="id" jdbcType="VARCHAR" />
+    <result column="CBM_NAME" property="name" jdbcType="VARCHAR" />
+    <result column="CBM_INTRO" property="intro" jdbcType="VARCHAR" />
+    <result column="CBM_MODEL" property="model" jdbcType="VARCHAR" />
+    <result column="CBM_TYPE" property="type" jdbcType="DECIMAL" />
+    <result column="CBM_FATHERID" property="fatherid" jdbcType="VARCHAR" />
+    <result column="CBM_URL" property="url" jdbcType="VARCHAR" />
+    <result column="CBM_URLTYPE" property="urltype" jdbcType="DECIMAL" />
+    <result column="CBM_WIDTH" property="width" jdbcType="VARCHAR" />
+    <result column="CBM_HEIGHT" property="height" jdbcType="VARCHAR" />
+    <result column="CBM_PAGE" property="page" jdbcType="DECIMAL" />
+    <result column="CBM_CELLTYPE" property="celltype" jdbcType="DECIMAL" />
+    <result column="CBM_SQL" property="sql" jdbcType="VARCHAR" />
+    <result column="CBM_OPTION" property="option" jdbcType="VARCHAR" />
+    <result column="CBM_OPTION1" property="option1" jdbcType="VARCHAR" />
+    <result column="CBM_DATAJSON" property="datajson" jdbcType="VARCHAR" />
+    <result column="CBM_IDT" property="idt" jdbcType="TIMESTAMP" />
+    <result column="CBM_UDT" property="udt" jdbcType="TIMESTAMP" />
+    <result column="CBM_ACCOUNT" property="account" jdbcType="VARCHAR" />
+    <result column="CBM_CODE" property="code" jdbcType="VARCHAR" />
+    <result column="CBM_SHOW" property="show" jdbcType="DECIMAL" />
+    <result column="CBM_SORT" property="sort" jdbcType="DECIMAL" />
+    <result column="CBM_STATE" property="state" jdbcType="DECIMAL" />
+    <result column="CBM_RC1" property="rc1" jdbcType="VARCHAR" />
+    <result column="CBM_RC2" property="rc2" jdbcType="VARCHAR" />
+    <result column="CBM_RC3" property="rc3" jdbcType="VARCHAR" />
+    <result column="CBM_RC4" property="rc4" jdbcType="DECIMAL" />
+    <result column="CBM_RC5" property="rc5" jdbcType="DECIMAL" />
+    <result column="CBM_RC6" property="rc6" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CBM_ID, CBM_NAME, CBM_INTRO, CBM_MODEL, CBM_TYPE, CBM_FATHERID, CBM_URL, CBM_URLTYPE, 
+    CBM_WIDTH, CBM_HEIGHT, CBM_PAGE, CBM_CELLTYPE, CBM_SQL, CBM_OPTION, CBM_OPTION1, 
+    CBM_DATAJSON, CBM_IDT, CBM_UDT, CBM_ACCOUNT, CBM_CODE, CBM_SHOW, CBM_SORT, CBM_STATE, 
+    CBM_RC1, CBM_RC2, CBM_RC3, CBM_RC4, CBM_RC5, CBM_RC6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chinasofti.domain.BiManageExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CIS_BI_MANAGE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+  <delete id="deleteByExample" parameterType="com.chinasofti.domain.BiManageExample" >
+    delete from CIS_BI_MANAGE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chinasofti.domain.BiManage" >
+    insert into CIS_BI_MANAGE (CBM_ID, CBM_NAME, CBM_INTRO, 
+      CBM_MODEL, CBM_TYPE, CBM_FATHERID, 
+      CBM_URL, CBM_URLTYPE, CBM_WIDTH, 
+      CBM_HEIGHT, CBM_PAGE, CBM_CELLTYPE, 
+      CBM_SQL, CBM_OPTION, CBM_OPTION1, 
+      CBM_DATAJSON, CBM_IDT, CBM_UDT, 
+      CBM_ACCOUNT, CBM_CODE, CBM_SHOW, 
+      CBM_SORT, CBM_STATE, CBM_RC1, CBM_RC2, 
+      CBM_RC3, CBM_RC4, CBM_RC5, CBM_RC6
+      )
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, 
+      #{model,jdbcType=VARCHAR}, #{type,jdbcType=DECIMAL}, #{fatherid,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{urltype,jdbcType=DECIMAL}, #{width,jdbcType=VARCHAR}, 
+      #{height,jdbcType=VARCHAR}, #{page,jdbcType=DECIMAL}, #{celltype,jdbcType=DECIMAL}, 
+      #{sql,jdbcType=VARCHAR}, #{option,jdbcType=VARCHAR}, #{option1,jdbcType=VARCHAR}, 
+      #{datajson,jdbcType=VARCHAR}, #{idt,jdbcType=TIMESTAMP}, #{udt,jdbcType=TIMESTAMP}, 
+      #{account,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{show,jdbcType=DECIMAL}, 
+      #{sort,jdbcType=DECIMAL}, #{state,jdbcType=DECIMAL}, #{rc1,jdbcType=VARCHAR}, #{rc2,jdbcType=VARCHAR}, 
+      #{rc3,jdbcType=VARCHAR}, #{rc4,jdbcType=DECIMAL}, #{rc5,jdbcType=DECIMAL}, #{rc6,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chinasofti.domain.BiManage" >
+    insert into CIS_BI_MANAGE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        CBM_ID,
+      </if>
+      <if test="name != null" >
+        CBM_NAME,
+      </if>
+      <if test="intro != null" >
+        CBM_INTRO,
+      </if>
+      <if test="model != null" >
+        CBM_MODEL,
+      </if>
+      <if test="type != null" >
+        CBM_TYPE,
+      </if>
+      <if test="fatherid != null" >
+        CBM_FATHERID,
+      </if>
+      <if test="url != null" >
+        CBM_URL,
+      </if>
+      <if test="urltype != null" >
+        CBM_URLTYPE,
+      </if>
+      <if test="width != null" >
+        CBM_WIDTH,
+      </if>
+      <if test="height != null" >
+        CBM_HEIGHT,
+      </if>
+      <if test="page != null" >
+        CBM_PAGE,
+      </if>
+      <if test="celltype != null" >
+        CBM_CELLTYPE,
+      </if>
+      <if test="sql != null" >
+        CBM_SQL,
+      </if>
+      <if test="option != null" >
+        CBM_OPTION,
+      </if>
+      <if test="option1 != null" >
+        CBM_OPTION1,
+      </if>
+      <if test="datajson != null" >
+        CBM_DATAJSON,
+      </if>
+      <if test="idt != null" >
+        CBM_IDT,
+      </if>
+      <if test="udt != null" >
+        CBM_UDT,
+      </if>
+      <if test="account != null" >
+        CBM_ACCOUNT,
+      </if>
+      <if test="code != null" >
+        CBM_CODE,
+      </if>
+      <if test="show != null" >
+        CBM_SHOW,
+      </if>
+      <if test="sort != null" >
+        CBM_SORT,
+      </if>
+      <if test="state != null" >
+        CBM_STATE,
+      </if>
+      <if test="rc1 != null" >
+        CBM_RC1,
+      </if>
+      <if test="rc2 != null" >
+        CBM_RC2,
+      </if>
+      <if test="rc3 != null" >
+        CBM_RC3,
+      </if>
+      <if test="rc4 != null" >
+        CBM_RC4,
+      </if>
+      <if test="rc5 != null" >
+        CBM_RC5,
+      </if>
+      <if test="rc6 != null" >
+        CBM_RC6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null" >
+        #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null" >
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="fatherid != null" >
+        #{fatherid,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="urltype != null" >
+        #{urltype,jdbcType=DECIMAL},
+      </if>
+      <if test="width != null" >
+        #{width,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null" >
+        #{height,jdbcType=VARCHAR},
+      </if>
+      <if test="page != null" >
+        #{page,jdbcType=DECIMAL},
+      </if>
+      <if test="celltype != null" >
+        #{celltype,jdbcType=DECIMAL},
+      </if>
+      <if test="sql != null" >
+        #{sql,jdbcType=VARCHAR},
+      </if>
+      <if test="option != null" >
+        #{option,jdbcType=VARCHAR},
+      </if>
+      <if test="option1 != null" >
+        #{option1,jdbcType=VARCHAR},
+      </if>
+      <if test="datajson != null" >
+        #{datajson,jdbcType=VARCHAR},
+      </if>
+      <if test="idt != null" >
+        #{idt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="udt != null" >
+        #{udt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="show != null" >
+        #{show,jdbcType=DECIMAL},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=DECIMAL},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=DECIMAL},
+      </if>
+      <if test="rc1 != null" >
+        #{rc1,jdbcType=VARCHAR},
+      </if>
+      <if test="rc2 != null" >
+        #{rc2,jdbcType=VARCHAR},
+      </if>
+      <if test="rc3 != null" >
+        #{rc3,jdbcType=VARCHAR},
+      </if>
+      <if test="rc4 != null" >
+        #{rc4,jdbcType=DECIMAL},
+      </if>
+      <if test="rc5 != null" >
+        #{rc5,jdbcType=DECIMAL},
+      </if>
+      <if test="rc6 != null" >
+        #{rc6,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chinasofti.domain.BiManageExample" resultType="java.lang.Integer" >
+    select count(*) from CIS_BI_MANAGE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update CIS_BI_MANAGE
+    <set >
+      <if test="record.id != null" >
+        CBM_ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        CBM_NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.intro != null" >
+        CBM_INTRO = #{record.intro,jdbcType=VARCHAR},
+      </if>
+      <if test="record.model != null" >
+        CBM_MODEL = #{record.model,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        CBM_TYPE = #{record.type,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fatherid != null" >
+        CBM_FATHERID = #{record.fatherid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url != null" >
+        CBM_URL = #{record.url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.urltype != null" >
+        CBM_URLTYPE = #{record.urltype,jdbcType=DECIMAL},
+      </if>
+      <if test="record.width != null" >
+        CBM_WIDTH = #{record.width,jdbcType=VARCHAR},
+      </if>
+      <if test="record.height != null" >
+        CBM_HEIGHT = #{record.height,jdbcType=VARCHAR},
+      </if>
+      <if test="record.page != null" >
+        CBM_PAGE = #{record.page,jdbcType=DECIMAL},
+      </if>
+      <if test="record.celltype != null" >
+        CBM_CELLTYPE = #{record.celltype,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sql != null" >
+        CBM_SQL = #{record.sql,jdbcType=VARCHAR},
+      </if>
+      <if test="record.option != null" >
+        CBM_OPTION = #{record.option,jdbcType=VARCHAR},
+      </if>
+      <if test="record.option1 != null" >
+        CBM_OPTION1 = #{record.option1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.datajson != null" >
+        CBM_DATAJSON = #{record.datajson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idt != null" >
+        CBM_IDT = #{record.idt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.udt != null" >
+        CBM_UDT = #{record.udt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.account != null" >
+        CBM_ACCOUNT = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.code != null" >
+        CBM_CODE = #{record.code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.show != null" >
+        CBM_SHOW = #{record.show,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sort != null" >
+        CBM_SORT = #{record.sort,jdbcType=DECIMAL},
+      </if>
+      <if test="record.state != null" >
+        CBM_STATE = #{record.state,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rc1 != null" >
+        CBM_RC1 = #{record.rc1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc2 != null" >
+        CBM_RC2 = #{record.rc2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc3 != null" >
+        CBM_RC3 = #{record.rc3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc4 != null" >
+        CBM_RC4 = #{record.rc4,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rc5 != null" >
+        CBM_RC5 = #{record.rc5,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rc6 != null" >
+        CBM_RC6 = #{record.rc6,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update CIS_BI_MANAGE
+    set CBM_ID = #{record.id,jdbcType=VARCHAR},
+      CBM_NAME = #{record.name,jdbcType=VARCHAR},
+      CBM_INTRO = #{record.intro,jdbcType=VARCHAR},
+      CBM_MODEL = #{record.model,jdbcType=VARCHAR},
+      CBM_TYPE = #{record.type,jdbcType=DECIMAL},
+      CBM_FATHERID = #{record.fatherid,jdbcType=VARCHAR},
+      CBM_URL = #{record.url,jdbcType=VARCHAR},
+      CBM_URLTYPE = #{record.urltype,jdbcType=DECIMAL},
+      CBM_WIDTH = #{record.width,jdbcType=VARCHAR},
+      CBM_HEIGHT = #{record.height,jdbcType=VARCHAR},
+      CBM_PAGE = #{record.page,jdbcType=DECIMAL},
+      CBM_CELLTYPE = #{record.celltype,jdbcType=DECIMAL},
+      CBM_SQL = #{record.sql,jdbcType=VARCHAR},
+      CBM_OPTION = #{record.option,jdbcType=VARCHAR},
+      CBM_OPTION1 = #{record.option1,jdbcType=VARCHAR},
+      CBM_DATAJSON = #{record.datajson,jdbcType=VARCHAR},
+      CBM_IDT = #{record.idt,jdbcType=TIMESTAMP},
+      CBM_UDT = #{record.udt,jdbcType=TIMESTAMP},
+      CBM_ACCOUNT = #{record.account,jdbcType=VARCHAR},
+      CBM_CODE = #{record.code,jdbcType=VARCHAR},
+      CBM_SHOW = #{record.show,jdbcType=DECIMAL},
+      CBM_SORT = #{record.sort,jdbcType=DECIMAL},
+      CBM_STATE = #{record.state,jdbcType=DECIMAL},
+      CBM_RC1 = #{record.rc1,jdbcType=VARCHAR},
+      CBM_RC2 = #{record.rc2,jdbcType=VARCHAR},
+      CBM_RC3 = #{record.rc3,jdbcType=VARCHAR},
+      CBM_RC4 = #{record.rc4,jdbcType=DECIMAL},
+      CBM_RC5 = #{record.rc5,jdbcType=DECIMAL},
+      CBM_RC6 = #{record.rc6,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from ( 
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+        <![CDATA[ ) row_  where rownum<= #{page.end}) where rownum_ > #{page.start} ]]>
+    </if>
+  </sql>
+  <select id="getSurCompatibility" resultType="Float">
+    select nvl(round(sum(YCSNUM)*100/sum(YCSMINNUM),2),0) "score" from them_ycs_qkrs
+    where substr(orgcode,0,2) in('21','13','12','37','33','32','31','35','44',
+    '45','46')<!--todo:暂时只查沿海11个省份的数据-->
+    <if test="likeStr !=null">
+      AND orgcode like #{likeStr}
+    </if>
+  </select>
+  <select id="getAvgShipNums" resultType="Double">
+    select  round(shipnum/surnum,2) from
+    (select count(distinct t1.csc_ycbm) shipnum from CIS_SHIP_CHECK t1
+    where substr(t1.csc_checktime,0,4)=extract(year from sysdate)-1
+    <if test="likeStr !=null">
+      AND t1.CSC_ORGCODE like #{likeStr}
+    </if>
+    ),
+    (select count(1) surnum from cis_surveyor t2
+    inner join cis_surcertificate t3 on t3.CS_YCSCERTNUM = t2.cs_uid
+    where t2.cs_del_flag!='1' and t2.cs_logout_status !='1'
+    and substr(t3.CS_GRANTTIME,0,4)&lt;=extract(year from sysdate)-1
+    and (t3.cs_enddate is null or substr(t3.cs_enddate,0,4)&gt;=extract(year from sysdate)-1 )
+    <if test="likeStr !=null">
+      AND t2.CS_ORGANID like #{likeStr}
+    </if>
+    )
+  </select>
+  <sql id="condition">
+    <where>
+      substr(csc_checktime,0,4) between #{startYear} and #{endYear}
+      <if test="likeStr != null" >
+        and csc_orgcode like #{likeStr}
+      </if>
+    </where>
+  </sql>
+  <select id="getCheckRateGroupYear" resultType="Map">
+    select a1.year "year",round(a1.num1*100/a2.num2,2) "rate" from(
+    select substr(t.csc_checktime,0,4) year,count(DISTINCT t.CSC_YCBM) num1 from CIS_SHIP_CHECK t
+    <include refid="condition"/>
+    group by substr(t.csc_checktime,0,4)
+    )a1
+    inner join
+    (
+    select substr(tt.csc_checktime,0,4) year,count(DISTINCT tt.CSC_YCBM) num2 from CIS_SHIP_CHECK tt
+    <include refid="condition"/>
+    group by substr(tt.csc_checktime,0,4)
+    )a2
+    on a1.year=a2.year+1
+    ORDER by a1.year ASC
+  </select>
+</mapper>

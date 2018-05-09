@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.limp.framework.boss.mapper.oracle.UserUnitMapper" >
+  <resultMap id="BaseResultMap" type="com.limp.framework.boss.domain.UserUnit" >
+    <id column="SU_ID" property="id" jdbcType="VARCHAR" />
+    <result column="SU_NAME" property="name" jdbcType="VARCHAR" />
+    <result column="SU_KEYCODE" property="keycode" jdbcType="VARCHAR" />
+    <result column="SU_AREACODE" property="areacode" jdbcType="VARCHAR" />
+    <result column="SU_FATHERID" property="fatherid" jdbcType="VARCHAR" />
+    <result column="SU_FATHERAREA" property="fatherarea" jdbcType="VARCHAR" />
+    <result column="SU_STATE" property="state" jdbcType="DECIMAL" />
+    <result column="SU_RC1" property="rc1" jdbcType="VARCHAR" />
+    <result column="SU_RC2" property="rc2" jdbcType="VARCHAR" />
+    <result column="SU_RC3" property="rc3" jdbcType="DECIMAL" />
+    <result column="SU_RC4" property="rc4" jdbcType="DECIMAL" />
+    <result column="SU_RC5" property="rc5" jdbcType="DECIMAL" />
+    <result column="SU_RC6" property="rc6" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    SU_ID, SU_NAME, SU_KEYCODE, SU_AREACODE, SU_FATHERID, SU_FATHERAREA, SU_STATE, SU_RC1, 
+    SU_RC2, SU_RC3, SU_RC4, SU_RC5, SU_RC6
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.limp.framework.boss.domain.UserUnitExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_USERUNIT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_USERUNIT
+    where SU_ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SYS_USERUNIT
+    where SU_ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.limp.framework.boss.domain.UserUnitExample" >
+    delete from SYS_USERUNIT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.limp.framework.boss.domain.UserUnit" >
+    insert into SYS_USERUNIT (SU_ID, SU_NAME, SU_KEYCODE, 
+      SU_AREACODE, SU_FATHERID, SU_FATHERAREA, 
+      SU_STATE, SU_RC1, SU_RC2, SU_RC3, 
+      SU_RC4, SU_RC5, SU_RC6)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{keycode,jdbcType=VARCHAR}, 
+      #{areacode,jdbcType=VARCHAR}, #{fatherid,jdbcType=VARCHAR}, #{fatherarea,jdbcType=VARCHAR}, 
+      #{state,jdbcType=DECIMAL}, #{rc1,jdbcType=VARCHAR}, #{rc2,jdbcType=VARCHAR}, #{rc3,jdbcType=DECIMAL}, 
+      #{rc4,jdbcType=DECIMAL}, #{rc5,jdbcType=DECIMAL}, #{rc6,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.limp.framework.boss.domain.UserUnit" >
+    insert into SYS_USERUNIT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        SU_ID,
+      </if>
+      <if test="name != null" >
+        SU_NAME,
+      </if>
+      <if test="keycode != null" >
+        SU_KEYCODE,
+      </if>
+      <if test="areacode != null" >
+        SU_AREACODE,
+      </if>
+      <if test="fatherid != null" >
+        SU_FATHERID,
+      </if>
+      <if test="fatherarea != null" >
+        SU_FATHERAREA,
+      </if>
+      <if test="state != null" >
+        SU_STATE,
+      </if>
+      <if test="rc1 != null" >
+        SU_RC1,
+      </if>
+      <if test="rc2 != null" >
+        SU_RC2,
+      </if>
+      <if test="rc3 != null" >
+        SU_RC3,
+      </if>
+      <if test="rc4 != null" >
+        SU_RC4,
+      </if>
+      <if test="rc5 != null" >
+        SU_RC5,
+      </if>
+      <if test="rc6 != null" >
+        SU_RC6,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="keycode != null" >
+        #{keycode,jdbcType=VARCHAR},
+      </if>
+      <if test="areacode != null" >
+        #{areacode,jdbcType=VARCHAR},
+      </if>
+      <if test="fatherid != null" >
+        #{fatherid,jdbcType=VARCHAR},
+      </if>
+      <if test="fatherarea != null" >
+        #{fatherarea,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=DECIMAL},
+      </if>
+      <if test="rc1 != null" >
+        #{rc1,jdbcType=VARCHAR},
+      </if>
+      <if test="rc2 != null" >
+        #{rc2,jdbcType=VARCHAR},
+      </if>
+      <if test="rc3 != null" >
+        #{rc3,jdbcType=DECIMAL},
+      </if>
+      <if test="rc4 != null" >
+        #{rc4,jdbcType=DECIMAL},
+      </if>
+      <if test="rc5 != null" >
+        #{rc5,jdbcType=DECIMAL},
+      </if>
+      <if test="rc6 != null" >
+        #{rc6,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.limp.framework.boss.domain.UserUnitExample" resultType="java.lang.Integer" >
+    select count(*) from SYS_USERUNIT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SYS_USERUNIT
+    <set >
+      <if test="record.id != null" >
+        SU_ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        SU_NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keycode != null" >
+        SU_KEYCODE = #{record.keycode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areacode != null" >
+        SU_AREACODE = #{record.areacode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fatherid != null" >
+        SU_FATHERID = #{record.fatherid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fatherarea != null" >
+        SU_FATHERAREA = #{record.fatherarea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null" >
+        SU_STATE = #{record.state,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rc1 != null" >
+        SU_RC1 = #{record.rc1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc2 != null" >
+        SU_RC2 = #{record.rc2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc3 != null" >
+        SU_RC3 = #{record.rc3,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rc4 != null" >
+        SU_RC4 = #{record.rc4,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rc5 != null" >
+        SU_RC5 = #{record.rc5,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rc6 != null" >
+        SU_RC6 = #{record.rc6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SYS_USERUNIT
+    set SU_ID = #{record.id,jdbcType=VARCHAR},
+      SU_NAME = #{record.name,jdbcType=VARCHAR},
+      SU_KEYCODE = #{record.keycode,jdbcType=VARCHAR},
+      SU_AREACODE = #{record.areacode,jdbcType=VARCHAR},
+      SU_FATHERID = #{record.fatherid,jdbcType=VARCHAR},
+      SU_FATHERAREA = #{record.fatherarea,jdbcType=VARCHAR},
+      SU_STATE = #{record.state,jdbcType=DECIMAL},
+      SU_RC1 = #{record.rc1,jdbcType=VARCHAR},
+      SU_RC2 = #{record.rc2,jdbcType=VARCHAR},
+      SU_RC3 = #{record.rc3,jdbcType=DECIMAL},
+      SU_RC4 = #{record.rc4,jdbcType=DECIMAL},
+      SU_RC5 = #{record.rc5,jdbcType=DECIMAL},
+      SU_RC6 = #{record.rc6,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.limp.framework.boss.domain.UserUnit" >
+    update SYS_USERUNIT
+    <set >
+      <if test="name != null" >
+        SU_NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="keycode != null" >
+        SU_KEYCODE = #{keycode,jdbcType=VARCHAR},
+      </if>
+      <if test="areacode != null" >
+        SU_AREACODE = #{areacode,jdbcType=VARCHAR},
+      </if>
+      <if test="fatherid != null" >
+        SU_FATHERID = #{fatherid,jdbcType=VARCHAR},
+      </if>
+      <if test="fatherarea != null" >
+        SU_FATHERAREA = #{fatherarea,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        SU_STATE = #{state,jdbcType=DECIMAL},
+      </if>
+      <if test="rc1 != null" >
+        SU_RC1 = #{rc1,jdbcType=VARCHAR},
+      </if>
+      <if test="rc2 != null" >
+        SU_RC2 = #{rc2,jdbcType=VARCHAR},
+      </if>
+      <if test="rc3 != null" >
+        SU_RC3 = #{rc3,jdbcType=DECIMAL},
+      </if>
+      <if test="rc4 != null" >
+        SU_RC4 = #{rc4,jdbcType=DECIMAL},
+      </if>
+      <if test="rc5 != null" >
+        SU_RC5 = #{rc5,jdbcType=DECIMAL},
+      </if>
+      <if test="rc6 != null" >
+        SU_RC6 = #{rc6,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SU_ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.limp.framework.boss.domain.UserUnit" >
+    update SYS_USERUNIT
+    set SU_NAME = #{name,jdbcType=VARCHAR},
+      SU_KEYCODE = #{keycode,jdbcType=VARCHAR},
+      SU_AREACODE = #{areacode,jdbcType=VARCHAR},
+      SU_FATHERID = #{fatherid,jdbcType=VARCHAR},
+      SU_FATHERAREA = #{fatherarea,jdbcType=VARCHAR},
+      SU_STATE = #{state,jdbcType=DECIMAL},
+      SU_RC1 = #{rc1,jdbcType=VARCHAR},
+      SU_RC2 = #{rc2,jdbcType=VARCHAR},
+      SU_RC3 = #{rc3,jdbcType=DECIMAL},
+      SU_RC4 = #{rc4,jdbcType=DECIMAL},
+      SU_RC5 = #{rc5,jdbcType=DECIMAL},
+      SU_RC6 = #{rc6,jdbcType=VARCHAR}
+    where SU_ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from ( 
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+      <![CDATA[ ) row_ ) where rownum_ > #{page.start} and rownum_ <= #{page.end} ]]>
+    </if>
+  </sql>
+</mapper>

@@ -1,0 +1,1991 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.mapper.oracle.ShipMapper" >
+  <resultMap id="BaseResultMap" type="com.chinasofti.domain.Ship" >
+    <result column="CS_ID" property="id" jdbcType="VARCHAR" />
+    <result column="CS_SHIPNAME" property="shipname" jdbcType="VARCHAR" />
+    <result column="CS_CALLSIGN" property="callsign" jdbcType="VARCHAR" />
+    <result column="CS_SHIPMATERIAL" property="shipmaterial" jdbcType="VARCHAR" />
+    <result column="CS_SHIPNAMEPLAN" property="shipnameplan" jdbcType="VARCHAR" />
+    <result column="CS_MODELWIDTH" property="modelwidth" jdbcType="VARCHAR" />
+    <result column="CS_MODELDEPTH" property="modeldepth" jdbcType="VARCHAR" />
+    <result column="CS_FRESHWATERV" property="freshwaterv" jdbcType="VARCHAR" />
+    <result column="CS_BOLLARDPULL" property="bollardpull" jdbcType="VARCHAR" />
+    <result column="CS_POWER" property="power" jdbcType="VARCHAR" />
+    <result column="CS_COMPLETDATE" property="completdate" jdbcType="VARCHAR" />
+    <result column="CS_DRAWNO" property="drawno" jdbcType="VARCHAR" />
+    <result column="CS_FRESHKEEP" property="freshkeep" jdbcType="VARCHAR" />
+    <result column="CS_DESSPEED" property="desspeed" jdbcType="VARCHAR" />
+    <result column="CS_CREWQUOTA" property="crewquota" jdbcType="VARCHAR" />
+    <result column="CS_FISHCUB" property="fishcub" jdbcType="VARCHAR" />
+    <result column="CS_PROPELLEREFF" property="propellereff" jdbcType="VARCHAR" />
+    <result column="CS_PITCHSTATUS" property="pitchstatus" jdbcType="VARCHAR" />
+    <result column="CS_SHIPCODE" property="shipcode" jdbcType="VARCHAR" />
+    <result column="CS_SHIPTYPE" property="shiptype" jdbcType="VARCHAR" />
+    <result column="CS_NAVZONE" property="navzone" jdbcType="VARCHAR" />
+    <result column="CS_SHIPLENGTH" property="shiplength" jdbcType="VARCHAR" />
+    <result column="CS_DESDRAFT" property="desdraft" jdbcType="VARCHAR" />
+    <result column="CS_FREEBOARD" property="freeboard" jdbcType="VARCHAR" />
+    <result column="CS_SHIPWEIGHT" property="shipweight" jdbcType="VARCHAR" />
+    <result column="CS_TONNAGE" property="tonnage" jdbcType="VARCHAR" />
+    <result column="CS_ENTNAMEDES" property="entnamedes" jdbcType="VARCHAR" />
+    <result column="CS_ENTDESID" property="entdesid" jdbcType="VARCHAR" />
+    <result column="CS_SHIPPORT" property="shipport" jdbcType="VARCHAR" />
+    <result column="CS_DECKS" property="decks" jdbcType="VARCHAR" />
+    <result column="CS_COVSHIPLENGTH" property="covshiplength" jdbcType="VARCHAR" />
+    <result column="CS_DESWATER" property="deswater" jdbcType="VARCHAR" />
+    <result column="CS_OILV" property="oilv" jdbcType="VARCHAR" />
+    <result column="CS_BALLAST" property="ballast" jdbcType="VARCHAR" />
+    <result column="CS_NETTONNAGE" property="nettonnage" jdbcType="VARCHAR" />
+    <result column="CS_ENTNAMEBUL" property="entnamebul" jdbcType="VARCHAR" />
+    <result column="CS_ENTBULID" property="entbulid" jdbcType="VARCHAR" />
+    <result column="CS_ORGID" property="orgid" jdbcType="VARCHAR" />
+    <result column="CS_SHIPROVNAME" property="shiprovname" jdbcType="VARCHAR" />
+    <result column="CS_HOSTMODEL1" property="hostmodel1" jdbcType="VARCHAR" />
+    <result column="CS_HOSTMODEL2" property="hostmodel2" jdbcType="VARCHAR" />
+    <result column="CS_HOSTMODEL3" property="hostmodel3" jdbcType="VARCHAR" />
+    <result column="CS_HOSTPOWER1" property="hostpower1" jdbcType="VARCHAR" />
+    <result column="CS_HOSTPOWER2" property="hostpower2" jdbcType="VARCHAR" />
+    <result column="CS_HOSTPOWER3" property="hostpower3" jdbcType="VARCHAR" />
+    <result column="CS_OWNERNO" property="ownerno" jdbcType="VARCHAR" />
+    <result column="CS_FISHROOMNUM" property="fishroomnum" jdbcType="VARCHAR" />
+    <result column="CS_HOSTNUM" property="hostnum" jdbcType="VARCHAR" />
+    <result column="CS_JOBTYPE" property="jobtype" jdbcType="VARCHAR" />
+    <result column="CS_OPEMODE" property="opemode" jdbcType="VARCHAR" />
+    <result column="CS_JOBTYPE2" property="jobtype2" jdbcType="VARCHAR" />
+    <result column="CS_OPEMODE2" property="opemode2" jdbcType="VARCHAR" />
+    <result column="CS_AUTOPEMODE" property="autopemode" jdbcType="VARCHAR" />
+    <result column="CS_WORKPLACE" property="workplace" jdbcType="VARCHAR" />
+    <result column="CS_OWNERNAME" property="ownername" jdbcType="VARCHAR" />
+    <result column="CS_OWNERADDR" property="owneraddr" jdbcType="VARCHAR" />
+    <result column="CS_OWNERTEL" property="ownertel" jdbcType="VARCHAR" />
+    <result column="CS_POSTCODE" property="postcode" jdbcType="VARCHAR" />
+    <result column="CS_PERIODFISHLIC" property="periodfishlic" jdbcType="VARCHAR" />
+    <result column="CS_FISHLICNO" property="fishlicno" jdbcType="VARCHAR" />
+    <result column="CS_SHIPCERTVAL" property="shipcertval" jdbcType="VARCHAR" />
+    <result column="CS_SHIPCERTNO" property="shipcertno" jdbcType="VARCHAR" />
+    <result column="CS_REGCERTDATE" property="regcertdate" jdbcType="VARCHAR" />
+    <result column="CS_REGCERTNO" property="regcertno" jdbcType="VARCHAR" />
+    <result column="CS_OWNEROBTDATE" property="ownerobtdate" jdbcType="VARCHAR" />
+    <result column="CS_ENDREGCERTNO" property="endregcertno" jdbcType="VARCHAR" />
+    <result column="CS_SHIPINSAPP" property="shipinsapp" jdbcType="VARCHAR" />
+    <result column="CS_REGAREA" property="regarea" jdbcType="VARCHAR" />
+    <result column="CS_POSX" property="posx" jdbcType="VARCHAR" />
+    <result column="CS_POSY" property="posy" jdbcType="VARCHAR" />
+    <result column="CS_POSTIME" property="postime" jdbcType="VARCHAR" />
+    <result column="CS_JOBAREA" property="jobarea" jdbcType="VARCHAR" />
+    <result column="CS_DATASTATUS" property="datastatus" jdbcType="VARCHAR" />
+    <result column="CS_CHECKSTATUS" property="checkstatus" jdbcType="VARCHAR" />
+    <result column="CS_MMSI" property="mmsi" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CS_ID, CS_SHIPNAME, CS_CALLSIGN, CS_SHIPMATERIAL, CS_SHIPNAMEPLAN, CS_MODELWIDTH,
+    CS_MODELDEPTH, CS_FRESHWATERV, CS_BOLLARDPULL, CS_POWER, substr (CS_COMPLETDATE,0,10) as CS_COMPLETDATE, CS_DRAWNO,
+    CS_FRESHKEEP, CS_DESSPEED, CS_CREWQUOTA, CS_FISHCUB, CS_PROPELLEREFF, CS_PITCHSTATUS,
+    CS_SHIPCODE, CS_SHIPTYPE, CS_NAVZONE, CS_SHIPLENGTH, CS_DESDRAFT, CS_FREEBOARD, CS_SHIPWEIGHT,
+    CS_TONNAGE, CS_ENTNAMEDES, CS_ENTDESID, CS_SHIPPORT, CS_DECKS, CS_COVSHIPLENGTH,
+    CS_DESWATER, CS_OILV, CS_BALLAST, CS_NETTONNAGE, CS_ENTNAMEBUL, CS_ENTBULID, CS_ORGID,
+    CS_SHIPROVNAME, CS_HOSTMODEL1, CS_HOSTMODEL2, CS_HOSTMODEL3, CS_HOSTPOWER1, CS_HOSTPOWER2,
+    CS_HOSTPOWER3, CS_OWNERNO, CS_FISHROOMNUM, CS_HOSTNUM, CS_JOBTYPE, CS_OPEMODE, CS_JOBTYPE2,
+    CS_OPEMODE2, CS_AUTOPEMODE, CS_WORKPLACE, CS_OWNERNAME, CS_OWNERADDR, CS_OWNERTEL,
+    CS_POSTCODE, CS_PERIODFISHLIC, CS_FISHLICNO, CS_SHIPCERTVAL, CS_SHIPCERTNO, CS_REGCERTDATE,
+    CS_REGCERTNO, CS_OWNEROBTDATE, CS_ENDREGCERTNO, CS_SHIPINSAPP, CS_REGAREA, CS_POSX,
+    CS_POSY, CS_POSTIME, CS_JOBAREA, CS_DATASTATUS, CS_CHECKSTATUS, CS_MMSI
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chinasofti.domain.ShipExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CIS_SHIPINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+  <delete id="deleteByExample" parameterType="com.chinasofti.domain.ShipExample" >
+    delete from CIS_SHIPINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chinasofti.domain.Ship" >
+    insert into CIS_SHIPINFO (CS_ID, CS_SHIPNAME, CS_CALLSIGN,
+    CS_SHIPMATERIAL, CS_SHIPNAMEPLAN, CS_MODELWIDTH,
+    CS_MODELDEPTH, CS_FRESHWATERV, CS_BOLLARDPULL,
+    CS_POWER, CS_COMPLETDATE, CS_DRAWNO,
+    CS_FRESHKEEP, CS_DESSPEED, CS_CREWQUOTA,
+    CS_FISHCUB, CS_PROPELLEREFF, CS_PITCHSTATUS,
+    CS_SHIPCODE, CS_SHIPTYPE, CS_NAVZONE,
+    CS_SHIPLENGTH, CS_DESDRAFT, CS_FREEBOARD,
+    CS_SHIPWEIGHT, CS_TONNAGE, CS_ENTNAMEDES,
+    CS_ENTDESID, CS_SHIPPORT, CS_DECKS,
+    CS_COVSHIPLENGTH, CS_DESWATER, CS_OILV,
+    CS_BALLAST, CS_NETTONNAGE, CS_ENTNAMEBUL,
+    CS_ENTBULID, CS_ORGID, CS_SHIPROVNAME,
+    CS_HOSTMODEL1, CS_HOSTMODEL2, CS_HOSTMODEL3,
+    CS_HOSTPOWER1, CS_HOSTPOWER2, CS_HOSTPOWER3,
+    CS_OWNERNO, CS_FISHROOMNUM, CS_HOSTNUM,
+    CS_JOBTYPE, CS_OPEMODE, CS_JOBTYPE2,
+    CS_OPEMODE2, CS_AUTOPEMODE, CS_WORKPLACE,
+    CS_OWNERNAME, CS_OWNERADDR, CS_OWNERTEL,
+    CS_POSTCODE, CS_PERIODFISHLIC, CS_FISHLICNO,
+    CS_SHIPCERTVAL, CS_SHIPCERTNO, CS_REGCERTDATE,
+    CS_REGCERTNO, CS_OWNEROBTDATE, CS_ENDREGCERTNO,
+    CS_SHIPINSAPP, CS_REGAREA, CS_POSX,
+    CS_POSY, CS_POSTIME, CS_JOBAREA,
+    CS_DATASTATUS, CS_CHECKSTATUS, CS_MMSI
+    )
+    values (#{id,jdbcType=VARCHAR}, #{shipname,jdbcType=VARCHAR}, #{callsign,jdbcType=VARCHAR},
+    #{shipmaterial,jdbcType=VARCHAR}, #{shipnameplan,jdbcType=VARCHAR}, #{modelwidth,jdbcType=VARCHAR},
+    #{modeldepth,jdbcType=VARCHAR}, #{freshwaterv,jdbcType=VARCHAR}, #{bollardpull,jdbcType=VARCHAR},
+    #{power,jdbcType=VARCHAR}, #{completdate,jdbcType=VARCHAR}, #{drawno,jdbcType=VARCHAR},
+    #{freshkeep,jdbcType=VARCHAR}, #{desspeed,jdbcType=VARCHAR}, #{crewquota,jdbcType=VARCHAR},
+    #{fishcub,jdbcType=VARCHAR}, #{propellereff,jdbcType=VARCHAR}, #{pitchstatus,jdbcType=VARCHAR},
+    #{shipcode,jdbcType=VARCHAR}, #{shiptype,jdbcType=VARCHAR}, #{navzone,jdbcType=VARCHAR},
+    #{shiplength,jdbcType=VARCHAR}, #{desdraft,jdbcType=VARCHAR}, #{freeboard,jdbcType=VARCHAR},
+    #{shipweight,jdbcType=VARCHAR}, #{tonnage,jdbcType=VARCHAR}, #{entnamedes,jdbcType=VARCHAR},
+    #{entdesid,jdbcType=VARCHAR}, #{shipport,jdbcType=VARCHAR}, #{decks,jdbcType=VARCHAR},
+    #{covshiplength,jdbcType=VARCHAR}, #{deswater,jdbcType=VARCHAR}, #{oilv,jdbcType=VARCHAR},
+    #{ballast,jdbcType=VARCHAR}, #{nettonnage,jdbcType=VARCHAR}, #{entnamebul,jdbcType=VARCHAR},
+    #{entbulid,jdbcType=VARCHAR}, #{orgid,jdbcType=VARCHAR}, #{shiprovname,jdbcType=VARCHAR},
+    #{hostmodel1,jdbcType=VARCHAR}, #{hostmodel2,jdbcType=VARCHAR}, #{hostmodel3,jdbcType=VARCHAR},
+    #{hostpower1,jdbcType=VARCHAR}, #{hostpower2,jdbcType=VARCHAR}, #{hostpower3,jdbcType=VARCHAR},
+    #{ownerno,jdbcType=VARCHAR}, #{fishroomnum,jdbcType=VARCHAR}, #{hostnum,jdbcType=VARCHAR},
+    #{jobtype,jdbcType=VARCHAR}, #{opemode,jdbcType=VARCHAR}, #{jobtype2,jdbcType=VARCHAR},
+    #{opemode2,jdbcType=VARCHAR}, #{autopemode,jdbcType=VARCHAR}, #{workplace,jdbcType=VARCHAR},
+    #{ownername,jdbcType=VARCHAR}, #{owneraddr,jdbcType=VARCHAR}, #{ownertel,jdbcType=VARCHAR},
+    #{postcode,jdbcType=VARCHAR}, #{periodfishlic,jdbcType=VARCHAR}, #{fishlicno,jdbcType=VARCHAR},
+    #{shipcertval,jdbcType=VARCHAR}, #{shipcertno,jdbcType=VARCHAR}, #{regcertdate,jdbcType=VARCHAR},
+    #{regcertno,jdbcType=VARCHAR}, #{ownerobtdate,jdbcType=VARCHAR}, #{endregcertno,jdbcType=VARCHAR},
+    #{shipinsapp,jdbcType=VARCHAR}, #{regarea,jdbcType=VARCHAR}, #{posx,jdbcType=VARCHAR},
+    #{posy,jdbcType=VARCHAR}, #{postime,jdbcType=VARCHAR}, #{jobarea,jdbcType=VARCHAR},
+    #{datastatus,jdbcType=VARCHAR}, #{checkstatus,jdbcType=VARCHAR}, #{mmsi,jdbcType=VARCHAR}
+    )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chinasofti.domain.Ship" >
+    insert into CIS_SHIPINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        CS_ID,
+      </if>
+      <if test="shipname != null" >
+        CS_SHIPNAME,
+      </if>
+      <if test="callsign != null" >
+        CS_CALLSIGN,
+      </if>
+      <if test="shipmaterial != null" >
+        CS_SHIPMATERIAL,
+      </if>
+      <if test="shipnameplan != null" >
+        CS_SHIPNAMEPLAN,
+      </if>
+      <if test="modelwidth != null" >
+        CS_MODELWIDTH,
+      </if>
+      <if test="modeldepth != null" >
+        CS_MODELDEPTH,
+      </if>
+      <if test="freshwaterv != null" >
+        CS_FRESHWATERV,
+      </if>
+      <if test="bollardpull != null" >
+        CS_BOLLARDPULL,
+      </if>
+      <if test="power != null" >
+        CS_POWER,
+      </if>
+      <if test="completdate != null" >
+        CS_COMPLETDATE,
+      </if>
+      <if test="drawno != null" >
+        CS_DRAWNO,
+      </if>
+      <if test="freshkeep != null" >
+        CS_FRESHKEEP,
+      </if>
+      <if test="desspeed != null" >
+        CS_DESSPEED,
+      </if>
+      <if test="crewquota != null" >
+        CS_CREWQUOTA,
+      </if>
+      <if test="fishcub != null" >
+        CS_FISHCUB,
+      </if>
+      <if test="propellereff != null" >
+        CS_PROPELLEREFF,
+      </if>
+      <if test="pitchstatus != null" >
+        CS_PITCHSTATUS,
+      </if>
+      <if test="shipcode != null" >
+        CS_SHIPCODE,
+      </if>
+      <if test="shiptype != null" >
+        CS_SHIPTYPE,
+      </if>
+      <if test="navzone != null" >
+        CS_NAVZONE,
+      </if>
+      <if test="shiplength != null" >
+        CS_SHIPLENGTH,
+      </if>
+      <if test="desdraft != null" >
+        CS_DESDRAFT,
+      </if>
+      <if test="freeboard != null" >
+        CS_FREEBOARD,
+      </if>
+      <if test="shipweight != null" >
+        CS_SHIPWEIGHT,
+      </if>
+      <if test="tonnage != null" >
+        CS_TONNAGE,
+      </if>
+      <if test="entnamedes != null" >
+        CS_ENTNAMEDES,
+      </if>
+      <if test="entdesid != null" >
+        CS_ENTDESID,
+      </if>
+      <if test="shipport != null" >
+        CS_SHIPPORT,
+      </if>
+      <if test="decks != null" >
+        CS_DECKS,
+      </if>
+      <if test="covshiplength != null" >
+        CS_COVSHIPLENGTH,
+      </if>
+      <if test="deswater != null" >
+        CS_DESWATER,
+      </if>
+      <if test="oilv != null" >
+        CS_OILV,
+      </if>
+      <if test="ballast != null" >
+        CS_BALLAST,
+      </if>
+      <if test="nettonnage != null" >
+        CS_NETTONNAGE,
+      </if>
+      <if test="entnamebul != null" >
+        CS_ENTNAMEBUL,
+      </if>
+      <if test="entbulid != null" >
+        CS_ENTBULID,
+      </if>
+      <if test="orgid != null" >
+        CS_ORGID,
+      </if>
+      <if test="shiprovname != null" >
+        CS_SHIPROVNAME,
+      </if>
+      <if test="hostmodel1 != null" >
+        CS_HOSTMODEL1,
+      </if>
+      <if test="hostmodel2 != null" >
+        CS_HOSTMODEL2,
+      </if>
+      <if test="hostmodel3 != null" >
+        CS_HOSTMODEL3,
+      </if>
+      <if test="hostpower1 != null" >
+        CS_HOSTPOWER1,
+      </if>
+      <if test="hostpower2 != null" >
+        CS_HOSTPOWER2,
+      </if>
+      <if test="hostpower3 != null" >
+        CS_HOSTPOWER3,
+      </if>
+      <if test="ownerno != null" >
+        CS_OWNERNO,
+      </if>
+      <if test="fishroomnum != null" >
+        CS_FISHROOMNUM,
+      </if>
+      <if test="hostnum != null" >
+        CS_HOSTNUM,
+      </if>
+      <if test="jobtype != null" >
+        CS_JOBTYPE,
+      </if>
+      <if test="opemode != null" >
+        CS_OPEMODE,
+      </if>
+      <if test="jobtype2 != null" >
+        CS_JOBTYPE2,
+      </if>
+      <if test="opemode2 != null" >
+        CS_OPEMODE2,
+      </if>
+      <if test="autopemode != null" >
+        CS_AUTOPEMODE,
+      </if>
+      <if test="workplace != null" >
+        CS_WORKPLACE,
+      </if>
+      <if test="ownername != null" >
+        CS_OWNERNAME,
+      </if>
+      <if test="owneraddr != null" >
+        CS_OWNERADDR,
+      </if>
+      <if test="ownertel != null" >
+        CS_OWNERTEL,
+      </if>
+      <if test="postcode != null" >
+        CS_POSTCODE,
+      </if>
+      <if test="periodfishlic != null" >
+        CS_PERIODFISHLIC,
+      </if>
+      <if test="fishlicno != null" >
+        CS_FISHLICNO,
+      </if>
+      <if test="shipcertval != null" >
+        CS_SHIPCERTVAL,
+      </if>
+      <if test="shipcertno != null" >
+        CS_SHIPCERTNO,
+      </if>
+      <if test="regcertdate != null" >
+        CS_REGCERTDATE,
+      </if>
+      <if test="regcertno != null" >
+        CS_REGCERTNO,
+      </if>
+      <if test="ownerobtdate != null" >
+        CS_OWNEROBTDATE,
+      </if>
+      <if test="endregcertno != null" >
+        CS_ENDREGCERTNO,
+      </if>
+      <if test="shipinsapp != null" >
+        CS_SHIPINSAPP,
+      </if>
+      <if test="regarea != null" >
+        CS_REGAREA,
+      </if>
+      <if test="posx != null" >
+        CS_POSX,
+      </if>
+      <if test="posy != null" >
+        CS_POSY,
+      </if>
+      <if test="postime != null" >
+        CS_POSTIME,
+      </if>
+      <if test="jobarea != null" >
+        CS_JOBAREA,
+      </if>
+      <if test="datastatus != null" >
+        CS_DATASTATUS,
+      </if>
+      <if test="checkstatus != null" >
+        CS_CHECKSTATUS,
+      </if>
+      <if test="mmsi != null" >
+        CS_MMSI,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="shipname != null" >
+        #{shipname,jdbcType=VARCHAR},
+      </if>
+      <if test="callsign != null" >
+        #{callsign,jdbcType=VARCHAR},
+      </if>
+      <if test="shipmaterial != null" >
+        #{shipmaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="shipnameplan != null" >
+        #{shipnameplan,jdbcType=VARCHAR},
+      </if>
+      <if test="modelwidth != null" >
+        #{modelwidth,jdbcType=VARCHAR},
+      </if>
+      <if test="modeldepth != null" >
+        #{modeldepth,jdbcType=VARCHAR},
+      </if>
+      <if test="freshwaterv != null" >
+        #{freshwaterv,jdbcType=VARCHAR},
+      </if>
+      <if test="bollardpull != null" >
+        #{bollardpull,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null" >
+        #{power,jdbcType=VARCHAR},
+      </if>
+      <if test="completdate != null" >
+        #{completdate,jdbcType=VARCHAR},
+      </if>
+      <if test="drawno != null" >
+        #{drawno,jdbcType=VARCHAR},
+      </if>
+      <if test="freshkeep != null" >
+        #{freshkeep,jdbcType=VARCHAR},
+      </if>
+      <if test="desspeed != null" >
+        #{desspeed,jdbcType=VARCHAR},
+      </if>
+      <if test="crewquota != null" >
+        #{crewquota,jdbcType=VARCHAR},
+      </if>
+      <if test="fishcub != null" >
+        #{fishcub,jdbcType=VARCHAR},
+      </if>
+      <if test="propellereff != null" >
+        #{propellereff,jdbcType=VARCHAR},
+      </if>
+      <if test="pitchstatus != null" >
+        #{pitchstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="shipcode != null" >
+        #{shipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="shiptype != null" >
+        #{shiptype,jdbcType=VARCHAR},
+      </if>
+      <if test="navzone != null" >
+        #{navzone,jdbcType=VARCHAR},
+      </if>
+      <if test="shiplength != null" >
+        #{shiplength,jdbcType=VARCHAR},
+      </if>
+      <if test="desdraft != null" >
+        #{desdraft,jdbcType=VARCHAR},
+      </if>
+      <if test="freeboard != null" >
+        #{freeboard,jdbcType=VARCHAR},
+      </if>
+      <if test="shipweight != null" >
+        #{shipweight,jdbcType=VARCHAR},
+      </if>
+      <if test="tonnage != null" >
+        #{tonnage,jdbcType=VARCHAR},
+      </if>
+      <if test="entnamedes != null" >
+        #{entnamedes,jdbcType=VARCHAR},
+      </if>
+      <if test="entdesid != null" >
+        #{entdesid,jdbcType=VARCHAR},
+      </if>
+      <if test="shipport != null" >
+        #{shipport,jdbcType=VARCHAR},
+      </if>
+      <if test="decks != null" >
+        #{decks,jdbcType=VARCHAR},
+      </if>
+      <if test="covshiplength != null" >
+        #{covshiplength,jdbcType=VARCHAR},
+      </if>
+      <if test="deswater != null" >
+        #{deswater,jdbcType=VARCHAR},
+      </if>
+      <if test="oilv != null" >
+        #{oilv,jdbcType=VARCHAR},
+      </if>
+      <if test="ballast != null" >
+        #{ballast,jdbcType=VARCHAR},
+      </if>
+      <if test="nettonnage != null" >
+        #{nettonnage,jdbcType=VARCHAR},
+      </if>
+      <if test="entnamebul != null" >
+        #{entnamebul,jdbcType=VARCHAR},
+      </if>
+      <if test="entbulid != null" >
+        #{entbulid,jdbcType=VARCHAR},
+      </if>
+      <if test="orgid != null" >
+        #{orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="shiprovname != null" >
+        #{shiprovname,jdbcType=VARCHAR},
+      </if>
+      <if test="hostmodel1 != null" >
+        #{hostmodel1,jdbcType=VARCHAR},
+      </if>
+      <if test="hostmodel2 != null" >
+        #{hostmodel2,jdbcType=VARCHAR},
+      </if>
+      <if test="hostmodel3 != null" >
+        #{hostmodel3,jdbcType=VARCHAR},
+      </if>
+      <if test="hostpower1 != null" >
+        #{hostpower1,jdbcType=VARCHAR},
+      </if>
+      <if test="hostpower2 != null" >
+        #{hostpower2,jdbcType=VARCHAR},
+      </if>
+      <if test="hostpower3 != null" >
+        #{hostpower3,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerno != null" >
+        #{ownerno,jdbcType=VARCHAR},
+      </if>
+      <if test="fishroomnum != null" >
+        #{fishroomnum,jdbcType=VARCHAR},
+      </if>
+      <if test="hostnum != null" >
+        #{hostnum,jdbcType=VARCHAR},
+      </if>
+      <if test="jobtype != null" >
+        #{jobtype,jdbcType=VARCHAR},
+      </if>
+      <if test="opemode != null" >
+        #{opemode,jdbcType=VARCHAR},
+      </if>
+      <if test="jobtype2 != null" >
+        #{jobtype2,jdbcType=VARCHAR},
+      </if>
+      <if test="opemode2 != null" >
+        #{opemode2,jdbcType=VARCHAR},
+      </if>
+      <if test="autopemode != null" >
+        #{autopemode,jdbcType=VARCHAR},
+      </if>
+      <if test="workplace != null" >
+        #{workplace,jdbcType=VARCHAR},
+      </if>
+      <if test="ownername != null" >
+        #{ownername,jdbcType=VARCHAR},
+      </if>
+      <if test="owneraddr != null" >
+        #{owneraddr,jdbcType=VARCHAR},
+      </if>
+      <if test="ownertel != null" >
+        #{ownertel,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="periodfishlic != null" >
+        #{periodfishlic,jdbcType=VARCHAR},
+      </if>
+      <if test="fishlicno != null" >
+        #{fishlicno,jdbcType=VARCHAR},
+      </if>
+      <if test="shipcertval != null" >
+        #{shipcertval,jdbcType=VARCHAR},
+      </if>
+      <if test="shipcertno != null" >
+        #{shipcertno,jdbcType=VARCHAR},
+      </if>
+      <if test="regcertdate != null" >
+        #{regcertdate,jdbcType=VARCHAR},
+      </if>
+      <if test="regcertno != null" >
+        #{regcertno,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerobtdate != null" >
+        #{ownerobtdate,jdbcType=VARCHAR},
+      </if>
+      <if test="endregcertno != null" >
+        #{endregcertno,jdbcType=VARCHAR},
+      </if>
+      <if test="shipinsapp != null" >
+        #{shipinsapp,jdbcType=VARCHAR},
+      </if>
+      <if test="regarea != null" >
+        #{regarea,jdbcType=VARCHAR},
+      </if>
+      <if test="posx != null" >
+        #{posx,jdbcType=VARCHAR},
+      </if>
+      <if test="posy != null" >
+        #{posy,jdbcType=VARCHAR},
+      </if>
+      <if test="postime != null" >
+        #{postime,jdbcType=VARCHAR},
+      </if>
+      <if test="jobarea != null" >
+        #{jobarea,jdbcType=VARCHAR},
+      </if>
+      <if test="datastatus != null" >
+        #{datastatus,jdbcType=VARCHAR},
+      </if>
+      <if test="checkstatus != null" >
+        #{checkstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="mmsi != null" >
+        #{mmsi,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chinasofti.domain.ShipExample" resultType="java.lang.Integer" >
+    select count(*) from CIS_SHIPINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update CIS_SHIPINFO
+    <set >
+      <if test="record.id != null" >
+        CS_ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipname != null" >
+        CS_SHIPNAME = #{record.shipname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.callsign != null" >
+        CS_CALLSIGN = #{record.callsign,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipmaterial != null" >
+        CS_SHIPMATERIAL = #{record.shipmaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipnameplan != null" >
+        CS_SHIPNAMEPLAN = #{record.shipnameplan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modelwidth != null" >
+        CS_MODELWIDTH = #{record.modelwidth,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modeldepth != null" >
+        CS_MODELDEPTH = #{record.modeldepth,jdbcType=VARCHAR},
+      </if>
+      <if test="record.freshwaterv != null" >
+        CS_FRESHWATERV = #{record.freshwaterv,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bollardpull != null" >
+        CS_BOLLARDPULL = #{record.bollardpull,jdbcType=VARCHAR},
+      </if>
+      <if test="record.power != null" >
+        CS_POWER = #{record.power,jdbcType=VARCHAR},
+      </if>
+      <if test="record.completdate != null" >
+        CS_COMPLETDATE = #{record.completdate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drawno != null" >
+        CS_DRAWNO = #{record.drawno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.freshkeep != null" >
+        CS_FRESHKEEP = #{record.freshkeep,jdbcType=VARCHAR},
+      </if>
+      <if test="record.desspeed != null" >
+        CS_DESSPEED = #{record.desspeed,jdbcType=VARCHAR},
+      </if>
+      <if test="record.crewquota != null" >
+        CS_CREWQUOTA = #{record.crewquota,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fishcub != null" >
+        CS_FISHCUB = #{record.fishcub,jdbcType=VARCHAR},
+      </if>
+      <if test="record.propellereff != null" >
+        CS_PROPELLEREFF = #{record.propellereff,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pitchstatus != null" >
+        CS_PITCHSTATUS = #{record.pitchstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipcode != null" >
+        CS_SHIPCODE = #{record.shipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shiptype != null" >
+        CS_SHIPTYPE = #{record.shiptype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.navzone != null" >
+        CS_NAVZONE = #{record.navzone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shiplength != null" >
+        CS_SHIPLENGTH = #{record.shiplength,jdbcType=VARCHAR},
+      </if>
+      <if test="record.desdraft != null" >
+        CS_DESDRAFT = #{record.desdraft,jdbcType=VARCHAR},
+      </if>
+      <if test="record.freeboard != null" >
+        CS_FREEBOARD = #{record.freeboard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipweight != null" >
+        CS_SHIPWEIGHT = #{record.shipweight,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tonnage != null" >
+        CS_TONNAGE = #{record.tonnage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entnamedes != null" >
+        CS_ENTNAMEDES = #{record.entnamedes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entdesid != null" >
+        CS_ENTDESID = #{record.entdesid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipport != null" >
+        CS_SHIPPORT = #{record.shipport,jdbcType=VARCHAR},
+      </if>
+      <if test="record.decks != null" >
+        CS_DECKS = #{record.decks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.covshiplength != null" >
+        CS_COVSHIPLENGTH = #{record.covshiplength,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deswater != null" >
+        CS_DESWATER = #{record.deswater,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oilv != null" >
+        CS_OILV = #{record.oilv,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ballast != null" >
+        CS_BALLAST = #{record.ballast,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nettonnage != null" >
+        CS_NETTONNAGE = #{record.nettonnage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entnamebul != null" >
+        CS_ENTNAMEBUL = #{record.entnamebul,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entbulid != null" >
+        CS_ENTBULID = #{record.entbulid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgid != null" >
+        CS_ORGID = #{record.orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shiprovname != null" >
+        CS_SHIPROVNAME = #{record.shiprovname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hostmodel1 != null" >
+        CS_HOSTMODEL1 = #{record.hostmodel1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hostmodel2 != null" >
+        CS_HOSTMODEL2 = #{record.hostmodel2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hostmodel3 != null" >
+        CS_HOSTMODEL3 = #{record.hostmodel3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hostpower1 != null" >
+        CS_HOSTPOWER1 = #{record.hostpower1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hostpower2 != null" >
+        CS_HOSTPOWER2 = #{record.hostpower2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hostpower3 != null" >
+        CS_HOSTPOWER3 = #{record.hostpower3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ownerno != null" >
+        CS_OWNERNO = #{record.ownerno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fishroomnum != null" >
+        CS_FISHROOMNUM = #{record.fishroomnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hostnum != null" >
+        CS_HOSTNUM = #{record.hostnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobtype != null" >
+        CS_JOBTYPE = #{record.jobtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.opemode != null" >
+        CS_OPEMODE = #{record.opemode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobtype2 != null" >
+        CS_JOBTYPE2 = #{record.jobtype2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.opemode2 != null" >
+        CS_OPEMODE2 = #{record.opemode2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.autopemode != null" >
+        CS_AUTOPEMODE = #{record.autopemode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workplace != null" >
+        CS_WORKPLACE = #{record.workplace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ownername != null" >
+        CS_OWNERNAME = #{record.ownername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.owneraddr != null" >
+        CS_OWNERADDR = #{record.owneraddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ownertel != null" >
+        CS_OWNERTEL = #{record.ownertel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postcode != null" >
+        CS_POSTCODE = #{record.postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.periodfishlic != null" >
+        CS_PERIODFISHLIC = #{record.periodfishlic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fishlicno != null" >
+        CS_FISHLICNO = #{record.fishlicno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipcertval != null" >
+        CS_SHIPCERTVAL = #{record.shipcertval,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipcertno != null" >
+        CS_SHIPCERTNO = #{record.shipcertno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regcertdate != null" >
+        CS_REGCERTDATE = #{record.regcertdate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regcertno != null" >
+        CS_REGCERTNO = #{record.regcertno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ownerobtdate != null" >
+        CS_OWNEROBTDATE = #{record.ownerobtdate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.endregcertno != null" >
+        CS_ENDREGCERTNO = #{record.endregcertno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipinsapp != null" >
+        CS_SHIPINSAPP = #{record.shipinsapp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regarea != null" >
+        CS_REGAREA = #{record.regarea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.posx != null" >
+        CS_POSX = #{record.posx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.posy != null" >
+        CS_POSY = #{record.posy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postime != null" >
+        CS_POSTIME = #{record.postime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobarea != null" >
+        CS_JOBAREA = #{record.jobarea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.datastatus != null" >
+        CS_DATASTATUS = #{record.datastatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkstatus != null" >
+        CS_CHECKSTATUS = #{record.checkstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mmsi != null" >
+        CS_MMSI = #{record.mmsi,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update CIS_SHIPINFO
+    set CS_ID = #{record.id,jdbcType=VARCHAR},
+    CS_SHIPNAME = #{record.shipname,jdbcType=VARCHAR},
+    CS_CALLSIGN = #{record.callsign,jdbcType=VARCHAR},
+    CS_SHIPMATERIAL = #{record.shipmaterial,jdbcType=VARCHAR},
+    CS_SHIPNAMEPLAN = #{record.shipnameplan,jdbcType=VARCHAR},
+    CS_MODELWIDTH = #{record.modelwidth,jdbcType=VARCHAR},
+    CS_MODELDEPTH = #{record.modeldepth,jdbcType=VARCHAR},
+    CS_FRESHWATERV = #{record.freshwaterv,jdbcType=VARCHAR},
+    CS_BOLLARDPULL = #{record.bollardpull,jdbcType=VARCHAR},
+    CS_POWER = #{record.power,jdbcType=VARCHAR},
+    CS_COMPLETDATE = #{record.completdate,jdbcType=VARCHAR},
+    CS_DRAWNO = #{record.drawno,jdbcType=VARCHAR},
+    CS_FRESHKEEP = #{record.freshkeep,jdbcType=VARCHAR},
+    CS_DESSPEED = #{record.desspeed,jdbcType=VARCHAR},
+    CS_CREWQUOTA = #{record.crewquota,jdbcType=VARCHAR},
+    CS_FISHCUB = #{record.fishcub,jdbcType=VARCHAR},
+    CS_PROPELLEREFF = #{record.propellereff,jdbcType=VARCHAR},
+    CS_PITCHSTATUS = #{record.pitchstatus,jdbcType=VARCHAR},
+    CS_SHIPCODE = #{record.shipcode,jdbcType=VARCHAR},
+    CS_SHIPTYPE = #{record.shiptype,jdbcType=VARCHAR},
+    CS_NAVZONE = #{record.navzone,jdbcType=VARCHAR},
+    CS_SHIPLENGTH = #{record.shiplength,jdbcType=VARCHAR},
+    CS_DESDRAFT = #{record.desdraft,jdbcType=VARCHAR},
+    CS_FREEBOARD = #{record.freeboard,jdbcType=VARCHAR},
+    CS_SHIPWEIGHT = #{record.shipweight,jdbcType=VARCHAR},
+    CS_TONNAGE = #{record.tonnage,jdbcType=VARCHAR},
+    CS_ENTNAMEDES = #{record.entnamedes,jdbcType=VARCHAR},
+    CS_ENTDESID = #{record.entdesid,jdbcType=VARCHAR},
+    CS_SHIPPORT = #{record.shipport,jdbcType=VARCHAR},
+    CS_DECKS = #{record.decks,jdbcType=VARCHAR},
+    CS_COVSHIPLENGTH = #{record.covshiplength,jdbcType=VARCHAR},
+    CS_DESWATER = #{record.deswater,jdbcType=VARCHAR},
+    CS_OILV = #{record.oilv,jdbcType=VARCHAR},
+    CS_BALLAST = #{record.ballast,jdbcType=VARCHAR},
+    CS_NETTONNAGE = #{record.nettonnage,jdbcType=VARCHAR},
+    CS_ENTNAMEBUL = #{record.entnamebul,jdbcType=VARCHAR},
+    CS_ENTBULID = #{record.entbulid,jdbcType=VARCHAR},
+    CS_ORGID = #{record.orgid,jdbcType=VARCHAR},
+    CS_SHIPROVNAME = #{record.shiprovname,jdbcType=VARCHAR},
+    CS_HOSTMODEL1 = #{record.hostmodel1,jdbcType=VARCHAR},
+    CS_HOSTMODEL2 = #{record.hostmodel2,jdbcType=VARCHAR},
+    CS_HOSTMODEL3 = #{record.hostmodel3,jdbcType=VARCHAR},
+    CS_HOSTPOWER1 = #{record.hostpower1,jdbcType=VARCHAR},
+    CS_HOSTPOWER2 = #{record.hostpower2,jdbcType=VARCHAR},
+    CS_HOSTPOWER3 = #{record.hostpower3,jdbcType=VARCHAR},
+    CS_OWNERNO = #{record.ownerno,jdbcType=VARCHAR},
+    CS_FISHROOMNUM = #{record.fishroomnum,jdbcType=VARCHAR},
+    CS_HOSTNUM = #{record.hostnum,jdbcType=VARCHAR},
+    CS_JOBTYPE = #{record.jobtype,jdbcType=VARCHAR},
+    CS_OPEMODE = #{record.opemode,jdbcType=VARCHAR},
+    CS_JOBTYPE2 = #{record.jobtype2,jdbcType=VARCHAR},
+    CS_OPEMODE2 = #{record.opemode2,jdbcType=VARCHAR},
+    CS_AUTOPEMODE = #{record.autopemode,jdbcType=VARCHAR},
+    CS_WORKPLACE = #{record.workplace,jdbcType=VARCHAR},
+    CS_OWNERNAME = #{record.ownername,jdbcType=VARCHAR},
+    CS_OWNERADDR = #{record.owneraddr,jdbcType=VARCHAR},
+    CS_OWNERTEL = #{record.ownertel,jdbcType=VARCHAR},
+    CS_POSTCODE = #{record.postcode,jdbcType=VARCHAR},
+    CS_PERIODFISHLIC = #{record.periodfishlic,jdbcType=VARCHAR},
+    CS_FISHLICNO = #{record.fishlicno,jdbcType=VARCHAR},
+    CS_SHIPCERTVAL = #{record.shipcertval,jdbcType=VARCHAR},
+    CS_SHIPCERTNO = #{record.shipcertno,jdbcType=VARCHAR},
+    CS_REGCERTDATE = #{record.regcertdate,jdbcType=VARCHAR},
+    CS_REGCERTNO = #{record.regcertno,jdbcType=VARCHAR},
+    CS_OWNEROBTDATE = #{record.ownerobtdate,jdbcType=VARCHAR},
+    CS_ENDREGCERTNO = #{record.endregcertno,jdbcType=VARCHAR},
+    CS_SHIPINSAPP = #{record.shipinsapp,jdbcType=VARCHAR},
+    CS_REGAREA = #{record.regarea,jdbcType=VARCHAR},
+    CS_POSX = #{record.posx,jdbcType=VARCHAR},
+    CS_POSY = #{record.posy,jdbcType=VARCHAR},
+    CS_POSTIME = #{record.postime,jdbcType=VARCHAR},
+    CS_JOBAREA = #{record.jobarea,jdbcType=VARCHAR},
+    CS_DATASTATUS = #{record.datastatus,jdbcType=VARCHAR},
+    CS_CHECKSTATUS = #{record.checkstatus,jdbcType=VARCHAR},
+    CS_MMSI = #{record.mmsi,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from (
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+      <![CDATA[ ) row_ ) where rownum_ > #{page.start} and rownum_ <= #{page.end} ]]>
+    </if>
+  </sql>
+
+
+  <select id="getShipCheckList" resultType="ShipCheckShow" >
+    <include refid="OracleDialectPrefix" />
+    select * from (
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    t1.csc_id as id,
+    t1.csc_uid as surid,
+    t1.csc_ycbm as ycbm,
+    t1.csc_ycmc as ycmc,
+    substr(trim(t1.csc_checktime),1,10) as checktime,
+    t1.csc_checktype as checktype,
+    t2.cs_ownername as ownername,
+    t2.cs_shiplength as shiplength,
+    t2.cs_shipmaterial as shipmaterial,
+    t2.cs_jobarea as jobarea
+    from cis_ship_check t1 inner join cis_shipinfo t2 on
+    t1.csc_ycbm = t2.cs_shipcode
+    INNER JOIN cis_shipcheck_surveyor t3 on t3.CYS_SHEET_KEY=t1.CSC_UID
+    where t3.CYS_USER_ID = #{surid}
+    <if test='startYear!=null and startYear != ""' >
+      and substr(trim(t1.csc_checktime),1,4) &gt;= #{startYear}
+    </if>
+    <if test='endYear!=null and endYear != ""' >
+      and substr(trim(t1.csc_checktime),1,4) &lt;= #{endYear}
+    </if>
+    )
+    order by checktime desc
+    <include refid="OracleDialectSuffix" />
+  </select>
+
+  <select id="getMyWorkList" resultType="HashMap" >
+    select checkyear, count(1) as checknum
+    from (select distinct t1.csc_ycbm,
+    substr(trim(t1.csc_checktime), 1, 4) as checkyear
+    from cis_ship_check t1
+    inner join cis_shipinfo t2 on t1.csc_ycbm = t2.cs_shipcode
+    INNER JOIN cis_shipcheck_surveyor t3 on t3.CYS_SHEET_KEY=t1.CSC_UID
+    where t3.CYS_USER_ID = #{surid}
+    and t2.cs_jobarea = #{jobarea}) where 1=1
+    <if test='startYear!=null and startYear != ""' >
+      and checkyear &gt;= #{startYear}
+    </if>
+    <if test='endYear!=null and endYear != ""' >
+      and checkyear &lt;= #{endYear}
+    </if>
+    group by checkyear order by checkyear
+  </select>
+
+  <select id="getInsAllList" resultType="HashMap" >
+    select checkyear, count(1) as checknum
+    from (select distinct t1.csc_ycbm,
+    substr(trim(t1.csc_checktime), 1, 4) as checkyear
+    from cis_ship_check t1
+    inner join cis_shipinfo t2 on t1.csc_ycbm = t2.cs_shipcode
+    where t2.cs_jobarea = #{jobarea}) where 1=1
+    <if test='startYear!=null and startYear != ""' >
+      and checkyear &gt;= #{startYear}
+    </if>
+    <if test='endYear!=null and endYear != ""' >
+      and checkyear &lt;= #{endYear}
+    </if>
+    group by checkyear order by checkyear
+  </select>
+
+  <select id="getPersonNum" resultType="HashMap" >
+    select checkyear, count(1) as personnum
+    from (select distinct
+    substr(trim(t1.csc_checktime), 1, 4) as checkyear,
+    t1.csc_surid
+    from cis_ship_check t1
+    inner join cis_shipinfo t2
+    on t1.csc_ycbm = t2.cs_shipcode
+    where t2.cs_jobarea = #{jobarea})
+    where 1 = 1
+    <if test='startYear!=null and startYear != ""' >
+      and checkyear &gt;= #{startYear}
+    </if>
+    <if test='endYear!=null and endYear != ""' >
+      and checkyear &lt;= #{endYear}
+    </if>
+    group by checkyear order by checkyear
+  </select>
+
+  <select id="getMyWorkForProductList" resultType="HashMap" >
+    select checkyear, count(1) as checknum
+    from (select distinct t.cpc_productnum,
+    substr(trim(t.cpc_checktime), 1, 4) as checkyear
+    from cis_products_check t
+    where t.cpc_surid = #{surid}) where 1=1
+    <if test='startYear!=null and startYear != ""' >
+      and checkyear &gt;= #{startYear}
+    </if>
+    <if test='endYear!=null and endYear != ""' >
+      and checkyear &lt;= #{endYear}
+    </if>
+    group by checkyear order by checkyear
+  </select>
+
+  <select id="getInsAllForProductList" resultType="HashMap" >
+    select checkyear, count(1) as checknum
+    from (select distinct t.cpc_productnum,
+    substr(trim(t.cpc_checktime), 1, 4) as checkyear
+    from cis_products_check t ) where 1=1
+    <if test='startYear!=null and startYear != ""' >
+      and checkyear &gt;= #{startYear}
+    </if>
+    <if test='endYear!=null and endYear != ""' >
+      and checkyear &lt;= #{endYear}
+    </if>
+    group by checkyear order by checkyear
+  </select>
+
+  <select id="getPersonNumForProduct" resultType="HashMap" >
+    select checkyear, count(1) as personnum
+    from (select distinct t.cpc_surid,
+    substr(trim(t.cpc_checktime), 1, 4) as checkyear
+    from cis_products_check t ) where 1=1
+    <if test='startYear!=null and startYear != ""' >
+      and checkyear &gt;= #{startYear}
+    </if>
+    <if test='endYear!=null and endYear != ""' >
+      and checkyear &lt;= #{endYear}
+    </if>
+    group by checkyear order by checkyear
+  </select>
+
+  <select id="getMyWorkForDrawList" resultType="HashMap" >
+    select checkyear, count(1) as checknum
+    from (select distinct t.cdc_drawno,
+    substr(trim(t.cdc_checktime), 1, 4) as checkyear
+    from cis_draw_check t
+    where t.cdc_ycscertnum = #{surid}) where 1=1
+    <if test='startYear!=null and startYear != ""' >
+      and checkyear &gt;= #{startYear}
+    </if>
+    <if test='endYear!=null and endYear != ""' >
+      and checkyear &lt;= #{endYear}
+    </if>
+    group by checkyear order by checkyear
+  </select>
+
+  <select id="getInsAllForDrawList" resultType="HashMap" >
+    select checkyear, count(1) as checknum
+    from (select distinct t.cdc_drawno,
+    substr(trim(t.cdc_checktime), 1, 4) as checkyear
+    from cis_draw_check t ) where 1=1
+    <if test='startYear!=null and startYear != ""' >
+      and checkyear &gt;= #{startYear}
+    </if>
+    <if test='endYear!=null and endYear != ""' >
+      and checkyear &lt;= #{endYear}
+    </if>
+    group by checkyear order by checkyear
+  </select>
+
+  <select id="getPersonNumForDraw" resultType="HashMap" >
+    select checkyear, count(1) as personnum
+    from (select distinct t.cdc_ycscertnum,
+    substr(trim(t.cdc_checktime), 1, 4) as checkyear
+    from cis_draw_check t ) where 1=1
+    <if test='startYear!=null and startYear != ""' >
+      and checkyear &gt;= #{startYear}
+    </if>
+    <if test='endYear!=null and endYear != ""' >
+      and checkyear &lt;= #{endYear}
+    </if>
+    group by checkyear order by checkyear
+  </select>
+
+  <select id="getLengthList" resultType="HashMap" >
+    select shiplength,count(1) as lengthnum from
+    (select case when t.cs_shiplength &lt; 12 then 'l&lt;12米'
+    when t.cs_shiplength &gt;= 12 and t.cs_shiplength &lt; 24 then '12米≤l&lt;24米'
+    when t.cs_shiplength &gt;= 24 and t.cs_shiplength &lt; 45 then '24米≤l&lt;45米'
+    else 'l≥45米' end as shiplength
+    from cis_shipinfo t inner join cis_ship_check t1 on t.cs_shipcode = t1.csc_ycbm
+    INNER JOIN cis_shipcheck_surveyor t3 on t3.CYS_SHEET_KEY=t1.CSC_UID
+    where t3.CYS_USER_ID = #{surid}
+    <if test='startYear!=null and startYear != ""' >
+      and substr(trim(t1.csc_checktime),1,4) &gt;= #{startYear}
+    </if>
+    <if test='endYear!=null and endYear != ""' >
+      and substr(trim(t1.csc_checktime),1,4) &lt;= #{endYear}
+    </if>
+    )
+    group by shiplength
+  </select>
+
+  <select id="getmaterialList" resultType="HashMap" >
+    select shipmaterial as "${@com.limp.framework.core.constant.Constant@CODE_TRANS_PRE}shipmaterial", count(1) as materialnum from (select case when
+    t.cs_shipmaterial = '13_1' or t.cs_shipmaterial = '13_2' or
+    t.cs_shipmaterial = '13_3' then t.cs_shipmaterial
+    else '其他' end as shipmaterial  from cis_shipinfo t
+    inner join cis_ship_check t1 on t.cs_shipcode = t1.csc_ycbm
+    INNER JOIN cis_shipcheck_surveyor t3 on t3.CYS_SHEET_KEY=t1.CSC_UID
+    where t3.CYS_USER_ID = #{surid}
+    <if test='startYear!=null and startYear != ""' >
+      and substr(trim(t1.csc_checktime),1,4) &gt;= #{startYear}
+    </if>
+    <if test='endYear!=null and endYear != ""' >
+      and substr(trim(t1.csc_checktime),1,4) &lt;= #{endYear}
+    </if>
+    )
+    group by shipmaterial
+  </select>
+
+  <select id="getJobAreaList" resultType="HashMap" >
+    select NVL(t.cs_jobarea, '24_1') as "${@com.limp.framework.core.constant.Constant@CODE_TRANS_PRE}jobarea", count(1) as jobareanum from cis_shipinfo t
+    inner join cis_ship_check t1 on t.cs_shipcode = t1.csc_ycbm
+    INNER JOIN cis_shipcheck_surveyor t3 on t3.CYS_SHEET_KEY=t1.CSC_UID
+    where t3.CYS_USER_ID = #{surid}
+    <if test='startYear!=null and startYear != ""' >
+      and substr(trim(t1.csc_checktime),1,4) &gt;= #{startYear}
+    </if>
+    <if test='endYear!=null and endYear != ""' >
+      and substr(trim(t1.csc_checktime),1,4) &lt;= #{endYear}
+    </if>
+    group by t.cs_jobarea
+  </select>
+
+  <select id="countShipCheck" resultType="java.lang.Integer" >
+    select count(*) from (
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    t1.CSC_UID,t1.CSC_YCBM
+    from cis_ship_check t1
+    INNER JOIN cis_shipcheck_surveyor t3 on t3.CYS_SHEET_KEY=t1.CSC_UID
+    where t3.CYS_USER_ID = #{surid}
+    <if test='startYear!=null and startYear != ""' >
+      and substr(trim(t1.csc_checktime),1,4) &gt;= #{startYear}
+    </if>
+    <if test='endYear!=null and endYear != ""' >
+      and substr(trim(t1.csc_checktime),1,4) &lt;= #{endYear}
+    </if>
+    )
+  </select>
+  <select id="getShipChecknum" resultType="int">
+      select  count(1) from cis_shipcheck_surveyor where  CYS_USER_ID=#{uid}
+  </select>
+
+  <select id="countCheckYear" resultType="java.lang.String" >
+    select * from (
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    substr(trim(t1.csc_checktime),1,4) checkyear
+    from cis_ship_check t1
+    where t1.csc_uid = #{surid} )
+    order by checkyear desc
+  </select>
+  <select id="countByLength" parameterType="List" resultType="java.util.HashMap">
+    SELECT
+    CASE WHEN to_number(CS_SHIPLENGTH) &lt; 12 THEN 'L&lt;12米'
+    WHEN 12&lt;=to_number(CS_SHIPLENGTH) AND to_number(CS_SHIPLENGTH) &lt; 24 THEN '12米≤L&lt;24米'
+    WHEN 24&lt;=to_number(CS_SHIPLENGTH) AND to_number(CS_SHIPLENGTH) &lt; 45 THEN '24米≤L&lt;45米'
+    WHEN 45&lt;=to_number(CS_SHIPLENGTH) THEN '45米≤L'
+    ELSE NULL END "name",
+    count(*) "value"
+    FROM    CIS_SHIPINFO
+    WHERE cs_shipcode IN
+    <foreach collection="list" index="index" item="cs_id" open="(" separator="," close=")">
+      #{cs_id}
+    </foreach>
+    GROUP BY
+    CASE WHEN to_number(CS_SHIPLENGTH) &lt; 12 THEN 'L&lt;12米'
+    WHEN 12&lt;=to_number(CS_SHIPLENGTH) AND to_number(CS_SHIPLENGTH) &lt; 24 THEN '12米≤L&lt;24米'
+    WHEN 24&lt;=to_number(CS_SHIPLENGTH) AND to_number(CS_SHIPLENGTH) &lt; 45 THEN '24米≤L&lt;45米'
+    WHEN 45&lt;=to_number(CS_SHIPLENGTH) THEN '45米≤L'
+    ELSE NULL END
+  </select>
+
+  <select id="countByMeterial" parameterType="List" resultType="java.util.HashMap">
+    select cs_shipmaterial "name",count(*) "value" from CIS_SHIPINFO
+    WHERE cs_shipcode IN
+    <foreach collection="list" index="index" item="cs_shipcode" open="(" separator="," close=")">
+      #{cs_shipcode}
+    </foreach>
+    GROUP BY cs_shipmaterial
+  </select>
+
+  <select id="countByWorkarea" parameterType="List" resultType="java.util.HashMap">
+    select CS_JOBAREA "name",count(*) "value" from CIS_SHIPINFO info
+    WHERE info.cs_shipcode IN
+    <foreach collection="list" index="index" item="cs_shipcode" open="(" separator="," close=")">
+      #{cs_shipcode}
+    </foreach>
+    GROUP BY CS_JOBAREA
+  </select>
+
+  <select id="getFirstPassGroupRate" resultType="java.util.HashMap">
+    select t1.year year ,CASE WHEN t2.allNum !=0 THEN round((t1.firstPassNum/t2.allNum)*100,2) ELSE 0 END firtpassrate from
+    (
+    select substr(tsrc.year,0,4) year,count(*) firstPassNum  from CIS_SHIPINFO cs  INNER JOIN THEM_SHIP_REPAIR_CHECK tsrc ON cs.CS_SHIPCODE=tsrc.SHIPNUM
+    WHERE  checknum=1 AND to_number(substr(tsrc.year,0,4)) BETWEEN to_number(#{beginYear}) AND to_number(#{endYear})
+    <if test="shipIds != null">
+      AND cs.cs_shipcode IN
+      <foreach collection="shipIds" index="index" item="cs_shipcode" open="(" separator="," close=")">
+        #{cs_shipcode}
+      </foreach>
+    </if>
+    GROUP BY substr(tsrc.year,0,4)
+    ) t1 ,
+    (
+    select substr(tsrc1.year,0,4) year ,count(*) allNum  from CIS_SHIPINFO cs1 INNER JOIN THEM_SHIP_REPAIR_CHECK tsrc1 ON cs1.CS_SHIPCODE=tsrc1.SHIPNUM
+    WHERE to_number(substr(tsrc1.year,0,4)) BETWEEN to_number(#{beginYear}) AND to_number(#{endYear})
+    <if test="shipIds != null">
+      AND cs1.cs_shipcode IN
+      <foreach collection="shipIds" index="index" item="cs_shipcode" open="(" separator="," close=")">
+        #{cs_shipcode}
+      </foreach>
+    </if>
+    GROUP BY substr(tsrc1.year,0,4)
+    )  t2
+    where t1.year =t2.year
+    ORDER BY t1.year ASC
+  </select>
+
+  <select id="getFirstPassRate" resultType="java.util.HashMap">
+    select case when t2.allNum != 0 THEN round((t1.firstPassNum/t2.allNum)*100,2) else 0 END "firstPassRate" from
+    (
+    select count(*) firstPassNum  from CIS_SHIPINFO cs  INNER JOIN THEM_SHIP_REPAIR_CHECK tsrc ON cs.CS_SHIPCODE=tsrc.SHIPNUM
+    WHERE  checknum=1
+    <if test="shipIds != null">
+      AND cs.cs_shipcode IN
+      <foreach collection="shipIds" index="index" item="cs_shipcode" open="(" separator="," close=")">
+        #{cs_shipcode}
+      </foreach>
+    </if>
+    ) t1 ,
+    (
+    select count(*) allNum  from CIS_SHIPINFO cs1 INNER JOIN THEM_SHIP_REPAIR_CHECK tsrc1 ON cs1.CS_SHIPCODE=tsrc1.SHIPNUM
+    WHERE
+    <if test="shipIds != null">
+      cs1.cs_shipcode IN
+      <foreach collection="shipIds" index="index" item="cs_shipcode" open="(" separator="," close=")">
+        #{cs_shipcode}
+      </foreach>
+    </if>
+    )  t2
+  </select>
+
+  <select id="getShipIdsByBulEntId" resultType="String">
+    select cs_shipcode FROM  CIS_SHIPINFO WHERE CS_ENTBULID=#{pid}
+  </select>
+
+  <sql id="caseWhen1">
+    CASE WHEN to_number(csi.CS_SHIPLENGTH) &lt; 12 THEN 'L&lt;12米'
+    WHEN 12&lt;=to_number(csi.CS_SHIPLENGTH) AND to_number(csi.CS_SHIPLENGTH) &lt; 24 THEN '12米≤L&lt;24米'
+    WHEN 24&lt;=to_number(csi.CS_SHIPLENGTH) AND to_number(csi.CS_SHIPLENGTH) &lt; 45 THEN '24米≤L&lt;45米'
+    WHEN 45&lt;=to_number(csi.CS_SHIPLENGTH) THEN '45米≤L'
+    ELSE NULL END "length"
+  </sql>
+  <sql id="caseWhen2">
+    CASE WHEN to_number(csi.CS_SHIPLENGTH) &lt; 12 THEN 'L&lt;12米'
+    WHEN 12&lt;=to_number(csi.CS_SHIPLENGTH) AND to_number(csi.CS_SHIPLENGTH) &lt; 24 THEN '12米≤L&lt;24米'
+    WHEN 24&lt;=to_number(csi.CS_SHIPLENGTH) AND to_number(csi.CS_SHIPLENGTH) &lt; 45 THEN '24米≤L&lt;45米'
+    WHEN 45&lt;=to_number(csi.CS_SHIPLENGTH) THEN '45米≤L'
+    ELSE NULL END
+  </sql>
+
+  <select id="countTimesGroupYear" resultType="HashMap">
+    SELECT COUNT (*) "times",substr(CS_COMPLETDATE,0,4) "year",
+    <include refid="caseWhen1"/>
+    FROM  CIS_SHIPINFO csi
+    WHERE CS_ENTBULID=#{pid}
+    <!--AND to_number(#{beginYear}) &lt; to_number(substr(CS_COMPLETDATE,0,4)) AND to_number(substr(CS_COMPLETDATE,0,4)) &lt;= to_number(#{endYear})-->
+    GROUP BY substr(CS_COMPLETDATE,0,4),<include refid="caseWhen2"/>
+  </select>
+
+  <select id="countRatesGroupYear" resultType="HashMap">
+    select t2.year "year",CASE  WHEN  t2.nums!=0 THEN round((t2.nums-t1.nums)/t2.nums,2) ELSE 0 END "rate" FROM
+    (select substr(CS_COMPLETDATE,0,4) year, count(distinct CSC_YCBM) nums from cis_ship_check csc
+    inner JOIN CIS_SHIPINFO csi ON csc.CSC_YCBM=csi.CS_SHIPCODE
+    where csc.CSC_CHECKPASS =2 AND substr(csc.CSC_CHECKTIME,0,4)=to_number(to_char(sysdate,'yyyy'))-1
+    AND #{beginLength} &lt;= to_number(csi.cs_shiplength) AND  to_number(csi.cs_shiplength) &lt;#{endLength} AND CS_ENTBULID = #{pid}
+    GROUP BY substr(CS_COMPLETDATE,0,4)) t1
+    right JOIN
+    (select substr(CS_COMPLETDATE,0,4) year, count(distinct CSC_YCBM) nums from cis_ship_check csc
+    inner JOIN CIS_SHIPINFO csi on csc.CSC_YCBM=csi.CS_SHIPCODE
+    where substr(csc.CSC_CHECKTIME,0,4)=to_number(to_char(sysdate,'yyyy'))-1
+    AND #{beginLength} &lt;= to_number(csi.cs_shiplength) AND  to_number(csi.cs_shiplength) &lt;#{endLength} AND CS_ENTBULID = #{pid}
+    GROUP BY substr(CS_COMPLETDATE,0,4)) t2
+    ON t1.YEAR = t2.YEAR
+    ORDER BY t2.YEAR ASC
+  </select>
+
+  <select id="getShipinfo" resultType="ShipShow">
+    select
+    CS_ID as id,
+    CS_SHIPNAME as shipname,
+    CS_SHIPCODE as shipcode,
+    CS_OWNERNAME as ownername,
+    CS_SHIPPORT as shipport,
+    CS_SHIPMATERIAL as shipmaterial,
+    CS_SHIPLENGTH as shiplength,
+    substr(CS_COMPLETDATE,1,10) as completdate,
+    CS_NAVZONE as navzone,
+    CS_POWER as power,
+    CS_JOBAREA as jobArea
+    from cis_shipinfo where cs_shipcode = #{shipcode} and rownum=1
+  </select>
+
+  <select id="getProChcByCt" resultType="ProductShow">
+        select t.CPC_UID as checkUid,
+    t.CPC_SURID as surId,
+    t.CPC_ENTID as entId,
+    t.CPC_SHIPCODE as shipCode,
+    t.CPC_SHIPCHECK_TYPE as shipCheckType,
+    t.CPC_SHIPNAME as shipName,
+    t.CPC_CHECKTIME as checkTime,
+    t.CPC_PRODUCTTYPE as productType,
+    t.CPC_PRODUCTNUM as productNum,
+    t.CPC_RC1 as productName,
+    t.CPC_PRODUTMODEL as produtModel,
+    t.CPC_PRODUCTCERT as productCert,
+    t.CPC_CHECKTYPE as checkType
+     from CIS_PRODUCTS_CHECK t
+        where 1=1 and t.CPC_SHIPCODE=#{shipcode} and rownum=1 order by t.CPC_CHECKTIME desc
+  </select>
+
+  <select id="getProductsGroupPt" resultType="HashMap">
+    select t.CPC_PRODUCTTYPE as PTYPE,t.CPC_PRODUCTTYPE as "${@com.limp.framework.core.constant.Constant@CODE_TRANS_PRE}PNAME",count(*) num
+    from CIS_PRODUCTS_CHECK t where t.CPC_SHIPCODE=#{shipcode} and t.CPC_SHIPCHECK_TYPE=#{shipCheckType}
+    and t.CPC_CHECKTIME=#{checkTime} group by t.CPC_PRODUCTTYPE
+  </select>
+
+  <select id="getProductsByScpt" resultType="ProductShow">
+        select t.CPC_UID as checkUid,
+        t.CPC_ID as Id,
+        t.CPC_ENTID as entId,
+        (select t1.CE_ENTNAME from CIS_ENTINFO t1 where t1.CE_PID = t.CPC_ENTID and rownum=1) as entName,
+        t.CPC_RESPPERSON as resppersonId,
+        (select t2.CS_YCSNAME from CIS_SURVEYOR t2 where t2.CS_YCSCERTNUM = t.CPC_RESPPERSON and rownum=1) as resppersonName,
+        t.CPC_SHIPCODE as shipCode,
+        t.CPC_SHIPCHECK_TYPE as shipCheckType,
+        t.CPC_SHIPNAME as shipName,
+        t.CPC_CHECKTIME as checkTime,
+        t.CPC_PRODUCTTYPE as productType,
+        t.CPC_PRODUCTNUM as productNum,
+        t.CPC_RC1 as productName,
+        t.CPC_PRODUTMODEL as produtModel,
+        t.CPC_PRODUCTCERT as productCert,
+        t.CPC_CHECKTYPE as checkType
+        from CIS_PRODUCTS_CHECK t where t.CPC_SHIPCODE=#{shipcode}
+        and t.CPC_SHIPCHECK_TYPE=#{shipCheckType} and t.CPC_CHECKTIME=#{checkTime}
+        <if test="productType != null and productType != ''">
+          and t.CPC_PRODUCTTYPE=#{productType}
+        </if>
+        <if test="productType == null or productType == ''">
+          and (t.CPC_PRODUCTTYPE is null or t.CPC_PRODUCTTYPE='')
+        </if>
+  </select>
+
+  <select id="getProductsList" resultType="ProductShow">
+    select t.CPC_UID as checkUid,
+    t.CPC_SURID as surId,
+    (select tt1.CS_YCSNAME from CIS_SURVEYOR tt1 where tt1.CS_UID = t.CPC_SURID and rownum=1) as surName,
+    t.CPC_ENTID as entId,
+    (select tt2.CE_ENTNAME from CIS_ENTINFO tt2 where tt2.CE_PID = t.CPC_ENTID and rownum=1) as entName,
+    t.CPC_SHIPCODE as shipCode,
+    t.CPC_SHIPNAME as shipName,
+    substr(t.CPC_CHECKTIME,1,10) as checkTime,
+    t.CPC_PRODUCTTYPE as productType,
+    t.CPC_PRODUCTNUM as productNum,
+    t.CPC_RC1 as productName,
+    t.CPC_PRODUTMODEL as produtModel,
+    t.CPC_PRODUCTCERT as productCert,
+    decode(t.CPC_CHECKTYPE,2,'营运检验',3,'渔船安全技术状况监督抽查',6,'初次检验',7,'临时检验','') as checkType,
+    (select CP_CPFLYJFL from cis_productinfo where  CP_UID=t.CPC_UID) as productType1,
+    (select CP_CPFLEJFL from cis_productinfo where  CP_UID=t.CPC_UID) as productType2,
+    (select CP_CPFLSJFL from cis_productinfo where  CP_UID=t.CPC_UID) as productType3
+    from CIS_PRODUCTS_CHECK t where t.CPC_SHIPCODE = #{shipcode} and t.CPC_CHECKPASS = '1' and t.CPC_CHECKTYPE = (
+    select distinct CPC_CHECKTYPE from (
+    select t1.CPC_CHECKTYPE from CIS_PRODUCTS_CHECK t1 where t1.CPC_SHIPCODE = #{shipcode} and t1.CPC_CHECKTYPE in ('2','3','6','7') and t1.CPC_CHECKPASS = '1' order by t1.CPC_CHECKTIME desc)
+    where rownum = 1
+    ) and substr(t.CPC_CHECKTIME,1,4) = (
+    select distinct checktime from (
+    select substr(t2.CPC_CHECKTIME,1,4) as checktime from CIS_PRODUCTS_CHECK t2 where t2.CPC_SHIPCODE = #{shipcode} and t2.CPC_CHECKTYPE in ('2','3','6','7') and t2.CPC_CHECKPASS = '1' order by t2.CPC_CHECKTIME desc)
+    where rownum = 1
+    )
+  </select>
+
+  <select id="getShipTraceList" resultType="ShipTrace">
+    select t.traceType,
+    t.serialNumber,
+    t.ownerName,
+    t.power,
+    t.jobPlace,
+    t.shipCode,
+    t.shipName,
+    t.auditTime,
+    t.shipPort,
+    t.drawno,
+    t.entUnit,
+    t.unitOrg,
+    t.thirdEnt,
+    t.surveyor,
+    t.situation,
+    t.money,
+    t.validityStart,
+    t.validityEnd,
+    t.kindType,
+    t.jobMode,
+    t.insCount,
+    t.question,
+    t.oriShipCode,
+    t.oriShipName,
+    t.oriOwnerName,
+    t.xdname,
+    t.refid,
+    t.entUnitId,
+    t.unitOrgId,
+    t.thirdEntId
+    <!--,t.surId-->
+    from VIEW_SHIP_TRACE t where t.SHIPCODE = #{shipcode}
+    <if test="traceArr != null">
+      and t.traceType in
+      <foreach item="item" index="index" collection="traceArr" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+    order by t.auditTime
+  </select>
+
+  <select id="getProductTraceList" resultType="ProductTrace">
+    select t.uuid,
+    t.traceType,
+    t.serialNumber,
+    t.startTime,
+    t.endTime,
+    t.insTime,
+    substr(t.insTime,0,4) as "auditYear",
+    t.productNumber,
+    t.productName,
+    t.shipCode,
+    t.shipName,
+    t.entName,
+    t.entId,
+    t.entAddr,
+    t.personName,
+    t.personId,
+    t.kindType,
+    t.result,
+    t.orgName,
+    t.orgId,
+    t.exProductNumber,
+    t.exProductName,
+    t.exShipCode,
+    t.exShipName,
+    t.productFrom
+    from view_product_trace t where t.productNumber = #{checkUid} order by t.insTime
+  </select>
+
+  <select id="getCplbList" resultType="java.util.HashMap">
+    select t.dictdata_name as name,t.dictdata_value as value,dict_cate as cate,dict_pvalue as pvalue from dic_code t where t.DICT_CATE in('CP9','CP10','CP11') order by t.dictdata_value
+  </select>
+
+  <select id="getProductShow" resultType="ProductShow">
+    select
+    t.cp_uid as productNum,
+    t.cp_name as productName,
+    t.cp_entname as entName,
+    t.cp_entid as entId,
+    t.cp_certnum as productCert,
+    t.cp_cate as productType
+    FROM cis_productinfo t
+    where t.cp_uid = #{checkUid}
+  </select>
+
+  <sql id="totalSql">
+    from them_ship_jbxx tt where
+    tt.jynf &gt;=#{bYear}
+    and  tt.jynf &lt;=#{eYear}
+    <if test="likeStr != null">
+      AND tt.ssjg like #{likeStr}
+    </if>
+    group by  tt.jynf
+    order by tt.jynf asc
+  </sql>
+  <!--渔船统计-->
+  <sql id="totalSql0">
+    from them_ship_jbxx tt where
+    substr(tt.jzsj,0,4)  &gt;=#{bYear}
+    and   substr(tt.jzsj,0,4)  &lt;=#{eYear}
+    <if test="likeStr != null">
+      AND tt.ssjg like #{likeStr}
+    </if>
+    group by   substr(tt.jzsj,0,4)
+    order by  substr(tt.jzsj,0,4)
+  </sql>
+  <select id="countShipNumsGroupYear" resultType="int">
+    select  count(*)
+    <include refid="totalSql0"/>
+  </select>
+  <select id="getTotalTonnagesGroupYear" resultType="float">
+    select  sum(to_number(ycdw))
+    <include refid="totalSql0"/>
+  </select>
+  <select id="getTotalPowersGroupYear" resultType="float">
+    select  sum(to_number(ycgl))
+    <include refid="totalSql0"/>
+  </select>
+  <sql id="caseWhen3">
+    case
+    when ${curYear}-to_number(substr(CS_COMPLETDATE,0,4))&lt;10 then '1'
+    when ${curYear}-to_number(substr(CS_COMPLETDATE,0,4)) between 10  and 15 then '2'
+    when ${curYear}-to_number(substr(CS_COMPLETDATE,0,4)) between 16  and 20 then '3'
+    when ${curYear}-to_number(substr(CS_COMPLETDATE,0,4)) between 21  and 25 then '4'
+    when ${curYear}-to_number(substr(CS_COMPLETDATE,0,4)) between 26  and 30 then '5'
+    else '6' end
+  </sql>
+  <select id="getShipYearsOld" resultType="Map">
+    select <include refid="caseWhen3"/> as "age",count(*) "num" from cis_shipinfo
+    <where>
+      <if test="likeStr != null">
+        AND CS_ORGID LIKE #{likeStr}
+      </if>
+      <if test="jobArea!=null">
+        AND cs_jobArea = #{jobArea}
+      </if>
+    </where>
+    group by <include refid="caseWhen3"/>
+    order by <include refid="caseWhen3"/> ASC
+  </select>
+  <sql id="caseWhen4">
+    case when to_number(CS_SHIPLENGTH) &lt;12 then 'L&lt;12米'
+    when to_number(CS_SHIPLENGTH)&gt;=12 AND to_number(CS_SHIPLENGTH)&lt;24 then '12米≤L&lt;24米'
+    else 'L≥24米' end
+  </sql>
+  <select id="getShipNumsGroupLenAre" resultType="HashMap">
+    select cs_jobarea "${@com.limp.framework.core.constant.Constant@CODE_TRANS_PRE}jobArea",<include refid="caseWhen4"/> "length",
+    count(*) "nums" from cis_shipinfo
+    <where>
+      <if test="likeStr != null">
+        AND CS_ORGID LIKE #{likeStr}
+      </if>
+      <if test="year != null">
+        AND substr(CS_COMPLETDATE,0,4) &lt;=#{year}
+      </if>
+    </where>
+    group by cs_jobarea,<include refid="caseWhen4"/>
+  </select>
+  <select id="getExampleShipPics" resultType="HashMap">
+    select t.cim_path picPath,t1.CS_SHIPNAME shipname,t1.CS_shiplength shiplength from CIS_IMG_MANAGER t
+    left join cis_shipinfo t1 on t.cim_refid2=t1.cs_shipcode
+    <where>
+      <if test="pid != null">
+        and t.cim_refid =#{pid}
+      </if>
+      <if test="typeNum != null">
+        and t.cim_typeNum = #{typeNum}
+      </if>
+    </where>
+  </select>
+
+  <select id="getShipDetail" resultType="Ship">
+    select
+    t.CS_ORGID as orgid,
+    (select t1.CO_ORGNAME from cis_organinfo t1 where t1.co_uid = t.CS_ORGID) as orgname,
+    t.CS_LINK_VERIFYENR_NO as linkVerifyenrNo,
+    t.CS_SHIPNAME as shipname,
+    t.CS_SHIPCODE as shipcode,
+    t.CS_SHIPTYPE as shiptype,
+    t.CS_CERTIFICATESTATE_STATE as certificatestate,
+    t.CS_REGAREA as regarea,
+    t.CS_SHIPPORT as shipport,
+    t.CS_OWNERNAME as ownername,
+    t.CS_OWNERNO as ownerno,
+    t.CS_OWNERADDR as owneraddr,
+    t.CS_OWNERTEL as ownertel,
+    t.CS_SHIPINSAPP as shipinsapp,
+    t.CS_JOBTYPE as jobtype,
+    t.CS_WORKPLACE as workplace,
+    t.CS_POWER as power,
+    t.CS_SHIP_CATEGORY as shipCategory,
+    t.CS_NAVZONE as navzone,
+    t.CS_SHIPMATERIAL as shipmaterial,
+    t.CS_CALLSIGN as callsign,
+    t.CS_COMPLETDATE as completdate,
+    t.CS_HOSTMODEL1 as hostmodel1,
+    t.CS_HOSTMODEL2 as hostmodel2,
+    t.CS_HOSTMODEL3 as hostmodel3,
+    t.CS_ENTNAMEBUL as entnamebul,
+    t.CS_SHIPLENGTH as shiplength,
+    t.CS_MODELWIDTH as modelwidth,
+    t.CS_MODELDEPTH as modeldepth,
+    t.CS_COVSHIPLENGTH as covshiplength,
+    t.CS_TONNAGE as tonnage,
+    t.CS_NETTONNAGE as nettonnage,
+    t.CS_SHIPNAMEPLAN as shipnameplan,
+    t.CS_DESSPEED as desspeed,
+    t.CS_CREWQUOTA as crewquota
+    from cis_shipinfo t
+    where t.CS_SHIPCODE = #{shipcode}
+  </select>
+   <!--脱检渔船旧算法-->
+    <!--<select id="getInspectList" resultType="java.util.HashMap">
+        <include refid="OracleDialectPrefix" />
+        select w.cs_shipname,
+        case
+        when w.CS_JOBAREA = '24_1' then
+        '国内海洋渔船	'
+        when w.CS_JOBAREA = '24_2' then
+        '远洋渔船'
+        when w.CS_JOBAREA = '24_3' then
+        '河内'
+        end as ycjy,
+        w.CS_SHIPLENGTH,
+        w.CS_POWER,
+        w.CS_SHIPPORT,
+        w.CS_OWNERNAME,
+        w.CS_OWNERTEL,
+        w.CS_REGCERTDATE,
+        to_char(m3.nextCheckTime,'yyyy-mm-dd') as nextCheckTime
+        from CIS_SHIPINFO w
+        inner join (select ycbm, nextCheckTime
+        from (select t1.csc_ycbm ycbm,
+        max(to_date(t1.csc_checktime, 'YYYY-MM-DD')) nextCheckTime
+        from cis_ship_check t1
+        where CSC_XDNAME is not null
+        group by csc_ycbm) t2
+        where nextCheckTime &lt; to_date('2016-12-17', 'YYYY-MM-DD')) m3 on w.CS_SHIPCODE =
+        m3.ycbm
+        <include refid="OracleDialectSuffix" />
+    </select>
+
+    <select id="getInspectListCount" resultType="Integer">
+        select COUNT (*)
+        from CIS_SHIPINFO w
+        inner join (select ycbm, nextCheckTime
+        from (select t1.csc_ycbm ycbm,
+        max(to_date(t1.csc_checktime, 'YYYY-MM-DD')) nextCheckTime
+        from cis_ship_check t1
+        where CSC_XDNAME is not null
+        group by csc_ycbm) t2
+        where nextCheckTime &lt; to_date('2016-12-17', 'YYYY-MM-DD')) m3 on w.CS_SHIPCODE =
+        m3.ycbm
+        where w.CS_SHIPCODE in
+        (select ycbm
+        from (select t1.csc_ycbm ycbm,
+        max(to_date(t1.csc_checktime, 'YYYY-MM-DD')) nextCheckTime
+        from cis_ship_check t1
+        where CSC_XDNAME is not null
+        group by csc_ycbm) t2
+        where nextCheckTime &lt; to_date('2016-12-17', 'YYYY-MM-DD'))
+    </select>
+
+    -->
+    <!--脱检渔船新算法-->
+    <select id="getInspectListCount" resultType="Integer">
+        SELECT count(*) FROM (SELECT CS_SHIPCODE,cs_shipname,
+       ycjy,
+       CS_SHIPLENGTH,
+       CS_POWER,
+       CS_SHIPPORT,
+       CS_OWNERNAME,
+       CS_OWNERTEL,
+       CS_REGCERTDATE,
+       MAX(NEXTCHECKTIME) as nextCheckTime
+  FROM (SELECT W.CS_SHIPCODE,W.CS_SHIPNAME,
+               CASE
+                 WHEN W.CS_JOBAREA = '24_1' THEN
+                  '国内海洋渔船  '
+                 WHEN W.CS_JOBAREA = '24_2' THEN
+                  '远洋渔船'
+                 WHEN W.CS_JOBAREA = '24_3' THEN
+                  '河内'
+               END AS YCJY,
+               W.CS_SHIPLENGTH,
+               W.CS_POWER,
+               W.CS_SHIPPORT,
+               W.CS_OWNERNAME,
+               W.CS_OWNERTEL,
+               W.CS_REGCERTDATE,
+               TO_CHAR(M3.NEXTCHECKTIME, 'yyyy-mm-dd') AS NEXTCHECKTIME
+          FROM CIS_SHIPINFO W
+         INNER JOIN (SELECT YCBM, NEXTCHECKTIME
+                      FROM (SELECT T1.CSC_YCBM YCBM,
+                                   MAX(TO_DATE(T1.CSC_CHECKTIME, 'YYYY-MM-DD')) NEXTCHECKTIME
+                              FROM CIS_SHIP_CHECK T1
+                             WHERE CSC_XDNAME IS NOT NULL
+                               AND (T1.CSC_CHECKTYPE = '1_2' OR
+                                   T1.CSC_CHECKTYPE = '1_4')
+                               AND (T1.CSC_IFSTOPAPPLY = '0' OR
+                                   T1.CSC_IFSTOPAPPLY IS NULL)
+                             GROUP BY CSC_YCBM) T2
+                     WHERE (SYSDATE - NEXTCHECKTIME) &gt; 90) M3 ON W.CS_SHIPCODE =
+                                                                 M3.YCBM
+        UNION
+        SELECT W.CS_SHIPCODE,W.CS_SHIPNAME,
+               CASE
+                 WHEN W.CS_JOBAREA = '24_1' THEN
+                  '国内海洋渔船  '
+                 WHEN W.CS_JOBAREA = '24_2' THEN
+                  '远洋渔船'
+                 WHEN W.CS_JOBAREA = '24_3' THEN
+                  '河内'
+               END AS YCJY,
+               W.CS_SHIPLENGTH,
+               W.CS_POWER,
+               W.CS_SHIPPORT,
+               W.CS_OWNERNAME,
+               W.CS_OWNERTEL,
+               W.CS_REGCERTDATE,
+               TO_CHAR(M3.NEXTCHECKTIME, 'yyyy-mm-dd') AS NEXTCHECKTIME
+          FROM CIS_SHIPINFO W
+         INNER JOIN (SELECT YCBM, NEXTCHECKTIME
+                       FROM (SELECT T1.CSC_YCBM YCBM,
+                                    MAX(TO_DATE(T1.CSC_CHECKTIME, 'YYYY-MM-DD')) NEXTCHECKTIME
+                               FROM CIS_SHIP_CHECK T1
+                              WHERE CSC_XDNAME IS NOT NULL
+                                AND T1.CSC_CHECKTYPE = '1_3'
+                                AND (T1.CSC_IFSTOPAPPLY = '0' OR
+                                    T1.CSC_IFSTOPAPPLY IS NULL)
+                              GROUP BY CSC_YCBM) T2
+                      WHERE SYSDATE &gt; NEXTCHECKTIME) M3 ON W.CS_SHIPCODE =
+                                                           M3.YCBM
+       ) TT1
+ GROUP BY CS_SHIPNAME,
+          YCJY,
+          CS_SHIPLENGTH,
+          CS_POWER,
+          CS_SHIPPORT,
+          CS_OWNERNAME,
+          CS_OWNERTEL,
+          CS_REGCERTDATE,CS_SHIPCODE)tt2
+    </select>
+
+    <select id="getInspectList" resultType="java.util.HashMap">
+        <include refid="OracleDialectPrefix" />
+        SELECT CS_SHIPCODE,cs_shipname,
+        ycjy,
+        CS_SHIPLENGTH,
+        CS_POWER,
+        CS_SHIPPORT,
+        CS_OWNERNAME,
+        CS_OWNERTEL,
+        CS_REGCERTDATE,
+        MAX(NEXTCHECKTIME) as nextCheckTime
+        FROM (SELECT W.CS_SHIPCODE,W.CS_SHIPNAME,
+        CASE
+        WHEN W.CS_JOBAREA = '24_1' THEN
+        '国内海洋渔船  '
+        WHEN W.CS_JOBAREA = '24_2' THEN
+        '远洋渔船'
+        WHEN W.CS_JOBAREA = '24_3' THEN
+        '河内'
+        END AS YCJY,
+        W.CS_SHIPLENGTH,
+        W.CS_POWER,
+        W.CS_SHIPPORT,
+        W.CS_OWNERNAME,
+        W.CS_OWNERTEL,
+        W.CS_REGCERTDATE,
+        TO_CHAR(M3.NEXTCHECKTIME, 'yyyy-mm-dd') AS NEXTCHECKTIME
+        FROM CIS_SHIPINFO W
+        INNER JOIN (SELECT YCBM, NEXTCHECKTIME
+        FROM (SELECT T1.CSC_YCBM YCBM,
+        MAX(TO_DATE(T1.CSC_CHECKTIME, 'YYYY-MM-DD')) NEXTCHECKTIME
+        FROM CIS_SHIP_CHECK T1
+        WHERE CSC_XDNAME IS NOT NULL
+        AND (T1.CSC_CHECKTYPE = '1_2' OR
+        T1.CSC_CHECKTYPE = '1_4')
+        AND (T1.CSC_IFSTOPAPPLY = '0' OR
+        T1.CSC_IFSTOPAPPLY IS NULL)
+        GROUP BY CSC_YCBM) T2
+        WHERE (SYSDATE - NEXTCHECKTIME) &gt; 90) M3 ON W.CS_SHIPCODE =
+        M3.YCBM
+        UNION
+        SELECT W.CS_SHIPCODE,W.CS_SHIPNAME,
+        CASE
+        WHEN W.CS_JOBAREA = '24_1' THEN
+        '国内海洋渔船  '
+        WHEN W.CS_JOBAREA = '24_2' THEN
+        '远洋渔船'
+        WHEN W.CS_JOBAREA = '24_3' THEN
+        '河内'
+        END AS YCJY,
+        W.CS_SHIPLENGTH,
+        W.CS_POWER,
+        W.CS_SHIPPORT,
+        W.CS_OWNERNAME,
+        W.CS_OWNERTEL,
+        W.CS_REGCERTDATE,
+        TO_CHAR(M3.NEXTCHECKTIME, 'yyyy-mm-dd') AS NEXTCHECKTIME
+        FROM CIS_SHIPINFO W
+        INNER JOIN (SELECT YCBM, NEXTCHECKTIME
+        FROM (SELECT T1.CSC_YCBM YCBM,
+        MAX(TO_DATE(T1.CSC_CHECKTIME, 'YYYY-MM-DD')) NEXTCHECKTIME
+        FROM CIS_SHIP_CHECK T1
+        WHERE CSC_XDNAME IS NOT NULL
+        AND T1.CSC_CHECKTYPE = '1_3'
+        AND (T1.CSC_IFSTOPAPPLY = '0' OR
+        T1.CSC_IFSTOPAPPLY IS NULL)
+        GROUP BY CSC_YCBM) T2
+        WHERE SYSDATE &gt; NEXTCHECKTIME) M3 ON W.CS_SHIPCODE =
+        M3.YCBM
+        ) TT1
+        GROUP CS_SHIPCODE,BY CS_SHIPNAME,
+        YCJY,
+        CS_SHIPLENGTH,
+        CS_POWER,
+        CS_SHIPPORT,
+        CS_OWNERNAME,
+        CS_OWNERTEL,
+        CS_REGCERTDATE
+        <include refid="OracleDialectSuffix" />
+    </select>
+
+
+    <select id="getProductinfo" resultType="java.util.HashMap">
+        select t.CP_NAME     as CP_NAME,
+        t.CP_CPBH            as CP_CPBH,
+        t.CP_CERTNUM         as CP_CERTNUM,
+        m.CE_CREDITCODE      as CE_CREDITCODE,
+        t.CP_CPXH            as CP_CPXH,
+        m.CE_ENTNAME         as CE_ENTNAME,
+        m.CE_ADDRESS         as CE_ADDRESS,
+        t.CP_TZPZH           as CP_TZPZH,
+        m.CE_ENTNAME         as CE_ENTNAME,
+        m.CE_ADDRESS         as CE_ADDRESS,
+        m2.CEQ_ENTEMAIL      as CEQ_ENTEMAIL,
+        m2.CEQ_POSTALCODE    as CEQ_POSTALCODE,
+        m2.CEQ_TELPHONE      as CEQ_TELPHONE,
+        m2.CEQ_CONTACT       as CEQ_CONTACT,
+        m3.CPH_ENTID         as CPH_ENTID,
+        m3.CPH_CHECKTIMENEXT as CPH_CHECKTIMENEXT,
+        m3.CPH_CERTADDR      as CPH_CERTADDR,
+        m3.CPH_CERTTIME      as CPH_CERTTIME,
+        t.CP_CATE            as CP_CATE
+        from cis_productinfo t
+        left join cis_entinfo m on t.cp_entid = m.CE_PID
+        left join cis_entiforext_qyfl1 m2 on m.CE_PID = m2.CEQ_PID
+        left join CIS_CERTPRO_HISTORY m1 on t.CP_CERTNUM = m1.CCH_CERTID
+        left join cis_entpro_history m3 on m.ce_pid = m3.CPH_ENTID
+        where m.CE_ZT != 11 and m.CE_ENTCATE = 1  or m.ce_zt is null and t.CP_CPBH is not null and  rownum = 1  and t.CP_UID=#{checkUid}
+    </select>
+    <select id="getProductHistory" resultType="java.util.HashMap">
+        select *
+  from (select m.CCH_CHECKTIME as STARTTIME,
+               m1.CP_NAME as NAME,
+               m1.CP_TYPE as TYPE,
+               m.CCH_CERTID as CERTIFICATENUMBER,
+               m.CCH_CHECKTIMENEXT as VALIDTIMEORRESULT,
+               'a' as HISTORYTYPE,
+               m1.CP_CPBH as PRODUCTNUMBER,
+               m1.CP_UID as CP_UID
+          from CIS_CERTPRO_HISTORY m
+         inner join cis_productinfo m1 on m.CCH_CERTID = m1.CP_CERTNUM
+        union all
+        select m2.CPC_CHECKTIME as STARTTIME,
+               m4.CS_YCSNAME as NAME,
+               m4.CS_ORGANNAME as TYPE,
+               m2.CPC_PRODUCTCERT as CERTIFICATENUMBER,
+               (case
+                 when m2.CPC_CHECKPASS = 1 then
+                  '合格'
+                 when m2.CPC_CHECKPASS != 1 then
+                  '不合格'
+               end) as VALIDTIMEORRESULT,
+               'b' as HISTORYTYPE,
+               m2.CPC_PRODUCTNUM as PRODUCTNUMBER,
+               m2.CPC_PRODUCTNUM as CP_UID
+          from cis_products_check m2
+         inner join CIS_SURVEYOR m4 on m4.CS_CERTID = m2.CPC_SURID) m5
+ where m5.CP_UID = #{checkUid} and startTime is not null
+ order by startTime asc
+    </select>
+</mapper>

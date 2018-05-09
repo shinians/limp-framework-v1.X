@@ -1,0 +1,12 @@
+redirs 启动：指定配置文件，否则默认户用没有密码的默认配置文件，此时会报错
+d:
+cd D:\java\redis-2.4.5-win32-win64\64bit
+redis-server.exe redis.conf
+cmd控制台：复制文本：标记文字，然后按下enter
+
+redis相关：
+redies:https://www.cnblogs.com/wangchunniu1314/p/6339416.html
+       ：redis.conf -->1、注意blind设置 2、密码  cis 3、守护进程
+
+ 码表转化：map格式的转化
+        select educertcode as "${@com.limp.framework.core.constant.Constant@CODE_TRANS_PRE}educertcode"

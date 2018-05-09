@@ -1,0 +1,10 @@
+1、mybaties sql 日志不输出问题？
+主要问题是导入不同类型的日志输出jar包所致，解决方案如下
+ <!-- 添加该jar, 解决MyBaits 无法打印sql语句到控制台， -->
+         <dependency>
+             <groupId>org.slf4j</groupId>
+             <artifactId>slf4j-log4j12</artifactId>
+             <version>1.7.6</version>
+         </dependency>
+参考链接：http://blog.csdn.net/xlxxcc/article/details/52711051
+百度搜索关键字：slf4j-api mybaties 的sql不输出

@@ -1,0 +1,30 @@
+
+-----------------------升级日期：2017.09.07---------------------
+升级日期：2017.09.07
+版本号:1.1.0
+升级内容：功能升级
+
+升级步骤：
+
+ 新增systemsite/m10目录；
+ （注意！！！一切覆盖操作请提前做好备份，以防数据丢失）
+ 1、用样例项目中copysystemsite目录覆盖原有 webapp\systemsite 目录
+ 2、用样例项目中system目录覆盖原有 webapp\webapp\WEB-INF\content\system 目录
+ 3、用样例项目中store.propertie文件覆盖原有 resources\store.propertie文件
+ 4、配置文件覆盖更新：web.xml、springmvc.xml、cis.properties、spring-mybatis.xml
+ 5、覆盖WEB-INF/common目录
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+升级内容：
+1、chinasofti-ship 下的pom文件更新（参照项目样例配置）【已经统一在limp-framework的pom文件中定义，框架pom和app的pom明确划分，便于升级】
+2、安装jar步骤升级：limp-framework jar包（如未安装）【ojdbc-6.0.jar如未安装也需要安装】*###执行limp-framework-XXX-RELEASE.bat文件即可
+3、更新 store.properties【配置SYSTEMSITE.NAME】可支持不同站点之间的切换
+4、更新spring-mybatis.xml （阿里 druid 数据库连接池）
+5、配置web.xml(新增连接池监控配置，可对其进行监控)
+
+
+
+

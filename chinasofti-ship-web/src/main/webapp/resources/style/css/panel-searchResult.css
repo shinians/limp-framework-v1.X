@@ -1,0 +1,344 @@
+
+/*搜索结果页面 2017830 by meng*/
+i{display: inline-block;}
+.searchResult{
+    width:100%;
+    /*height: 670px;*/
+    background: #eff0f2;
+}
+.searchResAll{
+    width: 6%;
+    display: inline-block;
+    height: 20px;
+    color:#47494b;
+    padding-top: 4px;
+}
+.searchResAll input{
+    opacity: 0;
+    cursor: pointer;
+}
+.searchResKeyWords{
+    width: 50%;
+    display: inline-block;
+    font-size:16px;
+    color:#47494b;
+    height: 20px;
+    line-height: 30px;
+    cursor: pointer;
+}
+.searchWord:hover, .radioName:hover{
+    /*color:#086a9d;*/
+    /*color:#fff*/
+}
+.radioName{
+    float: left;
+    margin-left: 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.radioBox{
+    width: 18px;
+    height: 15px;
+    background: url(../images/searchIcons.png) -231px -13px no-repeat;
+    float: left;
+    margin-top: 4px;
+}
+.findResBox{
+    color:#b2b9bb;
+    font-size: 14px;
+    border-radius: 3px;
+    width: 90%;
+    height: 35px;
+    padding-left: 15px;
+    box-shadow: 5px 5px 10px rgba(224,225,223,1);
+}
+#btn_submit{
+    background-color: #39c;
+    border: 1px solid #39c;
+    width: 50px;
+    height: 35px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    background-size: 45%;
+}
+
+/*搜索内容*/
+.detailRes{
+    background-color:#fff;
+    margin-top: 25px;
+    /*height: 520px;*/
+    border-radius: 5px;
+    box-shadow: 6px 7px 10px rgba(215,218,221,0.6);
+    margin-bottom: 20px;
+}
+.detailRes .row{
+    margin: 0px ;
+}
+.detailTit{
+    height: 38px;
+    border-bottom:1px solid #eee;
+    line-height: 38px;
+}
+.matchNum{
+    width: 80%;
+    display: inline-block;
+    padding-left: 14px;
+}
+.matchDown{
+    width: 7px;
+    height: 7px;
+    background: url(../images/searchIcons.png)  -280px -16px no-repeat;
+    display: inline-block;
+    margin-right: 10px;
+}
+/*点击率和收藏*/
+.clickRate,.collect{
+    width: 9%;
+    /*display: inline-block;*/
+    display: none;
+}
+.rate{
+    width: 16px;
+    height: 16px;
+    background: url(../images/searchIcons.png) -105px -51px no-repeat;
+}
+.collectIcon{
+    width: 16px;
+    height: 16px;
+    background: url(../images/searchIcons.png) -130px -49px no-repeat;
+}
+
+.detailLis{
+    width: 100%;
+    /*height: 65px;*/
+    border-radius:5px;
+    border:1px solid #dadee0;
+    margin-bottom: 15px;
+}
+.detailLis:hover{
+    background-color: #d6e4f9;
+    cursor:pointer;
+}
+/*主属性样式*/
+.keyAttr{
+    width: 100%;
+    color: #144481;
+    font-weight: bold;
+}
+/*其他属性内容*/
+.nameTit{
+    width:70px;
+    text-align: left;
+}
+.conWidth1{
+    width: 170px;
+}
+.conWidth2{
+    width: 154px;
+}
+.conWidth3{
+    width: 80px;
+}
+.conWidth4{
+    width: 100px;
+}
+/*船检局结果*/
+.inspection,.checker,.shipShow,.productShow,.companyShow{
+    margin: 5px 13px;
+}
+.inspection li:last-child,.checker li:last-child,.shipShow li:last-child,.productShow li:last-child,.companyShow li:last-child{
+    margin-right: 0px;
+}
+.inspection li,.checker li,.shipShow li,.productShow li,.companyShow li{
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px
+}
+.inspection li span,.checker li span,.shipShow li span,.productShow li span,.companyShow li span{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+/*.inspection li input,.checker li input{*/
+    /*margin: 15px 15px 0px 0px;*/
+/*}*/
+.insSite{
+    width: 30px;
+    height: 33px;
+    background: url(../images/searchIcons.png) -7px -43px no-repeat;
+}
+.insTel{
+    width: 15px;
+    height: 15px;
+    margin-top: 10px;
+    background: url(../images/searchIcons.png) -52px -52px no-repeat;
+}
+.insProvince{
+    width: 13px;
+    height: 20px;
+    margin-top: 10px;
+    background: url(../images/searchIcons.png) -80px -50px no-repeat;
+}
+.insGrade{
+    width: 22px;
+    height: 30px;
+    background: url(../images/searchIcons.png) -169px -74px no-repeat;
+}
+.insFax{
+    width: 30px;
+    height: 33px;
+    background: url(../images/searchIcons.png) -130px -75px no-repeat;
+}
+/*机构人员结果*/
+.checkerFemale{
+    width:22px;
+    height: 27px;
+    background: url(../images/searchIcons.png) -151px -39px no-repeat;
+}
+.checkerMale{
+    background: url(../images/searchIcons.png) -238px -36px no-repeat;
+}
+.checkerLevel{
+    width: 22px;
+    height: 26px;
+    background: url(../images/searchIcons.png) -180px -40px no-repeat;
+}
+.checkerMajor{
+    width:22px;
+    height: 27px;
+    background: url(../images/searchIcons.png) -209px -37px no-repeat;
+}
+.checkerAdress{
+    width: 15px;
+    height: 27px;
+    background: url(../images/searchIcons.png) -80px -42px no-repeat;
+}
+.levels{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 154px;
+    overflow: hidden;
+}
+.checkerCheck{
+    margin: 0px 0px 0px 44px;
+}
+/*排名板块*/
+.ranking{
+    margin-top:25px;
+    min-height: 583px;
+    border-radius: 5px;
+}
+.newRanking,.hotRanking{
+    background: #fff;
+    height: 247px;
+    border-radius:5px;
+    position: relative;
+}
+.newRanking{
+    margin-bottom: 25px;
+}
+.hotTit h4,.newTit h4{
+    display: inline-block;
+    font-size: 16px;
+}
+.newTitIcon{
+    width: 20px;
+    height: 20px;
+    background: url(../images/searchIcons.png) -7px -83px no-repeat;
+    margin-bottom: -3px;
+}
+.newTit ,.hotTit{
+    padding: 9px 6px;
+}
+/*排名内容*/
+.newRankingItem,.hotRankingItem{
+    padding: 0px 5px;
+}
+.newRankingItem li,.hotRankingItem li{
+    color: #58595d;
+    line-height: 28px;
+    border-bottom: 1px solid #e8e8e8;
+}
+.rankingNum{
+    margin-right: 10px;
+    font-weight: bolder;
+    display: inline-block;
+    overflow: hidden;
+}
+.rankingCon{
+    width: 90%;
+    display: inline-block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-left: 5px;
+}
+/*渔船编号*/
+.thisNmuber{
+    width: 25px;
+    height: 26px;
+    background: url(../images/searchIcons.png) -102px -75px no-repeat;
+}
+/*产品名称*/
+.productName{
+    width: 22px;
+    height: 27px;
+    background: url(../images/searchIcons.png) -74px -74px no-repeat;
+}
+/*时间*/
+.detailTime{
+    width: 25px;
+    height: 26px;
+    background: url(../images/searchIcons.png) -199px -77px no-repeat;
+}
+/*渔船*/
+.shipName{
+    width: 32px;
+    height: 27px;
+    background: url(../images/searchIcons.png) -3px -7px no-repeat;
+}
+/*設計圖紙*/
+.paper{
+    width: 22px;
+    height: 27px;
+    background: url(../images/searchIcons.png) -232px -74px no-repeat;
+}
+/*更多*/
+.moreRanking{
+    width: 25px;
+    height: 25px;
+    background: url(../images/searchIcons.png) -46px -82px no-repeat;
+    position: absolute;
+    right: 18px;
+    bottom: 11px;
+    cursor: pointer;
+}
+.newRankingItem>li:hover,.hotRankingItem>li:hover{
+    background-color: #d6e4f9;
+    cursor:pointer;
+    /*background-color: red;*/
+}
+.rankingNum:hover{
+    color:#144481;
+}
+
+/*added by meng  for head */
+
+.zhihui{
+    margin-left:-108px;
+}
+.searchTit{
+    font-size: 35px;
+    color: #1c9fcc;
+    margin: 40px auto 0px;
+}
+@media screen and (max-width: 1366px) {
+    .zhihui{
+        margin-left:-60px;
+    }
+
+}

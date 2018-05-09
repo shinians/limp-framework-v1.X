@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.mapper.oracle.CapacityMapper" >
+  <resultMap id="BaseResultMap" type="com.chinasofti.domain.Capacity" >
+    <id column="CSC_ID" property="id" jdbcType="VARCHAR" />
+    <result column="CSC_NAME" property="name" jdbcType="VARCHAR" />
+    <result column="CSC_REFID" property="refid" jdbcType="VARCHAR" />
+    <result column="CSC_TYPE" property="type" jdbcType="VARCHAR" />
+    <result column="CSC_BELONGMODEL" property="belongmodel" jdbcType="VARCHAR" />
+    <result column="CSC_SCORE" property="score" jdbcType="VARCHAR" />
+    <result column="CSC_WEIGHT" property="weight" jdbcType="DECIMAL" />
+    <result column="CSC_PERIOD" property="period" jdbcType="TIMESTAMP" />
+    <result column="CSC_TOTAL_SCORE" property="totalScore" jdbcType="VARCHAR" />
+    <result column="CSC_PID" property="pid" jdbcType="VARCHAR" />
+    <result column="CSC_REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CSC_BATCH" property="batch" jdbcType="VARCHAR" />
+    <result column="CSC_MODELID" property="modelid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CSC_ID, CSC_NAME, CSC_REFID, CSC_TYPE, CSC_BELONGMODEL, CSC_SCORE, CSC_WEIGHT, CSC_PERIOD, 
+    CSC_TOTAL_SCORE, CSC_PID, CSC_REMARK, CSC_BATCH, CSC_MODELID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chinasofti.domain.CapacityExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CIS_CAPACITY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from CIS_CAPACITY
+    where CSC_ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from CIS_CAPACITY
+    where CSC_ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.chinasofti.domain.CapacityExample" >
+    delete from CIS_CAPACITY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chinasofti.domain.Capacity" >
+    insert into CIS_CAPACITY (CSC_ID, CSC_NAME, CSC_REFID,
+    CSC_TYPE, CSC_BELONGMODEL, CSC_SCORE,
+    CSC_WEIGHT, CSC_PERIOD, csc_score,
+    CSC_PID, CSC_REMARK, CSC_BATCH,
+    CSC_MODELID)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{refid,jdbcType=VARCHAR},
+    #{type,jdbcType=VARCHAR}, #{belongmodel,jdbcType=VARCHAR}, #{score,jdbcType=DECIMAL},
+    #{weight,jdbcType=DECIMAL}, #{period,jdbcType=TIMESTAMP}, #{totalScore,jdbcType=DECIMAL},
+    #{pid,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{batch,jdbcType=VARCHAR},
+    #{modelid,jdbcType=VARCHAR}, #{seq,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chinasofti.domain.Capacity" >
+    insert into CIS_CAPACITY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        CSC_ID,
+      </if>
+      <if test="name != null" >
+        CSC_NAME,
+      </if>
+      <if test="refid != null" >
+        CSC_REFID,
+      </if>
+      <if test="type != null" >
+        CSC_TYPE,
+      </if>
+      <if test="belongmodel != null" >
+        CSC_BELONGMODEL,
+      </if>
+      <if test="score != null" >
+        CSC_SCORE,
+      </if>
+      <if test="weight != null" >
+        CSC_WEIGHT,
+      </if>
+      <if test="period != null" >
+        CSC_PERIOD,
+      </if>
+      <if test="totalScore != null" >
+        CSC_TOTAL_SCORE,
+      </if>
+      <if test="pid != null" >
+        CSC_PID,
+      </if>
+      <if test="remark != null" >
+        CSC_REMARK,
+      </if>
+      <if test="batch != null" >
+        CSC_BATCH,
+      </if>
+      <if test="modelid != null" >
+        CSC_MODELID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="refid != null" >
+        #{refid,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="belongmodel != null" >
+        #{belongmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="period != null" >
+        #{period,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalScore != null" >
+        #{totalScore,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="batch != null" >
+        #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="modelid != null" >
+        #{modelid,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null" >
+        #{seq,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chinasofti.domain.CapacityExample" resultType="java.lang.Integer" >
+    select count(*) from CIS_CAPACITY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update CIS_CAPACITY
+    <set >
+      <if test="record.id != null" >
+        CSC_ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        CSC_NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refid != null" >
+        CSC_REFID = #{record.refid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        CSC_TYPE = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.belongmodel != null" >
+        CSC_BELONGMODEL = #{record.belongmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.score != null" >
+        CSC_SCORE = #{record.score,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weight != null" >
+        CSC_WEIGHT = #{record.weight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.period != null" >
+        CSC_PERIOD = #{record.period,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.totalScore != null" >
+        CSC_TOTAL_SCORE = #{record.totalScore,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pid != null" >
+        CSC_PID = #{record.pid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        CSC_REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.batch != null" >
+        CSC_BATCH = #{record.batch,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modelid != null" >
+        CSC_MODELID = #{record.modelid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update CIS_CAPACITY
+    set CSC_ID = #{record.id,jdbcType=VARCHAR},
+    CSC_NAME = #{record.name,jdbcType=VARCHAR},
+    CSC_REFID = #{record.refid,jdbcType=VARCHAR},
+    CSC_TYPE = #{record.type,jdbcType=VARCHAR},
+    CSC_BELONGMODEL = #{record.belongmodel,jdbcType=VARCHAR},
+    CSC_SCORE = #{record.score,jdbcType=VARCHAR},
+    CSC_WEIGHT = #{record.weight,jdbcType=DECIMAL},
+    CSC_PERIOD = #{record.period,jdbcType=TIMESTAMP},
+    CSC_TOTAL_SCORE = #{record.totalScore,jdbcType=VARCHAR},
+    CSC_PID = #{record.pid,jdbcType=VARCHAR},
+    CSC_REMARK = #{record.remark,jdbcType=VARCHAR},
+    CSC_BATCH = #{record.batch,jdbcType=VARCHAR},
+    CSC_MODELID = #{record.modelid,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chinasofti.domain.Capacity" >
+    update CIS_CAPACITY
+    <set >
+      <if test="name != null" >
+        CSC_NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="refid != null" >
+        CSC_REFID = #{refid,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        CSC_TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="belongmodel != null" >
+        CSC_BELONGMODEL = #{belongmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        CSC_SCORE = #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        CSC_WEIGHT = #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="period != null" >
+        CSC_PERIOD = #{period,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalScore != null" >
+        CSC_TOTAL_SCORE = #{totalScore,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        CSC_PID = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        CSC_REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="batch != null" >
+        CSC_BATCH = #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="modelid != null" >
+        CSC_MODELID = #{modelid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CSC_ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chinasofti.domain.Capacity" >
+    update CIS_CAPACITY
+    set CSC_NAME = #{name,jdbcType=VARCHAR},
+    CSC_REFID = #{refid,jdbcType=VARCHAR},
+    CSC_TYPE = #{type,jdbcType=VARCHAR},
+    CSC_BELONGMODEL = #{belongmodel,jdbcType=VARCHAR},
+    CSC_SCORE = #{score,jdbcType=VARCHAR},
+    CSC_WEIGHT = #{weight,jdbcType=DECIMAL},
+    CSC_PERIOD = #{period,jdbcType=TIMESTAMP},
+    CSC_TOTAL_SCORE = #{totalScore,jdbcType=VARCHAR},
+    CSC_PID = #{pid,jdbcType=VARCHAR},
+    CSC_REMARK = #{remark,jdbcType=VARCHAR},
+    CSC_BATCH = #{batch,jdbcType=VARCHAR},
+    CSC_MODELID = #{modelid,jdbcType=VARCHAR}
+    where CSC_ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from (
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+      <![CDATA[ ) row_  where rownum<= #{page.end}) where rownum_ > #{page.start} ]]>
+    </if>
+  </sql>
+
+  <select id="getScoreByCertnum" resultType="java.lang.String" >
+    select csc_score from (select csc_score as csc_score,rownum rn from cis_capacity
+    where csc_refid = #{ycscertnum} and csc_type = '1' and csc_belongmodel = '1001' order by csc_batch desc) where rn = 1
+  </select>
+
+  <select id="getLateBatch" resultType="java.lang.String" >
+    select csc_batch from (
+    select distinct t.csc_batch from cis_capacity t
+    <where>
+      <if test="belongModel != null">
+        AND t.CSC_BELONGMODEL = #{belongModel}
+      </if>
+      <if test="refid != null">
+        AND t.CSC_REFID = #{refid}
+      </if>
+    </where>
+    order by t.csc_batch desc
+    ) where rownum = 1
+  </select>
+
+  <select id="getCapacityByCertnum" resultType="Capacity" >
+    select
+    CSC_ID as id,
+    CSC_NAME as name,
+    CSC_REFID as refid,
+    CSC_TYPE as type,
+    CSC_BELONGMODEL as belongmodel,
+    CSC_SCORE as score,
+    CSC_WEIGHT as weight,
+    CSC_PERIOD as period,
+    CSC_TOTAL_SCORE as totalScore,
+    CSC_PID as pid,
+    CSC_REMARK as remark,
+    CSC_BATCH AS batch,
+    CSC_SCORE as actualScore
+    from CIS_CAPACITY
+    where csc_refid = #{refid} and csc_belongmodel = #{belongmodel} and csc_batch = #{batch}
+  </select>
+
+  <select id="getStandardScore" resultType="float">
+    select round(nvl(avg(csc_score),0),2) "score"
+    from CIS_CAPACITY t1 inner join
+    (select CSC_REFID ,max(csc_batch) csc_batch
+    from CIS_CAPACITY
+    group by CSC_REFID)t2
+    on  t1. CSC_REFID=t2.CSC_REFID and t1.csc_batch=t2.csc_batch
+    where CSC_TYPE=#{type} and csc_belongmodel =#{model}
+  </select>
+  <select id="getNewShipCapacityScore" resultType="float">
+    select round(nvl(avg(csc_score),0),2) "score"
+    from CIS_CAPACITY t1 inner join
+    (select CSC_REFID ,max(csc_batch) csc_batch
+    from CIS_CAPACITY
+    where CSC_REFID in(select cs_shipcode from cis_shipinfo where cs_orgid like #{provCode})
+    group by CSC_REFID)t2
+    on  t1. CSC_REFID=t2.CSC_REFID and t1.csc_batch=t2.csc_batch
+    where t1.CSC_TYPE='1' and t1.csc_belongmodel ='4002' and t1.csc_score between #{bScore} and #{eScore} and substr(t1.csc_batch,0,4)=#{year}
+  </select>
+  <select id="getNewShipCapacityNums" resultType="int">
+    select nvl(count(*),0) "nums"
+    from CIS_CAPACITY t1 inner join
+    (select CSC_REFID ,max(csc_batch) csc_batch
+    from CIS_CAPACITY
+    where CSC_REFID in(select cs_shipcode from cis_shipinfo where cs_orgid like #{provCode})
+    group by CSC_REFID)t2
+    on  t1. CSC_REFID=t2.CSC_REFID and t1.csc_batch=t2.csc_batch
+    where t1.CSC_TYPE='1' and t1.csc_belongmodel ='4001' and t1.csc_score between #{bScore} and #{eScore} and substr(t1.csc_batch,0,4)=#{year}
+  </select>
+  <select id="getMaxDate" resultType="java.lang.Integer">
+    select max(csc_batch) from cis_capacity
+  </select>
+  <sql id="caseWhen1">
+    case when csc_score between 60 and 70 then '渔船安全技术低'
+    when csc_score between 71 and 90 then '渔船安全技术中'
+    when csc_score >90 then '渔船安全技术高' end
+  </sql>
+  <select id="getOceanShipSecurityScore" resultType="HashMap">
+    select <include refid="caseWhen1"/>  "name", count(t1.CSC_REFID) "value"
+    from CIS_CAPACITY t1 inner join
+    (select CSC_REFID ,max(csc_batch) csc_batch
+    from CIS_CAPACITY group by CSC_REFID)t2
+    on  t1. CSC_REFID=t2.CSC_REFID and t1.csc_batch=t2.csc_batch
+    inner join cis_shipinfo t3 on t1.csc_refid=t3.cs_shipcode
+    where t1.CSC_TYPE='1' and t1.csc_belongmodel = '4001' and substr(t1.csc_batch,0,4)=#{year}
+    and t3.cs_jobarea=#{jobArea}
+    <if test="likeStr !=null">
+      AND  t3.cs_orgid like #{likeStr}
+    </if>
+    group by <include refid="caseWhen1"/>
+  </select>
+  <select id="getOceanShipSecurityScoreDES" resultType="HashMap">
+    select t3.CS_OWNERNAME "entname",round(avg(t1.csc_score),2) "score"
+    from CIS_CAPACITY t1 inner join
+    (select CSC_REFID ,max(csc_batch) csc_batch
+    from CIS_CAPACITY
+    group by CSC_REFID)t2
+    on  t1. CSC_REFID=t2.CSC_REFID and t1.csc_batch=t2.csc_batch
+    inner join cis_shipinfo t3 on t3.cs_shipcode = t1.CSC_REFID
+    INNER join cis_shipowner t4 ON  t4.cso_id = t3.cs_ownerno
+    where t1.CSC_TYPE='1' and t1.csc_belongmodel ='4001' and t3.cs_jobArea = #{jobArea} AND t4.cso_type='1'
+    and substr(t1.csc_batch,0,4)=#{year}
+    <if test="likeStr !=null">
+      AND  t3.CS_ORGID like #{likeStr}
+    </if>
+    group by t3.CS_OWNERNAME
+  </select>
+  <select id="getSurAvgScore" resultType="Float">
+    select nvl(round(avg(t1.csc_score),2),0)  from cis_capacity t1
+    INNER JOIN (select CSC_REFID ,max(csc_batch) csc_batch from CIS_CAPACITY group by CSC_REFID) T3
+    on  T3. CSC_REFID=T1.CSC_REFID and T3.csc_batch=T1.csc_batch
+    inner join cis_surveyor t2 on t1.csc_refid=t2.cs_uid
+    where t1.csc_belongmodel='1001' and t1.csc_type='1'
+    <if test="likeStr!=null">
+      and t2.cs_organid like #{likeStr}
+    </if>
+  </select>
+  <select id="getOrganScore" resultType="int">
+    select round(sum(csc_score)/count(1),0)
+    from CIS_CAPACITY t1 inner join
+    (select CSC_REFID ,max(CSC_BATCH) CSC_BATCH from CIS_CAPACITY group by CSC_REFID)t2
+    on  t1. CSC_REFID=t2.CSC_REFID and t1.CSC_BATCH=t2.CSC_BATCH
+    WHERE CSC_TYPE = 1
+    <if test="likeStr !=null">
+      and t1.csc_refid like #{likeStr}
+    </if>
+  </select>
+</mapper>

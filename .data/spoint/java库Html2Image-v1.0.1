@@ -1,0 +1,33 @@
+1、http://bbs.csdn.net/topics/390897098  参考链接 方式1
+2、
+
+
+package com.ky.util;
+  
+import gui.ava.html.image.generator.HtmlImageGenerator;  
+  
+/** 
+ *   
+ */  
+public class Html2ImageTest {  
+  
+    public static void main(String[] args){  
+        HtmlImageGenerator imageGenerator = new HtmlImageGenerator();  
+        String htmlstr = "<table width='654' cellpadding='0' cellspacing='0' bordercolor='#FFFFFF'><tr><td><img src='http://www.apkfather.com/yhqserver/images/mdl.jpg'/></td><td><img src='http://www.apkfather.com/yhqserver/images/mdl.jpg'/></td><td><img src='http://www.apkfather.com/yhqserver/images/mdl.jpg'/></td></tr><tr><td><img src='http://www.apkfather.com/yhqserver/images/mdl.jpg'/></td><td><img src='http://www.apkfather.com/yhqserver/images/mdl.jpg'/></td><td><img src='http://www.apkfather.com/yhqserver/images/mdl.jpg'/></td></tr><tr><td><img src='http://www.apkfather.com/yhqserver/images/mdl.jpg'/></td><td><img src='http://www.apkfather.com/yhqserver/images/mdl.jpg'/></td><td><img src='http://www.apkfather.com/yhqserver/images/mdl.jpg'/></td></tr><tr><td><img src='http://www.apkfather.com/yhqserver/images/mdl.jpg'/></td></tr></table>";  
+        imageGenerator.loadHtml(htmlstr);  
+        imageGenerator.getBufferedImage();  
+        imageGenerator.saveAsImage("d:/hello-world.png");  
+        imageGenerator.saveAsHtmlWithMap("hello-world.html", "hello-world.png");  
+    }  
+}  
+HtmlImageGenerator Methods
+loadUrl(url) - Loads HTML from URL object or URL string. (从url载入html)
+loadHtml(html) - Loads HTML source. (载入本地html)
+saveAsImage(file) - Save loaded HTML as image. (以图片形式保存html)
+saveAsHtmlWithMap(file, imageUrl) - Creates an HTML file containing client-side image-map<map> generated from HTML's links. (创建一个HTML文件包含客户端image-map)
+getLinks() - List all links in the HTML document and their corresponding href, target, title, position and dimension. (列出所有在HTML文档的链接和相应href、目标、头衔、位置和尺寸)
+getBufferedImage() - Get AWT buffered image of the HTML. (获得awt,html缓冲后的图片)
+getLinksMapMarkup(mapName) - Get HTML snippet of the client-side image-map<map> generated from the links. (HTML代码段里获得的客户端image-map <地图>产生的链接)
+get/setOrientation(orientation) - Get/Set document orientation (left-to-right or right-to-left). (get/set文本定位)
+get/setSize(dimension) - Get/Set size of the generated image. (设置生成图片大小)
+html2image-0.9.jar

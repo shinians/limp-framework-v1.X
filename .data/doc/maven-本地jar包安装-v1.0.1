@@ -1,0 +1,55 @@
+安装jar之后无法引入依赖的pom文件；
+
+##指定pom ###
+当自己编写的项目的jar包依赖其他jar包时，仅使用上面的命令，资源库中对应jar包的pom文件不会出现以来的jar包。通过添加命令参数可达到指定的目的：
+
+-DpomFile=D:\commons-lang-2.3.pom（核心代码）
+参考链接：http://blog.csdn.net/wo541075754/article/details/50774839
+
+@echo off
+set localdir=%~dp0
+call mvn install:install-file -Dfile=%localdir%/limp-framework-1.1.0-RELEASE.jar -DpomFile=%localdir%/limp-framework-1.1.0-RELEASE.pom  -DgroupId=com.chinasofti  -DartifactId=limp-framework -Dversion=test5 -Dpackaging=jar -DgeneratePom=true  -DcreateChecksum=true
+pause
+
+++++++++++安装jar和pom命令代码+++++++++++++++++++++++++++++++
+
+mvn install:install-file -Dfile=F:\my\limp-framework-1.1.0-RELEASE.jar -DpomFile=F:\my\limp-framework-1.1.0-RELEASE.pom  -DgroupId=com.chinasofti  -DartifactId=limp-framework -Dversion=1.1.0-RELEASE -Dpackaging=jar -DgeneratePom=true  -DcreateChecksum=true
+
+==========================maven-本地jar包安装-v1.0.1======================================
+0）相关信息
+    <!--安装1：数据库jar包引入： ojdbc6.jar - for Java 1.6-->
+             <dependency>
+                 <groupId>com.oracle</groupId>
+                 <artifactId>ojdbc</artifactId>
+                 <version>6.0</version>
+             </dependency>
+
+
+       <!--安装2：框架framework jar包引入--> ：
+             <dependency>
+                 <groupId>com.chinasofti</groupId>
+                 <artifactId>limp-framework</artifactId>
+                 <version>1.0.1-RELEASE</version>
+             </dependency>
+
+             <<------------------------------------>>
+1)安装jar到本地仓库：
+ mvn install:install-file -Dfile=F:\my\limp-framework-1.0.1-RELEASE.jar -DgroupId=com.chinasofti  -DartifactId=limp-framework -Dversion=1.0.1-RELEASE -Dpackaging=jar
+ mvn install:install-file -Dfile=F:\my\ojdbc-6.0.jar -DgroupId=com.orcle  -DartifactId=ojdbc -Dversion=6.0 -Dpackaging=jar
+
+
+ 2)安装jar（源码）到本地仓库安装
+ F:\my>mvn install:install-file -Dfile=F:\my\limp-framework-1.0.1-RELEASE-sources.jar -DgroupId=com.chinasofti  -DartifactId=limp-framework -Dversion=1.0.1-RELEASE -Dpackaging=jar  -Dclassifier=sources
+
+ 2)安装doc】到本地仓库安装
+mvn install:install-file -Dfile=D:/spymemcached-2.10.3-javadoc.jar -DgroupId=net.spy -DartifactId=spymemcached -Dversion=2.10.3 -Dpackaging=jar -Dclassifier=javadoc
+
+
+ 参考链接：http://www.blogjava.net/fancydeepin/archive/2012/06/12/380605.html
+
+  mvn install:install-file -Dfile=F:\my\com.supermap.data.jar -DgroupId=com.supermap  -DartifactId=supermap-data -Dversion=1.0 -Dpackaging=jar
+
+
+
+
+================================================================

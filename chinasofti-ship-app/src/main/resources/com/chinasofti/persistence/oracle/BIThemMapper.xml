@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.mapper.oracle.BIThemMapper" >
+    <!--统一调用方式 http://localhost:8080/ship/bi/listMap?method=getYCSGapNum&orgCode=3300000&year=2017-->
+  <select id="selectListMapByMethod" resultType="java.util.HashMap" parameterType="map">
+    <if test="method =='getYCSGapNum'">
+      <include refid="getYCSGapNum" />
+    </if>
+      <if test="method =='getYCSPosGroup'">
+      <include refid="getYCSPosGroup" />
+    </if>
+      <if test="method =='getYCSMajGroup'">
+      <include refid="getYCSMajGroup" />
+    </if>
+      <if test="method =='getYCSXLGroup'">
+      <include refid="getYCSXLGroup" />
+    </if>
+      <if test="method =='getYCSPointByYear'">
+      <include refid="getYCSPointByYear" />
+    </if>
+      <if test="method =='getOrgScoreAndNum'">
+          <choose>
+              <when test="params.orgCode != null">
+                  <include refid="getOrgScoreAndNum_sheng" />
+              </when>
+              <otherwise>
+                  <include refid="getOrgScoreAndNum_qg" />
+              </otherwise>
+          </choose>
+      </if>
+      <if test="method =='getOrgCheckNums'">
+          <choose>
+              <when test="params.likeStr != null">
+                  <include refid="getOrgCheckNums_sheng" />
+              </when>
+              <otherwise>
+                  <include refid="getOrgCheckNums_qg" />
+              </otherwise>
+          </choose>
+      </if>
+      <if test="method =='getForeCastOrgs'">
+          <include refid="getForeCastOrgs" />
+      </if>
+      <if test="method =='getYcsQkrsData'">
+          <include refid="getYcsQkrsData" />
+      </if>
+      <if test="method =='getYcsScoreData'">
+          <include refid="getYcsScoreData" />
+      </if>
+      <if test="method=='getThemeYcsIdexNum'">
+          <include refid="getThemeYcsIdexNum" />
+      </if>
+  </select>
+ <!--todo:操作规范，所有的sql方法请注明 【方法描述】【方法请求参数说明】-->
+
+ <!--方法名称：BI-验船师：各类人员缺口情况
+   参数名称： orgCode： 机构代码（如33%）
+    year：年份 -->
+  <sql id="getYCSGapNum">
+     SELECT t.year YEAR ,t.educertcode EDUNAME,SUM(t.ycsnum) YCSNUM,sum(t.ycslinenum) LINENUM,SUM(t.ycsgapnum) GAPNUM ,SUM(t.ycsminnum) MINNUM,SUM(t.ycsgoodnum) GOODNUM
+     FROM them_ycs_qkrs t WHERE 1=1
+    <if test="params.orgCode!=null">
+      AND t.orgcode like #{params.orgCode}
+    </if>
+    <if test="params.year!=null">
+      AND t.YEAR=#{params.year}
+    </if>
+       GROUP BY t.YEAR ,t.educertcode   ORDER BY t.YEAR DESC
+  </sql>
+    <!--方法名称：特殊岗位验船师人员分布
+    参数名称：year年份（逗号分隔） params.type:验船师类别（一线、） orgCode：机构代码 支持模糊 33%
+     、-->
+  <sql id="getYCSPosGroup">
+      <!--SELECT T.majorcode "${@com.limp.framework.core.constant.Constant@CODE_TRANS_PRE}majorcode",COUNT(1) NUM  FROM THEM_YCS_JBXX T
+      WHERE T.YEAR =#{params.year} AND T.LVTYPE >0
+      <if test="params.type!=null">
+          AND T.RANGETYPE=#{params.type}
+      </if>
+      <if test="params.orgCode!=null">
+          AND t.orgcode like #{params.orgCode}
+      </if>
+      GROUP BY T.majorcode ORDER BY T.majorcode ASC-->
+
+      select t1.cs_major "${@com.limp.framework.core.constant.Constant@CODE_TRANS_PRE}MAJOR",count(1) num from cis_surcertificate t1 inner join them_ycs_jbxx t2
+      on t1.cs_ycscertnum = t2.ID
+      where t1.cs_cerlevel='特殊资格'
+      and t2.year=${params.curYear}
+      <if test="params.type!=null">
+          AND t2.RANGETYPE=#{params.type}
+      </if>
+      <if test="params.orgCode!=null">
+          AND t2.orgcode like #{params.orgCode}
+      </if>
+      group by t1.cs_major  ORDER BY t1.cs_major ASC
+  </sql>
+
+
+    <!--方法名称：各级验船师专业结构情况
+   参数名称：year年份（逗号分隔） params.type:验船师类别（一线、） orgCode：机构代码 支持模糊 33%
+    、-->
+    <sql id="getYCSMajGroup">
+        SELECT T.YEAR,T.MAJORCODE MAJNAME,COUNT(1) NUM  FROM THEM_YCS_JBXX T
+        WHERE T.YEAR = #{params.year}  AND T.MAJORCODE IS NOT NULL
+        <if test="params.type!=null">
+            AND T.RANGETYPE=#{params.type}
+        </if>
+        <if test="params.orgCode!=null">
+            AND t.orgcode like #{params.orgCode}
+        </if>
+        GROUP BY T.YEAR ,T.MAJORCODE ORDER BY T.MAJORCODE ASC
+
+    </sql>
+    <!--方法名称：学历分类统计
+   参数名称：year年份（逗号分隔） params.type:验船师类别（一线、） orgCode：机构代码 支持模糊 33%
+    、-->
+    <sql id="getYCSXLGroup">
+        SELECT T.YEAR,T.educertcode "${@com.limp.framework.core.constant.Constant@CODE_TRANS_PRE}MAJNAME" ,COUNT(1) NUM  FROM THEM_YCS_JBXX T
+        WHERE T.YEAR = #{params.year}  AND T.educertcode IS NOT NULL
+        <if test="params.type!=null">
+            AND T.RANGETYPE=#{params.type}
+        </if>
+        and t.EDUCERTCODE not in('73_0','73_') and t.EDUCERTCODE is not null <!--todo:字典表无数据,暂时屏蔽-->
+        <if test="params.orgCode!=null">
+            AND t.orgcode like #{params.orgCode}
+        </if>
+        GROUP BY T.YEAR ,T.educertcode ORDER BY T.educertcode ASC
+    </sql>
+    <!--近5年验船师能力平均分走势-->
+    <sql id="getYCSPointByYear">
+        select tyj.year year,
+        round(avg(t.csc_score * t.csc_weight),2) point
+        from cis_capacity t inner join them_ycs_jbxx tyj on t.csc_refid=tyj.id
+        and substr(t.csc_batch, 0, 4) =  tyj.year
+        where tyj.year in
+        <foreach collection="params.years" close=")" open="(" separator="," item="item">
+            #{item}
+        </foreach>
+        AND tyj.RANGETYPE = #{params.type}
+        <if test="params.orgCode != null">
+            and ORGCODE like #{params.orgCode}
+        </if>
+        group by tyj.year
+        order by tyj.year ASC
+    </sql>
+
+    <!--全国机构数量和能力统计图-->
+    <sql id="getOrgScoreAndNum_qg">
+        select * from (select t2.score,t2.nums,CO_ORGAREANAME name from
+        (select orgcode,score,nums from
+        (select substr(t1.CSC_REFID,0,2) orgcode,round(avg(t1.CSC_SCORE),2) score,count(t1.csc_refid) nums from CIS_CAPACITY t1 inner join
+        (select CSC_REFID ,max(CSC_BATCH) CSC_BATCH from CIS_CAPACITY group by CSC_REFID)t2 on  t1. CSC_REFID=t2.CSC_REFID and t1.CSC_BATCH=t2.CSC_BATCH
+        WHERE  t1.CSC_TYPE=1 and t1.CSC_BELONGMODEL = '2001'
+        <if test="params.year != null">
+            and t1.CSC_BATCH like #{params.year} || '%'
+        </if>
+        group by substr(t1.CSC_REFID,0,2)
+        order by avg(t1.CSC_TOTAL_SCORE))t
+        where rownum &lt; 11)t2
+        left join cis_organinfo t3 on t2.orgcode||'00000' = t3.CO_ORGCODE) where rownum &lt; 11 and name is not null
+    </sql>
+    <sql id="getOrgScoreAndNum_sheng">
+        select nvl(score,0) score,nvl(nums,0) nums,orgname name from(
+        select t.score,t.nums,t3.CO_ORGAREANAME orgname from
+        (select substr(t1.CSC_REFID,0,4) areacode,round(avg(t1.CSC_SCORE),2) score,count(t1.csc_refid) nums from CIS_CAPACITY t1 inner join
+        (select CSC_REFID ,max(CSC_BATCH) CSC_BATCH from CIS_CAPACITY group by CSC_REFID)t2
+        on  t1. CSC_REFID=t2.CSC_REFID and t1.CSC_BATCH=t2.CSC_BATCH
+        WHERE  t1.CSC_TYPE=1 /*and t1.CSC_BELONGMODEL = '2001'*/
+        <if test="params.orgCode != null">
+            and t1.CSC_REFID like #{params.orgCode}||'%' AND t1.CSC_REFID!=#{params.orgCode}||'00000'
+        </if>
+        <if test="params.year != null">
+            and t1.CSC_BATCH like #{params.year} || '%'
+        </if>
+        group by substr(t1.CSC_REFID,0,4))t
+        right join cis_organinfo t3 on t.areacode||'000' = t3.CO_ORGCODE
+        where t3.CO_ORGCODE  like #{params.orgCode}||'%'  and t3.CO_ORGCODE= substr(t3.CO_ORGCODE,0,4)||'000' and t3.co_orgname is not null
+        order by t.score ASC ) where rownum&lt;11
+    </sql>
+
+    <sql id="getOrgCheckNums_sheng">
+        select t1.num "totalNum",nvl(t2.num,0) "toBeChcNum",t3.co_orgname as "orgname" from
+        (select substr(coh_uid,0,4)||'000'orgcode,count(1) num from  cis_orgcheck_history
+        where  COH_CHECKTIMENEXT like #{params.year} and coh_uid like #{params.likeStr}
+        group by substr(coh_uid,0,4))t1
+        left join
+        (select substr(coh_uid,0,4)||'000'orgcode,count(1) num from  cis_orgcheck_history
+        where  COH_CHECKTIME like #{params.year} and coh_uid like #{params.likeStr}
+        group by substr(coh_uid,0,4))t2
+        on t1.orgcode=t2.orgcode
+        inner join cis_organinfo t3 on t1.orgcode = t3.co_orgcode
+        order by t1.num desc
+    </sql>
+    <sql id="getOrgCheckNums_qg">
+        select t1.num "totalNum",nvl(t2.num,0) "toBeChcNum",t3.co_orgname as "orgname" from
+        (select substr(coh_uid,0,2)||'00000'orgcode,count(1) num from  cis_orgcheck_history
+        where  COH_CHECKTIMENEXT like #{params.year}
+        group by substr(coh_uid,0,2))t1
+        left join
+        (select substr(coh_uid,0,2)||'00000'orgcode,count(1) num from  cis_orgcheck_history
+        where  COH_CHECKTIME like #{params.year}
+        group by substr(coh_uid,0,2))t2
+        on t1.orgcode=t2.orgcode
+        inner join cis_organinfo t3 on t1.orgcode = t3.co_orgcode
+        order by t1.num desc
+    </sql>
+    <sql id="getForeCastOrgs">
+        select year "year",sum(num) "num" from view_forecast_orgchecks
+        where year BETWEEN #{params.bYear} and #{params.eYear}
+        <if test="params.likeStr !=null">
+            AND orgcode like #{params.likeStr}
+        </if>
+        group by year
+        ORDER BY YEAR ASC
+    </sql>
+    <sql id="getYcsQkrsData">
+        select educertcode "educertcode",
+        <if test="params.type==1">
+            sum(ycsnum) "ycsnum"
+        </if>
+        <if test="params.type==2">
+            sum(YCSLINENUM) "ycslinenum"
+        </if>
+        ,sum(ycsminnum) "ycsminnum",sum(ycsgoodnum) "ycsgoodnum"
+        from them_ycs_qkrs
+        <where>
+            year = extract(year from sysdate)
+            <if test="params.likeStr !=null">
+                AND orgcode like #{params.likeStr}
+            </if>
+        </where>
+        group by educertcode
+        order by educertcode ASC
+    </sql>
+    <sql id="cwSql">
+        CASE WHEN T3.CSC_SCORE &lt;=64 THEN 'C'
+        WHEN  T3.CSC_SCORE > 64 AND T3.CSC_SCORE&lt;=79 THEN 'B'
+        WHEN  T3.CSC_SCORE > 79 AND T3.CSC_SCORE&lt;=90 THEN 'A'
+        WHEN  T3.CSC_SCORE &gt;90 THEN 'A+'
+        end
+    </sql>
+<!--获取验船师them表，数量-->
+    <sql id="getThemeYcsIdexNum">
+        select t.year,
+        count(1) surNum,
+        sum(t.shipnum) shipNums,
+        sum(t.drawnum) drawNums,
+        sum(t.productnum) proNums
+        from them_ycs_jbxx t
+        where t.year=#{params.year}
+        <if test="params.orgcode != null">
+            and t.orgcode like #{params.orgcode}
+        </if>
+        group by t.year
+
+    </sql>
+    <sql id="getYcsScoreData">
+        select
+        <include refid="cwSql"/> as "name",count(1) as "value"
+        from cis_capacity t3
+        INNER JOIN
+        (select CSC_REFID ,max(csc_batch) csc_batch from CIS_CAPACITY group by CSC_REFID)T4
+        on  T3. CSC_REFID=T4.CSC_REFID and T3.csc_batch=T4.csc_batch
+        INNER JOIN
+        <if test="params.type==1">
+            CIS_SURVEYOR
+        </if>
+        <if test="params.type==2">
+            (select t2.cys_user_id as CS_UID,t1.CSC_ORGCODE as CS_ORGANID from cis_ship_check t1
+            INNER JOIN
+            CIS_SHIPCHECK_SURVEYOR T2 ON T1.CSC_UID=T2.CYS_SHEET_KEY
+            where t2.cys_deleted!=1)
+        </if>
+        T5
+        ON T3.CSC_REFID=T5.CS_UID
+        WHERE  T3.CSC_TYPE='1'AND T3.CSC_BELONGMODEL='1001'
+        <if test="params.likeStr !=null">
+            AND T5.CS_ORGANID like #{params.likeStr}
+        </if>
+        GROUP BY <include refid="cwSql"/>
+    </sql>
+</mapper>

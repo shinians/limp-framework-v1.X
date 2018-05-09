@@ -1,0 +1,33 @@
+
+-----------------------升级日期：2017.10.10---------------------
+升级日期：2017.10.10
+版本号:1.1.1
+升级内容：样式升级
+
+升级步骤：
+
+ （注意！！！一切覆盖操作请提前做好备份，以防数据丢失）
+ 1、用样例项目中systemsite目录覆盖原有 webapp\systemsite 目录
+ 2、用样例项目中system目录覆盖原有 webapp\webapp\WEB-INF\content\system 目录
+ 3、去除 webapp\webapp\WEB-INF\content\common 目录
+ 3、用样例项目中store.propertie文件覆盖原有 resources\store.propertie文件
+ 4、配置文件覆盖更新：web.xml、springmvc.xml、cis.properties、spring-mybatis.xml
+ 5、覆盖WEB-INF/common目录
+
+ 6.修改chinasofti-ship-app目录pom.xml的版本
+         <dependency>
+              <groupId>com.chinasofti</groupId>
+              <artifactId>limp-framework</artifactId>
+              <version>1.1.1-RELEASE</version>
+          </dependency>
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+主要对样式进行升级：其中包括页面统一风格，以及后台插件便捷实用
+
+
+
+
+

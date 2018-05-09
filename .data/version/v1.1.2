@@ -1,0 +1,50 @@
+
+-----------------------升级日期：2018.01.XX---------------------
+升级日期：2018.01.XX
+版本号:1.1.2
+升级内容：功能完善
+
+
+
+1）【增加模块】后台码表维护功能（增加sys_dic_code）
+2）【增加模块】后台日志维护登陆页面  详情 系统维护-系统日志管理
+3）【优化】后台部分页面美化（如提示框等）
+4）【增加】用户访问限制规则  ***XXX
+5) 【优化】用户管理-配置角色 功能-（角色列表已经去重并且 排除已经删除的角色）;
+6）【修复】用户管理-配置角色：无法选择角色问题
+7）【新增】resources/properties目录，详情参照该目录的readmes说明，在sys_head.jsp引入该目录相关配置
+8）【新增】@access 注解参数，主要解决日志记录功能 exp:    @Access(login = true,privilege = true,,operationLog = OPERATION.UPDATE,operationIntro = "设置角色菜单")
+9）【修复】回车按键绑定事件：解决多次绑定问题
+10 【新增模块】富文本编辑器 ueditor
+11 【新增模块】增加redis码表缓存机制
+12 【新增模块】增加ajax上传组件（webuploader）开源
+
+升级步骤：
+ （注意！！！一切覆盖操作请提前做好备份，以防数据丢失）
+ 1、用样例项目中systemsite目录覆盖原有 webapp\systemsite 目录
+ 2、用样例项目中system目录覆盖原有 webapp\webapp\WEB-INF\content\system 目录
+ 3、去除 webapp\webapp\WEB-INF\content\common 目录
+ 3、用样例项目中store.propertie、redis.properties 文件覆盖原有 resources\store.propertie、redis.properties文件
+ 4、配置文件覆盖更新：web.xml、springmvc.xml、cis.properties、spring-mybatis.xml
+ 5、覆盖WEB-INF/common目录
+ 6 、复制resources/properties目录到业务项目resources/properties
+ 7、执行jar包安装命令
+ 8.修改chinasofti-ship-app目录pom.xml的版本
+         <dependency>
+              <groupId>com.chinasofti</groupId>
+              <artifactId>limp-framework</artifactId>
+              <version>1.1.2-RELEASE</version>
+          </dependency>
+
+
+9、执行sql 创建表，初始化数据【表结构对比】
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+常见问题：
+action或者service等java文件命名重复
+demo：to {[/system/nav/dict]}: There is already 'mainAction' bean method
+
+
+
+
+
