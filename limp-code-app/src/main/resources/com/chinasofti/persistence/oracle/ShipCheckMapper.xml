@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.mapper.oracle.ShipCheckMapper" >
+  <resultMap id="BaseResultMap" type="com.chinasofti.domain.ShipCheck" >
+    <result column="CSC_ID" property="id" jdbcType="VARCHAR" />
+    <result column="CSC_UID" property="uid" jdbcType="VARCHAR" />
+    <result column="CSC_SURID" property="surid" jdbcType="VARCHAR" />
+    <result column="CSC_AREACODE" property="areacode" jdbcType="VARCHAR" />
+    <result column="CSC_YCBM" property="ycbm" jdbcType="VARCHAR" />
+    <result column="CSC_YCMC" property="ycmc" jdbcType="VARCHAR" />
+    <result column="CSC_CHECKPASS" property="checkpass" jdbcType="DECIMAL" />
+    <result column="CSC_CHECKTIME" property="checktime" jdbcType="VARCHAR" />
+    <result column="CSC_CHECKTYPE" property="checktype" jdbcType="DECIMAL" />
+    <result column="CSC_QUESTTYPE" property="questtype" jdbcType="VARCHAR" />
+    <result column="CSC_QUESINTRO" property="quesintro" jdbcType="VARCHAR" />
+    <result column="CSC_CHECKITEM" property="checkitem" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CSC_ID, CSC_UID, CSC_AREACODE, CSC_YCBM, CSC_YCMC, CSC_CHECKPASS, CSC_CHECKTIME,
+    CSC_CHECKTYPE, CSC_QUESTTYPE, CSC_QUESINTRO, CSC_ORGCODE, CSC_YEAR,
+    CSC_RC1, CSC_RC2, CSC_RC3, CSC_RC5, CSC_ORGNAME, CSC_XDNAME, CSC_GROUPCODE,
+    CSC_STATE, CSC_RC4, CSC_NEXT_VERIFY_TIME, CSC_SHEET_ID, CSC_APPLY_TIME, CSC_IFSTOPAPPLY
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chinasofti.domain.ShipCheckExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CIS_SHIP_CHECK
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+  <delete id="deleteByExample" parameterType="com.chinasofti.domain.ShipCheckExample" >
+    delete from CIS_SHIP_CHECK
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chinasofti.domain.ShipCheck" >
+    insert into CIS_SHIP_CHECK (CSC_ID, CSC_UID,
+    CSC_AREACODE, CSC_YCBM, CSC_YCMC,
+    CSC_CHECKPASS, CSC_CHECKTIME, CSC_CHECKTYPE,
+    CSC_QUESTTYPE, CSC_QUESINTRO,
+    CSC_ORGCODE, CSC_YEAR, CSC_RC1,
+    CSC_RC2, CSC_RC3, CSC_RC5, CSC_ORGNAME,
+    CSC_XDNAME, CSC_GROUPCODE,
+    CSC_STATE, CSC_RC4, CSC_NEXT_VERIFY_TIME,
+    CSC_SHEET_ID, CSC_APPLY_TIME, CSC_IFSTOPAPPLY
+    )
+    values (#{id,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR},
+    #{areacode,jdbcType=VARCHAR}, #{ycbm,jdbcType=VARCHAR}, #{ycmc,jdbcType=VARCHAR},
+    #{checkpass,jdbcType=DECIMAL}, #{checktime,jdbcType=VARCHAR}, #{checktype,jdbcType=VARCHAR},
+    #{questtype,jdbcType=VARCHAR}, #{quesintro,jdbcType=VARCHAR},
+    #{orgcode,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, #{rc1,jdbcType=VARCHAR},
+    #{rc2,jdbcType=VARCHAR}, #{rc3,jdbcType=VARCHAR}, #{rc5,jdbcType=DECIMAL}, #{orgname,jdbcType=VARCHAR},
+    #{xdname,jdbcType=VARCHAR}, #{groupcode,jdbcType=VARCHAR},
+    #{state,jdbcType=VARCHAR}, #{rc4,jdbcType=VARCHAR}, #{nextVerifyTime,jdbcType=VARCHAR},
+    #{sheetId,jdbcType=VARCHAR}, #{applyTime,jdbcType=VARCHAR}, #{ifstopapply,jdbcType=VARCHAR}
+    )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chinasofti.domain.ShipCheck" >
+    insert into CIS_SHIP_CHECK
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        CSC_ID,
+      </if>
+      <if test="uid != null" >
+        CSC_UID,
+      </if>
+
+      <if test="areacode != null" >
+        CSC_AREACODE,
+      </if>
+      <if test="ycbm != null" >
+        CSC_YCBM,
+      </if>
+      <if test="ycmc != null" >
+        CSC_YCMC,
+      </if>
+      <if test="checkpass != null" >
+        CSC_CHECKPASS,
+      </if>
+      <if test="checktime != null" >
+        CSC_CHECKTIME,
+      </if>
+      <if test="checktype != null" >
+        CSC_CHECKTYPE,
+      </if>
+      <if test="questtype != null" >
+        CSC_QUESTTYPE,
+      </if>
+      <if test="quesintro != null" >
+        CSC_QUESINTRO,
+      </if>
+
+      <if test="orgcode != null" >
+        CSC_ORGCODE,
+      </if>
+      <if test="year != null" >
+        CSC_YEAR,
+      </if>
+      <if test="rc1 != null" >
+        CSC_RC1,
+      </if>
+      <if test="rc2 != null" >
+        CSC_RC2,
+      </if>
+      <if test="rc3 != null" >
+        CSC_RC3,
+      </if>
+      <if test="rc5 != null" >
+        CSC_RC5,
+      </if>
+      <if test="orgname != null" >
+        CSC_ORGNAME,
+      </if>
+
+      <if test="xdname != null" >
+        CSC_XDNAME,
+      </if>
+      <if test="groupcode != null" >
+        CSC_GROUPCODE,
+      </if>
+      <if test="state != null" >
+        CSC_STATE,
+      </if>
+      <if test="rc4 != null" >
+        CSC_RC4,
+      </if>
+      <if test="nextVerifyTime != null" >
+        CSC_NEXT_VERIFY_TIME,
+      </if>
+      <if test="sheetId != null" >
+        CSC_SHEET_ID,
+      </if>
+      <if test="applyTime != null" >
+        CSC_APPLY_TIME,
+      </if>
+      <if test="ifstopapply != null" >
+        CSC_IFSTOPAPPLY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+
+      <if test="areacode != null" >
+        #{areacode,jdbcType=VARCHAR},
+      </if>
+      <if test="ycbm != null" >
+        #{ycbm,jdbcType=VARCHAR},
+      </if>
+      <if test="ycmc != null" >
+        #{ycmc,jdbcType=VARCHAR},
+      </if>
+      <if test="checkpass != null" >
+        #{checkpass,jdbcType=DECIMAL},
+      </if>
+      <if test="checktime != null" >
+        #{checktime,jdbcType=VARCHAR},
+      </if>
+      <if test="checktype != null" >
+        #{checktype,jdbcType=VARCHAR},
+      </if>
+      <if test="questtype != null" >
+        #{questtype,jdbcType=VARCHAR},
+      </if>
+      <if test="quesintro != null" >
+        #{quesintro,jdbcType=VARCHAR},
+      </if>
+
+      <if test="orgcode != null" >
+        #{orgcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="rc1 != null" >
+        #{rc1,jdbcType=VARCHAR},
+      </if>
+      <if test="rc2 != null" >
+        #{rc2,jdbcType=VARCHAR},
+      </if>
+      <if test="rc3 != null" >
+        #{rc3,jdbcType=VARCHAR},
+      </if>
+      <if test="rc5 != null" >
+        #{rc5,jdbcType=DECIMAL},
+      </if>
+      <if test="orgname != null" >
+        #{orgname,jdbcType=VARCHAR},
+      </if>
+
+      <if test="xdname != null" >
+        #{xdname,jdbcType=VARCHAR},
+      </if>
+      <if test="groupcode != null" >
+        #{groupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="rc4 != null" >
+        #{rc4,jdbcType=VARCHAR},
+      </if>
+      <if test="nextVerifyTime != null" >
+        #{nextVerifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sheetId != null" >
+        #{sheetId,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTime != null" >
+        #{applyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="ifstopapply != null" >
+        #{ifstopapply,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chinasofti.domain.ShipCheckExample" resultType="java.lang.Integer" >
+    select count(*) from CIS_SHIP_CHECK
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <select id="countByExample1" parameterType="string" resultType="java.lang.Integer" >
+    select count(DISTINCT CSC_YCBM) from CIS_SHIP_CHECK t
+    <where>
+      substr(t.csc_checktime,0,4) = #{yearLike}
+      <if test="likeStr != null" >
+        and t.csc_orgcode like #{likeStr}
+      </if>
+    </where>
+  </select>
+
+  <update id="updateByExampleSelective" parameterType="map" >
+    update CIS_SHIP_CHECK
+    <set >
+      <if test="record.id != null" >
+        CSC_ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uid != null" >
+        CSC_UID = #{record.uid,jdbcType=VARCHAR},
+      </if>
+
+      <if test="record.areacode != null" >
+        CSC_AREACODE = #{record.areacode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ycbm != null" >
+        CSC_YCBM = #{record.ycbm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ycmc != null" >
+        CSC_YCMC = #{record.ycmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkpass != null" >
+        CSC_CHECKPASS = #{record.checkpass,jdbcType=DECIMAL},
+      </if>
+      <if test="record.checktime != null" >
+        CSC_CHECKTIME = #{record.checktime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checktype != null" >
+        CSC_CHECKTYPE = #{record.checktype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.questtype != null" >
+        CSC_QUESTTYPE = #{record.questtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.quesintro != null" >
+        CSC_QUESINTRO = #{record.quesintro,jdbcType=VARCHAR},
+      </if>
+
+      <if test="record.orgcode != null" >
+        CSC_ORGCODE = #{record.orgcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.year != null" >
+        CSC_YEAR = #{record.year,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc1 != null" >
+        CSC_RC1 = #{record.rc1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc2 != null" >
+        CSC_RC2 = #{record.rc2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc3 != null" >
+        CSC_RC3 = #{record.rc3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc5 != null" >
+        CSC_RC5 = #{record.rc5,jdbcType=DECIMAL},
+      </if>
+      <if test="record.orgname != null" >
+        CSC_ORGNAME = #{record.orgname,jdbcType=VARCHAR},
+      </if>
+
+      <if test="record.xdname != null" >
+        CSC_XDNAME = #{record.xdname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.groupcode != null" >
+        CSC_GROUPCODE = #{record.groupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null" >
+        CSC_STATE = #{record.state,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc4 != null" >
+        CSC_RC4 = #{record.rc4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nextVerifyTime != null" >
+        CSC_NEXT_VERIFY_TIME = #{record.nextVerifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sheetId != null" >
+        CSC_SHEET_ID = #{record.sheetId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applyTime != null" >
+        CSC_APPLY_TIME = #{record.applyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ifstopapply != null" >
+        CSC_IFSTOPAPPLY = #{record.ifstopapply,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update CIS_SHIP_CHECK
+    set CSC_ID = #{record.id,jdbcType=VARCHAR},
+    CSC_UID = #{record.uid,jdbcType=VARCHAR},
+    CSC_AREACODE = #{record.areacode,jdbcType=VARCHAR},
+    CSC_YCBM = #{record.ycbm,jdbcType=VARCHAR},
+    CSC_YCMC = #{record.ycmc,jdbcType=VARCHAR},
+    CSC_CHECKPASS = #{record.checkpass,jdbcType=DECIMAL},
+    CSC_CHECKTIME = #{record.checktime,jdbcType=VARCHAR},
+    CSC_CHECKTYPE = #{record.checktype,jdbcType=VARCHAR},
+    CSC_QUESTTYPE = #{record.questtype,jdbcType=VARCHAR},
+    CSC_QUESINTRO = #{record.quesintro,jdbcType=VARCHAR},
+    CSC_ORGCODE = #{record.orgcode,jdbcType=VARCHAR},
+    CSC_YEAR = #{record.year,jdbcType=VARCHAR},
+    CSC_RC1 = #{record.rc1,jdbcType=VARCHAR},
+    CSC_RC2 = #{record.rc2,jdbcType=VARCHAR},
+    CSC_RC3 = #{record.rc3,jdbcType=VARCHAR},
+    CSC_RC5 = #{record.rc5,jdbcType=DECIMAL},
+    CSC_ORGNAME = #{record.orgname,jdbcType=VARCHAR},
+    CSC_XDNAME = #{record.xdname,jdbcType=VARCHAR},
+    CSC_GROUPCODE = #{record.groupcode,jdbcType=VARCHAR},
+    CSC_STATE = #{record.state,jdbcType=VARCHAR},
+    CSC_RC4 = #{record.rc4,jdbcType=VARCHAR},
+    CSC_NEXT_VERIFY_TIME = #{record.nextVerifyTime,jdbcType=VARCHAR},
+    CSC_SHEET_ID = #{record.sheetId,jdbcType=VARCHAR},
+    CSC_APPLY_TIME = #{record.applyTime,jdbcType=VARCHAR},
+    CSC_IFSTOPAPPLY = #{record.ifstopapply,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from (
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+      <![CDATA[ ) row_ ) where rownum_ > #{page.start} and rownum_ <= #{page.end} ]]>
+    </if>
+  </sql>
+
+    <select id="getShipCheckNumGroup"  resultType="java.util.HashMap" parameterType="map">
+        SELECT T.CSC_YEAR YEAR,T.CSC_CHECKTYPE  LP_CODE_TYPENUM,T.CSC_CHECKTYPE  types, COUNT(*) NUM
+        FROM CIS_SHIP_CHECK T WHERE T.CSC_ORGCODE = #{orgCode} AND T.CSC_YEAR
+        BETWEEN #{startY} AND #{endY}
+        GROUP BY T.CSC_YEAR ,T.CSC_CHECKTYPE ORDER BY T.CSC_YEAR DESC ,T.CSC_CHECKTYPE ASC
+    </select>
+    <select id="getShipCheckNumGroup1"  resultType="java.util.HashMap" parameterType="map">
+        SELECT T.CSC_YEAR YEAR,T.CSC_CHECKTYPE  LP_CODE_TYPENUM,T.CSC_CHECKTYPE  types, COUNT(*) NUM
+        FROM CIS_SHIP_CHECK T WHERE T.CSC_ORGCODE = #{orgCode} AND T.CSC_YEAR
+        BETWEEN #{startY} AND #{endY}
+        GROUP BY T.CSC_YEAR ,T.CSC_CHECKTYPE ORDER BY T.CSC_YEAR DESC ,T.CSC_CHECKTYPE ASC
+    </select>
+  <select id="getBuildFirstPassRate" resultType="float">
+    SELECT case when t2.nums !=0 then round(((t2.nums-t1.nums)/t2.nums)*100,2) else 0 END FROM
+    (select count(distinct CSC_YCBM) nums from cis_ship_check where CSC_CHECKPASS =2 AND substr(CSC_CHECKTIME,0,4)=to_number(to_char(sysdate,'yyyy'))-1 AND CSC_YCBM IN
+        (select CS_SHIPCODE from CIS_SHIPINFO
+        where #{bYearsOld}&lt;=(to_number(to_char(sysdate,'yyyy'))-to_Number(substr( CS_COMPLETDATE,0,4))) and (to_number(to_char(sysdate,'yyyy'))-to_Number(substr( CS_COMPLETDATE,0,4)))&lt;= #{eYearsOld}
+        <if test="pid != null">
+          AND CS_ENTBULID = #{pid}
+        </if>
+        )
+
+    ) t1,
+    (select count(distinct CSC_YCBM) nums from cis_ship_check where substr(CSC_CHECKTIME,0,4)=to_number(to_char(sysdate,'yyyy'))-1 AND CSC_YCBM IN
+        (select CS_SHIPCODE from CIS_SHIPINFO
+        where #{bYearsOld}&lt;=(to_number(to_char(sysdate,'yyyy'))-to_Number(substr( CS_COMPLETDATE,0,4))) and (to_number(to_char(sysdate,'yyyy'))-to_Number(substr( CS_COMPLETDATE,0,4)))&lt;= #{eYearsOld}
+        <if test="pid != null">
+          AND CS_ENTBULID = #{pid}
+        </if>
+        )
+    ) t2
+  </select>
+  <select id="countCheckShipsByYear" resultType="int">
+    select count(distinct csc_ycbm) from CIS_SHIP_CHECK t
+    where CSC_CHECKTIME like #{year}
+    <if test="uid!=null">
+      AND CSC_ORGCODE LIKE  #{uid}
+    </if>
+  </select>
+  <select id="getYyShipFirtPassRate" resultType="float">
+    SELECT case when t2.nums !=0 then round(((t2.nums-t1.nums)/t2.nums)*100,2) else 0 END FROM
+        (select count(distinct CSC_YCBM) nums from cis_ship_check  csc
+        inner join cis_shipinfo cs on cs.cs_shipcode = csc.csc_ycbm
+        where CSC_CHECKPASS =2  AND CS.CS_JOBAREA=#{workArea}
+        <if test="uid!=null">
+          AND cs.CS_ORGID LIKE #{uid}
+        </if>
+        <if test="ownerId!=null">
+          AND cs.CS_OWNERNO = #{ownerId}
+        </if>
+        <if test="year!=null">
+          AND CSC_CHECKTIME like #{year}
+        </if>
+        )t1,
+
+        (select count(distinct CSC_YCBM) nums from cis_ship_check  csc
+        inner join cis_shipinfo cs on cs.cs_shipcode = csc.csc_ycbm
+        where CS.CS_JOBAREA=#{workArea}
+        <if test="uid!=null">
+          AND cs.CS_ORGID LIKE #{uid}
+        </if>
+        <if test="ownerId!=null">
+          AND cs.CS_OWNERNO = #{ownerId}
+        </if>
+        <if test="year!=null">
+          AND CSC_CHECKTIME like #{year}
+        </if>
+        )t2
+  </select>
+
+  <select id="getOceanShipFirPassRateGroupYear" resultType="HashMap">
+    SELECT t2.year "year",case when t2.nums !=0 then round(((t2.nums-nvl(t1.nums,0))/t2.nums)*100,2) else 0 END "rate" FROM
+      (select substr(CSC_CHECKTIME,0,4) year, count(distinct CSC_YCBM) nums from cis_ship_check  csc
+      inner join cis_shipinfo cs on cs.cs_shipcode = csc.csc_ycbm
+      where CSC_CHECKPASS =2 AND CS.CS_JOBAREA=#{jobArea}
+      <if test="likeStr!=null">
+        AND cs.CS_ORGID LIKE #{likeStr}
+      </if>
+      group by substr(CSC_CHECKTIME,0,4))t1
+    right join
+
+      (select substr(CSC_CHECKTIME,0,4) year,count(distinct CSC_YCBM) nums from cis_ship_check  csc
+      inner join cis_shipinfo cs on cs.cs_shipcode = csc.csc_ycbm
+      where  CS.CS_JOBAREA=#{jobArea}
+      <if test="likeStr!=null">
+        AND cs.CS_ORGID LIKE #{likeStr}
+      </if>
+      group by substr(CSC_CHECKTIME,0,4)) t2
+    on t1.year=t2.year
+    where t2.year between #{bYear} and #{eYear}
+    order by t2.year asc
+  </select>
+  <select id="getOceanEntFirPassRateGroupOwner" resultType="HashMap">
+    SELECT t2.name "name",case when t2.nums !=0 then round(((t2.nums-nvl(t1.nums,0))/t2.nums)*100,2) else 0 END "rate"
+    FROM (select CSO.CSO_NAME name, count(distinct CSC_YCBM) nums from cis_ship_check csc
+    inner join cis_shipinfo cs on cs.cs_shipcode = csc.csc_ycbm
+    inner join cis_shipowner cso on cso.cso_id = cs.cs_ownerno
+    where cso.cso_type='1' and  csc_checkpass='2' AND CSC_CHECKTIME like #{year} AND cs.cs_jobArea =#{jobArea}
+    <if test="likeStr!=null">
+      AND cs.CS_ORGID LIKE #{likeStr}
+    </if>
+    group by CSO.CSO_NAME )t1
+    right join
+    (select CSO.CSO_NAME name, count(distinct CSC_YCBM) nums from cis_ship_check csc
+    inner join cis_shipinfo cs on cs.cs_shipcode = csc.csc_ycbm
+    inner join cis_shipowner cso on cso.cso_id = cs.cs_ownerno
+    where cso.cso_type='1' AND CSC_CHECKTIME like #{year} AND cs.cs_jobArea =#{jobArea}
+    <if test="likeStr!=null">
+      AND cs.CS_ORGID LIKE #{likeStr}
+    </if>
+    group by CSO.CSO_NAME ) t2 on t1.name=t2.name
+    order by "rate" DESC
+  </select>
+
+  <sql id="childSql">
+    from CIS_SHIP_CHECK csc
+    inner join cis_shipinfo csi on csc.CSC_YCBM = csi.cs_shipcode
+    where substr(csc.CSC_CHECKTIME ,0,4) &gt;=#{bYear} and  substr(csc.CSC_CHECKTIME ,0,4)  &lt;=#{eYear}
+    <if test="likeStr != null">
+      AND csc.CSC_ORGCODE LIKE #{likeStr}
+    </if>
+  </sql>
+  <select id="countCheckShipNumsGroupYear" resultType="int">
+    select  count(DISTINCT csi.cs_shipcode)
+    from CIS_SHIP_CHECK csc inner join cis_shipinfo csi on csc.CSC_YCBM = csi.cs_shipcode
+    where substr(csc.CSC_CHECKTIME ,0,4) &gt;=#{bYear} and  substr(csc.CSC_CHECKTIME ,0,4)  &lt;=#{eYear}
+    <if test="likeStr != null">
+      AND csc.csc_orgcode LIKE #{likeStr}
+    </if>
+    group by substr(csc.CSC_CHECKTIME ,0,4)
+    order by substr(csc.CSC_CHECKTIME ,0,4) asc
+  </select>
+  <select id="getCheckTotalTonnagesGroupYear" resultType="float">
+    select sum(t1.ton) from
+      (select substr(csc.CSC_CHECKTIME ,0,4) year,cs_shipcode code,sum(distinct to_number(csi.CS_TONNAGE)) ton
+      <include refid="childSql"/>
+      group by substr(csc.CSC_CHECKTIME ,0,4),csi.cs_shipcode)t1
+    group by t1.year
+    ORDER BY t1.year ASC
+  </select>
+  <select id="getCheckTotalPowersGroupYear" resultType="float">
+    select sum(t1.power) from
+      (select substr(csc.CSC_CHECKTIME ,0,4) year,cs_shipcode code,sum(distinct to_number(csi.CS_POWER)) power
+      <include refid="childSql"/>
+      group by substr(csc.CSC_CHECKTIME ,0,4),csi.cs_shipcode)t1
+    group by t1.year
+    ORDER BY t1.year ASC
+  </select>
+  <sql id="caseWhenSql">
+    case when cs.CS_SHIPMATERIAL = '13_1' then '钢质' when cs.CS_SHIPMATERIAL = '13_2' then '木质'
+    when cs.CS_SHIPMATERIAL = '13_3' then '玻璃钢质'
+    else '其他' end
+  </sql>
+  <select id="countCheckShipsGroupMaterial" resultType="HashMap">
+    select <include refid="caseWhenSql"/> "meterial",count(distinct cs_shipcode) "nums"
+
+    from cis_ship_check csc
+    inner join cis_shipinfo cs
+    on csc.CSC_YCBM=cs.cs_shipcode
+
+    where cs.cs_jobArea =#{jobArea} and csc.CSC_CHECKTYPE ='1_1'<!--初次检验-->
+    and csc.CSC_CHECKTIME like #{year}
+    <if test="likeStr != null">
+      and cs.CS_ORGID like #{likeStr}
+    </if>
+
+    group by <include refid="caseWhenSql"/>
+    order by <include refid="caseWhenSql"/> asc
+  </select>
+</mapper>

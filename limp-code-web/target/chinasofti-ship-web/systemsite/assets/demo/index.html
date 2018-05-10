@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>智慧船检</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--图标-->
+    <!-- Le styles -->
+    <link rel="stylesheet" href="../css/loader-style.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+
+
+    <link rel="stylesheet" href="../css/mail.css">
+    <!-- 整体菜单控制 -->
+    <!--视频播放-->
+    <link rel="stylesheet" href="../css/social.css">
+
+    <!--表格兼容性-->
+    <link href="../js/stackable/stacktable.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link href="../js/stackable/responsive-table.css" rel="stylesheet">
+    <script type="text/javascript" src="../js/jquery.js"></script>
+
+
+
+</head>
+<body>
+<div class="container-fluid" style="background: #efefef;min-height: 800px">
+    <!-- CONTENT -->
+    <div id="nav_intro">
+        <div class="row">
+            <!-- SIDEMENU MAIL -->
+            <!-- /SIDEMENU MAIL -->
+            <!-- CONTENT MAIL -->
+            <div class="col-sm-12" style="padding:0px 20px;">
+
+                <div  class="content-panel panel-border" style="min-height: 180px !important;">
+                    <div class="table-responsive">
+                        <form  action="" method="post" class="form-horizontal bucket-form">
+                            <div class="form-group" style="margin-top: 10px">
+                                <label class="col-sm-1 control-label">项目名称</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" name="usrAccount">
+                                </div>
+                                <label class="col-sm-1 control-label">项目类型</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" name="usrAccount">
+                                </div> <label class="col-sm-1 control-label">项目金额</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" name="usrAccount">
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-top: 10px">
+                                <label class="col-sm-1 control-label">开始时间</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" name="usrAccount">
+                                </div>
+                                <label class="col-sm-1 control-label">结束时间</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" name="usrAccount">
+                                </div>
+                            </div>
+                            <div style="float: right">
+                                <button type="button" class="btn">重置</button>
+                                <button type="button" class="btn">搜索</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+            </div>
+            <div class="col-sm-12" style="padding:0px 25px;">
+                <div class="content-panel" style="padding:0;">
+                    <div class="table-responsive">
+                        <table class="table  table-striped">
+                            <thead>
+                            <tr>
+                                <th>排序</th>
+                                <th>项目名称<span class="glyphicon glyphicon-menu-down"></span></th>
+                                <th>项目来源<i class="icon-angle-down"></i><span class="footable-sort-indicator"></span></th>
+                                <th>主管处事<i class="icon-angle-down"></i></th>
+                                <th>承担单位<i class="icon-angle-down"></i></th>
+                                <th>项目类型<i class="icon-angle-down"></i></th>
+                                <th>项目金额<i class="icon-sort"></i></th>
+                                <th>项目大小<i class="icon-angle-down"></i></th>
+                                <th>阶段<i class="icon-sort"></i></th>
+                            </tr>
+                            </thead>
+                            <tbody id="userTable">
+                            <tr>
+                                <td>1</td>
+                                <td>test0</td>
+                                <td>test0 </td>
+                                <td>正常</td>
+                                <td>普通用户</td>
+                                <td>test0</td>
+                                <td>test0 </td>
+                                <td>正常</td>
+                                <td class="startit">启动</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>test1</td>
+                                <td>test1 </td>
+                                <td>正常</td>
+                                <td>普通用户</td>
+                                <td>test0</td>
+                                <td>test0 </td>
+                                <td>正常</td>
+                                <td class="split">分解</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>test1</td>
+                                <td>test1 </td>
+                                <td>正常</td>
+                                <td>普通用户</td>
+                                <td>test0</td>
+                                <td>test0 </td>
+                                <td>正常</td>
+                                <td class="execute">执行</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>test1</td>
+                                <td>test1 </td>
+                                <td>正常</td>
+                                <td>普通用户</td>
+                                <td>test0</td>
+                                <td>test0 </td>
+                                <td>正常</td>
+                                <td class="closeit">关闭</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <div style="text-align: center">
+                            <ul class="pagination" id="user_page"><li><a href="javascript:void(0)" data-value="1">«</a></li><li class="active"> <a href="javascript:void(0)" data-value="1">1</a></li><li> <a href="javascript:void(0)" data-value="2">2</a></li><li><a href="javascript:void(0)" data-value="2">»</a></li></ul>
+                        </div>
+                    </div>
+                    <!-- /.table-responsive -->
+
+
+                </div>
+            </div>
+            <!-- /CONTENT MAIL -->
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>

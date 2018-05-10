@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.mapper.oracle.EntInfoExtRoftMapper" >
+  <resultMap id="BaseResultMap" type="com.chinasofti.domain.EntInfoExtRoft" >
+    <result column="CEQ_ID" property="id" jdbcType="VARCHAR" />
+    <result column="CEQ_PID" property="pid" jdbcType="VARCHAR" />
+    <result column="CEQ_CERTNUM" property="certnum" jdbcType="VARCHAR" />
+    <result column="CEQ_CERTTERM" property="certterm" jdbcType="VARCHAR" />
+    <result column="CEQ_ENTEMAIL" property="entemail" jdbcType="VARCHAR" />
+    <result column="CEQ_SETDATE" property="setdate" jdbcType="VARCHAR" />
+    <result column="CEQ_CRETTIME" property="crettime" jdbcType="VARCHAR" />
+    <result column="CEQ_POSTALCODE" property="postalcode" jdbcType="VARCHAR" />
+    <result column="CEQ_TELPHONE" property="telphone" jdbcType="VARCHAR" />
+    <result column="CEQ_WORKESNUM" property="workesnum" jdbcType="VARCHAR" />
+    <result column="CEQ_CERTWOKERNUM" property="certwokernum" jdbcType="VARCHAR" />
+    <result column="CEQ_IDT" property="idt" jdbcType="OTHER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CEQ_ID, CEQ_PID, CEQ_CERTNUM, CEQ_CERTTERM, CEQ_ENTEMAIL, CEQ_SETDATE, CEQ_CRETTIME, 
+    CEQ_POSTALCODE, CEQ_TELPHONE, CEQ_WORKESNUM, CEQ_CERTWOKERNUM, CEQ_IDT
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chinasofti.domain.EntInfoExtRoftExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CIS_ENTIFOREXT_QYFL5
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+  <delete id="deleteByExample" parameterType="com.chinasofti.domain.EntInfoExtRoftExample" >
+    delete from CIS_ENTIFOREXT_QYFL5
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chinasofti.domain.EntInfoExtRoft" >
+    insert into CIS_ENTIFOREXT_QYFL5 (CEQ_ID, CEQ_PID, CEQ_CERTNUM, 
+      CEQ_CERTTERM, CEQ_ENTEMAIL, CEQ_SETDATE, 
+      CEQ_CRETTIME, CEQ_POSTALCODE, CEQ_TELPHONE, 
+      CEQ_WORKESNUM, CEQ_CERTWOKERNUM, CEQ_IDT
+      )
+    values (#{id,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, #{certnum,jdbcType=VARCHAR}, 
+      #{certterm,jdbcType=VARCHAR}, #{entemail,jdbcType=VARCHAR}, #{setdate,jdbcType=VARCHAR}, 
+      #{crettime,jdbcType=VARCHAR}, #{postalcode,jdbcType=VARCHAR}, #{telphone,jdbcType=VARCHAR}, 
+      #{workesnum,jdbcType=VARCHAR}, #{certwokernum,jdbcType=VARCHAR}, #{idt,jdbcType=OTHER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chinasofti.domain.EntInfoExtRoft" >
+    insert into CIS_ENTIFOREXT_QYFL5
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        CEQ_ID,
+      </if>
+      <if test="pid != null" >
+        CEQ_PID,
+      </if>
+      <if test="certnum != null" >
+        CEQ_CERTNUM,
+      </if>
+      <if test="certterm != null" >
+        CEQ_CERTTERM,
+      </if>
+      <if test="entemail != null" >
+        CEQ_ENTEMAIL,
+      </if>
+      <if test="setdate != null" >
+        CEQ_SETDATE,
+      </if>
+      <if test="crettime != null" >
+        CEQ_CRETTIME,
+      </if>
+      <if test="postalcode != null" >
+        CEQ_POSTALCODE,
+      </if>
+      <if test="telphone != null" >
+        CEQ_TELPHONE,
+      </if>
+      <if test="workesnum != null" >
+        CEQ_WORKESNUM,
+      </if>
+      <if test="certwokernum != null" >
+        CEQ_CERTWOKERNUM,
+      </if>
+      <if test="idt != null" >
+        CEQ_IDT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="certnum != null" >
+        #{certnum,jdbcType=VARCHAR},
+      </if>
+      <if test="certterm != null" >
+        #{certterm,jdbcType=VARCHAR},
+      </if>
+      <if test="entemail != null" >
+        #{entemail,jdbcType=VARCHAR},
+      </if>
+      <if test="setdate != null" >
+        #{setdate,jdbcType=VARCHAR},
+      </if>
+      <if test="crettime != null" >
+        #{crettime,jdbcType=VARCHAR},
+      </if>
+      <if test="postalcode != null" >
+        #{postalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null" >
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="workesnum != null" >
+        #{workesnum,jdbcType=VARCHAR},
+      </if>
+      <if test="certwokernum != null" >
+        #{certwokernum,jdbcType=VARCHAR},
+      </if>
+      <if test="idt != null" >
+        #{idt,jdbcType=OTHER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chinasofti.domain.EntInfoExtRoftExample" resultType="java.lang.Integer" >
+    select count(*) from CIS_ENTIFOREXT_QYFL5
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update CIS_ENTIFOREXT_QYFL5
+    <set >
+      <if test="record.id != null" >
+        CEQ_ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pid != null" >
+        CEQ_PID = #{record.pid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certnum != null" >
+        CEQ_CERTNUM = #{record.certnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certterm != null" >
+        CEQ_CERTTERM = #{record.certterm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entemail != null" >
+        CEQ_ENTEMAIL = #{record.entemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.setdate != null" >
+        CEQ_SETDATE = #{record.setdate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.crettime != null" >
+        CEQ_CRETTIME = #{record.crettime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postalcode != null" >
+        CEQ_POSTALCODE = #{record.postalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telphone != null" >
+        CEQ_TELPHONE = #{record.telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workesnum != null" >
+        CEQ_WORKESNUM = #{record.workesnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certwokernum != null" >
+        CEQ_CERTWOKERNUM = #{record.certwokernum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idt != null" >
+        CEQ_IDT = #{record.idt,jdbcType=OTHER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update CIS_ENTIFOREXT_QYFL5
+    set CEQ_ID = #{record.id,jdbcType=VARCHAR},
+      CEQ_PID = #{record.pid,jdbcType=VARCHAR},
+      CEQ_CERTNUM = #{record.certnum,jdbcType=VARCHAR},
+      CEQ_CERTTERM = #{record.certterm,jdbcType=VARCHAR},
+      CEQ_ENTEMAIL = #{record.entemail,jdbcType=VARCHAR},
+      CEQ_SETDATE = #{record.setdate,jdbcType=VARCHAR},
+      CEQ_CRETTIME = #{record.crettime,jdbcType=VARCHAR},
+      CEQ_POSTALCODE = #{record.postalcode,jdbcType=VARCHAR},
+      CEQ_TELPHONE = #{record.telphone,jdbcType=VARCHAR},
+      CEQ_WORKESNUM = #{record.workesnum,jdbcType=VARCHAR},
+      CEQ_CERTWOKERNUM = #{record.certwokernum,jdbcType=VARCHAR},
+      CEQ_IDT = #{record.idt,jdbcType=OTHER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from ( 
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+      <![CDATA[ ) row_  where rownum<= #{page.end}) where rownum_ > #{page.start} ]]>
+    </if>
+  </sql>
+</mapper>

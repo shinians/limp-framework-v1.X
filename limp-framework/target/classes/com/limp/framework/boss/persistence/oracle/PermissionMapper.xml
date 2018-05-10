@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.limp.framework.boss.mapper.oracle.PermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.limp.framework.boss.domain.Permission" >
+    <result column="PER_ID" property="id" jdbcType="VARCHAR" />
+    <result column="PER_NAME" property="name" jdbcType="VARCHAR" />
+    <result column="PER_INTRO" property="intro" jdbcType="VARCHAR" />
+    <result column="PER_TYPE" property="type" jdbcType="DECIMAL" />
+    <result column="PER_TYPEEXT" property="typeext" jdbcType="VARCHAR" />
+    <result column="PER_FATHERID" property="fatherid" jdbcType="VARCHAR" />
+    <result column="PER_URL" property="url" jdbcType="VARCHAR" />
+    <result column="PER_URLTYPE" property="urltype" jdbcType="VARCHAR" />
+    <result column="PER_CLASSNAME" property="classname" jdbcType="VARCHAR" />
+    <result column="PER_SORT" property="sort" jdbcType="DECIMAL" />
+    <result column="PER_SHOW" property="show" jdbcType="VARCHAR" />
+    <result column="PER_IMGPATH" property="imgpath" jdbcType="VARCHAR" />
+    <result column="PER_HINTS" property="hints" jdbcType="DECIMAL" />
+    <result column="PER_CODE" property="code" jdbcType="VARCHAR" />
+    <result column="PER_MATHVALUE" property="mathvalue" jdbcType="VARCHAR" />
+    <result column="PER_MATHTYPE" property="mathtype" jdbcType="VARCHAR" />
+    <result column="PER_STATE" property="state" jdbcType="DECIMAL" />
+    <result column="PER_RC0" property="rc0" jdbcType="VARCHAR" />
+    <result column="PER_RC1" property="rc1" jdbcType="VARCHAR" />
+    <result column="PER_RC2" property="rc2" jdbcType="VARCHAR" />
+    <result column="PER_RC3" property="rc3" jdbcType="VARCHAR" />
+    <result column="PER_RC4" property="rc4" jdbcType="VARCHAR" />
+    <result column="PER_RC5" property="rc5" jdbcType="VARCHAR" />
+    <result column="PER_RC6" property="rc6" jdbcType="DECIMAL" />
+    <result column="PER_RC7" property="rc7" jdbcType="DECIMAL" />
+    <result column="PER_RC8" property="rc8" jdbcType="TIMESTAMP" />
+    <result column="PER_RC9" property="rc9" jdbcType="TIMESTAMP" />
+    <result column="PER_IDT" property="idt" jdbcType="TIMESTAMP" />
+    <result column="PER_UDT" property="udt" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    PER_ID, PER_NAME, PER_INTRO, PER_TYPE, PER_TYPEEXT, PER_FATHERID, PER_URL, PER_URLTYPE, 
+    PER_CLASSNAME, PER_SORT, PER_SHOW, PER_IMGPATH, PER_HINTS, PER_CODE, PER_MATHVALUE, 
+    PER_MATHTYPE, PER_STATE, PER_RC0, PER_RC1, PER_RC2, PER_RC3, PER_RC4, PER_RC5, PER_RC6, 
+    PER_RC7, PER_RC8, PER_RC9, PER_IDT, PER_UDT
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.limp.framework.boss.domain.PermissionExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_PERMISSION
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+  <delete id="deleteByExample" parameterType="com.limp.framework.boss.domain.PermissionExample" >
+    delete from SYS_PERMISSION
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.limp.framework.boss.domain.Permission" >
+    insert into SYS_PERMISSION (PER_ID, PER_NAME, PER_INTRO, 
+      PER_TYPE, PER_TYPEEXT, PER_FATHERID, 
+      PER_URL, PER_URLTYPE, PER_CLASSNAME, 
+      PER_SORT, PER_SHOW, PER_IMGPATH, 
+      PER_HINTS, PER_CODE, PER_MATHVALUE, 
+      PER_MATHTYPE, PER_STATE, PER_RC0, 
+      PER_RC1, PER_RC2, PER_RC3, PER_RC4, 
+      PER_RC5, PER_RC6, PER_RC7, PER_RC8, 
+      PER_RC9, PER_IDT, PER_UDT
+      )
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, 
+      #{type,jdbcType=DECIMAL}, #{typeext,jdbcType=VARCHAR}, #{fatherid,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{urltype,jdbcType=VARCHAR}, #{classname,jdbcType=VARCHAR}, 
+      #{sort,jdbcType=DECIMAL}, #{show,jdbcType=VARCHAR}, #{imgpath,jdbcType=VARCHAR}, 
+      #{hints,jdbcType=DECIMAL}, #{code,jdbcType=VARCHAR}, #{mathvalue,jdbcType=VARCHAR}, 
+      #{mathtype,jdbcType=VARCHAR}, #{state,jdbcType=DECIMAL}, #{rc0,jdbcType=VARCHAR}, 
+      #{rc1,jdbcType=VARCHAR}, #{rc2,jdbcType=VARCHAR}, #{rc3,jdbcType=VARCHAR}, #{rc4,jdbcType=VARCHAR}, 
+      #{rc5,jdbcType=VARCHAR}, #{rc6,jdbcType=DECIMAL}, #{rc7,jdbcType=DECIMAL}, #{rc8,jdbcType=TIMESTAMP}, 
+      #{rc9,jdbcType=TIMESTAMP}, #{idt,jdbcType=TIMESTAMP}, #{udt,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.limp.framework.boss.domain.Permission" >
+    insert into SYS_PERMISSION
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        PER_ID,
+      </if>
+      <if test="name != null" >
+        PER_NAME,
+      </if>
+      <if test="intro != null" >
+        PER_INTRO,
+      </if>
+      <if test="type != null" >
+        PER_TYPE,
+      </if>
+      <if test="typeext != null" >
+        PER_TYPEEXT,
+      </if>
+      <if test="fatherid != null" >
+        PER_FATHERID,
+      </if>
+      <if test="url != null" >
+        PER_URL,
+      </if>
+      <if test="urltype != null" >
+        PER_URLTYPE,
+      </if>
+      <if test="classname != null" >
+        PER_CLASSNAME,
+      </if>
+      <if test="sort != null" >
+        PER_SORT,
+      </if>
+      <if test="show != null" >
+        PER_SHOW,
+      </if>
+      <if test="imgpath != null" >
+        PER_IMGPATH,
+      </if>
+      <if test="hints != null" >
+        PER_HINTS,
+      </if>
+      <if test="code != null" >
+        PER_CODE,
+      </if>
+      <if test="mathvalue != null" >
+        PER_MATHVALUE,
+      </if>
+      <if test="mathtype != null" >
+        PER_MATHTYPE,
+      </if>
+      <if test="state != null" >
+        PER_STATE,
+      </if>
+      <if test="rc0 != null" >
+        PER_RC0,
+      </if>
+      <if test="rc1 != null" >
+        PER_RC1,
+      </if>
+      <if test="rc2 != null" >
+        PER_RC2,
+      </if>
+      <if test="rc3 != null" >
+        PER_RC3,
+      </if>
+      <if test="rc4 != null" >
+        PER_RC4,
+      </if>
+      <if test="rc5 != null" >
+        PER_RC5,
+      </if>
+      <if test="rc6 != null" >
+        PER_RC6,
+      </if>
+      <if test="rc7 != null" >
+        PER_RC7,
+      </if>
+      <if test="rc8 != null" >
+        PER_RC8,
+      </if>
+      <if test="rc9 != null" >
+        PER_RC9,
+      </if>
+      <if test="idt != null" >
+        PER_IDT,
+      </if>
+      <if test="udt != null" >
+        PER_UDT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null" >
+        #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="typeext != null" >
+        #{typeext,jdbcType=VARCHAR},
+      </if>
+      <if test="fatherid != null" >
+        #{fatherid,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="urltype != null" >
+        #{urltype,jdbcType=VARCHAR},
+      </if>
+      <if test="classname != null" >
+        #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=DECIMAL},
+      </if>
+      <if test="show != null" >
+        #{show,jdbcType=VARCHAR},
+      </if>
+      <if test="imgpath != null" >
+        #{imgpath,jdbcType=VARCHAR},
+      </if>
+      <if test="hints != null" >
+        #{hints,jdbcType=DECIMAL},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="mathvalue != null" >
+        #{mathvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="mathtype != null" >
+        #{mathtype,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=DECIMAL},
+      </if>
+      <if test="rc0 != null" >
+        #{rc0,jdbcType=VARCHAR},
+      </if>
+      <if test="rc1 != null" >
+        #{rc1,jdbcType=VARCHAR},
+      </if>
+      <if test="rc2 != null" >
+        #{rc2,jdbcType=VARCHAR},
+      </if>
+      <if test="rc3 != null" >
+        #{rc3,jdbcType=VARCHAR},
+      </if>
+      <if test="rc4 != null" >
+        #{rc4,jdbcType=VARCHAR},
+      </if>
+      <if test="rc5 != null" >
+        #{rc5,jdbcType=VARCHAR},
+      </if>
+      <if test="rc6 != null" >
+        #{rc6,jdbcType=DECIMAL},
+      </if>
+      <if test="rc7 != null" >
+        #{rc7,jdbcType=DECIMAL},
+      </if>
+      <if test="rc8 != null" >
+        #{rc8,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rc9 != null" >
+        #{rc9,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idt != null" >
+        #{idt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="udt != null" >
+        #{udt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.limp.framework.boss.domain.PermissionExample" resultType="java.lang.Integer" >
+    select count(*) from SYS_PERMISSION
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+    <select id="selectPermsAuth" parameterType="java.lang.String" resultMap="BaseResultMap">
+        <![CDATA[
+         SELECT DISTINCT TT.*
+            FROM (select D.*
+                    from SYS_USER_ROLE_MAP    A,
+                         SYS_ROLE_PERMISSION_MAP B,
+                         SYS_USERS            C,
+                         SYS_PERMISSION  D,
+                         SYS_USERROLE         E
+                   WHERE
+                     A.URM_USRGUID = C.USR_GUID
+                     AND A.URM_UREGUID = B.SRPM_ROLEID
+                     AND B.SPRM_PERID = D.PER_ID
+                     AND C.USR_GUID = #{userId,jdbcType=VARCHAR}
+                     AND A.URM_UREGUID = E.URE_GUID
+                     AND E.URE_STATE = 1
+                     AND D.PER_STATE = 1
+                  UNION ALL
+                  select D.*
+                    from
+                         SYS_USR_PERMISSION_MAP    B,
+                         SYS_USERS            C,
+                         SYS_PERMISSION            D
+
+                   WHERE
+
+                      B.SUPM_PERID = D.PER_ID
+                     AND B.SUPM_USRID = C.USR_GUID
+                     AND C.USR_GUID =  #{userId,jdbcType=VARCHAR}
+                     AND C.USR_STATE = 1
+                     AND D.PER_STATE = 1
+                 ) TT
+                     ORDER BY TT.PER_SORT ASC
+        ]]>
+	</select>
+
+    <update id="updateByExampleSelective" parameterType="map" >
+    update SYS_PERMISSION
+    <set >
+      <if test="record.id != null" >
+        PER_ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        PER_NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.intro != null" >
+        PER_INTRO = #{record.intro,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        PER_TYPE = #{record.type,jdbcType=DECIMAL},
+      </if>
+      <if test="record.typeext != null" >
+        PER_TYPEEXT = #{record.typeext,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fatherid != null" >
+        PER_FATHERID = #{record.fatherid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url != null" >
+        PER_URL = #{record.url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.urltype != null" >
+        PER_URLTYPE = #{record.urltype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classname != null" >
+        PER_CLASSNAME = #{record.classname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sort != null" >
+        PER_SORT = #{record.sort,jdbcType=DECIMAL},
+      </if>
+      <if test="record.show != null" >
+        PER_SHOW = #{record.show,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgpath != null" >
+        PER_IMGPATH = #{record.imgpath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hints != null" >
+        PER_HINTS = #{record.hints,jdbcType=DECIMAL},
+      </if>
+      <if test="record.code != null" >
+        PER_CODE = #{record.code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mathvalue != null" >
+        PER_MATHVALUE = #{record.mathvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mathtype != null" >
+        PER_MATHTYPE = #{record.mathtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null" >
+        PER_STATE = #{record.state,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rc0 != null" >
+        PER_RC0 = #{record.rc0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc1 != null" >
+        PER_RC1 = #{record.rc1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc2 != null" >
+        PER_RC2 = #{record.rc2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc3 != null" >
+        PER_RC3 = #{record.rc3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc4 != null" >
+        PER_RC4 = #{record.rc4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc5 != null" >
+        PER_RC5 = #{record.rc5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc6 != null" >
+        PER_RC6 = #{record.rc6,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rc7 != null" >
+        PER_RC7 = #{record.rc7,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rc8 != null" >
+        PER_RC8 = #{record.rc8,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rc9 != null" >
+        PER_RC9 = #{record.rc9,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.idt != null" >
+        PER_IDT = #{record.idt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.udt != null" >
+        PER_UDT = #{record.udt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SYS_PERMISSION
+    set PER_ID = #{record.id,jdbcType=VARCHAR},
+      PER_NAME = #{record.name,jdbcType=VARCHAR},
+      PER_INTRO = #{record.intro,jdbcType=VARCHAR},
+      PER_TYPE = #{record.type,jdbcType=DECIMAL},
+      PER_TYPEEXT = #{record.typeext,jdbcType=VARCHAR},
+      PER_FATHERID = #{record.fatherid,jdbcType=VARCHAR},
+      PER_URL = #{record.url,jdbcType=VARCHAR},
+      PER_URLTYPE = #{record.urltype,jdbcType=VARCHAR},
+      PER_CLASSNAME = #{record.classname,jdbcType=VARCHAR},
+      PER_SORT = #{record.sort,jdbcType=DECIMAL},
+      PER_SHOW = #{record.show,jdbcType=VARCHAR},
+      PER_IMGPATH = #{record.imgpath,jdbcType=VARCHAR},
+      PER_HINTS = #{record.hints,jdbcType=DECIMAL},
+      PER_CODE = #{record.code,jdbcType=VARCHAR},
+      PER_MATHVALUE = #{record.mathvalue,jdbcType=VARCHAR},
+      PER_MATHTYPE = #{record.mathtype,jdbcType=VARCHAR},
+      PER_STATE = #{record.state,jdbcType=DECIMAL},
+      PER_RC0 = #{record.rc0,jdbcType=VARCHAR},
+      PER_RC1 = #{record.rc1,jdbcType=VARCHAR},
+      PER_RC2 = #{record.rc2,jdbcType=VARCHAR},
+      PER_RC3 = #{record.rc3,jdbcType=VARCHAR},
+      PER_RC4 = #{record.rc4,jdbcType=VARCHAR},
+      PER_RC5 = #{record.rc5,jdbcType=VARCHAR},
+      PER_RC6 = #{record.rc6,jdbcType=DECIMAL},
+      PER_RC7 = #{record.rc7,jdbcType=DECIMAL},
+      PER_RC8 = #{record.rc8,jdbcType=TIMESTAMP},
+      PER_RC9 = #{record.rc9,jdbcType=TIMESTAMP},
+      PER_IDT = #{record.idt,jdbcType=TIMESTAMP},
+      PER_UDT = #{record.udt,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from ( 
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+      <![CDATA[ ) row_ ) where rownum_ > #{page.start} and rownum_ <= #{page.end} ]]>
+    </if>
+  </sql>
+</mapper>

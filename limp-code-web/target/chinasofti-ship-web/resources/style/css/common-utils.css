@@ -1,0 +1,19 @@
+@charset "UTF-8";
+/*弹框*/
+.modal-header{
+    background-color:#18204B !important;
+    border-bottom: 1px solid #18204B !important;
+    /*b1FAFF*/
+}
+.modal-title{
+    font-size: 16px !important;
+    color: #FFFFFF;
+
+}
+.close{
+    color:#b1FAFF !important;
+    opacity:1 !important;
+}
+.modal-body{
+    background-color:#18204B !important;
+}

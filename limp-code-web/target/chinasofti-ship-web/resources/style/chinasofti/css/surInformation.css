@@ -1,0 +1,122 @@
+.box00{background: #122C5B;height: 780px;margin-left: 10px;box-shadow: 5px 15px 20px 0px rgba(15,35,83,0.65);}
+.information>li{padding: 5px;color: #5FCBFF;font-size: 16px;}
+.inforTable>thead th{
+    width: 240px;
+    height: 30px;
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+    border-top:1px solid #204A79;
+    border-bottom:1px solid #204A79;
+}
+.inforTable>tbody tr td{
+    width: 240px;
+    height: 30px;
+    font-size: 16px;
+    padding: 5px;
+    text-align: center;
+    color: #53B2E5;
+}
+.inforTable>tbody tr:nth-child(even){
+    background: #294B6C;
+}
+
+/*******************************重置密码******************************/
+.resetPassword{
+    width: 440px;
+    height: 300px;
+    text-align: center;
+    color: #6DC6FF;
+    font-size: 17px;
+    margin: 0 auto;
+}
+.resetPassword form{text-align: right}
+.resetPassword form input{
+    width: 350px;
+    height: 40px;
+    border: 1px solid #334DAF;
+    background: #1C2A51;
+}
+/*placehoder的颜色*/
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #30B4A5;
+    padding: 1px;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #30B4A5;
+    padding: 1px;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #30B4A5;
+    padding: 1px;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #30B4A5;
+    padding: 1px;
+}
+
+.sub:hover{   background: #1D5FB2!important;color: #fff;}
+/*tab切换样式*/
+.nav-tabs>li>a{
+    margin-right: 0px;
+}
+.nav>li>a{
+    padding:10px 15px;
+    font-size: 16px;
+    color: #408CB8;
+
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover,.nav>li>a:hover{
+    color: #fff;
+    cursor: pointer;
+    background-color: #0D2046!important;
+    border: none;
+    font-weight:bold;
+    border-bottom: 2px solid #408CB8;
+}
+.nav-tabs{
+    border-bottom: none;
+}
+.tab-content>.tab-pane{
+    padding-top: 3px;
+}
+/*c参加培训期数*/
+.picBox{
+    overflow:hidden;
+    zoom:1;
+    width:100%;
+}
+.picL{
+    overflow:hidden;
+    zoom:1;
+}
+.picL li{
+    overflow:hidden;
+    position:relative;
+    float:left;
+    display:inline;
+    width:305px;
+    height:200px;
+    margin: 3px 3px;
+    zoom:1;
+}
+.picL li .text01{
+    background:rgba(18,44,91,0.65);
+    position:absolute;
+    width:320px;
+    height:250px;
+    top:200px;
+    left:-5px;
+    font-family:'微软雅黑';
+}
+
+.picL li .text01 p{
+    font-size:14px;
+    line-height:15px;
+}
+.picL li .text01 span{
+    color: #fff;
+    display: block;
+    height:20px;
+    padding:15px;
+}

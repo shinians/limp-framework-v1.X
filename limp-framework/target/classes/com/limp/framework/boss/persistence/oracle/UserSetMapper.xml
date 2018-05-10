@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.limp.framework.boss.mapper.oracle.UserSetMapper" >
+  <resultMap id="BaseResultMap" type="com.limp.framework.boss.domain.UserSet" >
+    <result column="LUS_USERID" property="userid" jdbcType="VARCHAR" />
+    <result column="LUS_MENUID" property="menuid" jdbcType="VARCHAR" />
+    <result column="LUS_BEGINDATE" property="begindate" jdbcType="TIMESTAMP" />
+    <result column="LUS_ENDDATE" property="enddate" jdbcType="TIMESTAMP" />
+    <result column="LUS_SHOW_LIMIT" property="showLimit" jdbcType="DECIMAL" />
+    <result column="LUS_SETTYPE" property="settype" jdbcType="DECIMAL" />
+    <result column="LUS_TOTAL_COUNT" property="totalCount" jdbcType="DECIMAL" />
+    <result column="LUS_USED_COUNT" property="usedCount" jdbcType="DECIMAL" />
+    <result column="LUS_RETAIN_COUNT" property="retainCount" jdbcType="DECIMAL" />
+    <result column="LUS_STATUS" property="status" jdbcType="DECIMAL" />
+    <result column="LUS_RC1" property="rc1" jdbcType="TIMESTAMP" />
+    <result column="LUS_RC2" property="rc2" jdbcType="DECIMAL" />
+    <result column="LUS_RC3" property="rc3" jdbcType="DECIMAL" />
+    <result column="LUS_RC4" property="rc4" jdbcType="VARCHAR" />
+    <result column="LUS_RC5" property="rc5" jdbcType="VARCHAR" />
+    <result column="LUS_IDT" property="idt" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    LUS_USERID, LUS_MENUID, LUS_BEGINDATE, LUS_ENDDATE, LUS_SHOW_LIMIT, LUS_SETTYPE, 
+    LUS_TOTAL_COUNT, LUS_USED_COUNT, LUS_RETAIN_COUNT, LUS_STATUS, LUS_RC1, LUS_RC2, 
+    LUS_RC3, LUS_RC4, LUS_RC5, LUS_IDT
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.limp.framework.boss.domain.UserSetExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_USER_SET
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+  <delete id="deleteByExample" parameterType="com.limp.framework.boss.domain.UserSetExample" >
+    delete from SYS_USER_SET
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.limp.framework.boss.domain.UserSet" >
+    insert into SYS_USER_SET (LUS_USERID, LUS_MENUID, LUS_BEGINDATE, 
+      LUS_ENDDATE, LUS_SHOW_LIMIT, LUS_SETTYPE, 
+      LUS_TOTAL_COUNT, LUS_USED_COUNT, LUS_RETAIN_COUNT, 
+      LUS_STATUS, LUS_RC1, LUS_RC2, 
+      LUS_RC3, LUS_RC4, LUS_RC5, LUS_IDT
+      )
+    values (#{userid,jdbcType=VARCHAR}, #{menuid,jdbcType=VARCHAR}, #{begindate,jdbcType=TIMESTAMP}, 
+      #{enddate,jdbcType=TIMESTAMP}, #{showLimit,jdbcType=DECIMAL}, #{settype,jdbcType=DECIMAL}, 
+      #{totalCount,jdbcType=DECIMAL}, #{usedCount,jdbcType=DECIMAL}, #{retainCount,jdbcType=DECIMAL}, 
+      #{status,jdbcType=DECIMAL}, #{rc1,jdbcType=TIMESTAMP}, #{rc2,jdbcType=DECIMAL}, 
+      #{rc3,jdbcType=DECIMAL}, #{rc4,jdbcType=VARCHAR}, #{rc5,jdbcType=VARCHAR}, #{idt,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.limp.framework.boss.domain.UserSet" >
+    insert into SYS_USER_SET
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        LUS_USERID,
+      </if>
+      <if test="menuid != null" >
+        LUS_MENUID,
+      </if>
+      <if test="begindate != null" >
+        LUS_BEGINDATE,
+      </if>
+      <if test="enddate != null" >
+        LUS_ENDDATE,
+      </if>
+      <if test="showLimit != null" >
+        LUS_SHOW_LIMIT,
+      </if>
+      <if test="settype != null" >
+        LUS_SETTYPE,
+      </if>
+      <if test="totalCount != null" >
+        LUS_TOTAL_COUNT,
+      </if>
+      <if test="usedCount != null" >
+        LUS_USED_COUNT,
+      </if>
+      <if test="retainCount != null" >
+        LUS_RETAIN_COUNT,
+      </if>
+      <if test="status != null" >
+        LUS_STATUS,
+      </if>
+      <if test="rc1 != null" >
+        LUS_RC1,
+      </if>
+      <if test="rc2 != null" >
+        LUS_RC2,
+      </if>
+      <if test="rc3 != null" >
+        LUS_RC3,
+      </if>
+      <if test="rc4 != null" >
+        LUS_RC4,
+      </if>
+      <if test="rc5 != null" >
+        LUS_RC5,
+      </if>
+      <if test="idt != null" >
+        LUS_IDT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="menuid != null" >
+        #{menuid,jdbcType=VARCHAR},
+      </if>
+      <if test="begindate != null" >
+        #{begindate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enddate != null" >
+        #{enddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="showLimit != null" >
+        #{showLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="settype != null" >
+        #{settype,jdbcType=DECIMAL},
+      </if>
+      <if test="totalCount != null" >
+        #{totalCount,jdbcType=DECIMAL},
+      </if>
+      <if test="usedCount != null" >
+        #{usedCount,jdbcType=DECIMAL},
+      </if>
+      <if test="retainCount != null" >
+        #{retainCount,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="rc1 != null" >
+        #{rc1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rc2 != null" >
+        #{rc2,jdbcType=DECIMAL},
+      </if>
+      <if test="rc3 != null" >
+        #{rc3,jdbcType=DECIMAL},
+      </if>
+      <if test="rc4 != null" >
+        #{rc4,jdbcType=VARCHAR},
+      </if>
+      <if test="rc5 != null" >
+        #{rc5,jdbcType=VARCHAR},
+      </if>
+      <if test="idt != null" >
+        #{idt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+    <!--返回map格式数据 根据id查询所具有的权限【注意传参如果为null会报错，如有逗号为中文同样会报错】-->
+    <select id="selectUserSetByUserId" resultType="java.util.HashMap">
+       SELECT T.*,MEN_GUID, MEN_SSMGUID, MEN_NAME, MEN_DESC, MEN_TYPE, MEN_FATHERID, MEN_URL, MEN_IMGURL,
+        MEN_SORT, MEN_HINTS, MEN_STATE, MEN_FIELD, MEN_KEYWORD,
+        MEN_DATASOURCE, MEN_RC0, MEN_RC1, MEN_RC2, MEN_RC3, MEN_RC4, MEN_RC5, MEN_RC6, MEN_RC7,
+        MEN_RC8, MEN_RC9  FROM SYS_USER_SET T LEFT JOIN SYS_MENUS   ON T.LUS_MENUID=MEN_GUID WHERE T.LUS_USERID=#{userId,jdbcType=VARCHAR}
+    </select>
+    <select id="selectUserSetByIDKeyWord" resultMap="BaseResultMap" >
+       SELECT T.* FROM SYS_USER_SET T LEFT JOIN SYS_MENUS M  ON T.LUS_MENUID=MEN_GUID WHERE T.LUS_USERID=#{userId,jdbcType=VARCHAR}  AND M.MEN_KEYWORD=#{keyWord,jdbcType=VARCHAR}
+    </select>
+  <select id="countByExample" parameterType="com.limp.framework.boss.domain.UserSetExample" resultType="java.lang.Integer" >
+    select count(*) from SYS_USER_SET
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SYS_USER_SET
+    <set >
+      <if test="record.userid != null" >
+        LUS_USERID = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.menuid != null" >
+        LUS_MENUID = #{record.menuid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.begindate != null" >
+        LUS_BEGINDATE = #{record.begindate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.enddate != null" >
+        LUS_ENDDATE = #{record.enddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.showLimit != null" >
+        LUS_SHOW_LIMIT = #{record.showLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="record.settype != null" >
+        LUS_SETTYPE = #{record.settype,jdbcType=DECIMAL},
+      </if>
+      <if test="record.totalCount != null" >
+        LUS_TOTAL_COUNT = #{record.totalCount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.usedCount != null" >
+        LUS_USED_COUNT = #{record.usedCount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.retainCount != null" >
+        LUS_RETAIN_COUNT = #{record.retainCount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.status != null" >
+        LUS_STATUS = #{record.status,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rc1 != null" >
+        LUS_RC1 = #{record.rc1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rc2 != null" >
+        LUS_RC2 = #{record.rc2,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rc3 != null" >
+        LUS_RC3 = #{record.rc3,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rc4 != null" >
+        LUS_RC4 = #{record.rc4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc5 != null" >
+        LUS_RC5 = #{record.rc5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idt != null" >
+        LUS_IDT = #{record.idt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SYS_USER_SET
+    set LUS_USERID = #{record.userid,jdbcType=VARCHAR},
+      LUS_MENUID = #{record.menuid,jdbcType=VARCHAR},
+      LUS_BEGINDATE = #{record.begindate,jdbcType=TIMESTAMP},
+      LUS_ENDDATE = #{record.enddate,jdbcType=TIMESTAMP},
+      LUS_SHOW_LIMIT = #{record.showLimit,jdbcType=DECIMAL},
+      LUS_SETTYPE = #{record.settype,jdbcType=DECIMAL},
+      LUS_TOTAL_COUNT = #{record.totalCount,jdbcType=DECIMAL},
+      LUS_USED_COUNT = #{record.usedCount,jdbcType=DECIMAL},
+      LUS_RETAIN_COUNT = #{record.retainCount,jdbcType=DECIMAL},
+      LUS_STATUS = #{record.status,jdbcType=DECIMAL},
+      LUS_RC1 = #{record.rc1,jdbcType=TIMESTAMP},
+      LUS_RC2 = #{record.rc2,jdbcType=DECIMAL},
+      LUS_RC3 = #{record.rc3,jdbcType=DECIMAL},
+      LUS_RC4 = #{record.rc4,jdbcType=VARCHAR},
+      LUS_RC5 = #{record.rc5,jdbcType=VARCHAR},
+      LUS_IDT = #{record.idt,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from ( 
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+      <![CDATA[ ) row_ ) where rownum_ > #{page.start} and rownum_ <= #{page.end} ]]>
+    </if>
+  </sql>
+</mapper>

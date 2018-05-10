@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.mapper.oracle.ProductCheckMapper" >
+  <resultMap id="BaseResultMap" type="com.chinasofti.domain.ProductCheck" >
+    <result column="CPC_ID" property="id" jdbcType="VARCHAR" />
+    <result column="CPC_UID" property="uid" jdbcType="VARCHAR" />
+    <result column="CPC_ENTID" property="entid" jdbcType="VARCHAR" />
+    <result column="CPC_SURID" property="surid" jdbcType="VARCHAR" />
+    <result column="CPC_SHIPNAME" property="shipname" jdbcType="VARCHAR" />
+    <result column="CPC_RESPPERSON" property="respperson" jdbcType="VARCHAR" />
+    <result column="CPC_CHECKTIME" property="checktime" jdbcType="VARCHAR" />
+    <result column="CPC_CHECKTIMENEXT" property="checktimenext" jdbcType="VARCHAR" />
+    <result column="CPC_PRODUCTTYPE" property="producttype" jdbcType="VARCHAR" />
+    <result column="CPC_PRODUCTNUM" property="productnum" jdbcType="VARCHAR" />
+    <result column="CPC_PRODUTMODEL" property="produtmodel" jdbcType="VARCHAR" />
+    <result column="CPC_PRODUCTCERT" property="productcert" jdbcType="VARCHAR" />
+    <result column="CPC_CHECKPASS" property="checkpass" jdbcType="DECIMAL" />
+    <result column="CPC_SHIPPORT" property="shipport" jdbcType="VARCHAR" />
+    <result column="CPC_CHECKTYPE" property="checktype" jdbcType="VARCHAR" />
+    <result column="CPC_SHIPCODE" property="shipcode" jdbcType="VARCHAR" />
+    <result column="CPC_RC1" property="rc1" jdbcType="VARCHAR" />
+    <result column="CPC_RC2" property="rc2" jdbcType="VARCHAR" />
+    <result column="CPC_RC3" property="rc3" jdbcType="DECIMAL" />
+    <result column="CPC_RC4" property="rc4" jdbcType="TIMESTAMP" />
+    <result column="CPC_REPORT_NO" property="reportNo" jdbcType="VARCHAR" />
+    <result column="CPC_STATE" property="state" jdbcType="VARCHAR" />
+    <result column="CPC_SHIPCHECK_TYPE" property="shipcheckType" jdbcType="VARCHAR" />
+    <result column="CPC_CHECKNUMBER" property="checknumber" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CPC_ID, CPC_UID, CPC_ENTID, CPC_SURID, CPC_SHIPNAME, CPC_RESPPERSON, CPC_CHECKTIME,
+    CPC_CHECKTIMENEXT, CPC_PRODUCTTYPE, CPC_PRODUCTNUM, CPC_PRODUTMODEL, CPC_PRODUCTCERT,
+    CPC_CHECKPASS, CPC_SHIPPORT, CPC_CHECKTYPE, CPC_SHIPCODE, CPC_RC1, CPC_RC2, CPC_RC3,
+    CPC_RC4, CPC_REPORT_NO, CPC_STATE, CPC_SHIPCHECK_TYPE, CPC_CHECKNUMBER
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chinasofti.domain.ProductCheckExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CIS_PRODUCTS_CHECK
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+  <delete id="deleteByExample" parameterType="com.chinasofti.domain.ProductCheckExample" >
+    delete from CIS_PRODUCTS_CHECK
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chinasofti.domain.ProductCheck" >
+    insert into CIS_PRODUCTS_CHECK (CPC_ID, CPC_UID, CPC_ENTID,
+    CPC_SURID, CPC_SHIPNAME, CPC_RESPPERSON,
+    CPC_CHECKTIME, CPC_CHECKTIMENEXT, CPC_PRODUCTTYPE,
+    CPC_PRODUCTNUM, CPC_PRODUTMODEL, CPC_PRODUCTCERT,
+    CPC_CHECKPASS, CPC_SHIPPORT, CPC_CHECKTYPE,
+    CPC_SHIPCODE, CPC_RC1, CPC_RC2,
+    CPC_RC3, CPC_RC4, CPC_REPORT_NO,
+    CPC_STATE, CPC_SHIPCHECK_TYPE, CPC_CHECKNUMBER
+    )
+    values (#{id,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}, #{entid,jdbcType=VARCHAR},
+    #{surid,jdbcType=VARCHAR}, #{shipname,jdbcType=VARCHAR}, #{respperson,jdbcType=VARCHAR},
+    #{checktime,jdbcType=VARCHAR}, #{checktimenext,jdbcType=VARCHAR}, #{producttype,jdbcType=VARCHAR},
+    #{productnum,jdbcType=VARCHAR}, #{produtmodel,jdbcType=VARCHAR}, #{productcert,jdbcType=VARCHAR},
+    #{checkpass,jdbcType=DECIMAL}, #{shipport,jdbcType=VARCHAR}, #{checktype,jdbcType=VARCHAR},
+    #{shipcode,jdbcType=VARCHAR}, #{rc1,jdbcType=VARCHAR}, #{rc2,jdbcType=VARCHAR},
+    #{rc3,jdbcType=DECIMAL}, #{rc4,jdbcType=TIMESTAMP}, #{reportNo,jdbcType=VARCHAR},
+    #{state,jdbcType=VARCHAR}, #{shipcheckType,jdbcType=VARCHAR}, #{checknumber,jdbcType=VARCHAR}
+    )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chinasofti.domain.ProductCheck" >
+    insert into CIS_PRODUCTS_CHECK
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        CPC_ID,
+      </if>
+      <if test="uid != null" >
+        CPC_UID,
+      </if>
+      <if test="entid != null" >
+        CPC_ENTID,
+      </if>
+      <if test="surid != null" >
+        CPC_SURID,
+      </if>
+      <if test="shipname != null" >
+        CPC_SHIPNAME,
+      </if>
+      <if test="respperson != null" >
+        CPC_RESPPERSON,
+      </if>
+      <if test="checktime != null" >
+        CPC_CHECKTIME,
+      </if>
+      <if test="checktimenext != null" >
+        CPC_CHECKTIMENEXT,
+      </if>
+      <if test="producttype != null" >
+        CPC_PRODUCTTYPE,
+      </if>
+      <if test="productnum != null" >
+        CPC_PRODUCTNUM,
+      </if>
+      <if test="produtmodel != null" >
+        CPC_PRODUTMODEL,
+      </if>
+      <if test="productcert != null" >
+        CPC_PRODUCTCERT,
+      </if>
+      <if test="checkpass != null" >
+        CPC_CHECKPASS,
+      </if>
+      <if test="shipport != null" >
+        CPC_SHIPPORT,
+      </if>
+      <if test="checktype != null" >
+        CPC_CHECKTYPE,
+      </if>
+      <if test="shipcode != null" >
+        CPC_SHIPCODE,
+      </if>
+      <if test="rc1 != null" >
+        CPC_RC1,
+      </if>
+      <if test="rc2 != null" >
+        CPC_RC2,
+      </if>
+      <if test="rc3 != null" >
+        CPC_RC3,
+      </if>
+      <if test="rc4 != null" >
+        CPC_RC4,
+      </if>
+      <if test="reportNo != null" >
+        CPC_REPORT_NO,
+      </if>
+      <if test="state != null" >
+        CPC_STATE,
+      </if>
+      <if test="shipcheckType != null" >
+        CPC_SHIPCHECK_TYPE,
+      </if>
+      <if test="checknumber != null" >
+        CPC_CHECKNUMBER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="entid != null" >
+        #{entid,jdbcType=VARCHAR},
+      </if>
+      <if test="surid != null" >
+        #{surid,jdbcType=VARCHAR},
+      </if>
+      <if test="shipname != null" >
+        #{shipname,jdbcType=VARCHAR},
+      </if>
+      <if test="respperson != null" >
+        #{respperson,jdbcType=VARCHAR},
+      </if>
+      <if test="checktime != null" >
+        #{checktime,jdbcType=VARCHAR},
+      </if>
+      <if test="checktimenext != null" >
+        #{checktimenext,jdbcType=VARCHAR},
+      </if>
+      <if test="producttype != null" >
+        #{producttype,jdbcType=VARCHAR},
+      </if>
+      <if test="productnum != null" >
+        #{productnum,jdbcType=VARCHAR},
+      </if>
+      <if test="produtmodel != null" >
+        #{produtmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="productcert != null" >
+        #{productcert,jdbcType=VARCHAR},
+      </if>
+      <if test="checkpass != null" >
+        #{checkpass,jdbcType=DECIMAL},
+      </if>
+      <if test="shipport != null" >
+        #{shipport,jdbcType=VARCHAR},
+      </if>
+      <if test="checktype != null" >
+        #{checktype,jdbcType=VARCHAR},
+      </if>
+      <if test="shipcode != null" >
+        #{shipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="rc1 != null" >
+        #{rc1,jdbcType=VARCHAR},
+      </if>
+      <if test="rc2 != null" >
+        #{rc2,jdbcType=VARCHAR},
+      </if>
+      <if test="rc3 != null" >
+        #{rc3,jdbcType=DECIMAL},
+      </if>
+      <if test="rc4 != null" >
+        #{rc4,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reportNo != null" >
+        #{reportNo,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="shipcheckType != null" >
+        #{shipcheckType,jdbcType=VARCHAR},
+      </if>
+      <if test="checknumber != null" >
+        #{checknumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chinasofti.domain.ProductCheckExample" resultType="java.lang.Integer" >
+    select count(*) from CIS_PRODUCTS_CHECK
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update CIS_PRODUCTS_CHECK
+    <set >
+      <if test="record.id != null" >
+        CPC_ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uid != null" >
+        CPC_UID = #{record.uid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entid != null" >
+        CPC_ENTID = #{record.entid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.surid != null" >
+        CPC_SURID = #{record.surid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipname != null" >
+        CPC_SHIPNAME = #{record.shipname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.respperson != null" >
+        CPC_RESPPERSON = #{record.respperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checktime != null" >
+        CPC_CHECKTIME = #{record.checktime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checktimenext != null" >
+        CPC_CHECKTIMENEXT = #{record.checktimenext,jdbcType=VARCHAR},
+      </if>
+      <if test="record.producttype != null" >
+        CPC_PRODUCTTYPE = #{record.producttype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productnum != null" >
+        CPC_PRODUCTNUM = #{record.productnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.produtmodel != null" >
+        CPC_PRODUTMODEL = #{record.produtmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productcert != null" >
+        CPC_PRODUCTCERT = #{record.productcert,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkpass != null" >
+        CPC_CHECKPASS = #{record.checkpass,jdbcType=DECIMAL},
+      </if>
+      <if test="record.shipport != null" >
+        CPC_SHIPPORT = #{record.shipport,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checktype != null" >
+        CPC_CHECKTYPE = #{record.checktype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipcode != null" >
+        CPC_SHIPCODE = #{record.shipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc1 != null" >
+        CPC_RC1 = #{record.rc1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc2 != null" >
+        CPC_RC2 = #{record.rc2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc3 != null" >
+        CPC_RC3 = #{record.rc3,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rc4 != null" >
+        CPC_RC4 = #{record.rc4,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.reportNo != null" >
+        CPC_REPORT_NO = #{record.reportNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null" >
+        CPC_STATE = #{record.state,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipcheckType != null" >
+        CPC_SHIPCHECK_TYPE = #{record.shipcheckType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checknumber != null" >
+        CPC_CHECKNUMBER = #{record.checknumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update CIS_PRODUCTS_CHECK
+    set CPC_ID = #{record.id,jdbcType=VARCHAR},
+    CPC_UID = #{record.uid,jdbcType=VARCHAR},
+    CPC_ENTID = #{record.entid,jdbcType=VARCHAR},
+    CPC_SURID = #{record.surid,jdbcType=VARCHAR},
+    CPC_SHIPNAME = #{record.shipname,jdbcType=VARCHAR},
+    CPC_RESPPERSON = #{record.respperson,jdbcType=VARCHAR},
+    CPC_CHECKTIME = #{record.checktime,jdbcType=VARCHAR},
+    CPC_CHECKTIMENEXT = #{record.checktimenext,jdbcType=VARCHAR},
+    CPC_PRODUCTTYPE = #{record.producttype,jdbcType=VARCHAR},
+    CPC_PRODUCTNUM = #{record.productnum,jdbcType=VARCHAR},
+    CPC_PRODUTMODEL = #{record.produtmodel,jdbcType=VARCHAR},
+    CPC_PRODUCTCERT = #{record.productcert,jdbcType=VARCHAR},
+    CPC_CHECKPASS = #{record.checkpass,jdbcType=DECIMAL},
+    CPC_SHIPPORT = #{record.shipport,jdbcType=VARCHAR},
+    CPC_CHECKTYPE = #{record.checktype,jdbcType=VARCHAR},
+    CPC_SHIPCODE = #{record.shipcode,jdbcType=VARCHAR},
+    CPC_RC1 = #{record.rc1,jdbcType=VARCHAR},
+    CPC_RC2 = #{record.rc2,jdbcType=VARCHAR},
+    CPC_RC3 = #{record.rc3,jdbcType=DECIMAL},
+    CPC_RC4 = #{record.rc4,jdbcType=TIMESTAMP},
+    CPC_REPORT_NO = #{record.reportNo,jdbcType=VARCHAR},
+    CPC_STATE = #{record.state,jdbcType=VARCHAR},
+    CPC_SHIPCHECK_TYPE = #{record.shipcheckType,jdbcType=VARCHAR},
+    CPC_CHECKNUMBER = #{record.checknumber,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from (
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+      <![CDATA[ ) row_ ) where rownum_ > #{page.start} and rownum_ <= #{page.end} ]]>
+    </if>
+  </sql>
+
+  <!--/品制造企业:产品检验合格率折线图数据接口-->
+  <sql id="conSql">
+    <if test="ent.registnum!=null">
+      AND cpc_entid = #{ent.registnum}
+    </if>
+    <if test="productCheck.checktype!=null">
+      AND cpc_checktype = #{productCheck.checktype}
+    </if>
+  </sql>
+
+  <select id="getCpzzPercent" resultType="HashMap">
+    select t2.year,nvl(round(t1.nums*100/t2.nums,2),0) rates from
+
+    (select substr(CPC_CHECKTIME,0,4) year,count(*) nums from CIS_PRODUCTS_CHECK t where cpc_checkpass='1'
+    <include refid="conSql"/> group by substr(CPC_CHECKTIME,0,4)) t1 right join
+
+    (select substr(CPC_CHECKTIME,0,4) year,count(*) nums from CIS_PRODUCTS_CHECK t
+    <where>
+      <include refid="conSql"/>
+    </where>
+     group by substr(CPC_CHECKTIME,0,4)) t2 on t1.year=t2.year
+
+    WHERE t2.year BETWEEN #{bYear} AND #{eYear}
+  </select>
+
+  <select id="getProductCheckGroup" resultType="HashMap">
+      select substr(t1.CPC_CHECKTIME,0,4) years ,t.cp_cpflyjfl LP_CODE_flType,count(*) num  from cis_productinfo t,CIS_PRODUCTS_CHECK t1 where t.cp_uid=t1.cpc_productnum
+      <if test="checkType != null">
+          and t1.cpc_checktype in
+          <foreach item="item" index="index" collection="checkType" open="(" separator="," close=")">
+              #{item}
+          </foreach>
+      </if>
+      <if test="orgCode != null">
+          and t1.cpc_rc2 = #{orgCode}
+      </if>
+      and t.cp_cpflyjfl is not null
+      <![CDATA[
+        and substr(t1.CPC_CHECKTIME,0,4)>=#{startYear} and substr(t1.CPC_CHECKTIME,0,4)<=#{endYear}
+        ]]>
+      group by substr(t1.CPC_CHECKTIME,0,4)  ,t.cp_cpflyjfl  ORDER BY substr(t1.CPC_CHECKTIME,0,4) asc
+  </select>
+  <select id="getProNumsByOrgCode" resultType="int">
+    select count(1) from cis_products_check t where substr(CPC_CHECKTIME,0,4)=to_char(sysdate,'yyyy')
+    <if test="likeStr != null">
+      and CPC_RC2 like #{likeStr}
+    </if>
+  </select>
+
+  <select id="getCountByExas" resultType="java.lang.Integer" >
+    select count(*) from cis_productinfo t,CIS_PRODUCTS_CHECK t1 where t.cp_uid=t1.cpc_productnum
+    <if test="ejfl != null">
+      and t.CP_CPFLEJFL=#{ejfl}
+    </if>
+    <if test="checkType != null">
+      and t1.cpc_checktype in
+      <foreach item="item" index="index" collection="checkType" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+    <if test="orgType != null">
+      and t1.cpc_rc2 like concat(#{orgType},'%' )
+    </if>
+    <if test="checkTime != null">
+      and t1.cpc_checktime like concat(#{checkTime},'%' )
+    </if>
+  </select>
+</mapper>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-4.2.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--http://blog.csdn.net/haoyifen/article/details/51172647 参考：事物处理-->
+    <context:component-scan base-package="com.limp.framework.boss.domain,com.chinasofti.domain,com.chinasofti.sevice.impl,com.limp.framework.boss.service.impl">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"></context:exclude-filter>
+    </context:component-scan>
+  <!--调试问题-->
+<!--   <context:component-scan base-package="com.chinasofti,com.limp.framework">
+     <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"></context:exclude-filter>
+ </context:component-scan>-->
+
+   <!-- <context:component-scan base-package="com.chinasofti,com.limp.framework.boss">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>-->
+    <!--properties文件引入方式-->
+   <!-- <property name="locations">
+        <list>
+            <value>classpath:/dataSourceConfig.properties</value>
+        </list>
+    </property>-->
+    <bean id="propertyConfigure" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:datasource/cis.properties"/>
+    </bean>
+
+
+    <!-- <bean id="dataSource2"  name="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+       <property name="jndiName" value="java:comp/env/jdbc/ship" />
+   </bean>-->
+
+    <bean id="dataSource1" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="url" value="${limp.oracle.jdbc.url}"/>
+        <property name="driverClassName" value="${limp.oracle.jdbc.driver}"/>
+        <property name="username" value="${limp.oracle.jdbc.username}"/>
+        <property name="password" value="${limp.oracle.jdbc.password}"/>
+    </bean>
+    <!-- 1. 数据源 : 阿里 druid 数据库连接池-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${limp.oracle.jdbc.url}"/>
+        <!--driverClassName	根据url自动识别	这一项可配可不配，如果不配置druid会根据url自动识别dbType，然后选择相应的driverClassName-->
+        <property name="driverClassName" value="${limp.oracle.jdbc.driver}"/>
+        <property name="username" value="${limp.oracle.jdbc.username}"/>
+        <property name="password" value="${limp.oracle.jdbc.password}"/>
+        <!-- 最大并发连接数 -->
+        <property name="maxActive" value="${limp.oracle.jdbc.maxActive}" />
+
+        <property name = "filters" value = "${limp.oracle.jdbc.filters}"/>
+
+        <!-- 初始化连接数量 -->
+        <property name = "initialSize" value = "${limp.oracle.jdbc.initialSize}" />
+
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name = "maxWait" value = "${limp.oracle.jdbc.maxWait}" />
+
+        <!-- 最小空闲连接数 -->
+        <property name = "minIdle" value = "${limp.oracle.jdbc.minIdle}" />
+
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name = "timeBetweenEvictionRunsMillis" value ="${limp.oracle.jdbc.timeBetweenEvictionRunsMillis}" />
+
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name = "minEvictableIdleTimeMillis" value ="${limp.oracle.jdbc.minEvictableIdleTimeMillis}" />
+
+        <!--<property name = "validationQuery" value = "${limp.oracle.jdbc.validationQuery}" />-->
+        <property name = "testWhileIdle" value = "${limp.oracle.jdbc.testWhileIdle}" />
+        <property name = "testOnBorrow" value = "${limp.oracle.jdbc.testOnBorrow}" />
+        <property name = "testOnReturn" value = "${limp.oracle.jdbc.testOnReturn}" />
+        <property name = "maxOpenPreparedStatements" value ="${limp.oracle.jdbc.maxOpenPreparedStatements}" />
+
+        <!-- 打开 removeAbandoned 功能 -->
+        <property name = "removeAbandoned" value = "${limp.oracle.jdbc.removeAbandoned}" />
+
+        <!-- 1800 秒，也就是 30 分钟 -->
+        <property name = "removeAbandonedTimeout" value ="${limp.oracle.jdbc.removeAbandonedTimeout}" />
+
+        <!-- 关闭 abanded 连接时输出错误日志 -->
+        <property name = "logAbandoned" value = "${limp.oracle.jdbc.logAbandoned}" />
+
+
+        <!-- filters：统计监控信息，value是一个string,支持组合配置，如stat,log4j,那么问题来了，如果自定义的filter该如何配置呢，可以通过bean的形式添加 -->
+        <!--          <property name="filters" value="${filters}" /> -->
+        <property name="proxyFilters">
+            <list>
+                <ref bean="stat-filter"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- druid监控统计bean 对应上文dataSource中的proxyFilters -->
+    <bean id="stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
+        <property name="slowSqlMillis" value="1000" />
+        <property name="logSlowSql" value="true" />
+    </bean>
+
+
+
+    <!--2mybatis的SqlSessin的工厂：SqlSessionFactoryBean
+      1、数据源
+      2 typeAliasesPackage：指定实体类的包名，自动将实体类的简单类名映射成别名
+      -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!--装载【实体类】1-->
+        <!--        <property name="typeAliasesPackage"
+                          value="com.limp.domain;com.limp.framework.boss.domain"/> -->
+        <property name="typeAliasesPackage"
+                  value="com.limp.framework.boss.domain;com.chinasofti.domain"/>
+        <!--  <property name="typeAliasesPackage" value="com.limp.mapper.oracle"/>-->
+        <!--装载【xml配置文件】2：自动扫面maping配置文件|，否则无法找到对应的方法-->
+        <!--   <property name="mapperLocations"
+                     value="classpath:com/limp/mapper/oracle/*.xml,classpath:com/limp/framework/boss/persistence/oracle/*.xml"/>
+    -->
+        <property name="mapperLocations">
+            <!--注意-->
+            <list>
+                <value>classpath:com/limp/framework/boss/persistence/oracle/*.xml</value>
+                <value>classpath:com/chinasofti/persistence/oracle/*.xml</value>
+            </list>
+        </property>
+        <!-- <property name="mapperLocations"
+                value="classpath:com/limp/framework/boss/persistence/oracle/*.xml"/>-->
+    </bean>
+
+    <!--
+        3. mybatis自动扫描加载Sql映射文件/接口：MapperScannerConfigurer
+         basePackage:指定sql映射文件/接口所在的包（自动扫描）
+         sqlSessionFactory：引用上面定义的sqlSessionFactory
+         dao接口包名，spring回自动查找其下的【类】???
+    -->
+    <bean id="config" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--装载【Mapper接口文件文件】3-->
+        <!--   <property name="basePackage"
+                     value="com.limp.mapper.oracle;com.limp.framework.boss.mapper.oracle"/>
+    -->
+        <property name="basePackage"
+                  value="com.limp.framework.boss.mapper.oracle,com.chinasofti.mapper.oracle"/>
+         <!--<property name="sqlSessionFactory" ref="sqlSessionFactory"/>-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+    </bean>
+
+
+    <!--事物： （1）避免 will not be managed by Spring 和was not registered for synchronization because synchronization is not active 一定要是事物被Spring管理，否则事物不起作用
+     （2）、如果想使用两种事物方式兼容，建议注解式事物在声明式事物之前-->
+
+    <!-- 5.  注解式事物 :注解式事物会在上下文中寻找使用@Transactional的注解的类和方法，启用事物 ；支持事务注解的（@Transactional） 、<mvc:annotation-driven> 就是支持mvc注解的 -->
+    <tx:annotation-driven transaction-manager="txManager" />
+
+    <!-- 4. 事务管理 : DataSourceTransactionManager -->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+        <tx:advice id="txAdvice" transaction-manager="txManager">
+            <tx:attributes>
+                <tx:method name="save*" propagation="REQUIRED" />
+                <tx:method name="add*" propagation="REQUIRED" />
+                <tx:method name="create*" propagation="REQUIRED" />
+                <tx:method name="insert*" propagation="REQUIRED" />
+                <tx:method name="update*" propagation="REQUIRED" />
+                <tx:method name="merge*" propagation="REQUIRED" />
+                <tx:method name="del*" propagation="REQUIRED" />
+                <tx:method name="remove*" propagation="REQUIRED" />
+                <tx:method name="put*" propagation="REQUIRED" />
+                <tx:method name="use*" propagation="REQUIRED"/>
+                <!--hibernate4必须配置为开启事务 否则 getCurrentSession()获取不到-->
+                <tx:method name="get*" propagation="REQUIRED" read-only="true" />
+                <tx:method name="count*" propagation="REQUIRED" read-only="true" />
+                <tx:method name="find*" propagation="REQUIRED" read-only="true" />
+                <tx:method name="login*" propagation="REQUIRED" read-only="true" />
+                <!--<tx:method name="*" read-only="true" />-->
+            </tx:attributes>
+        </tx:advice>
+    <!-- 声明式事物： 申明式事物会在拦截execution(* com.chinasofti.service..*.*(..))的切面中寻找对应的 其中：第一个*代表所有的返回值类型 第二个*代表所有的类 第三个*代表类所有方法 最后一个..代表所有的参数。-->
+    <aop:config proxy-target-class="true">
+        <aop:pointcut id="pointcutServiceMethods"
+                      expression="execution(* com.chinasofti.sevice.impl..*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcutServiceMethods"/>
+    </aop:config>
+
+</beans>

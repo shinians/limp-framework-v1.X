@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.limp.framework.boss.mapper.oracle.RolePermissionMapMapper" >
+  <resultMap id="BaseResultMap" type="com.limp.framework.boss.domain.RolePermissionMap" >
+    <result column="SRPM_ROLEID" property="roleid" jdbcType="VARCHAR" />
+    <result column="SPRM_PERID" property="sprmPerid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    SRPM_ROLEID, SPRM_PERID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.limp.framework.boss.domain.RolePermissionMapExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_ROLE_PERMISSION_MAP
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+  <delete id="deleteByExample" parameterType="com.limp.framework.boss.domain.RolePermissionMapExample" >
+    delete from SYS_ROLE_PERMISSION_MAP
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.limp.framework.boss.domain.RolePermissionMap" >
+    insert into SYS_ROLE_PERMISSION_MAP (SRPM_ROLEID, SPRM_PERID)
+    values (#{roleid,jdbcType=VARCHAR}, #{sprmPerid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.limp.framework.boss.domain.RolePermissionMap" >
+    insert into SYS_ROLE_PERMISSION_MAP
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleid != null" >
+        SRPM_ROLEID,
+      </if>
+      <if test="sprmPerid != null" >
+        SPRM_PERID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleid != null" >
+        #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="sprmPerid != null" >
+        #{sprmPerid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.limp.framework.boss.domain.RolePermissionMapExample" resultType="java.lang.Integer" >
+    select count(*) from SYS_ROLE_PERMISSION_MAP
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SYS_ROLE_PERMISSION_MAP
+    <set >
+      <if test="record.roleid != null" >
+        SRPM_ROLEID = #{record.roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sprmPerid != null" >
+        SPRM_PERID = #{record.sprmPerid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SYS_ROLE_PERMISSION_MAP
+    set SRPM_ROLEID = #{record.roleid,jdbcType=VARCHAR},
+      SPRM_PERID = #{record.sprmPerid,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from ( 
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+      <![CDATA[ ) row_ ) where rownum_ > #{page.start} and rownum_ <= #{page.end} ]]>
+    </if>
+  </sql>
+</mapper>

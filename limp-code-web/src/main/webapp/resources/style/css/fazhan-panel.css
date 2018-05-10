@@ -1,0 +1,232 @@
+
+/*四项指标*/
+/*.box02 div {*/
+    /*margin: auto;*/
+/*}*/
+/*企业基本信息*/
+/*.information>li span, .information01>li span{*/
+    /*vertical-align: top;*/
+/*}*/
+/*企业标题样式重写*/
+/*.qy_title{*/
+    /*margin: 18px 0px 20px 30px;*/
+/*}*/
+/*banner*/
+/*.banner{*/
+    /*width: 83%;*/
+/*}*/
+/*.banList li{*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+    /*margin-left: 0px;*/
+/*}*/
+/*.banList li img {*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+/*}*/
+/*.fomW{*/
+    /*bottom: 40px;*/
+    /*left: -1%;*/
+    /*width:100%;*/
+/*}*/
+/*弹出层*/
+/*.lay{*/
+    /*background: #fff;*/
+    /*width:100%;*/
+    /*padding-left: 0px;*/
+    /*margin-left: 10px;*/
+/*}*/
+/*.lis1{*/
+    /*overflow: hidden;*/
+/*}*/
+/*.hide{*/
+    /*display: none;*/
+/*}*/
+/*.act{*/
+    /*display: block;*/
+/*}*/
+/*#more{*/
+    /*font-size:20px;*/
+    /*color:#fff;*/
+/*}*/
+/*.biao{*/
+    /*height: 300px;*/
+    /*width:100%;*/
+    /*text-align: center;*/
+    /*overflow: hidden;*/
+/*}*/
+/*table{*/
+    /*table-layout: fixed;*/
+    /*word-wrap: break-word;*/
+/*}*/
+/*.table>tr>td, .table>tr>th,.table>tbody>tr>td,.table>tbody>tr>td>a{*/
+    /*padding: 5px;*/
+    /*text-align: center;*/
+    /*color: #57BBED;*/
+    /*overflow: hidden;*/
+    /*text-overflow: ellipsis;*/
+    /*white-space: nowrap;*/
+/*}*/
+/*.table>thead>tr>td,.table>tbody>tr>th{*/
+    /*color:#fff;*/
+    /*text-align: center;*/
+    /*font-size: 16px !important;*/
+    /*padding: 10px 0px;*/
+/*}*/
+/*.table>thead>tr{*/
+    /*border-bottom: 2px solid #234876;*/
+    /*border-top: 2px solid #234876 !important;*/
+/*}*/
+/*.table>tbody>tr>td{*/
+    /*border-top: 1px solid #122c5b;*/
+/*}*/
+/*.table>thead{*/
+    /*font-size:16px;*/
+/*}*/
+/*.table>tbody{*/
+    /*font-size:16px;*/
+/*}*/
+/*.table>thead>tr>th{*/
+    /*vertical-align: top;*/
+    /*text-align: center;*/
+    /*color:#fff;*/
+    /*border-bottom: 2px solid #122C5B;*/
+/*}*/
+/*.table-striped>tbody>tr:nth-of-type(even){*/
+    /*background:#294B6C;*/
+/*}*/
+/*.table-striped>tbody>tr:nth-of-type(odd){*/
+    /*background-color:transparent;*/
+/*}*/
+/*.layer-tit{*/
+    /*font-size: 30px;*/
+    /*margin-left: 20px;*/
+    /*padding-bottom: 10px;*/
+    /*color: #fff;*/
+/*}*/
+/*监督抽查*/
+/*.nav{*/
+    /*width: 172px;*/
+    /*float: left;*/
+    /*font-size: 16px;*/
+/*}*/
+/*.nav>li>a{*/
+    /*color: #fff;*/
+    /*padding-left:2px;*/
+    /*font-size:16px;*/
+/*}*/
+/*覆盖bootstrap样式*/
+/*.nav>li>a:focus, .nav>li>a:hover{*/
+    /*background-color:transparent;*/
+/*}*/
+/*.nav li{*/
+    /*border: 0;*/
+    /*width: 100%;;*/
+    /*margin-left: 1px;*/
+/*}*/
+/*.nav>li>a:hover{*/
+    /*text-decoration: none;*/
+    /*background-color:#122C5B !important;*/
+    /*border: 1px solid #2465B9;*/
+    /*border-right: 1px solid #122C5B;*/
+/*}*/
+/*.tab-content{*/
+    /*float: left;*/
+    /*width: 83%;*/
+    /*min-height: 275px;*/
+    /*padding: 10px;*/
+    /*border: 1px solid #2465B9;*/
+/*}*/
+/*.show{*/
+    /*display: block;*/
+/*}*/
+
+/*弹出层3*/
+/*.fenshu{*/
+    /*color: #F0FF00;*/
+    /*position: absolute;*/
+    /*top: 1px;*/
+    /*left: 100px;*/
+/*}*/
+/*.fenshu strong{*/
+    /*font-size: 20px;*/
+    /*color: #fff;*/
+/*}*/
+/*.panel-title a{text-decoration: none;}*/
+/*.span6{*/
+    /*width: 50%;*/
+    /*margin:10px auto;*/
+    /*float:left;*/
+/*}*/
+/*.koufen{*/
+    /*color: red;*/
+/*}*/
+/*.panel-body>p>span{*/
+    /*color:#5AA6DB;*/
+/*}*/
+/*#main2{*/
+    /*height: 320px;*/
+    /*width: 100%;*/
+    /*padding: 0px 10px;*/
+/*}*/
+/*layer弹层样式*/
+/*.lis1 .layui-layer-title{*/
+    /*color: #fff;*/
+    /*background: #122c5b;*/
+    /*border-bottom:0px;*/
+    /*font-size:20px;*/
+/*}*/
+/*.lis1 .layui-layer-setwin .layui-layer-ico{*/
+    /*background: url(../images/close.png);*/
+/*}*/
+/*.lis1 .layui-layer-content{*/
+    /*background: #122C5B;*/
+    /*color: #57BBED;*/
+    /*padding: 20px;*/
+/*}*/
+/*.lis1 .layui-layer-setwin .layui-layer-close2{*/
+    /*right: 3px;*/
+    /*top: 0px;*/
+    /*width: 20px;*/
+    /*height: 21px;*/
+/*}*/
+/*.lis1{*/
+    /*top:0px !important;*/
+/*}*/
+/*覆盖layui.css*/
+/*.information{*/
+    /*padding-left:40px;*/
+    /*margin-bottom:14px;*/
+/*}*/
+/*#chouchaTab .active{*/
+    /*border: 1px solid #2364B8;*/
+    /*border-right: 1px solid #112B5A;*/
+/*}*/
+/*2017.8.3 information li覆盖*/
+/*.information>li b, .information01>li b{*/
+    /*width:114px;*/
+/*}*/
+/*雷达图背景样式*/
+/*.radar{*/
+    /*background:#2A456b;*/
+/*}*/
+/*2017.8.5 biao单元格样式*/
+/*.biao .table>thead>tr>td,.table>tbody>tr>th{*/
+    /*width:100px;*/
+/*}*/
+/*地址添加gis跳转*/
+/*.gogis{*/
+    /*display:inline-block;*/
+    /*width: 16px;*/
+    /*height: 19px;*/
+    /*background:url(../images/address.png) 0px 3px no-repeat;*/
+/*}*/
+
+/*2017.0810 by meng*/
+.datetimepicker-days,.datetimepicker-months{
+    cursor: pointer;
+}
+.dropdown-menu{
+    background-color:rgba(26, 29, 71, 0.58);
+    color:#fff;
+}

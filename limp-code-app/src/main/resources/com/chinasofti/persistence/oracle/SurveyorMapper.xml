@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.mapper.oracle.SurveyorMapper" >
+  <resultMap id="BaseResultMap" type="com.chinasofti.domain.Surveyor" >
+    <result column="CS_ID" property="id" jdbcType="VARCHAR" />
+    <result column="CS_UID" property="uid" jdbcType="VARCHAR" />
+    <result column="CS_ORGANID" property="organid" jdbcType="VARCHAR" />
+    <result column="CS_CERTID" property="certid" jdbcType="VARCHAR" />
+    <result column="CS_ORGANNAME" property="organname" jdbcType="VARCHAR" />
+    <result column="CS_YCSNAME" property="ycsname" jdbcType="VARCHAR" />
+    <result column="CS_YCSCERTNUM" property="ycscertnum" jdbcType="VARCHAR" />
+    <result column="CS_SHIPCHECKTIME" property="shipchecktime" jdbcType="VARCHAR" />
+    <result column="CS_SEX" property="sex" jdbcType="VARCHAR" />
+    <result column="CS_BIRTHDATE" property="birthdate" jdbcType="VARCHAR" />
+    <result column="CS_PROVCODE" property="provcode" jdbcType="VARCHAR" />
+    <result column="CS_EDUCERTCODE" property="educertcode" jdbcType="VARCHAR" />
+    <result column="CS_MAJORNAME" property="majorname" jdbcType="VARCHAR" />
+    <result column="CS_EDUCERTCODE1" property="educertcode1" jdbcType="VARCHAR" />
+    <result column="CS_MAJORNAME1" property="majorname1" jdbcType="VARCHAR" />
+    <result column="CS_POSITIONNAME" property="positionname" jdbcType="VARCHAR" />
+    <result column="CS_LEADERSTATUS" property="leaderstatus" jdbcType="VARCHAR" />
+    <result column="CS_OCEANYEAR" property="oceanyear" jdbcType="VARCHAR" />
+    <result column="CS_IDT" property="idt" jdbcType="OTHER" />
+    <result column="CS_UDT" property="udt" jdbcType="OTHER" />
+    <result column="CS_STATE" property="state" jdbcType="VARCHAR" />
+    <result column="CS_PROVNAME" property="provname" jdbcType="VARCHAR" />
+    <result column="CS_TELPHONE" property="telphone" jdbcType="VARCHAR" />
+    <result column="CS_EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="ORGADDR" property="orgaddr" jdbcType="VARCHAR" />
+    <result column="ROWNUM_" property="rownum" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CS_ID, CS_UID, CS_ORGANID, CS_CERTID, CS_ORGANNAME, CS_YCSNAME, CS_YCSCERTNUM, CS_SHIPCHECKTIME,
+    CS_SEX, CS_BIRTHDATE,CS_PROVCODE,CS_EDUCERTCODE,CS_MAJORNAME,CS_EDUCERTCODE1,CS_MAJORNAME1,
+    CS_POSITIONNAME, CS_LEADERSTATUS, CS_OCEANYEAR, CS_IDT, CS_UDT, CS_STATE, CS_PROVNAME, CS_TELPHONE,
+    CS_EMAIL
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chinasofti.domain.SurveyorExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,(select co_orgaddr from cis_organinfo t where t.co_orgcode = cs_organid and rownum = 1) as ORGADDR
+    from CIS_SURVEYOR
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+
+  <select id="getCertListByCerynum" resultType="HashMap">
+    select
+     cs_cerlevel as cerlevel,
+     cs_major as major
+     from cis_surcertificate where cs_ycscertnum = #{ycscertnum} order by cs_granttime
+  </select>
+
+  <select id="getCreListByCertnum" resultType="Credentials">
+    select t.cs_id         as cid,
+         t1.cs_uid       as cuid,
+         t1.cs_ycsname   as name,
+         t1.cs_organname as org,
+         t.cs_cerno      as certno,
+         t.cs_cerlevel as clevel,
+         t.cs_major as major,
+         substr(t.cs_granttime,1,10) as grantdate,
+         substr(t.cs_issuedate,1,10)  as issuedate
+    from cis_surcertificate t
+   inner join cis_surveyor t1 on t.cs_ycscertnum = t1.cs_uid
+   where t.cs_ycscertnum = #{ycscertnum}
+   order by t.cs_granttime
+  </select>
+
+  <select id="getCreList" resultType="Credentials">
+    select
+      DISTINCT
+    t.cs_id         as cid,
+    t1.cs_uid       as cuid,
+    t1.cs_ycsname   as name,
+    t1.cs_organname as org,
+    t.cs_cerno      as certno,
+    t.cs_cerlevel as clevel,
+    case when cs_cerlevel = '特殊资格' then (select t1.dictdata_name from dic_code t1 where t1.dict_cate='68' and t1.dictdata_value=t.cs_major) else cs_major end as major,
+    substr(t.cs_granttime,1,10) as grantdate,
+    substr(t.cs_issuedate,1,10)  as issuedate
+    from cis_surcertificate t
+    inner join cis_surveyor t1 on t.cs_ycscertnum = t1.cs_uid
+    where t1.cs_organid = #{organid}
+  </select>
+
+  <select id="getSurWorkRecordByCertnum" resultType="SurWorkRecord">
+    <include refid="OracleDialectPrefix" />
+    select
+    t.csr_id as id,
+    t.csr_surid as surid,
+    t.csr_orgid as orgid,
+    t.csr_workunit as workunit,
+    t.csr_begintime as begintime,
+    t.csr_endtime as endtime,
+    t.csr_position as position,
+    t.csr_witness as witness
+    from cis_surwork_record t
+    where csr_surid = #{surid}
+    order by t.csr_endtime desc
+    <include refid="OracleDialectSuffix" />
+  </select>
+
+  <delete id="deleteByExample" parameterType="com.chinasofti.domain.SurveyorExample" >
+    delete from CIS_SURVEYOR
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chinasofti.domain.Surveyor" >
+    insert into CIS_SURVEYOR (CS_ID, CS_UID, CS_ORGANID,
+    CS_CERTID, CS_ORGANNAME, CS_YCSNAME,
+    CS_YCSCERTNUM, CS_SHIPCHECKTIME, CS_SEX,
+    CS_BIRTHDATE, CS_PROVCODE, CS_EDUCERTCODE,
+    CS_MAJORNAME, CS_EDUCERTCODE1, CS_MAJORNAME1,
+    CS_POSITIONNAME, CS_LEADERSTATUS,
+    CS_OCEANYEAR, CS_IDT, CS_UDT,
+    CS_STATE, CS_PROVNAME, CS_TELPHONE,
+    CS_EMAIL)
+    values (#{id,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}, #{organid,jdbcType=VARCHAR},
+    #{certid,jdbcType=VARCHAR}, #{organname,jdbcType=VARCHAR}, #{ycsname,jdbcType=VARCHAR},
+    #{ycscertnum,jdbcType=VARCHAR}, #{shipchecktime,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR},
+    #{birthdate,jdbcType=VARCHAR}, #{provcode,jdbcType=VARCHAR}, #{educertcode,jdbcType=VARCHAR},
+    #{majorname,jdbcType=VARCHAR}, #{educertcode1,jdbcType=VARCHAR}, #{majorname1,jdbcType=VARCHAR},
+    #{positionname,jdbcType=VARCHAR}, #{applyType,jdbcType=VARCHAR}, #{leaderstatus,jdbcType=VARCHAR},
+    #{oceanyear,jdbcType=VARCHAR}, #{acceptunit,jdbcType=VARCHAR}, #{acceptpeople,jdbcType=VARCHAR},
+    #{acceptpopption,jdbcType=VARCHAR}, #{idt,jdbcType=OTHER}, #{udt,jdbcType=OTHER},
+    #{state,jdbcType=VARCHAR}, #{provname,jdbcType=VARCHAR}, #{telphone,jdbcType=VARCHAR},
+    #{email,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chinasofti.domain.Surveyor" >
+    insert into CIS_SURVEYOR
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        CS_ID,
+      </if>
+      <if test="uid != null" >
+        CS_UID,
+      </if>
+      <if test="organid != null" >
+        CS_ORGANID,
+      </if>
+      <if test="certid != null" >
+        CS_CERTID,
+      </if>
+      <if test="organname != null" >
+        CS_ORGANNAME,
+      </if>
+      <if test="ycsname != null" >
+        CS_YCSNAME,
+      </if>
+      <if test="ycscertnum != null" >
+        CS_YCSCERTNUM,
+      </if>
+      <if test="shipchecktime != null" >
+        CS_SHIPCHECKTIME,
+      </if>
+      <if test="sex != null" >
+        CS_SEX,
+      </if>
+      <if test="birthdate != null" >
+        CS_BIRTHDATE,
+      </if>
+      <if test="provcode != null" >
+        CS_PROVCODE,
+      </if>
+      <if test="educertcode != null" >
+        CS_EDUCERTCODE,
+      </if>
+      <if test="majorname != null" >
+        CS_MAJORNAME,
+      </if>
+      <if test="educertcode1 != null" >
+        CS_EDUCERTCODE1,
+      </if>
+      <if test="majorname1 != null" >
+        CS_MAJORNAME1,
+      </if>
+      <if test="positionname != null" >
+        CS_POSITIONNAME,
+      </if>
+      <if test="leaderstatus != null" >
+        CS_LEADERSTATUS,
+      </if>
+      <if test="oceanyear != null" >
+        CS_OCEANYEAR,
+      </if>
+      <if test="idt != null" >
+        CS_IDT,
+      </if>
+      <if test="udt != null" >
+        CS_UDT,
+      </if>
+      <if test="state != null" >
+        CS_STATE,
+      </if>
+      <if test="provname != null" >
+        CS_PROVNAME,
+      </if>
+      <if test="telphone != null" >
+        CS_TELPHONE,
+      </if>
+      <if test="email != null" >
+        CS_EMAIL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="organid != null" >
+        #{organid,jdbcType=VARCHAR},
+      </if>
+      <if test="certid != null" >
+        #{certid,jdbcType=VARCHAR},
+      </if>
+      <if test="organname != null" >
+        #{organname,jdbcType=VARCHAR},
+      </if>
+      <if test="ycsname != null" >
+        #{ycsname,jdbcType=VARCHAR},
+      </if>
+      <if test="ycscertnum != null" >
+        #{ycscertnum,jdbcType=VARCHAR},
+      </if>
+      <if test="shipchecktime != null" >
+        #{shipchecktime,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null" >
+        #{birthdate,jdbcType=VARCHAR},
+      </if>
+      <if test="provcode != null" >
+        #{provcode,jdbcType=VARCHAR},
+      </if>
+      <if test="educertcode != null" >
+        #{educertcode,jdbcType=VARCHAR},
+      </if>
+      <if test="majorname != null" >
+        #{majorname,jdbcType=VARCHAR},
+      </if>
+      <if test="educertcode1 != null" >
+        #{educertcode1,jdbcType=VARCHAR},
+      </if>
+      <if test="majorname1 != null" >
+        #{majorname1,jdbcType=VARCHAR},
+      </if>
+      <if test="positionname != null" >
+        #{positionname,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderstatus != null" >
+        #{leaderstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="oceanyear != null" >
+        #{oceanyear,jdbcType=VARCHAR},
+      </if>
+      <if test="idt != null" >
+        #{idt,jdbcType=OTHER},
+      </if>
+      <if test="udt != null" >
+        #{udt,jdbcType=OTHER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="provname != null" >
+        #{provname,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null" >
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chinasofti.domain.SurveyorExample" resultType="java.lang.Integer" >
+    select count(*) from CIS_SURVEYOR
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+
+  <select id="countSurWorkRecord" resultType="java.lang.Integer" >
+    select count(*) from cis_surwork_record where csr_surid = #{surid}
+  </select>
+
+  <update id="updateByExampleSelective" parameterType="map" >
+    update CIS_SURVEYOR
+    <set >
+      <if test="record.id != null" >
+        CS_ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uid != null" >
+        CS_UID = #{record.uid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.organid != null" >
+        CS_ORGANID = #{record.organid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certid != null" >
+        CS_CERTID = #{record.certid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.organname != null" >
+        CS_ORGANNAME = #{record.organname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ycsname != null" >
+        CS_YCSNAME = #{record.ycsname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ycscertnum != null" >
+        CS_YCSCERTNUM = #{record.ycscertnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shipchecktime != null" >
+        CS_SHIPCHECKTIME = #{record.shipchecktime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        CS_SEX = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthdate != null" >
+        CS_BIRTHDATE = #{record.birthdate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.provcode != null" >
+        CS_PROVCODE = #{record.provcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.educertcode != null" >
+        CS_EDUCERTCODE = #{record.educertcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.majorname != null" >
+        CS_MAJORNAME = #{record.majorname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.educertcode1 != null" >
+        CS_EDUCERTCODE1 = #{record.educertcode1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.majorname1 != null" >
+        CS_MAJORNAME1 = #{record.majorname1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.positionname != null" >
+        CS_POSITIONNAME = #{record.positionname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.leaderstatus != null" >
+        CS_LEADERSTATUS = #{record.leaderstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oceanyear != null" >
+        CS_OCEANYEAR = #{record.oceanyear,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idt != null" >
+        CS_IDT = #{record.idt,jdbcType=OTHER},
+      </if>
+      <if test="record.udt != null" >
+        CS_UDT = #{record.udt,jdbcType=OTHER},
+      </if>
+      <if test="record.state != null" >
+        CS_STATE = #{record.state,jdbcType=VARCHAR},
+      </if>
+      <if test="record.provname != null" >
+        CS_PROVNAME = #{record.provname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telphone != null" >
+        CS_TELPHONE = #{record.telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        CS_EMAIL = #{record.email,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update CIS_SURVEYOR
+    set CS_ID = #{record.id,jdbcType=VARCHAR},
+    CS_UID = #{record.uid,jdbcType=VARCHAR},
+    CS_ORGANID = #{record.organid,jdbcType=VARCHAR},
+    CS_CERTID = #{record.certid,jdbcType=VARCHAR},
+    CS_ORGANNAME = #{record.organname,jdbcType=VARCHAR},
+    CS_YCSNAME = #{record.ycsname,jdbcType=VARCHAR},
+    CS_YCSCERTNUM = #{record.ycscertnum,jdbcType=VARCHAR},
+    CS_SHIPCHECKTIME = #{record.shipchecktime,jdbcType=VARCHAR},
+    CS_SEX = #{record.sex,jdbcType=VARCHAR},
+    CS_BIRTHDATE = #{record.birthdate,jdbcType=VARCHAR},
+    CS_PROVCODE = #{record.provcode,jdbcType=VARCHAR},
+    CS_EDUCERTCODE = #{record.educertcode,jdbcType=VARCHAR},
+    CS_MAJORNAME = #{record.majorname,jdbcType=VARCHAR},
+    CS_EDUCERTCODE1 = #{record.educertcode1,jdbcType=VARCHAR},
+    CS_MAJORNAME1 = #{record.majorname1,jdbcType=VARCHAR},
+    CS_POSITIONNAME = #{record.positionname,jdbcType=VARCHAR},
+    CS_LEADERSTATUS = #{record.leaderstatus,jdbcType=VARCHAR},
+    CS_OCEANYEAR = #{record.oceanyear,jdbcType=VARCHAR},
+    CS_IDT = #{record.idt,jdbcType=OTHER},
+    CS_UDT = #{record.udt,jdbcType=OTHER},
+    CS_STATE = #{record.state,jdbcType=VARCHAR},
+    CS_PROVNAME = #{record.provname,jdbcType=VARCHAR},
+    CS_TELPHONE = #{record.telphone,jdbcType=VARCHAR},
+    CS_EMAIL = #{record.email,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from (
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+      <![CDATA[ ) row_  where rownum<= #{page.end}) where rownum_ > #{page.start} ]]>
+    </if>
+  </sql>
+
+  <select id="countSurByOrgCode" resultType="Integer">
+    select count(1) from cis_surveyor WHERE CS_STATE='0' and CS_LOGOUT_STATUS!='1'
+    <if test="likeStr!=null">
+      AND CS_ORGANID like #{likeStr}
+    </if>
+  </select>
+  <select id="getSurNumByMajor" resultType="int">
+    select count(distinct t1.CS_YCSCERTNUM) from
+    cis_surveyor t1 inner join
+    cis_surcertificate t2 on t1.cs_uid=t2.cs_ycscertnum
+    where t2.cs_major =#{major} and t1.CS_LOGOUT_STATUS!='1' and t1.CS_DEL_FLAG!='1'
+    <if test="likeStr!=null">
+      AND t1.CS_ORGANID like #{likeStr}
+    </if>
+  </select>
+</mapper>

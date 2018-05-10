@@ -1,0 +1,155 @@
+
+/*检测机构一张图*/
+.box06{
+	width: 48%;
+	min-height: 170px;
+	background: #0F2353;
+    box-shadow: 5px 15px 20px 0px rgba(15,35,83,0.65);
+    margin: 10px;
+    border: 1px solid transparent;
+}
+.box06 .margin35 .iconSum{
+	left: 525px;
+}
+.row .box06:nth-child(1){
+	margin-left:25px;
+}
+.row .box06:nth-child(2){
+	margin-right:0px;
+}
+.box07{
+	width:100%;
+	height: 320px;
+}
+
+/*col-md-9样式*/
+.col-md-9{
+	padding-left: 0px;
+    margin-left: -10px;
+}
+/*弹出层2*/
+#qiye_chart{
+	width: 500px;
+	height:325px;
+    padding: 0px 10px;
+}
+/*覆盖bootstrap样式*/
+.nav>li>a:focus, .nav>li>a:hover{
+	background-color:transparent;
+}
+/*layer弹层样式*/
+.lis1 .layui-layer-title{
+	color: #fff;
+    background: #122C5B;
+}
+.lis1 .layui-layer-setwin .layui-layer-ico{
+	background: url(../images/close.png);
+}
+.lis1 .layui-layer-content{
+	background: #122C5B;
+    color: #57BBED;
+    padding: 20px;
+}
+.lis1 .layui-layer-setwin .layui-layer-close2{
+	right: 3px;
+    top: 0px;
+    width: 20px;
+    height: 21px;
+}
+/*认可历程*/
+.time{
+	height: 426px;
+}
+.title{
+	margin: 20px 0px 0px 0px;
+}
+.wrapper-t{
+	background-position: 0px 183px;
+}
+.content-t1{
+	width: 180px;
+    height: 182px;
+    background: url(../images/time-bg.png) 0px 0px no-repeat;
+    position: absolute;
+    top: 20px;
+    left: 100px;
+    background-size: 100% 100%;
+}
+.content-t1-name{
+	margin: -20px 0px 0px 35px;
+}
+.content-con, .content-con2{
+	margin: 11px 0px 0px 30px;
+}
+.btn-time{
+	width:60%;
+	margin-left:22px;
+}
+.content-t2{
+	width: 180px;
+    height: 182px;
+    background: url(../images/time-bg2.png) 0px 0px no-repeat;
+    position: absolute;
+    bottom: 20px;
+    left: 190px;
+    background-size: 100% 100%;
+}
+.content-t2-name{
+	margin: 42px 0px 0px 35px;
+}
+.t-back,.t-go{
+	top:230px;
+}
+.t-go{
+    right: 22px;
+}
+/*检测基本机构信息*/
+.jcbanList li img{
+    height: 300px;
+    width: 100%;
+}
+.jcbanList li{
+    height: 100%;
+    width: 81%;
+    margin-left: 0px;
+    opacity:0;
+    transform:scale(0);
+    transition:transform 0.5s ease 0s, opacity 1.5s ease 0s;
+    z-index:1;
+    position:absolute;
+}
+.jcbanList li.active{opacity:1;transform:scale(1);z-index:2;}
+/*指标样式*/
+.box02 div{
+    margin:auto;
+}
+/*检测机构图*/
+.banner{
+    margin: 20px 37px;
+    width: 0px;
+}
+.checkcompany{
+    margin:20px;
+    overflow: hidden;
+    height: 300px;
+}
+.fomW {
+    bottom: 25px;
+    width: 100%;
+    margin-left: 0px;
+}
+
+/*检测机构标题title02，认可历程 title03*/
+.title02 {
+    margin: 16px 0px 16px 25px;
+    color: #fff;
+    font-size: 26px;
+}
+.title03 {
+    margin: 14px 20px;
+    color: #fff;
+    font-size: 20px;
+}
+.information>li b, .information01>li b{
+    width:126px;
+}

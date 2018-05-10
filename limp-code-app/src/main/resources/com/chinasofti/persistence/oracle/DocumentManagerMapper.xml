@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.mapper.oracle.DocumentManagerMapper" >
+  <resultMap id="BaseResultMap" type="com.chinasofti.domain.DocumentManager" >
+    <result column="CDM_ID" property="id" jdbcType="VARCHAR" />
+    <result column="CDM_REFID" property="refid" jdbcType="VARCHAR" />
+    <result column="CDM_NAME" property="name" jdbcType="VARCHAR" />
+    <result column="CDM_INTRO" property="intro" jdbcType="VARCHAR" />
+    <result column="CDM_PATH" property="path" jdbcType="VARCHAR" />
+    <result column="CDM_URL" property="url" jdbcType="VARCHAR" />
+    <result column="CDM_TYPENUM" property="typenum" jdbcType="VARCHAR" />
+    <result column="CDM_ORDER" property="order" jdbcType="DECIMAL" />
+    <result column="CDM_STATUS" property="status" jdbcType="DECIMAL" />
+    <result column="CDM_IDT" property="idt" jdbcType="OTHER" />
+    <result column="CDM_UDT" property="udt" jdbcType="OTHER" />
+    <result column="CDM_RC1" property="rc1" jdbcType="VARCHAR" />
+    <result column="CDM_RC2" property="rc2" jdbcType="VARCHAR" />
+    <result column="CDM_RC3" property="rc3" jdbcType="TIMESTAMP" />
+    <result column="CDM_RC4" property="rc4" jdbcType="TIMESTAMP" />
+    <result column="CDM_RC5" property="rc5" jdbcType="DECIMAL" />
+    <result column="CDM_REFID2" property="refid2" jdbcType="VARCHAR" />
+    <result column="CDM_TYPENAME" property="typename" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CDM_ID, CDM_REFID, CDM_NAME, CDM_INTRO, CDM_PATH, CDM_URL, CDM_TYPENUM, CDM_ORDER, 
+    CDM_STATUS, CDM_IDT, CDM_UDT, CDM_RC1, CDM_RC2, CDM_RC3, CDM_RC4, CDM_RC5, CDM_REFID2, 
+    CDM_TYPENAME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chinasofti.domain.DocumentManagerExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CIS_DOCUMENT_MANAGER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+
+  <select id="getAllDocList" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from CIS_DOCUMENT_MANAGER
+    where CDM_STATUS = '1'
+  </select>
+
+  <delete id="deleteByExample" parameterType="com.chinasofti.domain.DocumentManagerExample" >
+    delete from CIS_DOCUMENT_MANAGER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chinasofti.domain.DocumentManager" >
+    insert into CIS_DOCUMENT_MANAGER (CDM_ID, CDM_REFID, CDM_NAME, 
+      CDM_INTRO, CDM_PATH, CDM_URL, CDM_TYPENUM, 
+      CDM_ORDER, CDM_STATUS, CDM_IDT, CDM_UDT, 
+      CDM_RC1, CDM_RC2, CDM_RC3, CDM_RC4, 
+      CDM_RC5, CDM_REFID2, CDM_TYPENAME
+      )
+    values (#{id,jdbcType=VARCHAR}, #{refid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{intro,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{typenum,jdbcType=VARCHAR}, 
+      #{order,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL}, #{idt,jdbcType=OTHER}, #{udt,jdbcType=OTHER}, 
+      #{rc1,jdbcType=VARCHAR}, #{rc2,jdbcType=VARCHAR}, #{rc3,jdbcType=TIMESTAMP}, #{rc4,jdbcType=TIMESTAMP}, 
+      #{rc5,jdbcType=DECIMAL}, #{refid2,jdbcType=VARCHAR}, #{typename,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chinasofti.domain.DocumentManager" >
+    insert into CIS_DOCUMENT_MANAGER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        CDM_ID,
+      </if>
+      <if test="refid != null" >
+        CDM_REFID,
+      </if>
+      <if test="name != null" >
+        CDM_NAME,
+      </if>
+      <if test="intro != null" >
+        CDM_INTRO,
+      </if>
+      <if test="path != null" >
+        CDM_PATH,
+      </if>
+      <if test="url != null" >
+        CDM_URL,
+      </if>
+      <if test="typenum != null" >
+        CDM_TYPENUM,
+      </if>
+      <if test="order != null" >
+        CDM_ORDER,
+      </if>
+      <if test="status != null" >
+        CDM_STATUS,
+      </if>
+      <if test="idt != null" >
+        CDM_IDT,
+      </if>
+      <if test="udt != null" >
+        CDM_UDT,
+      </if>
+      <if test="rc1 != null" >
+        CDM_RC1,
+      </if>
+      <if test="rc2 != null" >
+        CDM_RC2,
+      </if>
+      <if test="rc3 != null" >
+        CDM_RC3,
+      </if>
+      <if test="rc4 != null" >
+        CDM_RC4,
+      </if>
+      <if test="rc5 != null" >
+        CDM_RC5,
+      </if>
+      <if test="refid2 != null" >
+        CDM_REFID2,
+      </if>
+      <if test="typename != null" >
+        CDM_TYPENAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="refid != null" >
+        #{refid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null" >
+        #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="typenum != null" >
+        #{typenum,jdbcType=VARCHAR},
+      </if>
+      <if test="order != null" >
+        #{order,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="idt != null" >
+        #{idt,jdbcType=OTHER},
+      </if>
+      <if test="udt != null" >
+        #{udt,jdbcType=OTHER},
+      </if>
+      <if test="rc1 != null" >
+        #{rc1,jdbcType=VARCHAR},
+      </if>
+      <if test="rc2 != null" >
+        #{rc2,jdbcType=VARCHAR},
+      </if>
+      <if test="rc3 != null" >
+        #{rc3,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rc4 != null" >
+        #{rc4,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rc5 != null" >
+        #{rc5,jdbcType=DECIMAL},
+      </if>
+      <if test="refid2 != null" >
+        #{refid2,jdbcType=VARCHAR},
+      </if>
+      <if test="typename != null" >
+        #{typename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chinasofti.domain.DocumentManagerExample" resultType="java.lang.Integer" >
+    select count(*) from CIS_DOCUMENT_MANAGER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update CIS_DOCUMENT_MANAGER
+    <set >
+      <if test="record.id != null" >
+        CDM_ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refid != null" >
+        CDM_REFID = #{record.refid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        CDM_NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.intro != null" >
+        CDM_INTRO = #{record.intro,jdbcType=VARCHAR},
+      </if>
+      <if test="record.path != null" >
+        CDM_PATH = #{record.path,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url != null" >
+        CDM_URL = #{record.url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.typenum != null" >
+        CDM_TYPENUM = #{record.typenum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.order != null" >
+        CDM_ORDER = #{record.order,jdbcType=DECIMAL},
+      </if>
+      <if test="record.status != null" >
+        CDM_STATUS = #{record.status,jdbcType=DECIMAL},
+      </if>
+      <if test="record.idt != null" >
+        CDM_IDT = #{record.idt,jdbcType=OTHER},
+      </if>
+      <if test="record.udt != null" >
+        CDM_UDT = #{record.udt,jdbcType=OTHER},
+      </if>
+      <if test="record.rc1 != null" >
+        CDM_RC1 = #{record.rc1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc2 != null" >
+        CDM_RC2 = #{record.rc2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rc3 != null" >
+        CDM_RC3 = #{record.rc3,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rc4 != null" >
+        CDM_RC4 = #{record.rc4,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.rc5 != null" >
+        CDM_RC5 = #{record.rc5,jdbcType=DECIMAL},
+      </if>
+      <if test="record.refid2 != null" >
+        CDM_REFID2 = #{record.refid2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.typename != null" >
+        CDM_TYPENAME = #{record.typename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update CIS_DOCUMENT_MANAGER
+    set CDM_ID = #{record.id,jdbcType=VARCHAR},
+      CDM_REFID = #{record.refid,jdbcType=VARCHAR},
+      CDM_NAME = #{record.name,jdbcType=VARCHAR},
+      CDM_INTRO = #{record.intro,jdbcType=VARCHAR},
+      CDM_PATH = #{record.path,jdbcType=VARCHAR},
+      CDM_URL = #{record.url,jdbcType=VARCHAR},
+      CDM_TYPENUM = #{record.typenum,jdbcType=VARCHAR},
+      CDM_ORDER = #{record.order,jdbcType=DECIMAL},
+      CDM_STATUS = #{record.status,jdbcType=DECIMAL},
+      CDM_IDT = #{record.idt,jdbcType=OTHER},
+      CDM_UDT = #{record.udt,jdbcType=OTHER},
+      CDM_RC1 = #{record.rc1,jdbcType=VARCHAR},
+      CDM_RC2 = #{record.rc2,jdbcType=VARCHAR},
+      CDM_RC3 = #{record.rc3,jdbcType=TIMESTAMP},
+      CDM_RC4 = #{record.rc4,jdbcType=TIMESTAMP},
+      CDM_RC5 = #{record.rc5,jdbcType=DECIMAL},
+      CDM_REFID2 = #{record.refid2,jdbcType=VARCHAR},
+      CDM_TYPENAME = #{record.typename,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from ( 
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+      <![CDATA[ ) row_  where rownum<= #{page.end}) where rownum_ > #{page.start} ]]>
+    </if>
+  </sql>
+</mapper>

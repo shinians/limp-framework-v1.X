@@ -1,0 +1,145 @@
+/*   
+ * Template Name: Design-Responsive website template
+ * Version: 1.0
+ * Author: Mohammed Shaifuddin
+*/
+
+/* General grid styles */
+.cbp-ig-grid {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* Clear floats */
+.cbp-ig-grid:before, 
+.cbp-ig-grid:after { 
+	content: " "; 
+	display: table; 
+}
+
+.cbp-ig-grid:after { 
+	clear: both; 
+}
+
+/* grid item */
+.cbp-ig-grid li {
+	width: 25%;
+	float: left;
+	height: 250px;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0.1);
+	overflow:hidden;
+}
+
+/* anchor style */
+.cbp-ig-grid li > a {
+	display: block;
+	height: 100%;
+	color: #FFF;
+	-webkit-transition: background 0.2s;
+	-moz-transition: background 0.2s;
+	-ms-transition: background 0.2s;
+	-o-transition: background 0.2s;
+	transition: background 0.2s;
+}
+
+/* Image size*/
+.cbp-ig-grid img{
+    width: 100%;
+	height: 250px;
+	-webkit-transition: all 0.2s ease 0s;
+	-moz-transition: all 0.2s ease 0s;
+	-ms-transition: all 0.2s ease 0s;
+	-o-transition: all 0.2s ease 0s; 
+	transition: all 0.2s ease 0s;
+	} 
+.cbp-ig-grid li:hover img{	
+    opacity: 0.5;
+	-webkit-transition: -webkit-transform 0.9s, opacity 0.9s;
+	-moz-transition: -moz-transform 0.9s, opacity 0.9s;
+	-ms-transition: -ms-transform 0.9s, opacity 0.9s;
+	-o-transition: -o-transform 0.9s, opacity 0.9s;
+	transition: transform 0.9s, opacity 0.9s;
+}
+    } 	
+
+/* icon element */
+.cbp-ig-grid .cbp-ig-title {
+	position: relative;
+	-webkit-transition: -webkit-transform 0.2s;
+	-moz-transition: -moz-transform 0.2s;
+	-ms-transition: -ms-transform 0.2s;
+	-o-transition: -o-transform 0.2s;
+	transition: transform 0.2s;
+}
+
+.cbp-ig-grid .cbp-ig-title:before {
+	content: ;
+	position: absolute;
+	-webkit-transition: margin-top 0.2s; /* top or translate does not seem to work in Firefox */
+	-moz-transition: margin-top 0.2s;
+	-ms-transition: margin-top 0.2s;
+	-o-transition: margin-top 0.2s;
+	transition: margin-top 0.2s;
+}
+
+.cbp-ig-grid .cbp-ig-category {
+	text-transform: uppercase;
+	display: inline-block;
+	font-size: 1em;
+	letter-spacing: 6px;
+	color: #fff;
+	border-radius: 50%;	
+	opacity: 0;
+	-webkit-transition: transform 0.7s, opacity 0.5s;
+	-moz-transition: transform 0.7s, opacity 0.5s;
+	-ms-transition: transform 0.7s, opacity 0.5s;
+	-o-transition: transform 0.7s, opacity 0.5s;
+	transition: transform 0.7s, opacity 0.5s;
+}
+.cbp-ig-grid .cbp-ig-category .portfolio-icon{
+    background-color: rgb(6, 192, 163);
+	padding:17px 15px 17px 19px;
+}
+
+.cbp-ig-grid li:hover .cbp-ig-category,
+.touch .cbp-ig-grid li .cbp-ig-category {
+	opacity: 1;
+	-webkit-transform: translateY(-150px);
+	-moz-transform: translateY(-150px);
+	-ms-transform: translateY(-150px);
+	-o-transform: translateY(-150px);
+	transform: translateY(-150px);
+}
+
+.cbp-ig-category a{
+    color: #fff;
+}
+/* Hover styles */
+
+.cbp-ig-grid li > a:hover {
+	background: #000;
+}
+
+@media screen and (max-width: 62.75em) {
+	.cbp-ig-grid li {
+		width: 50%;
+	}
+
+}
+@media screen and (max-width: 41.6em) { 
+	.cbp-ig-grid li {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 25em) { 
+	.cbp-ig-grid {
+		font-size: 80%;
+	}
+
+	.cbp-ig-grid .cbp-ig-category {
+		margin-top: 0;
+	}
+}

@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.mapper.oracle.EntInfoExtRepairBuildMapper" >
+  <resultMap id="BaseResultMap" type="com.chinasofti.domain.EntInfoExtRepairBuild" >
+    <result column="CEQ_ID" property="id" jdbcType="VARCHAR" />
+    <result column="CEQ_POSTALCODE" property="postalcode" jdbcType="VARCHAR" />
+    <result column="CEQ_REGCAPITAL" property="regcapital" jdbcType="VARCHAR" />
+    <result column="CEQ_AREASPACE" property="areaspace" jdbcType="VARCHAR" />
+    <result column="CEQ_COASTLINE" property="coastline" jdbcType="VARCHAR" />
+    <result column="CEQ_WORKSHOPAREA" property="workshoparea" jdbcType="VARCHAR" />
+    <result column="CEQ_WORKERSNUM" property="workersnum" jdbcType="VARCHAR" />
+    <result column="CEQ_PROFWORKERSNUM" property="profworkersnum" jdbcType="VARCHAR" />
+    <result column="CEQ_WELDWORKERNUM" property="weldworkernum" jdbcType="VARCHAR" />
+    <result column="CEQ_CARPENTRYNUM" property="carpentrynum" jdbcType="VARCHAR" />
+    <result column="CEQ_CZNGNUM" property="czngnum" jdbcType="VARCHAR" />
+    <result column="CEQ_TWISTNUM" property="twistnum" jdbcType="VARCHAR" />
+    <result column="CEQ_SENIORENGINEERNUM" property="seniorengineernum" jdbcType="VARCHAR" />
+    <result column="CEQ_ENGINEERNUM" property="engineernum" jdbcType="VARCHAR" />
+    <result column="CEQ_ASSENGINEERNUM" property="assengineernum" jdbcType="VARCHAR" />
+    <result column="CEQ_CHECKWORKERSNUM" property="checkworkersnum" jdbcType="VARCHAR" />
+    <result column="CEQ_SETDATE" property="setdate" jdbcType="VARCHAR" />
+    <result column="CEQ_ENTMANAGE" property="entmanage" jdbcType="VARCHAR" />
+    <result column="CEQ_ENTPID" property="entpid" jdbcType="VARCHAR" />
+    <result column="CEQ_ORGNAME" property="orgname" jdbcType="VARCHAR" />
+    <result column="CEQ_ORGCODE" property="orgcode" jdbcType="VARCHAR" />
+    <result column="CEQ_ENTLEVEL" property="entlevel" jdbcType="VARCHAR" />
+    <result column="CEQ_BUSINESSLIMIT" property="businesslimit" jdbcType="VARCHAR" />
+    <result column="CEQ_BUILDLEVEL" property="buildlevel" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CEQ_ID, CEQ_POSTALCODE, CEQ_REGCAPITAL, CEQ_AREASPACE, CEQ_COASTLINE, CEQ_WORKSHOPAREA, 
+    CEQ_WORKERSNUM, CEQ_PROFWORKERSNUM, CEQ_WELDWORKERNUM, CEQ_CARPENTRYNUM, CEQ_CZNGNUM, 
+    CEQ_TWISTNUM, CEQ_SENIORENGINEERNUM, CEQ_ENGINEERNUM, CEQ_ASSENGINEERNUM, CEQ_CHECKWORKERSNUM, 
+    CEQ_SETDATE, CEQ_ENTMANAGE, CEQ_ENTPID, CEQ_ORGNAME, CEQ_ORGCODE, CEQ_ENTLEVEL, CEQ_BUSINESSLIMIT, 
+    CEQ_BUILDLEVEL
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chinasofti.domain.EntInfoExtRepairBuildExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CIS_ENTINFOEXT_QYFL3
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+  <delete id="deleteByExample" parameterType="com.chinasofti.domain.EntInfoExtRepairBuildExample" >
+    delete from CIS_ENTINFOEXT_QYFL3
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chinasofti.domain.EntInfoExtRepairBuild" >
+    insert into CIS_ENTINFOEXT_QYFL3 (CEQ_ID, CEQ_POSTALCODE, CEQ_REGCAPITAL, 
+      CEQ_AREASPACE, CEQ_COASTLINE, CEQ_WORKSHOPAREA, 
+      CEQ_WORKERSNUM, CEQ_PROFWORKERSNUM, CEQ_WELDWORKERNUM, 
+      CEQ_CARPENTRYNUM, CEQ_CZNGNUM, CEQ_TWISTNUM, 
+      CEQ_SENIORENGINEERNUM, CEQ_ENGINEERNUM, CEQ_ASSENGINEERNUM, 
+      CEQ_CHECKWORKERSNUM, CEQ_SETDATE, CEQ_ENTMANAGE, 
+      CEQ_ENTPID, CEQ_ORGNAME, CEQ_ORGCODE, 
+      CEQ_ENTLEVEL, CEQ_BUSINESSLIMIT, CEQ_BUILDLEVEL
+      )
+    values (#{id,jdbcType=VARCHAR}, #{postalcode,jdbcType=VARCHAR}, #{regcapital,jdbcType=VARCHAR}, 
+      #{areaspace,jdbcType=VARCHAR}, #{coastline,jdbcType=VARCHAR}, #{workshoparea,jdbcType=VARCHAR}, 
+      #{workersnum,jdbcType=VARCHAR}, #{profworkersnum,jdbcType=VARCHAR}, #{weldworkernum,jdbcType=VARCHAR}, 
+      #{carpentrynum,jdbcType=VARCHAR}, #{czngnum,jdbcType=VARCHAR}, #{twistnum,jdbcType=VARCHAR}, 
+      #{seniorengineernum,jdbcType=VARCHAR}, #{engineernum,jdbcType=VARCHAR}, #{assengineernum,jdbcType=VARCHAR}, 
+      #{checkworkersnum,jdbcType=VARCHAR}, #{setdate,jdbcType=VARCHAR}, #{entmanage,jdbcType=VARCHAR}, 
+      #{entpid,jdbcType=VARCHAR}, #{orgname,jdbcType=VARCHAR}, #{orgcode,jdbcType=VARCHAR}, 
+      #{entlevel,jdbcType=VARCHAR}, #{businesslimit,jdbcType=VARCHAR}, #{buildlevel,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chinasofti.domain.EntInfoExtRepairBuild" >
+    insert into CIS_ENTINFOEXT_QYFL3
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        CEQ_ID,
+      </if>
+      <if test="postalcode != null" >
+        CEQ_POSTALCODE,
+      </if>
+      <if test="regcapital != null" >
+        CEQ_REGCAPITAL,
+      </if>
+      <if test="areaspace != null" >
+        CEQ_AREASPACE,
+      </if>
+      <if test="coastline != null" >
+        CEQ_COASTLINE,
+      </if>
+      <if test="workshoparea != null" >
+        CEQ_WORKSHOPAREA,
+      </if>
+      <if test="workersnum != null" >
+        CEQ_WORKERSNUM,
+      </if>
+      <if test="profworkersnum != null" >
+        CEQ_PROFWORKERSNUM,
+      </if>
+      <if test="weldworkernum != null" >
+        CEQ_WELDWORKERNUM,
+      </if>
+      <if test="carpentrynum != null" >
+        CEQ_CARPENTRYNUM,
+      </if>
+      <if test="czngnum != null" >
+        CEQ_CZNGNUM,
+      </if>
+      <if test="twistnum != null" >
+        CEQ_TWISTNUM,
+      </if>
+      <if test="seniorengineernum != null" >
+        CEQ_SENIORENGINEERNUM,
+      </if>
+      <if test="engineernum != null" >
+        CEQ_ENGINEERNUM,
+      </if>
+      <if test="assengineernum != null" >
+        CEQ_ASSENGINEERNUM,
+      </if>
+      <if test="checkworkersnum != null" >
+        CEQ_CHECKWORKERSNUM,
+      </if>
+      <if test="setdate != null" >
+        CEQ_SETDATE,
+      </if>
+      <if test="entmanage != null" >
+        CEQ_ENTMANAGE,
+      </if>
+      <if test="entpid != null" >
+        CEQ_ENTPID,
+      </if>
+      <if test="orgname != null" >
+        CEQ_ORGNAME,
+      </if>
+      <if test="orgcode != null" >
+        CEQ_ORGCODE,
+      </if>
+      <if test="entlevel != null" >
+        CEQ_ENTLEVEL,
+      </if>
+      <if test="businesslimit != null" >
+        CEQ_BUSINESSLIMIT,
+      </if>
+      <if test="buildlevel != null" >
+        CEQ_BUILDLEVEL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="postalcode != null" >
+        #{postalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="regcapital != null" >
+        #{regcapital,jdbcType=VARCHAR},
+      </if>
+      <if test="areaspace != null" >
+        #{areaspace,jdbcType=VARCHAR},
+      </if>
+      <if test="coastline != null" >
+        #{coastline,jdbcType=VARCHAR},
+      </if>
+      <if test="workshoparea != null" >
+        #{workshoparea,jdbcType=VARCHAR},
+      </if>
+      <if test="workersnum != null" >
+        #{workersnum,jdbcType=VARCHAR},
+      </if>
+      <if test="profworkersnum != null" >
+        #{profworkersnum,jdbcType=VARCHAR},
+      </if>
+      <if test="weldworkernum != null" >
+        #{weldworkernum,jdbcType=VARCHAR},
+      </if>
+      <if test="carpentrynum != null" >
+        #{carpentrynum,jdbcType=VARCHAR},
+      </if>
+      <if test="czngnum != null" >
+        #{czngnum,jdbcType=VARCHAR},
+      </if>
+      <if test="twistnum != null" >
+        #{twistnum,jdbcType=VARCHAR},
+      </if>
+      <if test="seniorengineernum != null" >
+        #{seniorengineernum,jdbcType=VARCHAR},
+      </if>
+      <if test="engineernum != null" >
+        #{engineernum,jdbcType=VARCHAR},
+      </if>
+      <if test="assengineernum != null" >
+        #{assengineernum,jdbcType=VARCHAR},
+      </if>
+      <if test="checkworkersnum != null" >
+        #{checkworkersnum,jdbcType=VARCHAR},
+      </if>
+      <if test="setdate != null" >
+        #{setdate,jdbcType=VARCHAR},
+      </if>
+      <if test="entmanage != null" >
+        #{entmanage,jdbcType=VARCHAR},
+      </if>
+      <if test="entpid != null" >
+        #{entpid,jdbcType=VARCHAR},
+      </if>
+      <if test="orgname != null" >
+        #{orgname,jdbcType=VARCHAR},
+      </if>
+      <if test="orgcode != null" >
+        #{orgcode,jdbcType=VARCHAR},
+      </if>
+      <if test="entlevel != null" >
+        #{entlevel,jdbcType=VARCHAR},
+      </if>
+      <if test="businesslimit != null" >
+        #{businesslimit,jdbcType=VARCHAR},
+      </if>
+      <if test="buildlevel != null" >
+        #{buildlevel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chinasofti.domain.EntInfoExtRepairBuildExample" resultType="java.lang.Integer" >
+    select count(*) from CIS_ENTINFOEXT_QYFL3
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update CIS_ENTINFOEXT_QYFL3
+    <set >
+      <if test="record.id != null" >
+        CEQ_ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postalcode != null" >
+        CEQ_POSTALCODE = #{record.postalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regcapital != null" >
+        CEQ_REGCAPITAL = #{record.regcapital,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areaspace != null" >
+        CEQ_AREASPACE = #{record.areaspace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coastline != null" >
+        CEQ_COASTLINE = #{record.coastline,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workshoparea != null" >
+        CEQ_WORKSHOPAREA = #{record.workshoparea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workersnum != null" >
+        CEQ_WORKERSNUM = #{record.workersnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.profworkersnum != null" >
+        CEQ_PROFWORKERSNUM = #{record.profworkersnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weldworkernum != null" >
+        CEQ_WELDWORKERNUM = #{record.weldworkernum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carpentrynum != null" >
+        CEQ_CARPENTRYNUM = #{record.carpentrynum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.czngnum != null" >
+        CEQ_CZNGNUM = #{record.czngnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.twistnum != null" >
+        CEQ_TWISTNUM = #{record.twistnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seniorengineernum != null" >
+        CEQ_SENIORENGINEERNUM = #{record.seniorengineernum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.engineernum != null" >
+        CEQ_ENGINEERNUM = #{record.engineernum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.assengineernum != null" >
+        CEQ_ASSENGINEERNUM = #{record.assengineernum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkworkersnum != null" >
+        CEQ_CHECKWORKERSNUM = #{record.checkworkersnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.setdate != null" >
+        CEQ_SETDATE = #{record.setdate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entmanage != null" >
+        CEQ_ENTMANAGE = #{record.entmanage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entpid != null" >
+        CEQ_ENTPID = #{record.entpid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgname != null" >
+        CEQ_ORGNAME = #{record.orgname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgcode != null" >
+        CEQ_ORGCODE = #{record.orgcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entlevel != null" >
+        CEQ_ENTLEVEL = #{record.entlevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businesslimit != null" >
+        CEQ_BUSINESSLIMIT = #{record.businesslimit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buildlevel != null" >
+        CEQ_BUILDLEVEL = #{record.buildlevel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update CIS_ENTINFOEXT_QYFL3
+    set CEQ_ID = #{record.id,jdbcType=VARCHAR},
+      CEQ_POSTALCODE = #{record.postalcode,jdbcType=VARCHAR},
+      CEQ_REGCAPITAL = #{record.regcapital,jdbcType=VARCHAR},
+      CEQ_AREASPACE = #{record.areaspace,jdbcType=VARCHAR},
+      CEQ_COASTLINE = #{record.coastline,jdbcType=VARCHAR},
+      CEQ_WORKSHOPAREA = #{record.workshoparea,jdbcType=VARCHAR},
+      CEQ_WORKERSNUM = #{record.workersnum,jdbcType=VARCHAR},
+      CEQ_PROFWORKERSNUM = #{record.profworkersnum,jdbcType=VARCHAR},
+      CEQ_WELDWORKERNUM = #{record.weldworkernum,jdbcType=VARCHAR},
+      CEQ_CARPENTRYNUM = #{record.carpentrynum,jdbcType=VARCHAR},
+      CEQ_CZNGNUM = #{record.czngnum,jdbcType=VARCHAR},
+      CEQ_TWISTNUM = #{record.twistnum,jdbcType=VARCHAR},
+      CEQ_SENIORENGINEERNUM = #{record.seniorengineernum,jdbcType=VARCHAR},
+      CEQ_ENGINEERNUM = #{record.engineernum,jdbcType=VARCHAR},
+      CEQ_ASSENGINEERNUM = #{record.assengineernum,jdbcType=VARCHAR},
+      CEQ_CHECKWORKERSNUM = #{record.checkworkersnum,jdbcType=VARCHAR},
+      CEQ_SETDATE = #{record.setdate,jdbcType=VARCHAR},
+      CEQ_ENTMANAGE = #{record.entmanage,jdbcType=VARCHAR},
+      CEQ_ENTPID = #{record.entpid,jdbcType=VARCHAR},
+      CEQ_ORGNAME = #{record.orgname,jdbcType=VARCHAR},
+      CEQ_ORGCODE = #{record.orgcode,jdbcType=VARCHAR},
+      CEQ_ENTLEVEL = #{record.entlevel,jdbcType=VARCHAR},
+      CEQ_BUSINESSLIMIT = #{record.businesslimit,jdbcType=VARCHAR},
+      CEQ_BUILDLEVEL = #{record.buildlevel,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from ( 
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+      <![CDATA[ ) row_  where rownum<= #{page.end}) where rownum_ > #{page.start} ]]>
+    </if>
+  </sql>
+</mapper>

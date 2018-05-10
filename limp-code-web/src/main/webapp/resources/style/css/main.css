@@ -1,0 +1,427 @@
+/*设置页面通用样式，字体、颜色之类，取消默认样式*/
+body{
+    font:12px "microsoft yahei",Arial,Helvetica,sans-serif;
+    color:#666;
+    margin:0px;
+    padding:0px;
+    overflow-x: hidden;
+}
+ul,ol,li,p,h1,h2,h3,h4,h5,h6,dl,dt,dd{
+
+    list-style:none;
+}
+input{
+    border:none;
+}
+
+/* 默认去除a标签下划线 */
+a{
+    color:#666;
+    text-decoration:none;
+}
+a:hover{
+    color:#FF0700;
+    text-decoration:underline;
+}
+/* 清除标签的内、外边距 */
+.noPadding {
+    padding: 0px !important;
+}
+
+.noMargin {
+    margin: 0px !important;
+}
+/* 清楚文本阴影 */
+.noTextShadow {
+    text-shadow: none !important;
+}
+/* 标签属性，textarea,input 强制输入时内容超出时换行 */
+textarea,input{
+    word-wrap:break-word;
+    word-break:break-all;
+    padding:0px;
+}
+/* 定义图片边框，当图片作为链接内容被填充时，会有默认边框出现，重定义掉 */
+img{
+    vertical-align:bottom;
+    border:0 none;
+}
+
+/* 鼠标样式 */
+.pointer{ cursor:pointer;}
+/* 取消边框 */
+.noBorder{ border:0 none;}
+/* table基本样式 */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* ------------------------------------通用容器定义---------------------------------------- */
+/* 容器 */
+.wrapper{ clear:both; overflow:hidden;}
+
+/* 隐藏元素，当元素内容内容超出元素height 或 width 时，隐藏之 */
+.o-hidden{ overflow:hidden;}
+
+/* 隐藏元素，visibility可以隐藏元素，但是还是会在布局中占位 */
+.invisible{ visibility:hidden;}
+
+/* 从页面布局上隐藏元素，从布局上隐藏元素 */
+.hidden{ display:none;}
+.block{ display:block;}
+/* 清理浮动元素,当浮动换行时后面元素不希望浮动，添加此属性，防止IE BUG */
+.clear{ clear:both; height:0px; width:100%; font-size:1px; line-height:0px; visibility:hidden; overflow:hidden;}
+/* 浮动定义，左右浮动*/
+.lf{float:left}
+.rt{float:right}
+
+
+.navbar-brand{
+    padding-top:10px;
+}
+.navbar-header{
+    background-color: #0A1736;
+}
+.navbar{
+    margin-bottom: 0px;
+    border:none;
+}
+.container-fluid{
+    padding-left:0px;
+    padding-right: 0px;
+}
+.user{
+    margin-left:50px;
+}
+.navbar-default .navbar-nav>li>a{
+    color:#FFFFFF;
+}
+.navbar-default .navbar-nav>li>a:hover{
+    color:#6CC4FD;
+}
+#navText{
+    display: inline-block;
+}
+#logo{
+    display: inline-block;
+}
+#bs-example-navbar-collapse-1{
+    background-color:#153981;
+}
+#userImg{
+    height:35px;
+    width:35px;
+    display:inline-block;
+    margin-bottom: 7px;
+}
+#userName{
+    display: inline-block;
+    background: #153981;
+    color: #fff;
+}
+.navbar-nav>li>.dropdown-menu{
+    background: #0D1F49;
+    color: #64B6EC !important;
+    width: 130px;
+    height: 85px;
+}
+.dropdown-menu>li>a {
+    padding: 10px 20px;
+    color: #64B6EC;
+}
+.dropdown-menu>li>a:hover{
+    background: #1C569F;
+    color: #fff;
+}
+.navbar-brand p{
+    color:#FFFFFF;
+}
+.navbar-brand:hover p{
+    color:#ddd;
+}
+#footer{
+    background: #153981;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300 !important;
+    box-shadow: 20px 20px 20px 20px rgba(45,45,45,0.75);
+}
+#footer p{margin-top: 15px}
+#back{
+    margin-top:4px;
+}
+#left{
+    float: left;
+    position:fixed;
+}
+#right{
+    margin-left:214px;
+}
+
+#panel{
+    background-color: #0A1736;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+#leftPanel{
+    background-color: #0A1736;
+    width:215px;
+    min-height: 850px;
+    /*margin-top: 50px;*/
+}
+/*
+	leftPanel部分
+*/
+.panel-default>.panel-heading{
+    background-color:#153264;
+    color:#FFFFFF;
+    border: none ;
+}
+.panel-heading{
+    border-radius: 0px;
+}
+.panel-group .panel{
+    border-radius: 0px;
+    border: none ;
+}
+.panel-body{
+    background-color: #0A1838;
+}
+.panel-group .panel-heading+.panel-collapse>.panel-body{
+    border: none;
+    color:#5AA6DB;
+}
+@media (min-width: 768px) {
+    .navbar > .container-fluid .navbar-brand {
+        margin-left: 0px;
+    }
+}
+/*左侧导航*/
+
+.leftsidebar_box{width:215px;background-color:#0A1838;}
+.line{width:100%;}
+.leftsidebar_box dt{padding-left:40px;padding-right:10px;background-repeat:no-repeat;background-position:10px center;color:#f5f5f5;font-size:16px;position:relative;line-height:48px;cursor:pointer;}
+.leftsidebar_box dd{background-color:#153264;padding-left:11px;font-size: 14px;}
+.leftsidebar_box dd a{color:#f5f5f5;line-height:20px;}
+.leftsidebar_box dt img{position:absolute;right:10px;top:16px;}
+.system_log dt{background-image:url(../img/theme.png)}
+.custom dt{background-image:url(../img/home.png)}
+.channel dt{background-image:url(../img/gis.png)}
+.analysis dt{background-image:url(../img/analysis.png)}
+.model dt{background-image:url(../img/model.png)}
+.risk dt{background-image:url(../img/risk.png)}
+dl{margin-bottom: 0px!important;}
+.leftsidebar_box dl dd:last-child{padding-bottom:10px;}
+
+dl{margin-bottom: 0px!important;}
+/*搜索框、日历部分*/
+/*placehoder的颜色*/
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #fff;
+
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #fff;
+
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #fff;
+
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #fff;
+
+}
+.search{
+    width: 240px;
+    height: 30px;
+    margin-top: 25px;
+    margin-left: -45px;
+    border: 1px solid #41578D;
+    background: #476FA8;
+    color: #fff;
+}
+.searchIcon{
+    display: inline-block;
+    position: absolute;
+    top:30px;
+    left: 180px;
+    width: 28px;
+    height: 25px;
+    background:url("../img/icon-white.png") no-repeat scroll -348px -113px transparent;
+}
+
+/*box的样式*/
+.box01{
+    background: #0F2353;
+    box-shadow: 5px 15px 20px 0px rgba(15,35,83,0.65);
+    margin: 10px;
+    border:1px solid transparent;
+}
+.box:hover{
+    border: 1px solid #4981C8;
+}
+
+.box03{
+    background-color: #0F2353;
+    box-shadow: 5px 15px 20px 0px rgba(15,35,83,0.65);
+    text-align: center;
+    border:1px solid transparent;
+    margin-left:10px;
+}
+.box04{
+    background-color: #0F2353;
+    box-shadow: 5px 15px 20px 0px rgba(15,35,83,0.65);
+    margin-left: -22px;
+    text-align: center;
+    border:1px solid transparent;
+
+}
+.margin35{margin: 35px;}
+.text{
+    text-align: left;
+    color: #FFFFFF;
+    font-family: "microsoft yahei";
+    font-size: 20px;
+    margin-top: 15px;
+    margin-left:10px;
+}
+.banner{
+    margin-left: 24px;
+    margin-top:30px;
+}
+#ycsEcharts{
+    width: 100%;
+    height: 85%;
+}
+
+#shipBody{
+    padding:5px 10px 15px ;
+    color:#FFFFFF;
+}
+
+/*Arial Regular字体样式*/
+.numberColor{
+    color: #F0FF00;
+    font-size: 14px;
+    text-align: center;
+    font-family: "microsoft yahei";
+}
+.number{
+    font-size:50px;
+    font-family: "Arial Regular","microsoft yahei";
+}
+/*box中文本样式*/
+.textSum{
+    color: #5CB4EC;
+    font-size: 18px;
+    text-align: center;
+    font-family: "microsoft yahei";
+
+}
+/*box02盒子样式*/
+.box02{
+    height:320px;
+    padding: 1px;
+    background: #0F2353;
+    background-image:url('../img/surBg.png') ;
+    box-shadow: 5px 15px 20px 0px rgba(15,35,83,0.65);
+    margin: 10px;
+    border:1px solid transparent;
+}
+/*box02盒子样式*/
+.bi-box02{
+    padding: 1px;
+    background: #0F2353;
+    /*background-image:url('../../img/surBg.png') ;*/
+    box-shadow: 5px 15px 20px 0px rgba(15,35,83,0.65);
+    margin: 10px;
+    border:1px solid transparent;
+}
+/*box00*/
+.box00{background: #122C5B;height: 660px;margin-left: 10px;box-shadow: 5px 15px 20px 0px rgba(15,35,83,0.65);}
+/*页面一级标题样式h3*/
+.title01{
+    color: #fff;
+    margin-left: 35px;
+    font-size: 20px;
+}
+/*右上小图标*/
+
+.iconBig{
+    display: inline-block;
+    position: absolute;
+    top:9px;
+    right: 10px;
+    width: 28px;
+    height: 25px;
+    z-index: 10;
+    background:url("../img/icon-blue.png") no-repeat scroll -231px -190px transparent;
+}
+.iconBig:hover{
+    background:url("../img/icon-white.png") no-repeat scroll -231px -190px transparent;
+    cursor: pointer;
+}
+.iconClose{
+    display: inline-block;
+    position: absolute;
+    top:9px;
+    right: 10px;
+    width: 28px;
+    height: 25px;
+    z-index: 10;
+    background:url("../img/icon-blue.png") no-repeat scroll -295px -150px transparent;
+}
+.iconClose:hover{
+    background:url("../img/icon-white.png") no-repeat scroll -295px -150px transparent;
+    cursor: pointer;
+}
+/*分页*/
+.pagination>li>a{
+    background: #304568;
+    color: #6CC6FF;
+    border: 1px solid #6CC6FF;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover,
+.pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {background: #009CFF;color: #fff;}
+.navBottom{
+    position: absolute;
+    bottom: 0px;
+    right:85px;
+}
+/*ul的li样式*/
+.information>li{padding: 5px;color: #5FCBFF;font-size: 14px;}
+.information>li b,.information01>li b{
+    display:inline-block;
+    width: 90px;
+    font-weight: normal;
+    text-align: right;
+}
+.information>li span,.information01>li span{
+    display:inline-block;
+    width:235px;
+    text-align: left;
+    font-weight: bold;
+    color: #fff;
+}
+.information01>li{padding:5px 2px;color: #5FCBFF;font-size: 14px;}
+.information01>li span{
+    display:inline-block;
+    width:150px;
+    text-align: left;
+    font-weight: bold;
+    color: #fff;
+}
+.information>li:hover,.information>li:hover{
+    background: rgba(102,178,255,0.5);
+}
+/********************定义新样式******************/
+.ztree li span.button.switch{
+    height: 24px !important;
+}
+/*** 附加分样式 ***/
+.remark{
+    color: #F0FF00;
+}

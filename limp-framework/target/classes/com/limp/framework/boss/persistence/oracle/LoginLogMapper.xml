@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.limp.framework.boss.mapper.oracle.LoginLogMapper" >
+  <resultMap id="BaseResultMap" type="com.limp.framework.boss.domain.LoginLog" >
+    <id column="ULL_GUID" property="id" jdbcType="VARCHAR" />
+    <result column="ULL_USRGUID" property="userId" jdbcType="VARCHAR" />
+    <result column="ULL_ACCOUNT" property="ullAccount" jdbcType="VARCHAR" />
+    <result column="ULL_LOGSTATE" property="ullLogstate" jdbcType="DECIMAL" />
+    <result column="ULL_MAC" property="ullMac" jdbcType="VARCHAR" />
+    <result column="ULL_IP" property="ullIp" jdbcType="VARCHAR" />
+    <result column="ULL_TIME" property="ullTime" jdbcType="DATE" />
+    <result column="ULL_TYPE" property="ullType" jdbcType="DECIMAL" />
+    <result column="ULL_STATE" property="ullState" jdbcType="DECIMAL" />
+    <result column="ULL_RC0" property="ullRc0" jdbcType="VARCHAR" />
+    <result column="ULL_RC1" property="ullRc1" jdbcType="VARCHAR" />
+    <result column="ULL_RC2" property="ullRc2" jdbcType="VARCHAR" />
+    <result column="ULL_RC3" property="ullRc3" jdbcType="DECIMAL" />
+    <result column="ULL_RC4" property="ullRc4" jdbcType="DECIMAL" />
+    <result column="ULL_RC5" property="ullRc5" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ULL_GUID, ULL_USRGUID, ULL_ACCOUNT, ULL_LOGSTATE, ULL_MAC, ULL_IP, ULL_TIME, ULL_TYPE, 
+    ULL_STATE, ULL_RC0, ULL_RC1, ULL_RC2, ULL_RC3, ULL_RC4, ULL_RC5
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.limp.framework.boss.domain.LoginLogExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_USERLOGINLOG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+  <select id="selectByExampleByMsql" resultMap="BaseResultMap" parameterType="com.limp.framework.boss.domain.LoginLogExample" >
+    <include refid="MysqlDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_USERLOGINLOG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="MysqlDialectSuffix" />
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_USERLOGINLOG
+    where ULL_GUID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="String" flushCache="true" >
+    delete from SYS_USERLOGINLOG
+    where ULL_GUID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.limp.framework.boss.domain.LoginLogExample" flushCache="true" >
+    delete from SYS_USERLOGINLOG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.limp.framework.boss.domain.LoginLog" flushCache="true" >
+    insert into SYS_USERLOGINLOG (ULL_GUID, ULL_USRGUID, ULL_ACCOUNT, 
+      ULL_LOGSTATE, ULL_MAC, ULL_IP, 
+      ULL_TIME, ULL_TYPE, ULL_STATE, 
+      ULL_RC0, ULL_RC1, ULL_RC2, 
+      ULL_RC3, ULL_RC4, ULL_RC5
+      )
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{ullAccount,jdbcType=VARCHAR}, 
+      #{ullLogstate,jdbcType=DECIMAL}, #{ullMac,jdbcType=VARCHAR}, #{ullIp,jdbcType=VARCHAR}, 
+      #{ullTime,jdbcType=DATE}, #{ullType,jdbcType=DECIMAL}, #{ullState,jdbcType=DECIMAL}, 
+      #{ullRc0,jdbcType=VARCHAR}, #{ullRc1,jdbcType=VARCHAR}, #{ullRc2,jdbcType=VARCHAR}, 
+      #{ullRc3,jdbcType=DECIMAL}, #{ullRc4,jdbcType=DECIMAL}, #{ullRc5,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.limp.framework.boss.domain.LoginLog" flushCache="true" >
+    insert into SYS_USERLOGINLOG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ULL_GUID,
+      </if>
+      <if test="userId != null" >
+        ULL_USRGUID,
+      </if>
+      <if test="ullAccount != null" >
+        ULL_ACCOUNT,
+      </if>
+      <if test="ullLogstate != null" >
+        ULL_LOGSTATE,
+      </if>
+      <if test="ullMac != null" >
+        ULL_MAC,
+      </if>
+      <if test="ullIp != null" >
+        ULL_IP,
+      </if>
+      <if test="ullTime != null" >
+        ULL_TIME,
+      </if>
+      <if test="ullType != null" >
+        ULL_TYPE,
+      </if>
+      <if test="ullState != null" >
+        ULL_STATE,
+      </if>
+      <if test="ullRc0 != null" >
+        ULL_RC0,
+      </if>
+      <if test="ullRc1 != null" >
+        ULL_RC1,
+      </if>
+      <if test="ullRc2 != null" >
+        ULL_RC2,
+      </if>
+      <if test="ullRc3 != null" >
+        ULL_RC3,
+      </if>
+      <if test="ullRc4 != null" >
+        ULL_RC4,
+      </if>
+      <if test="ullRc5 != null" >
+        ULL_RC5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="ullAccount != null" >
+        #{ullAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="ullLogstate != null" >
+        #{ullLogstate,jdbcType=DECIMAL},
+      </if>
+      <if test="ullMac != null" >
+        #{ullMac,jdbcType=VARCHAR},
+      </if>
+      <if test="ullIp != null" >
+        #{ullIp,jdbcType=VARCHAR},
+      </if>
+      <if test="ullTime != null" >
+        #{ullTime,jdbcType=DATE},
+      </if>
+      <if test="ullType != null" >
+        #{ullType,jdbcType=DECIMAL},
+      </if>
+      <if test="ullState != null" >
+        #{ullState,jdbcType=DECIMAL},
+      </if>
+      <if test="ullRc0 != null" >
+        #{ullRc0,jdbcType=VARCHAR},
+      </if>
+      <if test="ullRc1 != null" >
+        #{ullRc1,jdbcType=VARCHAR},
+      </if>
+      <if test="ullRc2 != null" >
+        #{ullRc2,jdbcType=VARCHAR},
+      </if>
+      <if test="ullRc3 != null" >
+        #{ullRc3,jdbcType=DECIMAL},
+      </if>
+      <if test="ullRc4 != null" >
+        #{ullRc4,jdbcType=DECIMAL},
+      </if>
+      <if test="ullRc5 != null" >
+        #{ullRc5,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.limp.framework.boss.domain.LoginLogExample" resultType="java.lang.Integer" >
+    select count(*) from SYS_USERLOGINLOG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" flushCache="true" >
+    update SYS_USERLOGINLOG
+    <set >
+      <if test="record.id != null" >
+        ULL_GUID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null" >
+        ULL_USRGUID = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ullAccount != null" >
+        ULL_ACCOUNT = #{record.ullAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ullLogstate != null" >
+        ULL_LOGSTATE = #{record.ullLogstate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ullMac != null" >
+        ULL_MAC = #{record.ullMac,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ullIp != null" >
+        ULL_IP = #{record.ullIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ullTime != null" >
+        ULL_TIME = #{record.ullTime,jdbcType=DATE},
+      </if>
+      <if test="record.ullType != null" >
+        ULL_TYPE = #{record.ullType,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ullState != null" >
+        ULL_STATE = #{record.ullState,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ullRc0 != null" >
+        ULL_RC0 = #{record.ullRc0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ullRc1 != null" >
+        ULL_RC1 = #{record.ullRc1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ullRc2 != null" >
+        ULL_RC2 = #{record.ullRc2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ullRc3 != null" >
+        ULL_RC3 = #{record.ullRc3,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ullRc4 != null" >
+        ULL_RC4 = #{record.ullRc4,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ullRc5 != null" >
+        ULL_RC5 = #{record.ullRc5,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" flushCache="true" >
+    update SYS_USERLOGINLOG
+    set ULL_GUID = #{record.id,jdbcType=VARCHAR},
+      ULL_USRGUID = #{record.userId,jdbcType=VARCHAR},
+      ULL_ACCOUNT = #{record.ullAccount,jdbcType=VARCHAR},
+      ULL_LOGSTATE = #{record.ullLogstate,jdbcType=DECIMAL},
+      ULL_MAC = #{record.ullMac,jdbcType=VARCHAR},
+      ULL_IP = #{record.ullIp,jdbcType=VARCHAR},
+      ULL_TIME = #{record.ullTime,jdbcType=DATE},
+      ULL_TYPE = #{record.ullType,jdbcType=DECIMAL},
+      ULL_STATE = #{record.ullState,jdbcType=DECIMAL},
+      ULL_RC0 = #{record.ullRc0,jdbcType=VARCHAR},
+      ULL_RC1 = #{record.ullRc1,jdbcType=VARCHAR},
+      ULL_RC2 = #{record.ullRc2,jdbcType=VARCHAR},
+      ULL_RC3 = #{record.ullRc3,jdbcType=DECIMAL},
+      ULL_RC4 = #{record.ullRc4,jdbcType=DECIMAL},
+      ULL_RC5 = #{record.ullRc5,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.limp.framework.boss.domain.LoginLog" flushCache="true" >
+    update SYS_USERLOGINLOG
+    <set >
+      <if test="userId != null" >
+        ULL_USRGUID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="ullAccount != null" >
+        ULL_ACCOUNT = #{ullAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="ullLogstate != null" >
+        ULL_LOGSTATE = #{ullLogstate,jdbcType=DECIMAL},
+      </if>
+      <if test="ullMac != null" >
+        ULL_MAC = #{ullMac,jdbcType=VARCHAR},
+      </if>
+      <if test="ullIp != null" >
+        ULL_IP = #{ullIp,jdbcType=VARCHAR},
+      </if>
+      <if test="ullTime != null" >
+        ULL_TIME = #{ullTime,jdbcType=DATE},
+      </if>
+      <if test="ullType != null" >
+        ULL_TYPE = #{ullType,jdbcType=DECIMAL},
+      </if>
+      <if test="ullState != null" >
+        ULL_STATE = #{ullState,jdbcType=DECIMAL},
+      </if>
+      <if test="ullRc0 != null" >
+        ULL_RC0 = #{ullRc0,jdbcType=VARCHAR},
+      </if>
+      <if test="ullRc1 != null" >
+        ULL_RC1 = #{ullRc1,jdbcType=VARCHAR},
+      </if>
+      <if test="ullRc2 != null" >
+        ULL_RC2 = #{ullRc2,jdbcType=VARCHAR},
+      </if>
+      <if test="ullRc3 != null" >
+        ULL_RC3 = #{ullRc3,jdbcType=DECIMAL},
+      </if>
+      <if test="ullRc4 != null" >
+        ULL_RC4 = #{ullRc4,jdbcType=DECIMAL},
+      </if>
+      <if test="ullRc5 != null" >
+        ULL_RC5 = #{ullRc5,jdbcType=DATE},
+      </if>
+    </set>
+    where ULL_GUID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.limp.framework.boss.domain.LoginLog" flushCache="true">
+    update SYS_USERLOGINLOG
+    set ULL_USRGUID = #{userId,jdbcType=VARCHAR},
+      ULL_ACCOUNT = #{ullAccount,jdbcType=VARCHAR},
+      ULL_LOGSTATE = #{ullLogstate,jdbcType=DECIMAL},
+      ULL_MAC = #{ullMac,jdbcType=VARCHAR},
+      ULL_IP = #{ullIp,jdbcType=VARCHAR},
+      ULL_TIME = #{ullTime,jdbcType=DATE},
+      ULL_TYPE = #{ullType,jdbcType=DECIMAL},
+      ULL_STATE = #{ullState,jdbcType=DECIMAL},
+      ULL_RC0 = #{ullRc0,jdbcType=VARCHAR},
+      ULL_RC1 = #{ullRc1,jdbcType=VARCHAR},
+      ULL_RC2 = #{ullRc2,jdbcType=VARCHAR},
+      ULL_RC3 = #{ullRc3,jdbcType=DECIMAL},
+      ULL_RC4 = #{ullRc4,jdbcType=DECIMAL},
+      ULL_RC5 = #{ullRc5,jdbcType=DATE}
+    where ULL_GUID = #{id,jdbcType=VARCHAR}
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from ( 
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+      <![CDATA[ ) row_ ) where rownum_ > #{page.start} and rownum_ <= #{page.end} ]]>
+    </if>
+
+  </sql>
+  <sql id="MysqlDialectPrefix">
+    <if test="page != null">
+      select row_.* from (
+    </if>
+  </sql>
+  <sql id="MysqlDialectSuffix">
+    <if test="page != null">
+      <![CDATA[ ) row_  LIMIT  #{page.start} , #{page.rows} ]]>
+    </if>
+  </sql>
+</mapper>

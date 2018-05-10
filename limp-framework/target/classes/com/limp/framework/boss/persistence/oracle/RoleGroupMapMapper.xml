@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.limp.framework.boss.mapper.oracle.RoleGroupMapMapper">
+
+    <resultMap id="BaseResultMap" type="com.limp.framework.boss.domain.RoleGroupMap">
+        <result column="GRM_UGPGUID" jdbcType="VARCHAR" property="groupId"/>
+        <result column="GRM_UREGUID" jdbcType="VARCHAR" property="roleId"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    GRM_UGPGUID, GRM_UREGUID
+  </sql>
+    <select id="selectByExample" parameterType="com.limp.framework.boss.domain.RoleGroupMapExample"
+            resultMap="BaseResultMap" useCache="false">
+        <include refid="OracleDialectPrefix"/>
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from SYS_GROUP_ROLE_MAP
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+        <include refid="OracleDialectSuffix"/>
+    </select>
+    <delete id="deleteByExample" parameterType="com.limp.framework.boss.domain.RoleGroupMapExample" flushCache="true">
+        delete from SYS_GROUP_ROLE_MAP
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.limp.framework.boss.domain.RoleGroupMap" flushCache="true">
+    insert into SYS_GROUP_ROLE_MAP (GRM_UGPGUID, GRM_UREGUID)
+    values (#{groupId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.limp.framework.boss.domain.RoleGroupMap" flushCache="true">
+        insert into SYS_GROUP_ROLE_MAP
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="groupId != null">
+                GRM_UGPGUID,
+            </if>
+            <if test="roleId != null">
+                GRM_UREGUID,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="groupId != null">
+                #{groupId,jdbcType=VARCHAR},
+            </if>
+            <if test="roleId != null">
+                #{roleId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.limp.framework.boss.domain.RoleGroupMapExample"
+            resultType="java.lang.Integer" useCache="false">
+        select count(*) from SYS_GROUP_ROLE_MAP
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map" flushCache="true">
+        update SYS_GROUP_ROLE_MAP
+        <set>
+            <if test="record.groupId != null">
+                GRM_UGPGUID = #{record.groupId,jdbcType=VARCHAR},
+            </if>
+            <if test="record.roleId != null">
+                GRM_UREGUID = #{record.roleId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map" flushCache="true">
+        update SYS_GROUP_ROLE_MAP
+        set GRM_UGPGUID = #{record.groupId,jdbcType=VARCHAR},
+        GRM_UREGUID = #{record.roleId,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <sql id="OracleDialectPrefix">
+        <if test="page != null">
+            select * from ( select row_.*, rownum rownum_ from (
+        </if>
+    </sql>
+    <sql id="OracleDialectSuffix">
+        <if test="page != null">
+            <![CDATA[ ) row_ ) where rownum_ > #{page.start} and rownum_ <= #{page.end} ]]>
+        </if>
+    </sql>
+</mapper>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>limp-coder</artifactId>
+        <groupId>limp-coder</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>limp-code-app</artifactId>
+     <dependencies>
+
+
+         <dependency>
+             <groupId>com.chinasofti</groupId>
+             <artifactId>limp-framework</artifactId>
+             <version>1.1.3-RELEASE</version>
+         </dependency>
+         <dependency>
+             <groupId>org.apache.tomcat</groupId>
+             <artifactId>tomcat-websocket-api</artifactId>
+             <version>8.0.28</version>
+             <scope>provided</scope>
+         </dependency>
+         <dependency>
+             <groupId>commons-httpclient</groupId>
+             <artifactId>commons-httpclient</artifactId>
+             <version>3.0</version>
+         </dependency>
+
+         <!--安装：数据库jar包引入： ojdbc6.jar - for Java 1.6-->
+         <dependency>
+             <groupId>com.oracle</groupId>
+             <artifactId>ojdbc</artifactId>
+             <version>6.0</version>
+         </dependency>
+
+         <dependency>
+             <groupId>commons-collections</groupId>
+             <artifactId>commons-collections</artifactId>
+             <version>3.2.1</version>
+         </dependency>
+         <!--TODO-->
+         <dependency>
+             <groupId>javax.transaction</groupId>
+             <artifactId>jta</artifactId>
+             <version>1.1</version>
+         </dependency>
+         <!--- common_upload-->
+         <dependency>
+             <groupId>commons-fileupload</groupId>
+             <artifactId>commons-fileupload</artifactId>
+             <version>1.2.2</version>
+         </dependency>
+         <dependency>
+             <groupId>commons-io</groupId>
+             <artifactId>commons-io</artifactId>
+             <version>2.3</version>
+         </dependency>
+
+
+
+         <!--springmvc_json-->
+         <dependency>
+             <groupId>org.codehaus.jackson</groupId>
+             <artifactId>jackson-mapper-asl</artifactId>
+             <version>1.7.2</version>
+         </dependency>
+         <dependency>
+             <groupId>org.codehaus.jackson</groupId>
+             <artifactId>jackson-core-asl</artifactId>
+             <version>1.7.2</version>
+         </dependency>
+
+         <!-- solr-solrj 不能提交 [桥接问题导致日志不输出；问题关键：找准冲突的jar（依赖）](todo org.slf4j和commons-logs相互影响 1、排除commons-log)-->
+         <dependency>
+             <groupId>org.apache.solr</groupId>
+             <artifactId>solr-solrj</artifactId>
+             <version>6.6.0</version>
+             <exclusions>
+                 <exclusion>
+                     <groupId>org.slf4j</groupId>
+                     <artifactId>jcl-over-slf4j</artifactId>
+                 </exclusion>
+                <!-- <exclusion>
+                     <groupId>org.slf4j</groupId>
+                     <artifactId>slf4j-api</artifactId>
+                 </exclusion>-->
+             </exclusions>
+         </dependency>
+         <!-- 添加该jar, 解决MyBaits 无法打印sql语句到控制台， -->
+         <dependency>
+             <groupId>org.slf4j</groupId>
+             <artifactId>slf4j-log4j12</artifactId>
+             <version>1.7.6</version>
+         </dependency>
+
+         <dependency>
+             <groupId>commons-lang</groupId>
+             <artifactId>commons-lang</artifactId>
+             <version>RELEASE</version>
+         </dependency>
+         <!--        <dependency>
+                     <groupId>org.apache.solr</groupId>
+                     <artifactId>solr-core</artifactId>
+                     <version>6.6.0</version>
+                 </dependency>
+        -->
+         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+
+         <!--新增加UE功能-->
+         <dependency>
+             <groupId>net.sf.json-lib</groupId>
+             <artifactId>json-lib</artifactId>
+             <version>2.4</version>
+             <classifier>jdk15</classifier>
+         </dependency>
+        <!--JSONObject使用-->
+         <dependency>
+             <groupId>org.json</groupId>
+             <artifactId>json</artifactId>
+             <version>20180130</version>
+         </dependency>
+         <!--百度ueditor编辑器上传功能-->
+       <!--  <dependency>
+             <groupId>com.baidu</groupId>
+             <artifactId>ueditor</artifactId>
+             <version>1.0-limp</version>
+         </dependency>-->
+         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+         <dependency>
+             <groupId>mysql</groupId>
+             <artifactId>mysql-connector-java</artifactId>
+             <version>5.1.6</version>
+         </dependency>
+
+     </dependencies>
+
+</project>

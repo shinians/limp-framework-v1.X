@@ -1,0 +1,103 @@
+@charset "utf-8";
+/* CSS Document */
+input.mapBtn,button.mapBtn{
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dedede',GradientType=0 );
+    background: -moz-linear-gradient(top, #ffffff 0%, #dedede 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#dedede));
+    background: -webkit-linear-gradient(top, #ffffff 0%,#dedede 100%);
+    background: -o-linear-gradient(top, #ffffff 0%,#dedede 100%);
+    background: -ms-linear-gradient(top, #ffffff 0%,#dedede 100%);
+    background: linear-gradient(to bottom, #ffffff 0%,#dedede 100%);
+    border:#aeaeae 1px solid;
+    text-align: center;
+    color:#333;
+    width:56px;
+    float:right;
+	height:26px;
+	line-height: 24px;
+	font-size: 12px;
+	vertical-align: top;
+}
+button.mapBtn-A{
+    text-align: center;
+    color:#666;
+    width:56px;
+    float:right;
+	height:26px;
+	line-height: 24px;
+	vertical-align: top;
+	background: none;
+	border:none;
+}
+button.mapBtn img,button.mapBtn-A img{
+	vertical-align: text-top;
+}
+input.ui-text{
+	height:26px;
+	line-height: 26px;
+	color:#999;
+	padding:0px 4px;
+	border:#c4c2c2 1px solid;
+	vertical-align: top;
+	width:100%;
+}
+input.ui-text:focus{
+	color:#666;
+}
+select.ui-select{
+	height:26px;
+	line-height: 26px;
+	padding:0px 4px;
+	color:#666;
+	vertical-align: top;
+	width:100%;
+	border:#c4c2c2 1px solid;
+}
+input.floatWidth,select.floatWidth{
+	width:132px;
+}
+input.smallWidth,select.smallWidth{
+	width:100px;
+}
+/* CSS Document */
+button.ui-button{
+	padding:5px 6px 4px;
+	background-color: #43ade1;
+	color:#fff;
+	border:#43ade1 1px solid;
+	line-height: 16px;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+	-webkit-box-sizing:border-box; /* Safari */
+	vertical-align: middle;
+	margin-right:6px;
+	cursor: pointer;
+}
+button.ui-button:hover{
+	background-color: #70c0e8;
+	border:#70c0e8 1px solid;
+}
+button.ui-button span{
+	display: inline-block;
+	width:15px;
+	height: 15px;
+	background-image: url(images/button-icon.png);
+	vertical-align: middle;
+	margin-right: 3px;
+}
+/*搜索*/
+button.ui-button span.icon-search{
+	background-position: 0px 0px;
+}
+/*列表*/
+button.ui-button span.icon-list{
+	background-position: 0px -15px;
+}
+/*定位*/
+button.ui-button span.icon-map{
+	background-position: 0px -30px;
+}
+/*意见*/
+button.ui-button span.icon-yj{
+	background-position: 0px -45px;
+}

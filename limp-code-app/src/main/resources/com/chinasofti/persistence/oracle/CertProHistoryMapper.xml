@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.mapper.oracle.CertProHistoryMapper" >
+  <resultMap id="BaseResultMap" type="com.chinasofti.domain.CertProHistory" >
+    <result column="CCH_ID" property="id" jdbcType="VARCHAR" />
+    <result column="CCH_CERTID" property="certid" jdbcType="VARCHAR" />
+    <result column="CCH_CHECKUNIT" property="checkunit" jdbcType="VARCHAR" />
+    <result column="CCH_ORGNAME" property="orgname" jdbcType="VARCHAR" />
+    <result column="CCH_ORGID" property="orgid" jdbcType="VARCHAR" />
+    <result column="CCH_ENTID" property="entid" jdbcType="VARCHAR" />
+    <result column="CCH_ENTNAME" property="entname" jdbcType="VARCHAR" />
+    <result column="CCH_CHECKTYPE" property="checktype" jdbcType="VARCHAR" />
+    <result column="CCH_CHECKTIMENEXT" property="checktimenext" jdbcType="VARCHAR" />
+    <result column="CCH_CHECKTIME" property="checktime" jdbcType="VARCHAR" />
+    <result column="CCH_CERTADDR" property="certaddr" jdbcType="VARCHAR" />
+    <result column="CCH_CERTTIME" property="certtime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CCH_ID, CCH_CERTID, CCH_CHECKUNIT, CCH_ORGNAME, CCH_ORGID, CCH_ENTID, CCH_ENTNAME, 
+    CCH_CHECKTYPE, CCH_CHECKTIMENEXT, CCH_CHECKTIME, CCH_CERTADDR, CCH_CERTTIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chinasofti.domain.CertProHistoryExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CIS_CERTPRO_HISTORY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+  <delete id="deleteByExample" parameterType="com.chinasofti.domain.CertProHistoryExample" >
+    delete from CIS_CERTPRO_HISTORY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chinasofti.domain.CertProHistory" >
+    insert into CIS_CERTPRO_HISTORY (CCH_ID, CCH_CERTID, CCH_CHECKUNIT, 
+      CCH_ORGNAME, CCH_ORGID, CCH_ENTID, 
+      CCH_ENTNAME, CCH_CHECKTYPE, CCH_CHECKTIMENEXT, 
+      CCH_CHECKTIME, CCH_CERTADDR, CCH_CERTTIME
+      )
+    values (#{id,jdbcType=VARCHAR}, #{certid,jdbcType=VARCHAR}, #{checkunit,jdbcType=VARCHAR}, 
+      #{orgname,jdbcType=VARCHAR}, #{orgid,jdbcType=VARCHAR}, #{entid,jdbcType=VARCHAR}, 
+      #{entname,jdbcType=VARCHAR}, #{checktype,jdbcType=VARCHAR}, #{checktimenext,jdbcType=VARCHAR}, 
+      #{checktime,jdbcType=VARCHAR}, #{certaddr,jdbcType=VARCHAR}, #{certtime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chinasofti.domain.CertProHistory" >
+    insert into CIS_CERTPRO_HISTORY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        CCH_ID,
+      </if>
+      <if test="certid != null" >
+        CCH_CERTID,
+      </if>
+      <if test="checkunit != null" >
+        CCH_CHECKUNIT,
+      </if>
+      <if test="orgname != null" >
+        CCH_ORGNAME,
+      </if>
+      <if test="orgid != null" >
+        CCH_ORGID,
+      </if>
+      <if test="entid != null" >
+        CCH_ENTID,
+      </if>
+      <if test="entname != null" >
+        CCH_ENTNAME,
+      </if>
+      <if test="checktype != null" >
+        CCH_CHECKTYPE,
+      </if>
+      <if test="checktimenext != null" >
+        CCH_CHECKTIMENEXT,
+      </if>
+      <if test="checktime != null" >
+        CCH_CHECKTIME,
+      </if>
+      <if test="certaddr != null" >
+        CCH_CERTADDR,
+      </if>
+      <if test="certtime != null" >
+        CCH_CERTTIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="certid != null" >
+        #{certid,jdbcType=VARCHAR},
+      </if>
+      <if test="checkunit != null" >
+        #{checkunit,jdbcType=VARCHAR},
+      </if>
+      <if test="orgname != null" >
+        #{orgname,jdbcType=VARCHAR},
+      </if>
+      <if test="orgid != null" >
+        #{orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="entid != null" >
+        #{entid,jdbcType=VARCHAR},
+      </if>
+      <if test="entname != null" >
+        #{entname,jdbcType=VARCHAR},
+      </if>
+      <if test="checktype != null" >
+        #{checktype,jdbcType=VARCHAR},
+      </if>
+      <if test="checktimenext != null" >
+        #{checktimenext,jdbcType=VARCHAR},
+      </if>
+      <if test="checktime != null" >
+        #{checktime,jdbcType=VARCHAR},
+      </if>
+      <if test="certaddr != null" >
+        #{certaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="certtime != null" >
+        #{certtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chinasofti.domain.CertProHistoryExample" resultType="java.lang.Integer" >
+    select count(*) from CIS_CERTPRO_HISTORY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update CIS_CERTPRO_HISTORY
+    <set >
+      <if test="record.id != null" >
+        CCH_ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certid != null" >
+        CCH_CERTID = #{record.certid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkunit != null" >
+        CCH_CHECKUNIT = #{record.checkunit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgname != null" >
+        CCH_ORGNAME = #{record.orgname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgid != null" >
+        CCH_ORGID = #{record.orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entid != null" >
+        CCH_ENTID = #{record.entid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entname != null" >
+        CCH_ENTNAME = #{record.entname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checktype != null" >
+        CCH_CHECKTYPE = #{record.checktype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checktimenext != null" >
+        CCH_CHECKTIMENEXT = #{record.checktimenext,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checktime != null" >
+        CCH_CHECKTIME = #{record.checktime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certaddr != null" >
+        CCH_CERTADDR = #{record.certaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certtime != null" >
+        CCH_CERTTIME = #{record.certtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update CIS_CERTPRO_HISTORY
+    set CCH_ID = #{record.id,jdbcType=VARCHAR},
+      CCH_CERTID = #{record.certid,jdbcType=VARCHAR},
+      CCH_CHECKUNIT = #{record.checkunit,jdbcType=VARCHAR},
+      CCH_ORGNAME = #{record.orgname,jdbcType=VARCHAR},
+      CCH_ORGID = #{record.orgid,jdbcType=VARCHAR},
+      CCH_ENTID = #{record.entid,jdbcType=VARCHAR},
+      CCH_ENTNAME = #{record.entname,jdbcType=VARCHAR},
+      CCH_CHECKTYPE = #{record.checktype,jdbcType=VARCHAR},
+      CCH_CHECKTIMENEXT = #{record.checktimenext,jdbcType=VARCHAR},
+      CCH_CHECKTIME = #{record.checktime,jdbcType=VARCHAR},
+      CCH_CERTADDR = #{record.certaddr,jdbcType=VARCHAR},
+      CCH_CERTTIME = #{record.certtime,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from ( 
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+      <![CDATA[ ) row_  where rownum<= #{page.end}) where rownum_ > #{page.start} ]]>
+    </if>
+  </sql>
+</mapper>

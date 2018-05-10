@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinasofti.mapper.oracle.EntInfoExtRepairMapper" >
+  <resultMap id="BaseResultMap" type="com.chinasofti.domain.EntInfoExtRepair" >
+    <result column="CEQ_ID" property="id" jdbcType="VARCHAR" />
+    <result column="CEQ_PID" property="pid" jdbcType="VARCHAR" />
+    <result column="CEQ_CREATETIME" property="createtime" jdbcType="VARCHAR" />
+    <result column="CEQ_ENTAREA" property="entarea" jdbcType="VARCHAR" />
+    <result column="CEQ_REGISTCAPITAL" property="registcapital" jdbcType="VARCHAR" />
+    <result column="CEQ_PROFWORKERSNUM" property="profworkersnum" jdbcType="VARCHAR" />
+    <result column="CEQ_FOUNTDATE" property="fountdate" jdbcType="VARCHAR" />
+    <result column="CEQ_ACCEPTTIME" property="accepttime" jdbcType="VARCHAR" />
+    <result column="CEQ_APPROVALTIME" property="approvaltime" jdbcType="VARCHAR" />
+    <result column="CEQ_ENTPOSTNUM" property="entpostnum" jdbcType="VARCHAR" />
+    <result column="CEQ_ENTEMAIL" property="entemail" jdbcType="VARCHAR" />
+    <result column="CEQ_ENTLEVEL" property="entlevel" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CEQ_ID, CEQ_PID, CEQ_CREATETIME, CEQ_ENTAREA, CEQ_REGISTCAPITAL, CEQ_PROFWORKERSNUM, 
+    CEQ_FOUNTDATE, CEQ_ACCEPTTIME, CEQ_APPROVALTIME, CEQ_ENTPOSTNUM, CEQ_ENTEMAIL, CEQ_ENTLEVEL
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.chinasofti.domain.EntInfoExtRepairExample" >
+    <include refid="OracleDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CIS_ENTIFOREXT_QYFL4
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="OracleDialectSuffix" />
+  </select>
+  <delete id="deleteByExample" parameterType="com.chinasofti.domain.EntInfoExtRepairExample" >
+    delete from CIS_ENTIFOREXT_QYFL4
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.chinasofti.domain.EntInfoExtRepair" >
+    insert into CIS_ENTIFOREXT_QYFL4 (CEQ_ID, CEQ_PID, CEQ_CREATETIME, 
+      CEQ_ENTAREA, CEQ_REGISTCAPITAL, CEQ_PROFWORKERSNUM, 
+      CEQ_FOUNTDATE, CEQ_ACCEPTTIME, CEQ_APPROVALTIME, 
+      CEQ_ENTPOSTNUM, CEQ_ENTEMAIL, CEQ_ENTLEVEL
+      )
+    values (#{id,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, 
+      #{entarea,jdbcType=VARCHAR}, #{registcapital,jdbcType=VARCHAR}, #{profworkersnum,jdbcType=VARCHAR}, 
+      #{fountdate,jdbcType=VARCHAR}, #{accepttime,jdbcType=VARCHAR}, #{approvaltime,jdbcType=VARCHAR}, 
+      #{entpostnum,jdbcType=VARCHAR}, #{entemail,jdbcType=VARCHAR}, #{entlevel,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.chinasofti.domain.EntInfoExtRepair" >
+    insert into CIS_ENTIFOREXT_QYFL4
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        CEQ_ID,
+      </if>
+      <if test="pid != null" >
+        CEQ_PID,
+      </if>
+      <if test="createtime != null" >
+        CEQ_CREATETIME,
+      </if>
+      <if test="entarea != null" >
+        CEQ_ENTAREA,
+      </if>
+      <if test="registcapital != null" >
+        CEQ_REGISTCAPITAL,
+      </if>
+      <if test="profworkersnum != null" >
+        CEQ_PROFWORKERSNUM,
+      </if>
+      <if test="fountdate != null" >
+        CEQ_FOUNTDATE,
+      </if>
+      <if test="accepttime != null" >
+        CEQ_ACCEPTTIME,
+      </if>
+      <if test="approvaltime != null" >
+        CEQ_APPROVALTIME,
+      </if>
+      <if test="entpostnum != null" >
+        CEQ_ENTPOSTNUM,
+      </if>
+      <if test="entemail != null" >
+        CEQ_ENTEMAIL,
+      </if>
+      <if test="entlevel != null" >
+        CEQ_ENTLEVEL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="entarea != null" >
+        #{entarea,jdbcType=VARCHAR},
+      </if>
+      <if test="registcapital != null" >
+        #{registcapital,jdbcType=VARCHAR},
+      </if>
+      <if test="profworkersnum != null" >
+        #{profworkersnum,jdbcType=VARCHAR},
+      </if>
+      <if test="fountdate != null" >
+        #{fountdate,jdbcType=VARCHAR},
+      </if>
+      <if test="accepttime != null" >
+        #{accepttime,jdbcType=VARCHAR},
+      </if>
+      <if test="approvaltime != null" >
+        #{approvaltime,jdbcType=VARCHAR},
+      </if>
+      <if test="entpostnum != null" >
+        #{entpostnum,jdbcType=VARCHAR},
+      </if>
+      <if test="entemail != null" >
+        #{entemail,jdbcType=VARCHAR},
+      </if>
+      <if test="entlevel != null" >
+        #{entlevel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.chinasofti.domain.EntInfoExtRepairExample" resultType="java.lang.Integer" >
+    select count(*) from CIS_ENTIFOREXT_QYFL4
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update CIS_ENTIFOREXT_QYFL4
+    <set >
+      <if test="record.id != null" >
+        CEQ_ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pid != null" >
+        CEQ_PID = #{record.pid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null" >
+        CEQ_CREATETIME = #{record.createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entarea != null" >
+        CEQ_ENTAREA = #{record.entarea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registcapital != null" >
+        CEQ_REGISTCAPITAL = #{record.registcapital,jdbcType=VARCHAR},
+      </if>
+      <if test="record.profworkersnum != null" >
+        CEQ_PROFWORKERSNUM = #{record.profworkersnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fountdate != null" >
+        CEQ_FOUNTDATE = #{record.fountdate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accepttime != null" >
+        CEQ_ACCEPTTIME = #{record.accepttime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.approvaltime != null" >
+        CEQ_APPROVALTIME = #{record.approvaltime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entpostnum != null" >
+        CEQ_ENTPOSTNUM = #{record.entpostnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entemail != null" >
+        CEQ_ENTEMAIL = #{record.entemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entlevel != null" >
+        CEQ_ENTLEVEL = #{record.entlevel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update CIS_ENTIFOREXT_QYFL4
+    set CEQ_ID = #{record.id,jdbcType=VARCHAR},
+      CEQ_PID = #{record.pid,jdbcType=VARCHAR},
+      CEQ_CREATETIME = #{record.createtime,jdbcType=VARCHAR},
+      CEQ_ENTAREA = #{record.entarea,jdbcType=VARCHAR},
+      CEQ_REGISTCAPITAL = #{record.registcapital,jdbcType=VARCHAR},
+      CEQ_PROFWORKERSNUM = #{record.profworkersnum,jdbcType=VARCHAR},
+      CEQ_FOUNTDATE = #{record.fountdate,jdbcType=VARCHAR},
+      CEQ_ACCEPTTIME = #{record.accepttime,jdbcType=VARCHAR},
+      CEQ_APPROVALTIME = #{record.approvaltime,jdbcType=VARCHAR},
+      CEQ_ENTPOSTNUM = #{record.entpostnum,jdbcType=VARCHAR},
+      CEQ_ENTEMAIL = #{record.entemail,jdbcType=VARCHAR},
+      CEQ_ENTLEVEL = #{record.entlevel,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <sql id="OracleDialectPrefix" >
+    <if test="page != null" >
+      select * from ( select row_.*, rownum rownum_ from ( 
+    </if>
+  </sql>
+  <sql id="OracleDialectSuffix" >
+    <if test="page != null" >
+      <![CDATA[ ) row_  where rownum<= #{page.end}) where rownum_ > #{page.start} ]]>
+    </if>
+  </sql>
+</mapper>

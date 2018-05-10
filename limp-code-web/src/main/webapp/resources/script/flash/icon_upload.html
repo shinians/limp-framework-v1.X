@@ -1,0 +1,106 @@
+<!-- saved from url=(0013)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>icon_upload</title>
+
+</head>
+<body bgcolor="#ecf0f9">
+
+ <div>
+        <object width="225" height="251" type="application/x-shockwave-flash" name="photoEditor"
+            id="photoEditor" data="icon_upload.swf">
+            <param value="always" name="allowScriptAccess">
+            <param value="opaque" name="wmode">
+            <param value="native_type=1&amp;slice_width=225&amp;slice_height=140&amp;cut_type=3&amp;famous=0&amp;famouseblog=0"
+                name="flashvars">
+        </object>
+    </div>
+<input type="button" value="load" onclick="doIt()"/>
+</body>
+<script>
+
+    var errCodeMap = {
+        "-1": "服务器繁忙，请稍候再试",
+        "-2": "非法访问",
+        "-3": "请先登录",
+        "-4": "您同时登录了多个QQ空间,无法进行设置,请您重新登录此空间再设置",
+        "-5": "非法操作",
+        "-6": "对不起，请选择JPG、JPEG、PNG格式图片",
+        "-7": "对不起，您没有权限",
+        "-8": "对不起，您不是城市达人用户",
+        "-9": "请正确选择上传图片",
+        "-10": "对不起，请选择JPG、JPEG、PNG格式图片",
+        "-11": "对不起，请上传小于25K的GIF图片文件",
+        "-12": "对不起，请上传小于10K的JPG图片文件",
+        "-13": "对不起，黄钻用户才能上传GIF文件",
+        "-14": "对不起，您上传的图片超过2M"
+    };
+    // 初始化图片
+    function flashInit() {
+    }
+    function editIconData() {
+        if (!haveSubmit) {
+            haveSubmit = true;
+            saveImage();
+        }
+    }
+    // 消息处理
+    function flashError(evt) {
+        haveSubmit = false;
+        if (typeof (evt.loc) != "undefined") {
+            alert(errCodeMap[evt.msg]);
+        }
+    }
+    // 获取控件
+    function getIconEditor() {
+        var r = document.getElementById("photoEditor");
+        return r;
+    }
+    function cancleBtnAction() {
+        this.ymPrompt.close();
+    }
+    function flashInit(url) {
+	alert("a")
+        //alert(url); 
+        //alert(getIconEditor().loadImage);
+       // getIconEditor().loadImage("http://localhost:11021/IcoUpdateTest/bzxgmzyouhbz.jpg");
+    }
+    function saveImage() {alert('a')
+        iconEditor = getIconEditor();
+        iconEditor.saveToServer("http://localhost:11021/IcoUpdateTest/Handler.ashx?a=1");
+    }
+    function iconHint() {
+        // QZONE.FP.showMsgbox("正在提交数据", 6, 5000);
+    }
+    function avatarHint() {
+        // QZONE.FP.showMsgbox("正在提交数据", 6, 5000);
+    }
+    function errorAction() {
+        cancleBtnAction();
+        alert("由于网络问题，操作失败了。");
+    }
+    function onIconComplete(vars) {
+        if (vars && vars.location) {
+            $("#lsphoto").attr("src", vars.location);
+            $("#txtImageUrl").val(vars.location);
+            cancleBtnAction();
+        } else {
+            cancleBtnAction();
+            alert("上传失败");
+        }
+    }
+    function showError() {
+        cancleBtnAction();
+        alert("网络繁忙，请您稍后再试。");
+    }
+</script>
+<script language="JavaScript">
+	function doIt(){
+        alert("ok")
+	var editor = document.getElementById("photoEditor");
+	editor.loadImage("bzxgmzyouhbz.jpg");
+	}
+</script>
+</html>
