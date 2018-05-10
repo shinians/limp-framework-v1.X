@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="limp-code-web:war">
+    <output-path>$PROJECT_DIR$/limp-code-web/target</output-path>
+    <root id="archive" name="chinasofti-ship-web.war">
+      <element id="artifact" artifact-name="limp-code-web:war exploded" />
+    </root>
+  </artifact>
+</component>
