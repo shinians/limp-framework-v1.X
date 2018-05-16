@@ -9,22 +9,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>智慧船检管理系统1.0</title>
+    <title>LP框架后台管理系统V1.1.3</title>
     <link rel="stylesheet" type="text/css" href="${plug}/login/css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="${plug}/login/css/default.css">
 </head>
 <body style="width:100%;height:100%;margin:0;">
 <div class="htmleaf-container">
     <header class="htmleaf-header">
-        <h1>智慧船检管理系统1.0<span>Intelligent ship inspection management system</span></h1>
+        <h1>LP框架后台管理系统V1.1.3<span>LP framework management system</span></h1>
         <div>
-            <a class="htmleaf-icon icon-htmleaf-home-outline" href="${ctx}/index/main" title="首页"></a>
+            <a class="htmleaf-icon icon-htmleaf-home-outline" href="${ctx}/" title="首页"></a>
 
         </div>
     </header>
     <div class="related">
-        <h3>数据构建分析,打造智慧管理</h3>
-        <div style=" width: 350px; height: 200px; margin: 10px auto; background: rgba(113,113,113,0.5); ">
+        <h3>打造智能框架服务系统</h3>
+        <div style=" width: 367px; height: 217px; margin: 10px auto; background: rgba(218,218,218,0.6); ">
 
             <form role="form" action="#" style=" padding-top: 21px; ">
                 <div class="form-group" style=" margin: 10px auto; ">

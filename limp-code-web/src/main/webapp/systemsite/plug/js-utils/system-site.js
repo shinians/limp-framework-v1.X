@@ -159,7 +159,7 @@ var system = {
      * @param async
      */
     post:function(action,paramData,callback,async){
-        console.log("----↓↓请求地址和参数↓↓----");
+        console.log("---↓请求地址和参数↓--");
         console.log(action);
         console.log(paramData);
         console.log("↑↑↑End↑↑");
@@ -180,7 +180,7 @@ var system = {
             error: function (error) {
                 console.info(error)
                 var msg=error.message==""?"请求错误，请重试":error.message;
-                //  tip(error)
+               alert("操作异常，请重试");
             }
         })
     },

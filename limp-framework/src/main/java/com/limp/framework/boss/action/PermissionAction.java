@@ -11,6 +11,7 @@ import com.limp.framework.core.bean.Result;
 import com.limp.framework.core.bean.ResultCode;
 import com.limp.framework.core.constant.ResultMsg;
 import com.limp.framework.utils.StrUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +36,9 @@ import static com.limp.framework.core.constant.Constant.*;
 @Controller
 @RequestMapping("/system/permission")
 public class PermissionAction  extends AbstractAction {
+
+    private static Logger log = Logger.getLogger(PermissionAction.class);
+
     @Autowired
     private PermissionService permissionService;
 
@@ -46,10 +50,10 @@ public class PermissionAction  extends AbstractAction {
             return  new Result(ResultCode.ERROR.toString(), ResultMsg.UPDATE_ERROR,"","").getJson();
         }
         try {
-            //重新加载系统环境
+            //重新加载系统环境:第二部加载【在加载initSessionAuth之后追加】
             permissionService.initSessionConfig(session);
         } catch (Exception e) {
-
+            log.error(e);
         }
         return  new Result(ResultCode.SUCCESS.toString(), ResultMsg.UPDATE_SUCCESS,"","").getJson();
     }

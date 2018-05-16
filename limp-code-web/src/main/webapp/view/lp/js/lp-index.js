@@ -31,25 +31,7 @@ var lpIndex={
 
 	},
 	initLPInfo:function(){
-		system.post(get_root+"/share/FieldsList",{pid:3},function(data){
-			if(data.code=="200"){
-				for(var m in data.result.dataList){
-					var domain=data.result.dataList[m];
-					if(!system.isBlank(domain.key)){
-						if("F_LP_PATH"==domain.key){
-							lpIndex.lpDownName=domain.value;
-						}else{
-							$("#"+domain.key).html(domain.value);
-						}
 
-						if("F_LP_DOWNNUM"==domain.key){
-							lpIndex.lpDownId=domain.id;
-						}
-					}
-				}
-				console.log(data);
-			}
-		})
 	},
 	//右下角Bar
 	fixBar:function(){

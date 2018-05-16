@@ -1,41 +1,4 @@
---------------------------引入jar-Ui-----------------------------
-加密方式：chinasofti-auth-1.0-SNAPSHOT
-     1
-        <dependency>
-             <groupId>com.chinasofti</groupId>
-             <artifactId>limp-framework-ui</artifactId>
-             <version>1.0.1-SNAPSHOT</version>
-         </dependency>-
 
-         -------------------------
-          <!--<build>
-                 <finalName>quantum-thea-web</finalName>
-                 <plugins>
-                     <plugin>
-                         <groupId>org.apache.maven.plugins</groupId>
-                         <artifactId>maven-dependency-plugin</artifactId>
-                         <version>2.4</version>
-                         <executions>
-                             <execution>
-                                 <id>unpack</id>
-                                 <phase>generate-resources</phase>
-                                 <goals>
-                                     <goal>unpack</goal>
-                                 </goals>
-                                 <configuration>
-                                     <artifactItems>
-                                         <artifactItem>
-                                             <groupId>com.longcredit</groupId>
-                                             <artifactId>longcredit-framework-ui</artifactId>
-                                             <version>1.0.0-SNAPSHOT</version>
-                                             <type>zip</type>
-                                             <excludes>web.xml</excludes>
-                                             <outputDirectory>${project.basedir}</outputDirectory>
-                                         </artifactItem>
-                                     </artifactItems>
-                                 </configuration>
-                             </execution>
-                         </executions>
-                     </plugin>
-                 </plugins>
-             </build>-->
+systemsite:是后台升级目录，请不要在此目录下写相应的逻辑
+
+/*********************规范说明 待完善*************************/

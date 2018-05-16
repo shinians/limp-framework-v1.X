@@ -17,9 +17,10 @@ var cons={
     /*****系统设置 begin（##该区域为系统设置部分）************************************/
 
     //工作桌面地址
-    sysWorkDeskUrl:"http://202.127.45.165",
+    sysWorkDeskUrl:"http://www.shinians.com",
     //工作桌面退出地址
-    sysWorkDeskLogoutUrl:"http://202.127.45.165/logout?service=http://202.127.45.165/login",
+    sysWorkDeskLogoutUrl:"/system/user/logOut",
+    //sysWorkDeskLogoutUrl:"http://202.127.45.165/logout?service=http://202.127.45.165/login",
 
 
     /**

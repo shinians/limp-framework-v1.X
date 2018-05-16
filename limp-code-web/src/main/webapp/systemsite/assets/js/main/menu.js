@@ -156,7 +156,7 @@ var menu={
             if("4"==domain.menType){
                 window.open(get_root+url);
             }else if("6"==domain.menType){
-                $("#breadcrumb").hide();
+                //$("#breadcrumb").hide();
                 $("#nav_intro").hide();
                 $("#nav_iframe").attr("src",get_root+url)  ;
                 $("#nav_iframe").fadeIn(200)

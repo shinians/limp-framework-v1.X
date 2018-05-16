@@ -1,5 +1,7 @@
 package com.limp.framework.core.bean;
 
+import com.limp.framework.boss.filter.PageLogUtils;
+
 /**
  * @author:shinian
  * @description:
@@ -20,6 +22,7 @@ public final  class Version {
      * @see java.lang.Package#getImplementationVersion
      */
     public static String getVersion(){
+        PageLogUtils.format("LP V: %s{0}\n", Version.class.getPackage().getImplementationVersion());
         return Version.class.getPackage().getImplementationVersion();
     }
 

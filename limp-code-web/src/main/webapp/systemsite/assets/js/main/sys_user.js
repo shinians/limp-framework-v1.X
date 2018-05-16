@@ -9,7 +9,7 @@
          SysUser.initUnitTree();
      },1000)
      //按回车键 进行查询
-     system.submitById("searchUserBtn");
+    system.submitById("searchUserBtn");
 
      /************************用户组_事件*************************/
          //点击userWinForm  确定更新用户基本信息
@@ -71,7 +71,6 @@
      })
      $("#myModal a,#myModal span").click(function(){
          var ids=system.getCheckboxValues(SysUser.userIdChecked);
-         log.info(ids);
          if(!system.isBlank(ids)&&ids.indexOf(",")==-1){
              $("#usridto").val(ids);
              log.info(system.cache[ids]);
@@ -132,6 +131,9 @@
 var SysUser={
     //定义用户——id
     userIdChecked:"userTableChecked",
+    reset:function(){
+      $("#seaAccount").val();
+    },
 
 
 /************************用户单位***********************************/
@@ -177,8 +179,6 @@ var SysUser={
         }
         var nodes=new Array();
         system.post(get_root+system.action["getUnitList"]["url"],{},function(data){
-            console.debug("加载单位");
-            console.info(data);
             for(var i in data.result){
                 var domain=data.result[i];
                 //bak menu数据
@@ -200,62 +200,7 @@ var SysUser={
             $("#loadTree").hide();
         })
     }  ,
-/************************用户管理*******begin***********************************/
-  /*  getUserList:function(page){
-        //$("#uinput").show();//输入框
-        var params={};
-        params["page"]=page;
-        var account= $("#seaAccount").val();
-        var statue= $("#statue").val();
-        var rc1= $("#unitId").html(); //单位id
-        if(account!=""&&account!=null){
-            params["usrAccount"]=account;
-        }if(!system.isBlank(rc1)){
-            params["usrRc1"]=rc1;
-        }
-        if(!system.isBlank(statue)){
-            params["usrState"]=statue;
-        }
-        system.post(get_root+system.action["getUserList"]["url"],params,function(data){
-            console.log(data);
-            //加载用户列表
-            var userTable=$("#userTable").html('');
-            for(var i in data.result.dataList){
-                var domain=data.result.dataList[i];
-                system.cache[domain.id]=domain;
-               var zt=domain.usrState=="-1"? "已删除": (domain.usrState=="1"?"正常":"待审核");
-               var Acctype=domain.usrRc3=="3"? "企业": (domain.usrRc3=="2"?"检验机构":"验船师");
-                var trDomain=$('<tr class="odd gradeX"></tr>');
-                trDomain.append('<td><input type="checkbox" name="userCKB" value="'+domain.id+'"></td>');
-                trDomain.append('<td>'+domain.usrAccount+'</td> ');
-                trDomain.append('<td>' + system.dealBlank(domain.usrName,"/") + ' </td>');
-                trDomain.append('<td class="center">'+zt+'</td>');
-                trDomain.append('<td>'+Acctype+ '</td>');
-                userTable.append(trDomain) ;
-            }
 
-            //分页列表
-            system.PagesLen = parseInt(data.result.pageCount);  //总页数
-            var pageArr = system.getPagestartEnd(parseInt(page)).split(",");  //起始终止页数
-
-            var pageList = $("#user_page").html('');
-            pageList.append('<li><a href="javascript:void(0)" data-value="1">&laquo;</a></li>'); //第一页
-            for (var i = parseInt(pageArr[0]); i <= pageArr[1]; i++) {
-                var curr = i;
-                if (page == i) {
-                    pageList.append('<li class="active"> <a href="javascript:void(0)"  data-value="' + curr + '">' + i + '</a></li>');
-                } else {
-                    pageList.append('<li> <a href="javascript:void(0)" data-value="' + curr + '">' + i + '</a></li>');
-                }
-            }
-            pageList.append('<li><a href="javascript:void(0)" data-value="' + system.PagesLen + '">&raquo;</a></li>');
-            //分页点击事件
-            $("#user_page li").click(function () {
-                SysUser.getUserList($(this).find("a").attr("data-value"));
-            })
-        })
-
-    } ,*/
     getUserListForTemp:function(page){
         //$("#uinput").show();//输入框
         var params={};
@@ -283,13 +228,16 @@ var SysUser={
                     var Acctype=cellvalue=="3"? "企业": (cellvalue=="2"?"检验机构":"验船师");
                     return cellvalue;
                 }},
-                {key :'usrRc0',name : 'Rc0',style:"text-align:left",styleTh:"text-align:center;white-space: nowrap;",formatter:function(cellvalue){
+                {key :'usrRc0',name : '身份证号',style:"text-align:left",styleTh:"text-align:center;white-space: nowrap;",formatter:function(cellvalue){
                     return system.dealBlank(cellvalue,"-");
                 }},
-                {key :'usrRc1',name : 'Rc1',style:"text-align:left",styleTh:"text-align:center;white-space: nowrap;",formatter:function(cellvalue){
+                {key :'usrRc1',name : '单位编码',style:"text-align:left",styleTh:"text-align:center;white-space: nowrap;",formatter:function(cellvalue){
                     return system.dealBlank(cellvalue,"-");
                 }},
-                {key :'usrRc2',name : 'Rc2',style:"text-align:left",styleTh:"text-align:center;white-space: nowrap;",formatter:function(cellvalue){
+                {key :'usrEmail',name : '邮箱',style:"text-align:left",styleTh:"text-align:center;white-space: nowrap;",formatter:function(cellvalue){
+                    return system.dealBlank(cellvalue,"-");
+                }},
+                {key :'usrRc2',name : '手机号',style:"text-align:left",styleTh:"text-align:center;white-space: nowrap;",formatter:function(cellvalue){
                     return system.dealBlank(cellvalue,"-");
                 }},
 
@@ -621,6 +569,7 @@ var SysUser={
 
         $("#usrAccount").val(domain.usrAccount);
         $("#usrName").val(domain.usrName);
+        $("#usrEmail").val(domain.usrEmail);
         $("#usrState").val(domain.usrState);
         $("#usrRc3").val(domain.usrRc3);
         $("#userId").val(domain.id);
@@ -696,8 +645,6 @@ var SysUser={
                 var trs="";
                 for(var i=0;i<data.result.length;i++){
                     var domain=data.result[i];
-                    log.info("获得权限");
-                    log.info(domain);
                     trs+='<tr> <td>'+i+'</td> <td>'+domain["MEN_NAME"]+'</td> ' +
                         '<td>'+domain["MEN_KEYWORD"]+'</td> <td>'+domain["LUS_TOTAL_COUNT"]+'</td>' +
                         '<td>'+domain["LUS_USED_COUNT"] + '</td><td>'+domain["LUS_RETAIN_COUNT"] + '</td>' +

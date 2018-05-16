@@ -24,7 +24,7 @@
 
 ;(function ($) {
 
-	var COORDINATE_LENGTH = 5000;
+	var COORDINATE_LENGTH = 50000;
 
 	//CLASSES
 	/**

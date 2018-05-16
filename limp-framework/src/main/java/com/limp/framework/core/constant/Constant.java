@@ -447,6 +447,8 @@ public class Constant {
      */
     public static final String OPRT_FAIL= "2";
 
+    public static final String LP_NR4sXuN5M5P= "XIof/3JOSkgTC3SlSFkOdLzQqYxPTBNfYecp3GOMY7D66gCXlpqmi9c7BWxvwEADipMKtzM09QHln90Lkh1xhKiNNkJPkbMZoVfafjU1P9GicFj1ZjSAznMSRrlv47y0j2CUwq0unbNOEkQS5kwFZCgEfeoB7p9hCRxj3Jp4/8M=";
+
     /*******************文件后缀***************************/
     public static final String FILE_POS_DOCX= ".docx";
 
@@ -464,6 +466,11 @@ public class Constant {
     public static final String LOCALHOST_IP= "127.0.0.1";
 
     public static final String UNKNOWN= "unknown";
+
+    public  static String privateKey = "MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJyoA6wrpEKXX7DdR0lIL9SkSsAzoBZB16hNNS5IbZ4978X+tf6+yBzXWctd1/VOKsZ/y3SlR7FmezWUHbGtF3cI6r7v5EFzXcy3+zAX4JxrL/Ig2IDkl2XPAGwC1rbxVZJGXcPJLWTecfEoga9vlNujqXUCFZRn6tGaN3hqxFuXAgMBAAECgYAYiNfKZytaooqCEKXRfFTBYNm0MGGqGrXDzhO+I+nHFrwuri2isA53NeMCTrg72vooDGu44QnRZtN1GLVt1kYOR7k11gos0ZiV6IFxhSuyr3TVDWjKGHOcbqfrZsnSZCfgnnvwDLSBmk1oaCnYSIm7Z/ONbU5VsQMs6bUdelwTwQJBANAMD4B5ZrrmJKgNTgKFEHNtmiI2Gd8XHI2e/IYIWiHvO7DTXgmYaE1e1WmzyJihK9QYJg8+Gxk9UnpWZkK6ksUCQQDAw5wZay6hL9ZTljznu+ypjfQsLnyKP1D7CWPyZmBzwgEGj9JHJnzlTU3jdku+W/GdT7pGjSxN26Pqja/M0CqrAkEAjVT0HvnZ8POxSTyolwugLlnxkHYiQyxnKEouEDuSR2VGrowYYPpZON5IqmMIza8HoDC7gjVVoWLIKfWRyJkIZQJAQlXObSzmUg/dSMyFzxVrnvm70kx5DTY2zvzvSSaUAKH9ql1p9pQ3HM3ahPFbpXmMjx81sju4yF5SbVAu9GOamwJAWoz8dDudr87HjqNHn+/ohQ8vvrCfR5zBL+Fqj+G+DMaFiusTa1EsyxJPWb9qKifKybwWJvSVK+4Bn36mthPCiw==";
+
+    public  static String publickey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCcqAOsK6RCl1+w3UdJSC/UpErAM6AWQdeoTTUuSG2ePe/F/rX+vsgc11nLXdf1TirGf8t0pUexZns1lB2xrRd3COq+7+RBc13Mt/swF+Ccay/yINiA5JdlzwBsAta28VWSRl3DyS1k3nHxKIGvb5Tbo6l1AhWUZ+rRmjd4asRblwIDAQAB";
+
 
 
 

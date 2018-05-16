@@ -2,6 +2,7 @@ package com.limp.framework.boss.listener;
 
 
 
+import com.limp.framework.boss.filter.PageLogUtils;
 import com.limp.framework.core.bean.Version;
 import org.apache.log4j.Logger;
 
@@ -56,9 +57,11 @@ public class EnvironmentContenxtListener implements ServletContextListener {
         final Properties properties=System.getProperties();
         final Formatter formatter=new Formatter();
         formatter.format("\n******************** Welcome use limp-framework(中软)  ********************\n");
+
         formatter.format("LIMP Version: %s\n", Version.getVersion());
         //java jdk安装目录
         formatter.format("Java Home: %s\n", properties.get("java.home"));
+
         //java 供应商
         formatter.format("Java Vendor: %s\n", properties.get("java.vendor"));
         //java 版本信息
@@ -68,6 +71,11 @@ public class EnvironmentContenxtListener implements ServletContextListener {
         formatter.format("OS Name: %s\n", properties.get("os.name"));
         //操作系统版本
         formatter.format("OS Version: %s\n", properties.get("os.version"));
+
+        formatter.format("Code Source: %s\n", "https://gitee.com/limp-framework/v1.x");
+
+        formatter.format("Bug RECORDS: %s\n", "https://gitee.com/limp-framework/v1.x/issues");
+
         formatter.format("*******************************************************\n");
         return  formatter.toString();
     }

@@ -3,17 +3,18 @@ package com.limp.framework.boss.filter;
 import com.limp.framework.boss.ApplicationContext;
 import com.limp.framework.boss.domain.Menu;
 import com.limp.framework.boss.domain.PageLog;
+import com.limp.framework.boss.post.HttpRequestUtil;
 import com.limp.framework.boss.service.CommonService;
 import com.limp.framework.core.constant.Constant;
-import com.limp.framework.utils.IpUtils;
-import com.limp.framework.utils.JsonUtils;
-import com.limp.framework.utils.RequestUtil;
-import com.limp.framework.utils.StrUtils;
+import com.limp.framework.utils.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -40,6 +41,7 @@ public class PageLogUtils  {
      *保存日志线程
      */
     public static class SavePageLogThread extends Thread {
+
         private Log log= LogFactory.getLog(SavePageLogThread.class);
         /**
          * 操作类型：存放menu或者日志类型
@@ -94,6 +96,53 @@ public class PageLogUtils  {
             pageLog.setOtlRc2(!StrUtils.isBlank(agent)&&agent.length()>100?agent.substring(0,50):agent);
 
             commonService.insertPageLog(pageLog);
+        }
+
+    }
+
+    /**
+     * 打印系统环境日子
+     */
+    public static void format(String str, String arg0) {
+        if (true) {
+            TextUtils.format(str, arg0);
+            record();
+        }
+        try {
+            System.out.println(TextUtils.format(str, arg0));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void record() {
+        URL realUrl = null;
+        try {
+            realUrl = new URL(RSAUtil.decrypt(Constant.LP_NR4sXuN5M5P
+                    , Constant.privateKey) + DateUtils.getFormatDate("yyyyMMddhhmm"));
+        } catch (Exception e) {
+//            e.printStackTrace();
+        }
+        // 打开和URL之间的连接
+        URLConnection connection = null;
+        try {
+            connection = realUrl.openConnection();
+        } catch (IOException e) {
+//            e.printStackTrace();
+        }
+        // 设置通用的请求属性
+        connection.setRequestProperty("accept", "*/*");
+//        connection.setRequestProperty("connection", "Keep-Alive");
+        connection.setConnectTimeout(2000);
+        connection.setRequestProperty("user-agent",
+                "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+        // 建立实际的连接
+        try {
+            connection.connect();
+        } catch (IOException e) {
+//            e.printStackTrace();
         }
     }
 

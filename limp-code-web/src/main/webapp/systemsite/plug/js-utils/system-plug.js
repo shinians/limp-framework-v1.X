@@ -61,7 +61,6 @@
         var pageId=lpId+"Page";//分页div id
         var async=false==options["async"]?false:true
         var this_=this;
-        //$(this).html('');
         $("#"+lpId).LPshowLoading(1);
         console.log("/---查询参数---/");
         console.log(action);

@@ -182,8 +182,8 @@ public class PermissionServiceImpl implements PermissionService {
 
         //绑定用户菜单权限【2】
         List<Menu> menuList=menuMapper.selectUserMenus(user.getId());
-        //通过MenKeyword获取 CODE、URL、NAME、VALUE
-        Map  mapKeyAuth=new  HashMap<String,Map<String,String>>();// 包括menu、permission两部分权限
+        //通过MenKeyword获取 CODE、URL、NAME、VALUE :包括menu、permission两部分权限
+        Map  mapKeyAuth=new  HashMap<String,Map<String,String>>();
         //id:menu json格式
         HashMap menuMap=new HashMap<String,Object>();
         HashMap authMap=new HashMap<String,String>();
@@ -204,8 +204,20 @@ public class PermissionServiceImpl implements PermissionService {
                 }
                });
             }
-
-
+        }
+        //绑定角色：演示角色 SYS_ROLE_VIEW
+        for(final Role role:roleList){
+            //根据code绑定用户权限，前台可通过${KEY_CODE.特定CODE.VALUE==1}判定是否有该权限
+            if(!StrUtils.isBlank(role.getUreRc0())){
+                mapKeyAuth.put(role.getUreRc0(),new HashMap<String,String>(){
+                    {
+                    put("CODE",StrUtils.isBlank(role.getUreRc0())?"":role.getUreRc0());
+                    put("URL", "");
+                    put("NAME",StrUtils.isBlank(role.getUreName())?"":role.getUreName());
+                    put("VALUE",Constant.STRING_1);
+                }
+               });
+            }
         }
        /* //权限 keyWord：url
         session.setAttribute(Constant.KEY_AUTH_MAP, JsonUtils.toJson(authMap));*/
@@ -257,6 +269,7 @@ public class PermissionServiceImpl implements PermissionService {
                         put("CODE",configField.getKey());
                         put("NAME",StrUtils.isBlank(configField.getTitle())?"":configField.getTitle());
                         put("VALUE",configField.getValue());
+                        put("URL","");
                     }
                 });
             }
@@ -271,6 +284,15 @@ public class PermissionServiceImpl implements PermissionService {
 
         log.debug(TextUtils.format("系统配置数量{0}个", configFieldList.size()));
 
+        //在之前的权限上进行追加
+        if(!StrUtils.isBlank(session.getAttribute(Constant.KEY_CODE))){
+            HashMap<String, Map<String, String>> mapKeyAuthBefore =
+                    (HashMap<String, Map<String, String>>) session.getAttribute(Constant.KEY_CODE);
+            for(String key:mapKeyAuthBefore.keySet()){
+                mapKeyAuth.put(key,mapKeyAuthBefore.get(key));
+            }
+
+        }
         session.setAttribute(Constant.KEY_CODE, mapKeyAuth);
 
 

@@ -30,7 +30,7 @@ var SysMenuSyn={
         //初始化加载
         var update_vm =new Vue({
             el:"#lp-syn",
-            data:{domain:{"url":"http://127.0.0.1:8082/system/menu/getChild3LvMenu","keyWord":"SYS_API_SET"}},
+            data:{domain:{"url":"http://www.shinians.com/system/menu/getChild3LvMenu","keyWord":"SYS_API_SET"}},
             methods:{
                 //提交
                 parseWebData:function(){

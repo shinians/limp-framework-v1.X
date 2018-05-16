@@ -217,6 +217,10 @@
 
     <servlet-mapping>
         <servlet-name>default</servlet-name>
+        <url-pattern>*.ico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
         <url-pattern>*.jpg</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
@@ -279,7 +283,7 @@
 
     <!--定义欢迎页面-->
     <welcome-file-list>
-        <welcome-file>/view/lp/index.html</welcome-file>
+        <welcome-file>view/lp/index.html</welcome-file>
     </welcome-file-list>
 
 </web-app>

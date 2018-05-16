@@ -164,13 +164,13 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Rc0(身份证)</label>
+                            <label class="col-sm-3 control-label">身份证</label>
                             <div class="col-sm-6">
                                 <input type="text"  class="form-control" id="rc0" name="usrRc0"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Rc1(机构代码)</label>
+                            <label class="col-sm-3 control-label">机构编码</label>
                             <div class="col-sm-6">
                                 <input type="text"  class="form-control" id="rc1" name="usrRc1"/>
                             </div>
@@ -181,16 +181,22 @@
                                 <select size="1"  id="usrRc3" name="usrRc3"  class="form-control">
                                     <option value="" selected="selected">未设置</option>
                                     <option value="0">管理员</option>
-                                    <option value="1">验船师</option>
-                                    <option value="2">检验机构</option>
-                                    <option value="3">注册企业</option>
+                                    <option value="1">type1</option>
+                                    <option value="2">type2</option>
+                                    <option value="3">type3</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Rc2(手机号)</label>
+                            <label class="col-sm-3 control-label">手机号</label>
                             <div class="col-sm-6">
                                 <input type="text"  class="form-control" id="rc2" name="usrRc2"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">邮箱</label>
+                            <div class="col-sm-6">
+                                <input type="text"  class="form-control" id="usrEmail" name="usrEmail"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -252,13 +258,13 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Rc0(身份证)</label>
+                            <label class="col-sm-3 control-label">身份证</label>
                             <div class="col-sm-6">
                                 <input type="text"  class="form-control" name="usrRc0"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Rc1(机构代码)</label>
+                            <label class="col-sm-3 control-label">单位编码</label>
                             <div class="col-sm-6">
                                 <input type="text"  class="form-control" name="usrRc1"/>
                             </div>
@@ -269,16 +275,22 @@
                                 <select size="1"  name="usrRc3"  class="form-control">
                                     <option value="" selected="selected">未设置</option>
                                     <option value="0">管理员</option>
-                                    <option value="1">验船师</option>
-                                    <option value="2">检验机构</option>
-                                    <option value="3">注册企业</option>
+                                    <option value="1">type1</option>
+                                    <option value="2">type2</option>
+                                    <option value="3">type3</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Rc2(手机号)</label>
+                            <label class="col-sm-3 control-label">手机号</label>
                             <div class="col-sm-6">
                                 <input type="text"  class="form-control" name="usrRc2"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">邮箱</label>
+                            <div class="col-sm-6">
+                                <input type="text"  class="form-control" name="usrEmail"/>
                             </div>
                         </div>
 
@@ -342,6 +354,12 @@
                                     <li>管理员</li>
                                 </ul>
                             </div>
+                            <div class="col-sm-3">
+                                <span style="font-size: 12px;color: #ccc"></span>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top: 10px">
+                            <label class="col-sm-8 control-label" style="font-size: 12px;color: red">提示：授权后可选择角色(角色管理->指派角色)</label>
                         </div>
                         <input type="hidden" name="id" id="userRoleId"/>
                     </form>
@@ -427,11 +445,11 @@
                         <span class="fontawesome-key"></span><a>配置权限</a><%--<i>648</i>--%>
                     </div>
                 </c:if>
-                <%--<c:if test="${KEY_CODE.BTN_USER_ROLESET.VALUE==1}">--%>
+                <c:if test="${KEY_CODE.BTN_USER_ROLESET.VALUE==1}">
                     <div class="list-btn-mail" style="cursor: pointer" id="user-role-set">
                         <span class="icon icon-user-group"></span><a>配置角色</a><%--<i>648</i>--%>
                     </div>
-                <%--</c:if>--%>
+                </c:if>
                 <c:if test="${KEY_CODE.BTN_USER_ADD.VALUE==1}">
                     <div class="list-btn-mail" style="cursor: pointer" id="user-to-add">
                         <span class="fontawesome-plus"></span><a>新增用户</a><%--<i>648</i>--%>
@@ -523,7 +541,7 @@
                 <div class="row">
                     <div class="content-panel content-panel-border" style="min-height: 130px !important;">
                         <div class="table-responsive">
-                            <form  action="" method="post" id="sform" class="form-horizontal bucket-form">
+                            <div  action="" method="post" id="sform" class="form-horizontal bucket-form">
                                 <div class="form-group" style="margin-top: 10px">
                                     <label class="col-sm-2 control-label">账号名称</label>
                                     <div class="col-sm-4">
@@ -535,10 +553,10 @@
                                     </div>--%>
                                 </div>
                                 <div style="float: right">
-                                    <button type="button" class="btn btn-primary btn-reset" onclick="system.resetById('sform')">重置</button>
+                                    <button type="button" class="btn btn-primary btn-reset" onclick="system.reset()">重置</button>
                                     <button type="button" id="searchUserBtn" class="btn btn-primary" onclick="SysUser.getUserListForTemp(1);">查询</button>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                         <!-- /.table-responsive -->
                     </div>
@@ -549,25 +567,6 @@
                         <table class="table  table-striped" id="userTable">
 
                         </table>
-
-                   <%--     <table class="table  table-striped" >
-                            <thead>
-                            <tr>
-                                <th><input type="checkbox" onclick="system.toCheckedBoxByName('userCKB',this)"></th>
-                                <th>账号</th>
-                                <th>昵称</th>
-                                <th>状态</th>
-                                <th>类型</th>
-
-                            </tr>
-                            </thead>
-                            <tbody id="userTable">
-                            </tbody>
-                        </table>--%>
-                        <%--分页--%>
-                      <%--  <div style="text-align: center">
-                            <ul class="pagination" id="user_page"></ul>
-                        </div>--%>
                     </div>
                   </div>
                 </div>

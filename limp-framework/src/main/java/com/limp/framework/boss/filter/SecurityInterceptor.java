@@ -135,7 +135,7 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter  {
             log.debug("登录开始拦截验证->");
             String refer = request.getRequestURI();
             // /limp/system/user/getMenuById.action
-            log.debug("refer:"+refer);
+            log.debug("refer:" + refer);
             //!refer.endsWith(login) && refer.matches(".*admin.*")过滤某种条件  如果为真，则进行验证
             //如果登录信息为空，则抛出LoginException
             if (StrUtils.isBlank(ApplicationContext.getLoginUser(request))) {
@@ -197,6 +197,11 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter  {
      * @return
      */
     private  Access  getAccessInLRU(Object handler){
+
+        //解决：抛类型装换异常的：解决js等拦截初验异常情况
+        if (!(handler instanceof HandlerMethod)) {
+            return null;
+        }
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         try {
             //方法名称

@@ -86,10 +86,13 @@ var SysRole={
              var ids="";
             $("input:checkbox[name='"+inputName+"']:checked").each(function () {
                 var id=$(this).val();
-                $(this).parent().parent().remove();
+
                 system.post(get_root + "/system/role/delRole.action", {id:id,ureState:"-1"}, function (data) {
                     if("200"==data.code){
                         main.tip("删除成功",1);
+                        $(this).parent().parent().remove();
+                    }else{
+                        main.tip(data.msg,0);
                     }
                 },false)
             })

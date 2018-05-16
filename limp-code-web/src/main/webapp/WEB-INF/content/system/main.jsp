@@ -183,8 +183,8 @@
                     <p id="spanDate">
                     <p id="clock">
                 </div>
-                <div class="copyright">LP官网
-                    <span class="entypo-heart"></span>2018<a href="#"></a> </div>
+                <div class="copyright">LP
+                    <span class="entypo-heart"></span>官网2018<a href="http://www.shinians.com"></a> </div>
                 <div class="devider-footer"></div>
             </div>
             <!-- / END OF FOOTER -->
