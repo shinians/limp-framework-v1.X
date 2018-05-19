@@ -14,6 +14,16 @@ LP框架是一款极速web开发框架（有3分速成神速之美称），配�
 
 6、mysql和oracle无缝切换衔接
 
+7、RSA+DES核心数据加密
+
+框架扩展插件：
+
+1、支持ueditor富文本编辑器，一键升级，快速集成（并提供相关ueditor后台上传jar）
+
+2、RSA+DES混合加密,便于扩展limp-framework-auth.jar，提供源码。此外支持数字签名认证。
+
+3、vue渐进式框架，一键化升级
+
 
 核心服务：
 
