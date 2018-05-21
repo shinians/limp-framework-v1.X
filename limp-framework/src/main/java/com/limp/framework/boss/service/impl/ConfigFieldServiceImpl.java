@@ -142,9 +142,17 @@ public class ConfigFieldServiceImpl implements ConfigFieldService {
             example.setOrderByClause("CC_SORT ASC");
         }
 
-        List<Config> configFields=configMapper.selectByExample(example);
+        List<Config> configs=new ArrayList<>();
 
-        pager.setPagerInfo(configFields,configMapper.countByExample(example));
+        if(Constant.DB_MYSQL.equals(StoreControl.getValue(Constant.DB_KEY))){
+            log.debug("-->开始查询mysql数据库用户信息<---");
+            configs=configMapper.selectByExampleByMsql(example);
+        }else{
+            configs=configMapper.selectByExample(example);
+            ;
+        }
+
+        pager.setPagerInfo(configs,configMapper.countByExample(example));
         return pager;
     }
 }

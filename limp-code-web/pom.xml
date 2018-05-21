@@ -7,7 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>limp-code-web</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>limp-code-web Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
@@ -19,7 +19,7 @@
         <dependency>
             <groupId>com.chinasofti</groupId>
             <artifactId>limp-framework</artifactId>
-            <version>1.1.3-RELEASE</version>
+            <version>1.1.4-RELEASE</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -49,7 +49,5 @@
 
     </dependencies>
 
-    <build>
-        <finalName>chinasofti-ship-web</finalName>
-    </build>
+
 </project>

@@ -1,0 +1,17 @@
+/***************************框架目录，慎重修改******************************************************/
+此目录为框架前端目录逐一：升级会覆盖此目录，用户尽量不要做更改。
+
+如果更改需求框架：提供了以下修改方案
+
+1、对于样式的修改：所有的样式文件均在main.jsp引入，
+同样为了个性修改需求,已引入用户sys_user_main.css
+用户可在此文件作出更改，框架不会覆盖此文件
+
+// 自定义样式文件：注意，个性话样式请在此文件书写
+<link rel="stylesheet" href="${ctx}/resources/properties/sys_user_main.css">
+
+2、对于main.jsp 退出、图标等，已经作出了js控制，可在下面更改
+    <script src="${ctx}/resources/properties/sys_constant.js"></script>
+
+    3、特殊要求或者bug可及时反馈到issues
+    https://gitee.com/limp-framework/v1.x/issues

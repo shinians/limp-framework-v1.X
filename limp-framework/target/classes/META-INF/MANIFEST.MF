@@ -1,12 +1,12 @@
 Manifest-Version: 1.0
 Archiver-Version: Plexus Archiver
 Created-By: Apache Maven
-Built-By: shinian
+Built-By: shinians
 Build-Jdk: 1.7.0_67
-Specification-Title: chinasofti-ship
-Specification-Version: 1.1.2-RELEASE
-Specification-Vendor: 中软国际
-Implementation-Title: chinasofti-ship
-Implementation-Version: 1.1.2-RELEASE
+Specification-Title: （中软）limp-framework
+Specification-Version: 1.1.4-RELEASE
+Specification-Vendor: www.shinians.com
+Implementation-Title: limp-framework
+Implementation-Version: 1.1.4-RELEASE
 Implementation-Vendor-Id: com.chinasofti
-Implementation-Vendor: 中软国际
+Implementation-Vendor: www.shinians.com

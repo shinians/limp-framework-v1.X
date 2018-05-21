@@ -1,0 +1,233 @@
+table { table-layout: fixed !important;}
+/**********************Z-tree样式********************************************Liang******/
+.ztree *{
+    font-size: 15px;
+}
+.ztree li{
+    
+}
+.ztree li a{
+    color: #62B6EC;
+}
+.ztree li a.curSelectedNode{
+    color:#FFFFFF;
+    border:none;
+    background-color:transparent;
+    opacity: 1;
+}
+
+/*************************Liang********************************************88*/
+a,img{border:0;}
+.banner{
+    width:465px;
+    overflow:hidden;
+    height:275px;
+    position:relative;
+    left: 25px;
+}
+.banList li img{
+    height:230px;
+    width: 465px;
+
+}
+.ycBanner .ycFomw{
+    bottom:12px;
+}
+.ycBanner li img{
+    width:165px;
+}
+.ycBanner .banList li{
+    margin-left:51px;
+}
+.banList li{
+    height:230px;
+    opacity:0;
+    margin-left:-40px;
+    position:absolute;
+    transform:scale(0);
+    transition:transform 0.5s ease 0s, opacity 1.5s ease 0s;
+    z-index:1;
+}
+.banList li.active{opacity:1;transform:scale(1);z-index:2;}
+.fomW{
+    position:absolute;
+    bottom:52px;
+    left:50%;
+    height:20px;
+    z-index:9;
+    width:1000px;
+    margin-left:-500px;
+}
+.jsNav{text-align:center;}
+.jsNav a{
+    display:inline-block;
+    background:#00AEFF;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    margin:0 5px;
+}
+.jsNav a.current{
+    background:#FED61C;
+    cursor:pointer
+}
+.personTable{
+    margin:20px;
+    width:700px;
+}
+.personTable tbody tr:nth-child(even){
+    background:#294B6C;
+}
+.personTable th,thead{
+    font-size: 18px;
+    color:#fff;
+}
+.personTable tbody{
+    font-size:16px;
+}
+.personTable .layui-layer-content{
+    background:#122C5B;
+    padding:20px;
+}
+.personTable .layui-layer-title{
+    font-size: 20px;
+    border-bottom: none;
+}
+.personTable .layui-layer-title{
+    color:#fff;
+    background:#122C5B;
+}
+.personTable .layui-layer-setwin .layui-layer-close2{
+    right: 3px;
+    top:1px;
+    width:20px;
+    height:21px;
+}
+.personTable .layui-layer-setwin .layui-layer-ico{
+    background:url('/resources/style/img/close.png');
+}
+
+.personTable thead tr{
+    border-top:2px solid #234876;
+    border-bottom: 2px solid #234876;
+    height:45px;
+}
+.personTable tbody tr td{
+    color:#57BBED;
+}
+.personTable tbody tr{
+    height:45px;
+}
+.personTable .layui-layer-setwin .layui-layer-close2:hover{
+    background-position:-180px -40px;
+}
+#workContent .seleYear{
+    color:black;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+#workContent{
+    padding:20px;
+}
+#workTable thead td{
+    font-size: 16px;
+
+}
+#workTable thead tr{
+    border-top:2px solid #234876;
+    border-bottom: 2px solid #234876;
+    height:45px;
+}
+#workTable tbody td{
+    font-size: 14px;
+    line-height: 35px;
+}
+#workTable td{
+    text-align: center;
+    width:140px;
+}
+#paging{
+    text-align: right;
+}
+
+#personDetail{
+    margin:20px;
+    line-height:44px;
+    margin-bottom: 0px;
+
+}
+#ychEcharts{
+    width:100%;
+    height:300px;
+}
+
+.personTable .layui-layer-content::-webkit-scrollbar{
+    width: 6px;
+    height: 4px;
+    background:#6CC4FD;
+}
+.personTable .layui-layer-content::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    border-radius: 10px;
+    background-color: #9FA9D8;
+}
+/*定义滑块，内阴影及圆角*/
+.personTable .layui-layer-content::-webkit-scrollbar-thumb{
+    height: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #2C4486;
+}
+/*分页*/
+.layui-laypage .layui-laypage-curr .layui-laypage-em{
+    background-color:#009CFF;
+}
+.layui-laypage a{
+    background-color:transparent;
+    border:1px solid #6AC3FC;
+    color:#69C1F9;
+}
+.layui-laypage span.layui-laypage-curr,.layui-laypage a{
+    margin:0 5px;
+    padding:0 12px;
+}
+
+.layui-laypage span{
+    background-color:transparent;
+    border:1px solid #6AC3FC;
+    color:#69C1F9;
+    padding:0 12px;
+    margin:0 5px;
+}
+#personDetail tr td:nth-child(2){
+    width:360px;
+}
+.returnMain{
+    background-image: url('/resources/style/img/return.png');
+    width:33px;
+    height:32px;
+    display: inline-block;
+    margin-top:8px;
+    margin-right: 25px;
+    margin-left: 30px;
+}
+.personTable tr td {
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -moz-text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+}
+/*修改导航栏返回样式
+    author:liangpeng;
+    date :2017年8月5日;
+*/
+.navbar-nav{
+    float:right;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+#back{
+    margin-right:35px;
+}
+

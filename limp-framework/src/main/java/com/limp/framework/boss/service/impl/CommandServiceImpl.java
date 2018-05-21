@@ -11,7 +11,9 @@ import com.limp.framework.boss.service.CommandService;
 import com.limp.framework.boss.service.LogService;
 import com.limp.framework.core.bean.Pager;
 import com.limp.framework.core.constant.Constant;
+import com.limp.framework.utils.StoreControl;
 import com.limp.framework.utils.StrUtils;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -32,6 +34,7 @@ public class CommandServiceImpl implements CommandService {
     CommandMapper commandMapper;
     @Resource
     ObjectUtilMapper objectUtilMapper;
+    private static Logger log= Logger.getLogger(CommandServiceImpl.class);
 
     @Override
     public Pager<Command> getCommandDomainList(String orderStr,Command  command, Pager pager) {
@@ -63,7 +66,15 @@ public class CommandServiceImpl implements CommandService {
         /**
          * 查询mysql TODO
          */
-        List<Command> commandList=commandMapper.selectByExample(example);
+        List<Command> commandList=new ArrayList<>();
+
+        if(Constant.DB_MYSQL.equals(StoreControl.getValue(Constant.DB_KEY))){
+            log.debug("-->开始查询mysql数据库用户信息<---");
+            commandList=commandMapper.selectByExampleByMsql(example);
+
+        }else{
+            commandList=commandMapper.selectByExample(example);
+        }
 
         pager.setPagerInfo(commandList,commandMapper.countByExample(example));
         return pager;

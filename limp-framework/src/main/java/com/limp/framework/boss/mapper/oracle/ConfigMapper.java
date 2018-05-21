@@ -17,6 +17,8 @@ public interface ConfigMapper {
 
     List<Config> selectByExample(ConfigExample example);
 
+    List<Config> selectByExampleByMsql(ConfigExample example);
+
     int updateByExampleSelective(@Param("record") Config record, @Param("example") ConfigExample example);
 
     int updateByExample(@Param("record") Config record, @Param("example") ConfigExample example);

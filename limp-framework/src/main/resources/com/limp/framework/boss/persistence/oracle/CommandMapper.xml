@@ -98,6 +98,22 @@
     </if>
     <include refid="OracleDialectSuffix" />
   </select>
+  <select id="selectByExampleByMsql" resultMap="BaseResultMap" parameterType="com.limp.framework.boss.domain.CommandExample" >
+    <include refid="MysqlDialectPrefix" />
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_COMMAND
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <include refid="MysqlDialectSuffix" />
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
@@ -349,6 +365,17 @@
   <sql id="OracleDialectSuffix" >
     <if test="page != null" >
       <![CDATA[ ) row_ ) where rownum_ > #{page.start} and rownum_ <= #{page.end} ]]>
+    </if>
+  </sql>
+
+  <sql id="MysqlDialectPrefix">
+    <if test="page != null">
+      select row_.* from (
+    </if>
+  </sql>
+  <sql id="MysqlDialectSuffix">
+    <if test="page != null">
+      <![CDATA[ ) row_  LIMIT  #{page.start} , #{page.rows} ]]>
     </if>
   </sql>
 </mapper>

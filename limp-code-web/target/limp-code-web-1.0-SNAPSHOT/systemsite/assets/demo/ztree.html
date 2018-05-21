@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>智慧船检</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--图标-->
+    <!-- Le styles -->
+    <link rel="stylesheet" href="../css/loader-style.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+
+
+    <link rel="stylesheet" href="../css/mail.css">
+    <!-- 整体菜单控制 -->
+    <!--视频播放-->
+    <link rel="stylesheet" href="../css/social.css">
+
+    <!--表格兼容性-->
+    <link href="../js/stackable/stacktable.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link href="../js/stackable/responsive-table.css" rel="stylesheet">
+    <script type="text/javascript" src="../js/jquery.js"></script>
+
+    <!--1加载相应的js和css-->
+    <link rel="stylesheet" href="../../ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <!--<link rel="stylesheet" href="../../ztree/css/demo.css" type="text/css">-->
+
+    <script type="text/javascript" src="../../ztree/js/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="../../ztree/js/jquery.ztree.excheck.js"></script>
+</head>
+<style>
+    ul.ztree {
+        margin-top: 10px;
+        border: 1px solid #617775;
+        background: #f0f6e4;
+        width: 220px;
+        height: 360px;
+        overflow-y: scroll;
+        overflow-x: auto;
+    }
+    .ztree {
+        margin: 0;
+        padding: 5px;
+        color: #333;
+    }
+    ul{
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        font-weight: inherit;
+        font-style: inherit;
+        font-size: 100%;
+        font-family: -webkit-body;
+        vertical-align: baseline;
+    }
+</style>
+<SCRIPT type="text/javascript">
+    var setting = {
+        check: {
+            enable: true,
+            chkboxType: {"Y":"", "N":""}
+        },
+        view: {
+            dblClickExpand: false,
+            showLine:false,//是否显示连接线
+            showIcon:false //是否显示图标
+        },
+        data: {
+            simpleData: {
+                enable: true
+            }
+        },
+        callback: {
+            beforeClick: beforeClick,
+            onCheck: onCheck
+        }
+    };
+
+    var zNodes =[
+        {id:1, pId:0, name:"北京"},
+        {id:2, pId:0, name:"天津"},
+        {id:3, pId:0, name:"上海"},
+        {id:3, pId:0, name:"广州"},
+        {id:3, pId:0, name:"深圳"},
+        {id:3, pId:0, name:"澳门"},
+        {id:6, pId:0, name:"重庆"}
+
+    ];
+
+    function beforeClick(treeId, treeNode) {
+        var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+        zTree.checkNode(treeNode, !treeNode.checked, null, true);
+        return false;
+    }
+
+    function onCheck(e, treeId, treeNode) {
+        var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
+                nodes = zTree.getCheckedNodes(true),
+                v = "";
+        for (var i=0, l=nodes.length; i<l; i++) {
+            v += nodes[i].name + ",";
+        }
+        if (v.length > 0 ) v = v.substring(0, v.length-1);
+        var cityObj = $("#citySel");
+        cityObj.attr("value", v);
+    }
+
+    function showMenu() {
+        var cityObj = $("#citySel");
+        var cityOffset = $("#citySel").offset();
+        $("#menuContent").css({left:cityOffset.left + "px", top:cityOffset.top + cityObj.outerHeight() + "px"}).slideDown("fast");
+
+        $("body").bind("mousedown", onBodyDown);
+    }
+    function hideMenu() {
+        $("#menuContent").fadeOut("fast");
+        $("body").unbind("mousedown", onBodyDown);
+    }
+    function onBodyDown(event) {
+        if (!(event.target.id == "menuBtn" || event.target.id == "citySel" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length>0)) {
+            hideMenu();
+        }
+    }
+
+    $(document).ready(function(){
+        $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+    });
+    //-->
+</SCRIPT>
+
+<body>
+<div class="container-fluid" style="background: #efefef;min-height: 800px">
+    <!-- CONTENT -->
+    <div id="nav_intro">
+
+        <!--测试加载复选树-->
+        <div class="row">
+            <div class="col-sm-6" style="padding:0px 20px;">
+
+                <div  class="content-panel" style="min-height: 180px !important;">
+                    <div>
+                        <ul class="list">
+                            <li class="title">&nbsp;&nbsp;Test: <input id="citySel" type="text" readonly value="" style="width:120px;" onclick="showMenu();" />
+                                &nbsp;<a id="menuBtn" href="#" onclick="showMenu(); return false;">select</a></li>
+                        </ul>
+                    </div>
+                    <div id="menuContent" class="menuContent" style="display:none; position: absolute;">
+                        <ul id="treeDemo" class="ztree" style="margin-top:0; width:180px; height: 300px;"></ul>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="col-sm-6" style="padding:0px 20px;">
+
+                <div  class="content-panel" style="min-height: 180px !important;">
+
+                    <!-- /.table-responsive -->
+                </div>
+            </div>
+            <!-- /CONTENT MAIL -->
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>

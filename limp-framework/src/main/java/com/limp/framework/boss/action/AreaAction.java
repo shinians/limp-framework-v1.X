@@ -54,7 +54,7 @@ public class AreaAction extends AbstractAction {
      * @param areaCode
      * @return
      */
-    @Access(login = true,privilege = false,operationIntro = "新增地区码表",operationLog= OPERATION.INSERT)
+    @Access(login = true,privilege = true,operationIntro = "新增地区码表",operationLog= OPERATION.INSERT)
     @RequestMapping(value ="save",produces = "text/plain;charset=UTF-8")
     public @ResponseBody
     String save(HttpServletRequest request,AreaCode areaCode) {
@@ -70,7 +70,7 @@ public class AreaAction extends AbstractAction {
      * @param areaCode
      * @return
      */
-    @Access(login = true,privilege = false,operationIntro = "更新地区码表",operationLog= OPERATION.UPDATE)
+    @Access(login = true,privilege = true,operationIntro = "更新地区码表",operationLog= OPERATION.UPDATE)
     @RequestMapping(value ="update",produces = "text/plain;charset=UTF-8")
     public @ResponseBody
     String update(HttpServletRequest request,AreaCode areaCode) {
@@ -81,7 +81,7 @@ public class AreaAction extends AbstractAction {
     }
 
 
-    @Access(login = true,privilege = false,operationLog = OPERATION.DELETE,operationIntro = "管理员删除地区记录")
+    @Access(login = true,privilege = true,operationLog = OPERATION.DELETE,operationIntro = "管理员删除地区记录")
     @RequestMapping(value ="delete",produces = "text/plain;charset=UTF-8")
     public @ResponseBody String delete(AreaCode areaCode) {
         if(StrUtils.isBlank(areaCode)||StrUtils.isBlank(areaCode.getCode())){

@@ -69,7 +69,7 @@ public class DictCodesAction extends AbstractAction {
      * @param dicCode
      * @return
      */
-    @Access(login = true,privilege = false,operationLog = OPERATION.INSERT,operationIntro = "管理员新增码表记录")
+    @Access(login = true,privilege = true,operationLog = OPERATION.INSERT,operationIntro = "管理员新增码表记录")
     @RequestMapping(value ="save",produces = "text/plain;charset=UTF-8")
     public @ResponseBody String add(DicCodes dicCode) {
         if(dictCodesService.save(dicCode)) {

@@ -19,6 +19,8 @@ public interface CommandMapper {
 
     List<Command> selectByExample(CommandExample example);
 
+    List<Command> selectByExampleByMsql(CommandExample example);
+
     Command selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") Command record, @Param("example") CommandExample example);

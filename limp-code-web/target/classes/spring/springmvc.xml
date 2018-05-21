@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns:tx="http://www.springframework.org/schema/tool"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd http://www.springframework.org/schema/tool http://www.springframework.org/schema/tool/spring-tool.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+
+    <mvc:annotation-driven/>
+    <!--<cache:annotation-driven cache-manager="cacheService" />-->
+    <!--并使用order属性来决定解析器的优先级（数值越小，优先级越高）-->
+    <!--对模型视图名称的解析，即在模型视图名称添加前后缀   2-->
+    <!-- html视图解析器 必须先配置freemarkerConfig,注意html是没有prefix前缀属性的-->
+    <!--<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath">
+            <value>/chinasofti/</value>
+        </property>
+    </bean>
+    <bean id="htmlviewResolver"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="suffix" value=".html" />
+        <property name="order" value="0"></property>
+        <property name="contentType" value="text/html;charset=UTF-8"></property>
+    </bean>-->
+
+    <bean  id="viewResolver"
+           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="order" value="0"/>
+        <property name="suffix" value=".jsp"/>
+        <property name="prefix" value="/WEB-INF/content/chinasofti/"/>
+        <!-- 如果使用jstl的话，配置下面的属性 -->
+        <property name="viewClass" value="com.limp.framework.boss.filter.HtmlResourceView" />
+        <!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />-->
+        <!--<property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView"/> &lt;!&ndash; 不能用jstl的那个 &ndash;&gt;-->
+    </bean>
+    <!--采用jsp和html相结合的方式-->
+    <bean id="htmlviewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="order" value="1"/>
+        <property name="suffix" value=".html"/>
+        <property name="prefix" value="/view/"/>
+        <!-- 如果使用jstl的话，配置下面的属性 -->
+        <!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />-->
+        <property name="viewClass" value="com.limp.framework.boss.filter.HtmlResourceView" />
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+    </bean>
+
+
+
+    <!--</mvc:annotation-driven>-->
+    <!-- 支持spring3.0新的mvc注解 -->
+    <!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射    -->
+    <!--json配置如果未配置406：The resource identified by this request is only
+    capable of generating responses with characteristics not acceptable according
+    to the request "accept" headers.-->
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="cacheSeconds" value="0"/>
+        <property name="messageConverters">
+            <list>
+                <!-- <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>-->
+                <ref bean="jsonHttpMessageConverter"></ref>
+                <!--   <ref bean="stringHttpMessageConverter"></ref>-->
+            </list>
+        </property>
+    </bean>
+    <bean id="stringHttpMessageConverter"
+          class="org.springframework.http.converter.StringHttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/html;charset=UTF-8</value>
+            </list>
+        </property>
+
+    </bean>
+    <bean id="jsonHttpMessageConverter"
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>application/json</value>
+            </list>
+        </property>
+    </bean>
+    <!-- 对limp包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能  -->
+    <!--自动扫描该包，使spring-mvc只扫描controller包中的类(其中只有@Controller控制器)，不会重复扫描到@Service或者@Component-->
+    <!--<context:component-scan base-package="com.chinasofti.action,com.chinasofti.sevice,com.limp.framework.boss.action,com.limp.framework.boss.service">-->
+    <context:component-scan base-package="com.chinasofti.action,com.limp.framework.boss.action"></context:component-scan>
+
+    <!--注意：base-package="com.chinasofti":-spring不仅扫描了@Controller，还扫描了指定包所在的子包service包下注解@Service的java类
+     此时指定的include-filter没有起到作用，只要把use-default-filter设置成false就可以了-->
+   <!-- <context:component-scan base-package="com.chinasofti,com.limp.framework.boss">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"></context:include-filter>
+    </context:component-scan>-->
+
+
+ <!--   <context:component-scan base-package="com.chinasofti.action,com.chinasofti.sevice,com.limp.framework.boss.action,com.limp.framework.boss.service">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"></context:include-filter>
+    </context:component-scan>-->
+
+    <!--设置json不乱码 END-->
+   <!--  引入同文件夹下的redis属性配置文件-->
+    <!--<import resource="spring-jedis.xml"/>-->
+    <!-- 静态资源访问处理 -->
+    <mvc:default-servlet-handler/>
+    <!--配置拦截器-->
+    <mvc:interceptors>
+          <!--定义业务拦截器 顺序1【如CAS集成登录】-->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.chinasofti.filter.CISInterceptor" />
+        </mvc:interceptor>
+        <!--定义框架拦截器 顺序2-->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.limp.framework.boss.filter.SecurityInterceptor" />
+        </mvc:interceptor>
+
+    </mvc:interceptors>
+
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8" /> <!-- 默认编码 (ISO-8859-1)-->
+        <property name="maxInMemorySize" value="1000240" /> <!--最大内存大小 (10240)-->
+        <!--   <property name="uploadTempDir" value="/logs/"/>--> <!--临时文件 上传后的目录名 (WebUtils#TEMP_DIR_CONTEXT_ATTRIBUTE)-->
+        <property name="maxUploadSize" value="-1" /> <!-- 最大文件大小，-1为无限止(-1) -->
+    </bean>
+
+
+    <bean id="httpClientFactory" class="org.springframework.http.client.SimpleClientHttpRequestFactory">
+        <property name="connectTimeout"  value="30000"/>
+        <property name="readTimeout"  value="30000"/>
+    </bean>
+
+    <!--RestTemplate-->
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+        <constructor-arg ref="httpClientFactory"/>
+    </bean>
+
+    <!--定时任务-->
+    <!--【1】指定实体类-->
+    <!--<bean id="systemJob" class="com.limp.job.SystemJobs"/>-->
+
+    <!--【2】指定实体类运行方法-->
+
+   <!-- <bean id="oaJobDetailBean"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="systemJob"/>
+        <property name="targetMethod" value="run"/>
+        <property name="concurrent" value="true"/>
+    </bean>
+    <bean id="userCKJobDetailBean"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="systemJob"/>
+        <property name="targetMethod" value="userCheckJob"/>
+        <property name="concurrent" value="true"/>
+    </bean>
+    <bean id="systemJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="oaJobDetailBean"/>
+        <property name="cronExpression" value="0 14 2 * * ?"/>
+    </bean>
+    <bean id="userCheckJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="userCKJobDetailBean"/>
+        <property name="cronExpression" value="0 0/3 * * * ?"/> &lt;!&ndash;每分钟&ndash;&gt;
+    </bean>-->
+    <!--<bean id="schedulerFactoryBean"
+          class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                &lt;!&ndash;先屏蔽掉web搜索的job&ndash;&gt;
+                 &lt;!&ndash;<ref bean="userCheckJobTrigger"/>&ndash;&gt;
+                &lt;!&ndash;晚上9点开始访问其他的空间，此时注释掉已经&ndash;&gt;
+                &lt;!&ndash;<ref bean="systemJobTrigger"/>&ndash;&gt;
+            </list>
+        </property>
+        &lt;!&ndash; <property name="autoStartup" value="true"/>&ndash;&gt;
+    </bean>-->
+
+</beans>

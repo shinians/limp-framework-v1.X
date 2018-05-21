@@ -2,8 +2,7 @@ package com.limp.framework.boss.service.impl;
 
 import java.net.URL;
 import org.apache.commons.lang3.Validate;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -20,7 +19,8 @@ public class SpringContextHolder implements ApplicationContextAware, DisposableB
 
 	private static ApplicationContext applicationContext = null;
 
-	private static Logger logger = LoggerFactory.getLogger(SpringContextHolder.class);
+	private static Logger logger= Logger.getLogger(SpringContextHolder.class);
+
 
 	/**
 	 * 取得存储在静态变量中的ApplicationContext.

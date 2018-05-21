@@ -20,6 +20,11 @@ public enum ResultCode {
      * 用户未登录
      */
     ERROR_NOT_LOGIN("510"),
+
+    /**
+     * 用户无权限
+     */
+    ERROR_NO_PRIVILEGE("511"),
     /**
      * 用户已经删除
      */

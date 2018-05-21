@@ -43,7 +43,7 @@ public class ConfigFieldAction  extends AbstractAction {
      * 更新update：
      * @return
      */
-    @Access(login = true,privilege = false)
+    @Access(login = true,privilege = true)
     @RequestMapping(value ="updateConfFields",produces = "text/plain;charset=UTF-8")
     public @ResponseBody
     String updateConfFields(@RequestParam Map<String, String> params) {

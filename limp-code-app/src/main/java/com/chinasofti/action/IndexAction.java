@@ -1,8 +1,5 @@
 package com.chinasofti.action;
 
-import com.chinasofti.bean.ShipBean;
-import com.chinasofti.domain.OrganInfo;
-import com.chinasofti.utils.SolrDao;
 import com.limp.framework.boss.action.BaseAction;
 import com.limp.framework.boss.domain.User;
 import com.limp.framework.boss.service.CacheService;
@@ -12,11 +9,7 @@ import com.limp.framework.boss.service.UserService;
 import com.limp.framework.core.annotation.Access;
 import com.limp.framework.core.bean.Result;
 import com.limp.framework.core.bean.ResultCode;
-import com.limp.framework.core.constant.Constant;
-import com.limp.framework.core.constant.OPERATION;
 import com.limp.framework.core.constant.ResultMsg;
-import com.limp.framework.utils.JsonUtils;
-import com.limp.framework.utils.StrUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,10 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -64,26 +54,11 @@ public class IndexAction extends BaseAction {
      */
     @RequestMapping(value ="getCode",produces = "text/plain;charset=UTF-8")
     public @ResponseBody String getCode(String key) {
-       /* String str= cacheService.get(key);
-        log.debug("---value--->:"+str);
-        if(StrUtils.isBlank(str)){
-            log.debug("无此key值得缓存,开始添加到缓存池"+key);
-            DicCodes dicCodes=new DicCodes();
-            dicCodes.setDictKey(key);
-            Pager<DicCodes> list=dictCodesService.getPageDomainList("",dicCodes,new Pager(1,30));
-            for(DicCodes codes:list.getDataList()){
-                cacheService.set(codes.getDictKey(),codes.getDictdataName());
-                log.debug(TextUtils.format("添加缓存数据 set key:{0} value:{1}",
-                        codes.getDictKey(),codes.getDictdataName()));
 
-            }
-            str=cacheService.get(key);
-            log.debug("reload cache key----> "+str);
-        }*/
-        OrganInfo organInfo=new OrganInfo();
+     /*   OrganInfo organInfo=new OrganInfo();
         organInfo.setId("123");
-        organInfo.setFuntype(key);
-        return  Result.getInstance(ResultCode.SUCCESS.toString(),ResultMsg.SUCCESS,organInfo,"").getJson(commonService);
+        organInfo.setFuntype(key);*/
+        return  Result.getInstance(ResultCode.SUCCESS.toString(), ResultMsg.SUCCESS, "organInfo", "").getJson(commonService);
     }
     /**
      * 管理员登录 :验证是否有权限访问
@@ -142,49 +117,7 @@ public class IndexAction extends BaseAction {
         return "../chinasofti/ssoLogin";
     }
 
-    /**
-     *
-     * @param key 关键字
-     * @param type  搜索类别
-     * @param page  页数
-     * @param pageSize 每页返回的条数
-     * @return
-     */
-    @RequestMapping(value ="s",produces = "text/plain;charset=UTF-8")
-    @Access(login = false,privilege = false,operationLog = OPERATION.SELECT)
-    public  @ResponseBody
-    String getOrderList(String key,String type,String page,String pageSize){
-       log.debug("--查询关键字--->"+key);
-        SolrDao solrDao=new SolrDao();
-        String qStr="";
-        if(StrUtils.isBlank(type)){
-            qStr="NAME:*"+key+"* OR ID:"+key +" ";
-        }else{
-            qStr="(NAME:*"+key+"* OR ID:"+key +") AND TYPE:"+type+" ";
 
-        }
-        String orderStr="";
-        //如果是机构类型，则根据机构类别排序
-        if(Constant.STRING_1.equals(type)){
-             orderStr="RC3 ASC";
-        }
-        Map<String,Object> obj=solrDao.query(qStr,ShipBean.class,
-                StrUtils.isBlank(page)?1:Integer.parseInt(page), StrUtils.isBlank(pageSize)?10:Integer.parseInt(pageSize),orderStr);
-        List<ShipBean> list=(List <ShipBean>)obj.get("result");
-
-        List<ShipBean> listTransSeaData=new ArrayList<>();
-        /*for(ShipBean shipBean:list){
-            if(Constant.STRING_2.equals(shipBean.getTYPE())){
-                String ID=shipBean.getID();
-                if (!StrUtils.isBlank(ID) && ID.length() > 6) {
-                    shipBean.setID(ID.substring(ID.length() - 6, ID.length()) + "***");
-                }
-            }
-            listTransSeaData.add(shipBean);
-        }*/
-        String s= JsonUtils.toJson(list);
-        return Result.getInstance(ResultCode.SUCCESS.toString(), ResultMsg.SUCCESS,s,obj.get("ext")).getJson();
-    }
     /**
      * 测试
      * @param key
@@ -192,9 +125,6 @@ public class IndexAction extends BaseAction {
      */
     @RequestMapping(value ="saveTest",produces = "text/plain;charset=UTF-8")
     public @ResponseBody String saveTest(String key) {
-       /* TestService bi=new TestServiceImpl();
-        bi.saveTest();*/
-//        String msgStr=testService.saveTest();
 
         return  Result.getInstance(ResultCode.SUCCESS.toString(),ResultMsg.SUCCESS,"","").getJson(commonService);
     }

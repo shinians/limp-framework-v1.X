@@ -5,11 +5,11 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * User: zhangzenghuan
+ * User:
  * Date: 17-4-24
  * Time: 上午9:20
  *
- * @author zhangzenghuan
+ * @author
  */
 public class StoreControl {
 

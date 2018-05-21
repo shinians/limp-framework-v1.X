@@ -24,6 +24,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.Method;
 import java.text.MessageFormat;
 import java.util.Iterator;
@@ -92,7 +93,7 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter  {
         } catch (LoginException e) {
             result =Result.getInstance(ResultCode.ERROR_NOT_LOGIN.toString(), ResultMsg.LOGOUT_ERROR, "system.error.undefined.login", "");
         } catch (PrivilegeException e) {
-            result = Result.getInstance(ResultCode.ERROR.toString(), ResultMsg.PRIV_ERROR, "system.error.grant.privilege", "");
+            result = Result.getInstance(ResultCode.ERROR_NO_PRIVILEGE.toString(), ResultMsg.PRIV_ERROR, "system.error.grant.privilege", "");
         } catch (Exception e) {
             result =Result.getInstance(ResultCode.ERROR.toString(), "系统错误", "system.error.unknow", "");
             e.printStackTrace();
@@ -102,6 +103,19 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter  {
         if (!StrUtils.isBlank(result)) {
             log.info("....被拦截..."+result.getMsg());
             request.getSession().setAttribute("data", result);
+
+            //判断是否是权限拦截，返回json数据
+            if(ResultCode.ERROR_NO_PRIVILEGE.toString().equals(result.getCode())){
+                response.setContentType("application/json;charset=utf-8");//指定返回的格式为JSON格式
+                response.setCharacterEncoding("UTF-8");//setContentType与setCharacterEncoding的顺序不能调换，否则还是无法解决中文乱码的问题
+                PrintWriter out =null ;
+                out =response.getWriter() ;
+                out.write(Result.getInstance(ResultCode.ERROR.toString(),ResultMsg.PRIV_ERROR,"","").getJson());
+                out.close();
+                 return false;
+            }
+
+
             //POST请求 返回页面所有的信息，不会跳转 ，get请求ok
             // request.getRequestDispatcher(request.getContextPath()+"/error.jsp").forward(request,response); //服务器跳转
             //客户端跳转
@@ -171,7 +185,8 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter  {
                 }
                 //如访问url和配置的菜单中的url一致（有无 .action均可）则有权限
                 if (refer.equals(request.getContextPath()+menuUrl)
-                        ||refer.equals(request.getContextPath()+menuUrl+".action")) {
+                        ||refer.equals(request.getContextPath()+menuUrl+".action")
+                        ||(refer+".action").equals(request.getContextPath()+menuUrl)) {
                     PageLogUtils.saveLog(request, menu,"",commonService);
                     return;
                 } else{

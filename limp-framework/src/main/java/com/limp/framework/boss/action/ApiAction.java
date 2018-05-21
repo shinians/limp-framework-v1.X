@@ -322,7 +322,7 @@ public class ApiAction extends AbstractAction {
      */
     @Access(login = false,privilege = false)
     @RequestMapping(value ="getCheckedMenu",produces = "text/plain;charset=UTF-8")
-    public @ResponseBody String saveRoleMenus(@RequestParam(required = true)String name,
+    public @ResponseBody String getCheckedMenu(@RequestParam(required = true)String name,
                                               @RequestParam(required = true)String pwd, @RequestParam(required = true) String roleId) {
 
         List<Menu>menus=menuService.getCheckedMenu(new Menu(), roleId);

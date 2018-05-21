@@ -8,7 +8,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>-->
     <modelVersion>4.0.0</modelVersion>
-    <version>1.1.3-RELEASE</version>
+    <version>1.1.4-RELEASE</version>
     <artifactId>limp-framework</artifactId>
     <groupId>com.chinasofti</groupId>
 
@@ -20,23 +20,25 @@
     <!--frame框架引用的jar -->
     <dependencies>
 
-        <!--集成cas-->
-        <dependency>
+        <!--集成cas，不再在框架中，有单独的插件提供-->
+       <!-- <dependency>
             <groupId>org.jasig.cas.client</groupId>
             <artifactId>cas-client-core</artifactId>
             <version>3.3.3</version>
-            <!--去除1.3版本commons-codec ，升级为1.6兼容UE-->
+            &lt;!&ndash;去除1.3版本commons-codec ，升级为1.6兼容UE&ndash;&gt;
             <exclusions>
                 <exclusion>
                     <groupId>commons-codec</groupId>
                     <artifactId>commons-codec</artifactId>
                 </exclusion>
-                <!-- <exclusion>
+                &lt;!&ndash; <exclusion>
                      <groupId>org.slf4j</groupId>
                      <artifactId>slf4j-api</artifactId>
-                 </exclusion>-->
+                 </exclusion>&ndash;&gt;
             </exclusions>
-        </dependency>
+        </dependency>-->
+
+
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
@@ -218,8 +220,6 @@
             <version>2.3.23</version>
         </dependency>
 
-
-
     </dependencies>
 
 
@@ -244,12 +244,12 @@
             </plugin>
 
             <!--Java的jar包太多了，有时候我们为了方便执行，希望把所有引用的jar包打包到一起-->
-            <plugin>
+            <!--<plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
                     <archive>
                         <manifest>
-                            <!--这里要替换成jar包main方法所在类 -->
+                            &lt;!&ndash;这里要替换成jar包main方法所在类 &ndash;&gt;
                             <mainClass>com.limp.framework.*</mainClass>
                         </manifest>
                         <manifestEntries>
@@ -262,14 +262,14 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>make-assembly</id> <!-- this is used for inheritance merges -->
-                        <phase>package</phase> <!-- 指定在打包节点执行jar包合并操作 -->
+                        <id>make-assembly</id> &lt;!&ndash; this is used for inheritance merges &ndash;&gt;
+                        <phase>package</phase> &lt;!&ndash; 指定在打包节点执行jar包合并操作 &ndash;&gt;
                         <goals>
                             <goal>single</goal>
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
 
             <plugin>
             <groupId>org.apache.maven.plugins</groupId>

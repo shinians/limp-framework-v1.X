@@ -82,7 +82,7 @@ public class CommandAction {
      * @param command
      * @return
      */
-    @Access(login = true,privilege = false,operationIntro = "新增命令",operationLog= OPERATION.INSERT)
+    @Access(login = true,privilege = true,operationIntro = "新增命令",operationLog= OPERATION.INSERT)
     @RequestMapping(value ="save",produces = "text/plain;charset=UTF-8")
     public @ResponseBody
     String save(HttpServletRequest request,Command command) {
@@ -99,7 +99,7 @@ public class CommandAction {
      * @param command
      * @return
      */
-    @Access(login = true,privilege = false,operationIntro = "更新系统命令",operationLog= OPERATION.UPDATE)
+    @Access(login = true,privilege = true,operationIntro = "更新系统命令",operationLog= OPERATION.UPDATE)
     @RequestMapping(value ="update",produces = "text/plain;charset=UTF-8")
     public @ResponseBody
     String update(HttpServletRequest request,Command command) {

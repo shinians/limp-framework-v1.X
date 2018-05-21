@@ -4,6 +4,8 @@ mvn install:install-file -Dfile=pinyin-2.5.0.jar -DgroupId=pinyin  -DartifactId=
 
 mvn install:install-file -Dfile=limp-framework-1.1.3-RELEASE.jar  -DgroupId=com.chinasofti  -DartifactId=limp-framework -Dversion=1.1.3-RELEASE -Dpackaging=jar -DgeneratePom=true  -DcreateChecksum=true
 
+安装limp-ui:把相应文件放入jar包中
+mvn install:install-file -Dfile=test.jar -DgroupId=com.chinasofti  -DartifactId=limp-ui -Dversion=1.1.3-RELEASE -Dpackaging=jar
 ****************************框架-升级介绍**************************************************************************************-------------------------------------------------------------------------------------
 * 后台框架涉及的目录包括如下部分：（尽量和业务做到低耦合）                                                                    *
 * 1) limp-framework.jar模块升级，此部分为后台逻辑代码部分，升级后用户只需升级此jar包版本即可                                    *
