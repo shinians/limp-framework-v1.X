@@ -7,7 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>limp-code-web</artifactId>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>limp-code-web Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
