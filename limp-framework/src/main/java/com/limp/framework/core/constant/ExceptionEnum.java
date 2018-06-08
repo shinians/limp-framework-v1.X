@@ -142,7 +142,7 @@ public enum ExceptionEnum {
     public static void main(String[] args) {
 //        System.out.println(ExceptionEnum.getAllMap());
 //        System.out.println(ExceptionEnum.getAllList());
-        System.out.println(Result.getException(ExceptionEnum.UserExpired).getJson());
+//        System.out.println(Result.getException(ExceptionEnum.UserExpired).getJson());
     }
 
 

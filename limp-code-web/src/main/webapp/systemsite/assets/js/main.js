@@ -382,7 +382,11 @@ var main={
      * 关闭弹出框
      */
     closeOpenWin:function(){
-        $(".modal-header .close").click();
+        try{
+            $(".modal-header .close").click();
+        }catch (ex){
+            console.log(ex)
+        }
     } ,
 
 

@@ -10,15 +10,15 @@
 <%@include file="/WEB-INF/content/system/common/taglibs.jsp" %>
 
 <%--树形菜单--%>
-<link rel="stylesheet" href="${ctx}/systemsite/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<%--<link rel="stylesheet" href="${ctx}/systemsite/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
 <script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.core.js"></script>
-<script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.excheck.js"></script>
+<script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.excheck.js"></script>--%>
 
 
 <!-- 弹框通用 -->
 <div class="container">                                                                           <%--  --%>
-    <a href="#common" id="commonWin"  data-toggle="modal" data-target="#common" class="btn btn-primary" style="display: none" >点击登录</a>
-    <div aria-labelledby="myLargeModalLabel" role="dialog" tabindex="-1" class="modal fade bs-example-modal-lg" style="display: none;"id="common">
+    <a href="#commonMenu" id="commonWinMenu"  data-toggle="modal" data-target="#commonMenu" class="btn btn-primary" style="display: none" >点击登录</a>
+    <div aria-labelledby="myLargeModalLabel" role="dialog" tabindex="-1" class="modal fade bs-example-modal-lg" style="display: none;"id="commonMenu">
         <div class="modal-dialog ">     <%-- modal-lg--%>
             <div class="modal-content">
                 <div class="modal-header model-header-new">
@@ -33,9 +33,9 @@
                 <div class="modal-body" style="max-height: 350px; overflow-y: auto;">
                     <form id="commonForm" action="#" method="post" class="form-horizontal bucket-form">
                         <div class="content_wrap" style="margin-left: 30px;">
-                            <div id="loadMenu" style="background:url('${ctx}/systemsite/assets/img/loading.gif') no-repeat;width:20px;height:20px;margin: 20px auto;"></div>
+                            <div id="loadMenu_role" style="background:url('${ctx}/systemsite/assets/img/loading.gif') no-repeat;width:20px;height:20px;margin: 20px auto;"></div>
                             <div class="zTreeDemoBackground  left">
-                                <ul id="treeAuth" class="ztree"></ul>
+                                <ul id="treeAuthRole" class="ztree"></ul>
                             </div>
                         </div>
                     </form>

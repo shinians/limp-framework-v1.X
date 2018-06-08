@@ -15,11 +15,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="${ctx}/systemsite/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
-    <link rel="stylesheet" href="${ctx}/systemsite/ztree/css/metroStyle/metroStyle.css" type="text/css">
-    <script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.core.js"></script>
-    <script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.excheck.js"></script>
-    <script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.exedit.js"></script>
+
     <%--树形结构end--%>
 </head>
 
@@ -43,7 +39,7 @@
                 </div>
                 <%--<span style="font-size: 11px;color: #cccccc;">&nbsp;&nbsp;&nbsp;可点击右键操作菜单</span>--%>
                 <br/>
-                <div id="load" class="lpLoading"></div>
+                <div id="load_menu" class="lpLoading"></div>
                 <div class="content_wrap">
                     <div class="TreeDemoBackground left" style="height: 640px; overflow: auto;padding-left: 5px;">
                         <ul id="treeDemo" class="ztree"></ul>
@@ -146,8 +142,8 @@
 
 <!-- 弹框通用 -->
 <div class="container">
-    <a href="#common" id="commonWin"  data-toggle="modal" data-target="#common" class="btn btn-primary" style="display: none" >点击登录</a>
-    <div aria-labelledby="myLargeModalLabel" role="dialog" tabindex="-1" class="modal fade bs-example-modal-lg" style="display: none;"id="common">
+    <a href="#common_menu" id="commonWin_menu"  data-toggle="modal" data-target="#common_menu" class="btn btn-primary" style="display: none" >点击登录</a>
+    <div aria-labelledby="myLargeModalLabel" role="dialog" tabindex="-1" class="modal fade bs-example-modal-lg" style="display: none;"id="common_menu">
         <div class="modal-dialog ">
             <div class="modal-content">
                 <div class="modal-header model-header-new">

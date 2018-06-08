@@ -30,8 +30,8 @@ var menu={
                 //加载大标题
                 var liFirst= $('<li> </li>');
                 liFirst.append('<a href="javascript:void(0);" class="title-menu-left">' +
-                    ' <span class="widget-menu">'+domain.menName+'</span><i data-toggle="tooltip" class="'+clasName+'"></i> </a>');
-                 //ulP.append(liFirst);
+                ' <span class="widget-menu">'+domain.menName+'</span><i data-toggle="tooltip" class="'+clasName+'"></i> </a>');
+                //ulP.append(liFirst);
                 //TODO 如果展示一级菜单则 打开注释
 
                 /**----------content详细信息--循环第一层目录--------------**/
@@ -43,7 +43,7 @@ var menu={
                     var aLi=$("<a class='tooltip-tip ajax-load' href=javascript:void(0) data-value='"+child.id+"' title='"+child.menName+"'> </a>");
                     aLi.append('<i class="' + clas + '"></i><span>' + child.menName+'</span>');
                     if(child.children.length>0){  //如果没有子类则显示图例
-                       aLi.append('<h4 style="display: inline-block; float: none;"><img src='+get_root+'"/systemsite/assets/img/plus.png"></h4>') ;
+                        aLi.append('<h4 style="display: inline-block; float: none;"><img src="'+get_root+'/systemsite/assets/img/plus.png"></h4>') ;
                     } else{
                     }
                     childFir.append(aLi);
@@ -55,12 +55,12 @@ var menu={
                             ?"entypo-doc-text":child1.menImgUrl;
                         var temLi=$('<li></li>');
                         var temA=$('<a class="tooltip-tip2 ajax-load" href="javascript:void(0);" data-value="'+child1.id+'" title="'+child1.menName+'">' +
-                            '<i class="'+clas1+'"></i><span>'+child1.menName+'</span></a>');
+                        '<i class="'+clas1+'"></i><span>'+child1.menName+'</span></a>');
 
-                         if(child1.children.length>0){  //如果没有子类则显示图例
-                             temA.append('<h4 style="display: inline-block; float: none;"><img src='+get_root+'"/systemsite/assets/img/plus.png"></h4>') ;
-                         } else{
-                         }
+                        if(child1.children.length>0){  //如果没有子类则显示图例
+                            temA.append('<h4 style="display: inline-block; float: none;"><img src="'+get_root+'/systemsite/assets/img/plus.png"></h4>') ;
+                        } else{
+                        }
                         temLi.append(temA);
                         childSec.append(temLi);
 
@@ -80,17 +80,17 @@ var menu={
                         }
                         temLi.append(childThird);
 
-                        }
+                    }
                     childFir.append(childSec);
                     ulP.append(childFir)    ;
 
                     $(".side-bar").append(ulP);
                 }
             }
-                /**********加载完后样式控制**************/
-                if(menuFirstNum<2){ //如果只有一个菜单则不加载一级菜单
-                  $(".title-menu-left").html('');
-                }
+            /**********加载完后样式控制**************/
+            if(menuFirstNum<2){ //如果只有一个菜单则不加载一级菜单
+                $(".title-menu-left").html('');
+            }
         })
     } ,
     /**
@@ -101,25 +101,25 @@ var menu={
         $("#breadcrumb").html('');
         var bnav=$("#breadcrumb");
         var indexN=get_root+"/system/main";
-       bnav.append('<li><a title="主页" href="'+indexN+'">主页</a></li>');
+        bnav.append('<li><a title="主页" href="'+indexN+'">主页</a></li>');
         //var $()
-       if(!system.isBlank(menuId)&&!system.isBlank(main.menuData[menuId])){
-           var domain=main.menuData[menuId];
-           var endN=$('<li>/</li>');
-           bnav.append(endN);
-           bnav.append('<li><a href="javascript:void(0)" id="nav_name" style="color: #666;font-weight: 500;">'+domain.menName+'</a></li>');
-           console.log(domain)
-           if(!system.isBlank(domain.menFatherid)&&!system.isBlank(main.menuData[domain.menFatherid])){
-               var domainSec=main.menuData[domain.menFatherid];
-               if("0"==domainSec.menFatherid){
-                   return;
-               }
-               console.log("---->domainSec");
-               console.log(domainSec);
-               endN.before('<li>/</li><li><a href="javascript:void(0)" id="nav_name" style="color: #666;font-weight: 500;">'+domainSec.menName+'</a></li>');
+        if(!system.isBlank(menuId)&&!system.isBlank(main.menuData[menuId])){
+            var domain=main.menuData[menuId];
+            var endN=$('<li>/</li>');
+            bnav.append(endN);
+            bnav.append('<li><a href="javascript:void(0)" id="nav_name" style="color: #666;font-weight: 500;">'+domain.menName+'</a></li>');
+            console.log(domain)
+            if(!system.isBlank(domain.menFatherid)&&!system.isBlank(main.menuData[domain.menFatherid])){
+                var domainSec=main.menuData[domain.menFatherid];
+                if("0"==domainSec.menFatherid){
+                    return;
+                }
+                console.log("---->domainSec");
+                console.log(domainSec);
+                endN.before('<li>/</li><li><a href="javascript:void(0)" id="nav_name" style="color: #666;font-weight: 500;">'+domainSec.menName+'</a></li>');
 
-           }
-       }
+            }
+        }
 
 
 
@@ -156,15 +156,30 @@ var menu={
             if("4"==domain.menType){
                 window.open(get_root+url);
             }else if("6"==domain.menType){
-                //$("#breadcrumb").hide();
-                $("#nav_intro").hide();
+                $("#nav_main").children().hide();
+                //$("#nav_intro").hide();
                 $("#nav_iframe").attr("src",get_root+url)  ;
                 $("#nav_iframe").fadeIn(200)
             }else{ //本窗口打开
                 $("#nav_iframe").hide();
-                $("#nav_intro").load(get_root+url,function(){
-                    $("#nav_intro").fadeIn(200)
-                });
+                var menuId="nav_intro_"+domain.id;
+                if($("#"+menuId)[0]){
+                    $("#nav_main").children().hide();
+                    $("#nav_main iframe").hide();
+                    $("#"+menuId).fadeIn(200);
+                }else{
+                    var index= layer.msg('努力中...', {icon: 16,shade: [0.1, '#f5f5f5'],scrollbar: false,offset: 'auto', time:10000}) ;
+                    $("#nav_main").append(' <div id="'+menuId+'"></div>');
+                    $("#"+menuId).load(get_root+url,function(){
+                        layer.close(index);
+                        //$("#nav_intro").fadeIn(200);
+                        //todo新增
+                        //$("#nav_main").append();
+                        $("#nav_main").children().hide();
+                        $("#nav_main iframe").hide();
+                        $("#"+menuId).fadeIn(200);
+                    });
+                }
             }
 
             /*$("#nav_intro").html("<jsp:include page='sys_menu.jsp'></jsp:include>");*/
@@ -181,15 +196,15 @@ var menu={
             console.log("加载..")
             console.log(main.type);
             console.log(main.service);
-           if("1"==main.type){
-               $("#nav_iframe").hide();
-               $("#nav_intro").load(main.service,function(){
-                   $("#nav_intro").fadeIn(200)
-               });
+            if("1"==main.type){
+                $("#nav_iframe").hide();
+                $("#nav_intro").load(main.service,function(){
+                    $("#nav_intro").fadeIn(200)
+                });
             }else  if ("2"==main.type){ //本窗口打开
-               $("#nav_intro").hide();
-               $("#nav_iframe").attr("src",main.service)  ;
-               $("#nav_iframe").fadeIn(200);
+                $("#nav_intro").hide();
+                $("#nav_iframe").attr("src",main.service)  ;
+                $("#nav_iframe").fadeIn(200);
             }
         }
     }

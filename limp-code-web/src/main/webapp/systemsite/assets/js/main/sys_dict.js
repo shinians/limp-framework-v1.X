@@ -29,7 +29,7 @@ var sysDict = {
     listenFun:function(){
         //修改：按钮
         $(document).off("click",".lp-dict-del").delegate(".lp-dict-del","click",function() {
-           console.log($(this).attr("data-value"));
+            console.log($(this).attr("data-value"));
             system.post(get_root+"/system/dict/delete",{dictKey:$(this).attr("data-value")},function(data){
                 if("200"==data.code){
                     main.tip(data.msg,1);
@@ -93,9 +93,9 @@ var sysDict = {
      * 步骤：1、定义动态ID，在vue取时，因为id存在之前div和layer组装的div中【2个ID】，导致取不到值{纠结了一天呀&&^_^}
      *        layer.open{content:"<div id="lp">"+content+"</div>"}
      *     2、当vue需要加载数据多或者网络慢时，加载数据时候会先出现vue模板（例如item.name），用户体验特别不好
-              可以通过VUE内置的指令v-cloak解决这个问题（推荐） ：CSS中添加 [v-cloak]{ display: none; }
-           3、input 通过 v-model=""  赋值
-           4、Vue  methods可以通过this.domain 获取对象，一并提交
+     可以通过VUE内置的指令v-cloak解决这个问题（推荐） ：CSS中添加 [v-cloak]{ display: none; }
+     3、input 通过 v-model=""  赋值
+     4、Vue  methods可以通过this.domain 获取对象，一并提交
      * 更新dic信息
      */
     update:function(dictKey){
@@ -183,34 +183,34 @@ var sysDict = {
         }
         var nodes = new Array();
         system.post(get_root + "/system/api/getListMap",{method:"selectDictGroupByCate"},function(data){
-                for(var i in data.result){
-                    var domain = data.result[i];
-                    if(domain.code=="000000"){
-                        continue;
-                    }
-                    //区域代码 北京、山海等
-                    var node = {};
-                    node["pId"] = "000000";
-                    node["id"] = system.isBlank(domain.CATE)?domain.cate:domain.CATE;
-                    node["name"] = system.isBlank(domain.NAME)?domain.name:domain.NAME;
-                    node["lv"] = "1";
-                    node["open"] = false;
-                    if("0" == domain.parentId) {
-                        node["open"] = true;
-                    }
-
-                    node["iconOpen"] = get_root + '/systemsite/ztree/img/1_close.png';
-                    node["iconClose"] = get_root + '/systemsite/ztree/img/1_open.png';
-                    node["icon"] = get_root + '/systemsite/ztree/img/1_close.png';
-                    nodes.push(node);
-                    //初始化子节点
+            for(var i in data.result){
+                var domain = data.result[i];
+                if(domain.code=="000000"){
+                    continue;
                 }
-                console.log("8888888888888")
-                console.log(data)
-                console.log(nodes)
-                $.fn.zTree.init($("#treeInfo"), setting, nodes);
-                $("#loadTree").hide();
-            })
+                //区域代码 北京、山海等
+                var node = {};
+                node["pId"] = "000000";
+                node["id"] = system.isBlank(domain.CATE)?domain.cate:domain.CATE;
+                node["name"] = system.isBlank(domain.NAME)?domain.name:domain.NAME;
+                node["lv"] = "1";
+                node["open"] = false;
+                if("0" == domain.parentId) {
+                    node["open"] = true;
+                }
+
+                node["iconOpen"] = get_root + '/systemsite/ztree/img/1_close.png';
+                node["iconClose"] = get_root + '/systemsite/ztree/img/1_open.png';
+                node["icon"] = get_root + '/systemsite/ztree/img/1_close.png';
+                nodes.push(node);
+                //初始化子节点
+            }
+            console.log("8888888888888")
+            console.log(data)
+            console.log(nodes)
+            $.fn.zTree.init($("#treeInfo_scode"), setting, nodes);
+            $("#loadTree_scode").hide();
+        })
     },
 
 
@@ -273,8 +273,8 @@ var sysDict = {
 
                     var opt='<li><a href="javascript:void(0)" class="lp-dict-del" data-value="'+domain.dictKey+'">' +
                         '<span class="opera-layer-logo"><span class="entypo-trash"  style="color: #428bca; font-size: 17px" title="刪除"></span></span></div>删除</li> </a>' +
-                    //' <li role="separator" class="divider"></li>' +
-                    ' <li><a href="javascript:void(0)" class="lp-dict-edit" data-value="'+domain.dictKey+'">' +
+                            //' <li role="separator" class="divider"></li>' +
+                        ' <li><a href="javascript:void(0)" class="lp-dict-edit" data-value="'+domain.dictKey+'">' +
                         '<span class="opera-layer-logo">' +
                         '<span class="icon-document-edit" style="color: #428bca; font-size: 17px" title="修改"></span></span>修改</a></li>';
                     return opt;
@@ -282,7 +282,7 @@ var sysDict = {
             ]
         };
         //企业用户
-            $("#sysDictList").LPTable(get_root + "/system/dict/getDictList",params_1,option);
+        $("#sysDictList").LPTable(get_root + "/system/dict/getDictList",params_1,option);
         return;
     }
 }/*

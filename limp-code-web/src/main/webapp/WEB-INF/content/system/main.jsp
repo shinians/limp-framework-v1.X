@@ -23,6 +23,13 @@
     <script src="${plug}/layer-v3.1.1/layer/layer.js" type="text/javascript"></script>
     <script type="text/javascript" src="${plug}/vue-2.5.6/vue.js"></script>
 
+    <%--ztree引入--%>
+    <link rel="stylesheet" href="${ctx}/systemsite/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <link rel="stylesheet" href="${ctx}/systemsite/ztree/css/metroStyle/metroStyle.css" type="text/css">
+    <script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.excheck.js"></script>
+    <script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.exedit.js"></script>
+
 </head>
  <!--在初始加载时设置了body样式 style.css giftly.png-->
 <%--<body style="background: url('${system}/img/bg3.png') repeat;background-repeat: no-repeat; background-attachment: fixed; background-position: center 0; background-size: cover;">--%>
@@ -161,19 +168,16 @@
                 <li><a href="javascript:void(0)" id="nav_name" style="color: #666;font-weight: 500;"></a></li>
             </ul>
             <!-- CONTENT -->
-           <%-- <jsp:include page="users.jsp"></jsp:include>--%>
-           <%-- <iframe border="0" frameborder="0" height="900"
-                    id="sys_nav" marginheight="300"  marginwidth="0" scrolling="no" src="http://www.ka92.cn/play/17064.html" width="100%">
-          --%>
-            <%--load方法加载--%>
-            <div id="nav_intro">
-              <%--  <jsp:include page="sys_menu.jsp"></jsp:include>--%>
-            </div>
-         <%--iframe控制 菜单权限为6--%>
-            <iframe border="0" frameborder="0" style="display: none"
-                    id="nav_iframe" src="" width="100%" height="1200px">
-            </iframe>
-
+          <div id="nav_main">
+                <%--load方法加载--%>
+                <div id="nav_intro">
+                  <%--  <jsp:include page="sys_menu.jsp"></jsp:include>--%>
+                </div>
+             <%--iframe控制 菜单权限为6--%>
+                <iframe border="0" frameborder="0" style="display: none"
+                        id="nav_iframe" src="" width="100%" height="1200px">
+                </iframe>
+          </div>
 
             <div class="footer-space"></div>
             <div id="footer">
@@ -183,7 +187,7 @@
                     <p id="clock">
                 </div>
                 <div class="copyright">LP
-                    <span class="entypo-heart"></span>官网2018<a href="http://www.shinians.com"></a> </div>
+                    <span class="entypo-heart"></span>官网2018<a href="#"></a> </div>
                 <div class="devider-footer"></div>
             </div>
             <!-- / END OF FOOTER -->

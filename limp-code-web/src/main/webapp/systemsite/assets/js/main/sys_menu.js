@@ -166,7 +166,7 @@ var SysMenu={
             $("#mId").val('');//父级菜单制成空
         // zNodes=zNodes.concat(nodes)
         $.fn.zTree.init($("#treeDemo"), setting, nodes);
-        $("#load").hide();
+        $("#load_menu").hide();
     })
 }  ,
     /**
@@ -278,7 +278,7 @@ var SysMenu={
         $("#mId").val(menu.id);
         $("#fId").val(menu.menFatherid);
 
-        $("#commonWin").click();
+        $("#commonWin_menu").click();
     } ,
     /**
      * 保存menu

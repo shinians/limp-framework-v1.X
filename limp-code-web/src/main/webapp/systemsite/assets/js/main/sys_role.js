@@ -144,7 +144,7 @@ var SysRole={
             main.tip("不可批量操作",0);
             return;
         }
-        $("#commonWin").click();
+        $("#commonWinMenu").click();
         system.post(get_root + "/system/role/getMenusByRoleId.action", {rid:roleId}, function (data) {
             var menuids=data.result.join(",");
             main.roleMenuMap[roleId]=menuids;//该角色含有的菜单
@@ -210,7 +210,7 @@ var SysRole={
      * @param menuIds
      */
     initTreeAuto: function (menuIds) {
-        $("#loadMenu").show();
+        $("#loadMenu_role").show();
         function beforeCheck(treeId, treeNode) {
             console.debug(" beforeCheck " + treeNode.name );
             return (treeNode.doCheck !== false);
@@ -220,7 +220,7 @@ var SysRole={
         }
 
         function checkNode(e) {
-            var zTree = $.fn.zTree.getZTreeObj("treeAuth");
+            var zTree = $.fn.zTree.getZTreeObj("treeAuthRole");
             type = e.data.type;
             if (type == "checkAllTrue") {
                 zTree.checkAllNodes(true);
@@ -235,14 +235,16 @@ var SysRole={
         }
 
         function setAutoTrigger(e) {
-            var zTree = $.fn.zTree.getZTreeObj("treeAuth");
+            var zTree = $.fn.zTree.getZTreeObj("treeAuthRole");
             zTree.setting.check.autoCheckTrigger = $("#autoCallbackTrigger").attr("checked");
             $("#autoCheckTriggerValue").html(zTree.setting.check.autoCheckTrigger ? "true" : "false");
         }
 
         var setting = {
             view: {
-                selectedMulti: false
+                selectedMulti: false,
+                showIcon: false,
+                showLine: true,//是否显示节点之间的连线
             },
             check: {
 //                enable: true
@@ -283,8 +285,8 @@ var SysRole={
                 nodes.push(node);
             }
             // zNodes=zNodes.concat(nodes)
-            $.fn.zTree.init($("#treeAuth"), setting, nodes);
-            $("#loadMenu").hide();
+            $.fn.zTree.init($("#treeAuthRole"), setting, nodes);
+            $("#loadMenu_role").hide();
         },false)
 
     } ,
@@ -473,7 +475,7 @@ var SysRole={
      */
     saveRoleMenu:function(){
         var roleId=system.getCheckboxValues("roleCKB");
-        var zTree = $.fn.zTree.getZTreeObj("treeAuth");
+        var zTree = $.fn.zTree.getZTreeObj("treeAuthRole");
         var nodes = zTree.getCheckedNodes();
         if(nodes.length==0){
             alert("选择菜单！");

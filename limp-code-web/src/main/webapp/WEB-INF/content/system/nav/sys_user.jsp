@@ -11,9 +11,9 @@
 <!--top标题 【content_part_1】 -->
 <!--/ TITLE -->
 <link rel="stylesheet" href="${bootstrap}/css/bootstrap-datetimepicker.min.css">
-<link rel="stylesheet" href="${ctx}/systemsite/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
-<script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.core.js"></script>
-<script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.excheck.js"></script>
+<%--<link rel="stylesheet" href="${ctx}/systemsite/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">--%>
+<%--<script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.core.js"></script>--%>
+<%--<script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.excheck.js"></script>--%>
 
 <div class="col-sm-2">
     <div aria-labelledby="myLargeModalLabel" role="dialog" tabindex="-1" class="modal fade bs-example-modal-lg" style="display: none;" id="test">
@@ -475,7 +475,7 @@
                 <hr/>
                 <div>&nbsp;&nbsp;&nbsp;组织结构</div>
             <%--组织结构加载--%>
-                <div id="loadTree" class="lpLoading"></div>
+                <div id="loadTree_user" class="lpLoading"></div>
                 <div style="display: none" id="unitId"></div>
                 <div class="content_wrap">
                     <div class="TreeDemoBackground left" style="height: 460px; overflow: auto;">

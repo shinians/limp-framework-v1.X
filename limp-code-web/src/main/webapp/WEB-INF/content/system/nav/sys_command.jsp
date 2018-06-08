@@ -11,9 +11,9 @@
   ~ Copyright (c) 2017. 北京中软国际信息技术有限公司 .
   --%>
 
-<link rel="stylesheet" href="${ctx}/systemsite/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
-<script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.core.js"></script>
-<script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.excheck.js"></script>
+<%--<link rel="stylesheet" href="${ctx}/systemsite/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">--%>
+<%--<script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.core.js"></script>--%>
+<%--<script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.excheck.js"></script>--%>
 
 <%--新增json解析--%>
 <link rel="stylesheet" href="${plug}/json-plug/jsonFormater.css" type="text/css">
@@ -86,8 +86,8 @@
 
 <!-- 弹框通用 -->
 <div class="container">
-    <a href="#common" id="commonWin"  data-toggle="modal" data-target="#common" class="btn btn-primary" style="display: none" >点击登录</a>
-    <div aria-labelledby="myLargeModalLabel" role="dialog" tabindex="-1" class="modal fade bs-example-modal-lg" style="display: none;"id="common">
+    <a href="#common_commond" id="commonWin_commond"  data-toggle="modal" data-target="#common_commond" class="btn btn-primary" style="display: none" >点击登录</a>
+    <div aria-labelledby="myLargeModalLabel" role="dialog" tabindex="-1" class="modal fade bs-example-modal-lg" style="display: none;"id="common_commond">
         <div class="modal-dialog ">
             <div class="modal-content">
                 <div class="modal-header model-header-new">

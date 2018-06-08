@@ -11,11 +11,11 @@
   ~ Copyright (c) 2017. 北京中软国际信息技术有限公司 .
   --%>
 
-<link rel="stylesheet" href="${ctx}/systemsite/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<%--<link rel="stylesheet" href="${ctx}/systemsite/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">--%>
 <%--（1）加载layui--%>
 <%--<link rel="stylesheet" href="${plug}/layui-v2.2.6/css/layui.css" type="text/css">--%>
-<script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.core.js"></script>
-<script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.excheck.js"></script>
+<%--<script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.core.js"></script>--%>
+<%--<script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.excheck.js"></script>--%>
 <div class="content-wrap">
     <div class="row">
         <div class="col-sm-3" style="padding-right: 20px;padding-left: 1px" id="comp-tree">
@@ -24,11 +24,11 @@
                     <span class="entypo-arrows-ccw"></span> &nbsp;&nbsp;码表信息
                 </div>
                 <%--企业信息加载--%>
-                <div id="loadTree" style="background:url('${ctx}/systemsite/assets/img/loading.gif') no-repeat;width:20px;height:20px"></div>
+                <div id="loadTree_scode" style="background:url('${ctx}/systemsite/assets/img/loading.gif') no-repeat;width:20px;height:20px"></div>
                 <div style="display: none" id="unitId"></div>
                 <div class="content_wrap">
                     <div class="TreeDemoBackground left" style="height: 760px; overflow: auto;">
-                        <ul id="treeInfo" class="ztree"></ul>
+                        <ul id="treeInfo_scode" class="ztree"></ul>
                     </div>
                 </div>
             </div>
@@ -58,10 +58,10 @@
 
                                 </div>
                                 <%--<label class="col-sm-2 control-label">分类描述</label>--%>
-                               <%-- <div class="col-sm-3">
-                                    <input type="text" id="cateIntro" name="mobile"  placeholder="输入小分类..." autocomplete="off" class="form-control">
+                                <%-- <div class="col-sm-3">
+                                     <input type="text" id="cateIntro" name="mobile"  placeholder="输入小分类..." autocomplete="off" class="form-control">
 
-                                </div>--%>
+                                 </div>--%>
                             </div>
                             <div style="float: right">
                                 <button type="button" class="btn btn-reset"  onclick="system.resetById('sysDictForm')" id="resetUserBtn">重置</button>
@@ -76,39 +76,39 @@
             </div>
 
             <div class="row">
-            <div class="content-panel padding0">
-                <div class="table-responsive" id="dic-info">
-                    <div class="table-tools">
-                        <table class="table">
-                            <tbody>
-                            <tr>
+                <div class="content-panel padding0">
+                    <div class="table-responsive" id="dic-info">
+                        <div class="table-tools">
+                            <table class="table">
+                                <tbody>
+                                <tr>
                                     <%--open-addUser-form--%>
-                                <td style="padding-top: 10px; text-align: left;" colspan="5">
-                                    <c:if test="${KEY_CODE.BTN_DICT_ADD.VALUE==1||KEY_CODE.ROLE_DEMO_MANAGE.VALUE==1}">
-                                        <button id="addDict" @click="handleAddDict" style="margin-right:4px" type="button" data-color="#39B3D7" data-opacity="0.95" class="btn button test pull">
-                                            <span class="entypo-user-add"></span>&nbsp;&nbsp;新增编码
-                                        </button>
-                                    </c:if>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <hr style="margin-top: -20px !important; margin-bottom: 15px !important;">
-                    </div>
-                    <table class="table  table-striped" style="margin-top:-15px;" id="sysDictList">
+                                    <td style="padding-top: 10px; text-align: left;" colspan="5">
+                                        <c:if test="${KEY_CODE.BTN_DICT_ADD.VALUE==1||KEY_CODE.ROLE_DEMO_MANAGE.VALUE==1}">
+                                            <button id="addDict" @click="handleAddDict" style="margin-right:4px" type="button" data-color="#39B3D7" data-opacity="0.95" class="btn button test pull">
+                                                <span class="entypo-user-add"></span>&nbsp;&nbsp;新增编码
+                                            </button>
+                                        </c:if>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <hr style="margin-top: -20px !important; margin-bottom: 15px !important;">
+                        </div>
+                        <table class="table  table-striped" style="margin-top:-15px;" id="sysDictList">
 
-                    </table>
+                        </table>
+                    </div>
+                    <%--<div class="opera-layer">
+                        <ul class="opera-layer-ul">
+                            <li><span class="opera-layer-logo"></span>示例弹层</li>
+                            <li><span class="opera-layer-logo"></span>示例弹层</li>
+                            <li><span class="opera-layer-logo"></span>示例弹层</li>
+                            <li><span class="opera-layer-logo"></span>示例弹层</li>
+                            <li><span class="opera-layer-logo"></span>示例弹层</li>
+                        </ul>
+                    </div>--%>
                 </div>
-                <%--<div class="opera-layer">
-                    <ul class="opera-layer-ul">
-                        <li><span class="opera-layer-logo"></span>示例弹层</li>
-                        <li><span class="opera-layer-logo"></span>示例弹层</li>
-                        <li><span class="opera-layer-logo"></span>示例弹层</li>
-                        <li><span class="opera-layer-logo"></span>示例弹层</li>
-                        <li><span class="opera-layer-logo"></span>示例弹层</li>
-                    </ul>
-                </div>--%>
-            </div>
             </div>
         </div>
     </div>

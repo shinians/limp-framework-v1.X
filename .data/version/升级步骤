@@ -33,7 +33,12 @@ mvn install:install-file -Dfile=test.jar -DgroupId=com.chinasofti  -DartifactId=
 
  mvn install:install-file -Dfile=F:\my\limp-framework-test05.jar  -DgroupId=com.chinasofti  -DartifactId=limp-framework -Dversion=test05 -Dpackaging=jar -DgeneratePom=true  -DcreateChecksum=true
 
- mvn install:install-file -Dfile=F:\my\limp-framework-test05.jar -DpomFile=F:\my\limp-framework-test05.pom  -DgroupId=com.chinasofti  -DartifactId=limp-framework -Dversion=test06 -Dpackaging=jar -DgeneratePom=true  -DcreateChecksum=true
+ mvn install:install-file -Dfile=F:\my\limp-framework-1.1.4-RELEASE.jar -DpomFile=F:\my\limp-framework-1.1.4-RELEASE.pom  -DgroupId=com.chinasofti  -DartifactId=limp-framework -Dversion=1.1.4-RELEASE -Dpackaging=jar -DgeneratePom=true  -DcreateChecksum=true
+
+ mvn install:install-file -Dfile=F:\my\cas-auth-1.0-SNAPSHOT.jar -DpomFile=F:\my\cas-auth-1.0-SNAPSHOT.pom  -DgroupId=com.chinasofti  -DartifactId=cas-auth -Dversion=1.0-SNAPSHOT -Dpackaging=jar -DgeneratePom=true  -DcreateChecksum=true
+
+
+
  mvn install:install-file -Dfile=F:\my\limp-framework-1.1.0-RELEASE.pom  -DgroupId=com.chinasofti  -DartifactId=limp-framework -Dversion=test04 -Dpackaging=pom
 
 

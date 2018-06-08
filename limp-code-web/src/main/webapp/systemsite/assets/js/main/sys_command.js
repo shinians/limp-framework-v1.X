@@ -21,7 +21,7 @@ var sysCommand = {
     toSave:function(){
       $("#commandForm")[0].reset();
         $("#id").val('');
-      $("#commonWin").click();
+      $("#commonWin_commond").click();
     },
     toUpdate:function(id){
         $("#commandForm")[0].reset();
@@ -32,7 +32,7 @@ var sysCommand = {
         $("#csql").val(domain.csql);
         $("#cintro").val(domain.cintro);
         $("#id").val(id);
-        $("#commonWin").click();
+        $("#commonWin_commond").click();
     },
     /**
      * 保存系统命令

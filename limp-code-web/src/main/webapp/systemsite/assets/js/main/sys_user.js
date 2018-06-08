@@ -209,7 +209,7 @@ var SysUser={
 //            $("#mId").val('');//父级菜单制成空
             // zNodes=zNodes.concat(nodes)
             $.fn.zTree.init($("#treeUnitDemo"), setting, nodes);
-            $("#loadTree").hide();
+            $("#loadTree_user").hide();
         })
     }  ,
 

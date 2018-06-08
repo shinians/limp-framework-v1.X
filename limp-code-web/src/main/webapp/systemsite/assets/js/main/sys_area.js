@@ -183,7 +183,7 @@ var sysArea = {
         };
         function ztreeOnAsyncSuccess(event, treeId, treeNode){
             return;
-            var treeObj = $.fn.zTree.getZTreeObj("treeInfo");
+            var treeObj = $.fn.zTree.getZTreeObj("treeInfo_area");
             console.log("异步加载")
             console.log(treeId)
             console.log(treeNode)
@@ -275,9 +275,8 @@ var sysArea = {
                 sysArea.getDomainList(1,treeId);
             }
         }
-
-                $.fn.zTree.init($("#treeInfo"), setting);
-                $("#loadTree").hide();
+                $.fn.zTree.init($("#treeInfo_area"), setting);
+                $("#loadTree_area").hide();
     },
     /**
      * 企业用户列表页面:修正后

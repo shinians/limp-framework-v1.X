@@ -10,16 +10,16 @@
 <%--
   ~ Copyright (c) 2018. 北京中软国际信息技术有限公司 .
   --%>
-
+<%--
 <link rel="stylesheet" href="${ctx}/systemsite/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
-<%--（1）加载layui--%>
-<%--<link rel="stylesheet" href="${plug}/layui-v2.2.6/css/layui.css" type="text/css">--%>
+&lt;%&ndash;（1）加载layui&ndash;%&gt;
+&lt;%&ndash;<link rel="stylesheet" href="${plug}/layui-v2.2.6/css/layui.css" type="text/css">&ndash;%&gt;
 <link rel="stylesheet" href="${ctx}/systemsite/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
 <link rel="stylesheet" href="${ctx}/systemsite/ztree/css/metroStyle/metroStyle.css" type="text/css">
-<%--<script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.exedit.js"></script>--%>
+&lt;%&ndash;<script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.exedit.js"></script>&ndash;%&gt;
 
 <script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.core.js"></script>
-<script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.excheck.js"></script>
+<script type="text/javascript" src="${ctx}/systemsite/ztree/js/jquery.ztree.excheck.js"></script>--%>
 <div class="content-wrap">
     <div class="row">
         <div class="col-sm-2" style="padding-right: 20px;padding-left: 1px" id="comp-tree">
@@ -28,11 +28,11 @@
                     <span class="entypo-arrows-ccw"></span> &nbsp;&nbsp;码表信息
                 </div>
                 <%--企业信息加载--%>
-                <div id="loadTree" style="background:url('${ctx}/systemsite/assets/img/loading.gif') no-repeat;width:20px;height:20px"></div>
+                <div id="loadTree_area" style="background:url('${ctx}/systemsite/assets/img/loading.gif') no-repeat;width:20px;height:20px"></div>
                 <div style="display: none" id="unitId"></div>
                 <div class="content_wrap">
                     <div class="TreeDemoBackground left" style="height: 760px; overflow: auto;">
-                        <ul id="treeInfo" class="ztree"></ul>
+                        <ul id="treeInfo_area" class="ztree"></ul>
                     </div>
                 </div>
             </div>
