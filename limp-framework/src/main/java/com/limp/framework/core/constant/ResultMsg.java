@@ -12,7 +12,7 @@ public class ResultMsg {
     /**
      * 返回结果提示语
      */
-    public static final String LOGIN_NOUserTNULL = "用户名/密码为空";
+    public static final String LOGIN_NOTNULL = "用户名/密码为空";
     public static final String LOGIN_ERROR = "用户名/密码错误";
     public static final String LOGIN_USERNOTEXIST = "用户不存在";
     public static final String LOGIN_ERROR_EXP = "账号已过期";
